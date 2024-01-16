@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import "./index.css";
 import {RouterProvider } from "react-router-dom";
 import { router } from "./routes/Route.jsx";
@@ -20,13 +21,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </HelmetProvider>
 =======
 import App from "./App.jsx";
+=======
+import MainLayOut from "./Components/Layout/MainLAyOut.jsx";
+>>>>>>> be526fa5b8c7d098a2b41ff001272930796a6dc3
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainLayOut from "./Components/Layout/MainLAyOut.jsx";
+import Contacts from "./Components/Pages/Contacts.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
+    children: [
+      {
+        path: "contact",
+        element: <Contacts />,
+      },
+    ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
