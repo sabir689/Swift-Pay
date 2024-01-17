@@ -3,19 +3,15 @@ import { Helmet } from "react-helmet-async"
 import UseAuth from '../../hooks/UseAuth'
 import { ImSpinner9 } from "react-icons/im";
 import toast from 'react-hot-toast';
-
-
 const ForgottenPass = () => {
   const { loading, resetPassword, setLoading } = UseAuth()
-
   const forgotePass = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     resetPassword(email)
     .then(()=>{
-      toast((t,) => (
-        
+      toast((t,) => (  
         <span>
           <p className='text-base font-normal'>Password reset initiated successfully. Please check your Gmail account {email}</p>
         <div className='flex item-center justify-center items-center'>
@@ -26,13 +22,11 @@ const ForgottenPass = () => {
           }}>
             Go to gmail
           </button>
-
           <button  onClick={()=> toast.dismiss(t.id)
           }
           className='text-base px-6 py-2 bg-neutral-300 rounded-md text-black mt-1  text-center duration-300 ml-3'>Cancel</button>
         </div>
         </span>
-         
       ),
       {
         duration: 100000,
@@ -48,11 +42,6 @@ const ForgottenPass = () => {
     })
 
   }
-
-  const check=()=>{
- 
-  }
-
   return (
     <div className='bg-sectionbg py-14'>
     <Helmet>
@@ -65,19 +54,16 @@ const ForgottenPass = () => {
         <form onSubmit={forgotePass}>
           <label className='text-lg font-normal text-black1 mb-1 ml-1 mt-5 block'>Your Account Gmail</label>
           <input className='text-base placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-4 px-5 w-full' placeholder='gmail' name='email' type='email' required />
-         
           <button type="submit"
           className='text-lg px-10 py-[14px] bg-neutral-300 rounded-lg text-black mt-5 w-full inline-block duration-300'>
             {
               loading?<ImSpinner9 className="animate-spin text-center inline-block"/> : "Send Code"
             }
           </button>
-          
         </form>
       </div>
     </div>
   </div>
   )
 }
-
 export default ForgottenPass

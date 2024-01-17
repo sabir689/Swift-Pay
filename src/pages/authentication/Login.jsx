@@ -5,11 +5,9 @@ import { Helmet } from "react-helmet-async"
 import UseAuth from '../../hooks/UseAuth'
 import { ImSpinner9 } from "react-icons/im";
 import toast from 'react-hot-toast'
-
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const { loading, signIn, setLoading } = UseAuth()
-
   const registration = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,9 +23,7 @@ const Login = () => {
       setLoading(false)
       return
     })
-
   }
-
   return (
     <div className='bg-sectionbg py-14'>
     <Helmet>
