@@ -73,7 +73,7 @@ const Register = () => {
               }
             </div>
             <input type="submit" value="Register" className='text-lg px-10 py-[14px] bg-neutral-300 rounded-lg text-black mt-5 w-full inline-block duration-300' />
-            <h1 className='text-center text-lg font-normal text-black1  my-3'> Don't you have an account?
+            <h1 className='text-center text-lg font-normal text-black1  my-3'>Already have an account?
               <Link to='/login' className='text-lg hover:underline hover:text-hover duration-300 ml-2 font-normal text-primery inline-block'>Login</Link>
             </h1>
           </form>
