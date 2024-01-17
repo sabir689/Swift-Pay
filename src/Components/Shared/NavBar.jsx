@@ -1,7 +1,7 @@
-import { Link, NavLink } from "react-router-dom";
-import { FaRegUserCircle } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+// import { FaRegUserCircle } from "react-icons/fa";
 // import { useContext } from "react";
-import { IoMdLogOut } from "react-icons/io";
+// import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
   //   const { user, logOut } = useContext(AuthContext);
   //   const handleLogOut = () => {
@@ -44,14 +44,6 @@ const Navbar = () => {
             >
               About us
             </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-gray-600" : ""
-              }
-            >
-              Contact us
-            </NavLink>
           </li>
           <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
@@ -72,6 +64,14 @@ const Navbar = () => {
               }
             >
               Login
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-gray-600" : ""
+              }
+            >
+              Contact us
             </NavLink>
           </li>
         </nav>
@@ -130,7 +130,7 @@ const Navbar = () => {
                           />
                         ) : ( */}
             <div className="text-3xl">
-              <FaRegUserCircle />
+              {/* <FaRegUserCircle /> */}
             </div>
             {/* )}
                       </div>
