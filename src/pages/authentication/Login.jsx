@@ -2,15 +2,29 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PiEyeSlash, PiEye } from 'react-icons/pi'
 import { Helmet } from "react-helmet-async"
+import UseAuth from '../../hooks/UseAuth'
+import { ImSpinner9 } from "react-icons/im";
+import toast from 'react-hot-toast'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const { loading, signIn, setLoading } = UseAuth()
 
   const registration = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value
+    signIn(email, password)
+    .then(()=>{
+      toast.success('Login successful. Redirecting to the account page')
+      return
+    })
+    .catch((error)=>{
+      toast.error('Invalid gmail, Please check your credentials')
+      setLoading(false)
+      return
+    })
 
   }
 
@@ -36,7 +50,12 @@ const Login = () => {
             </span>
           </div>
           <Link to='/reset-your-password' className='text-base font-normal text-black1 mb-1 ml-1 mt-0 hover:text-red-400 block'>Forgotten password? </Link>
-          <input type="submit" value="Login" className='text-lg px-10 py-[14px] bg-neutral-300 rounded-lg text-black mt-5 w-full inline-block duration-300' />
+          <button type="submit"
+          className='text-lg px-10 py-[14px] bg-neutral-300 rounded-lg text-black mt-5 w-full inline-block duration-300'>
+            {
+              loading?<ImSpinner9 className="animate-spin text-center inline-block"/> : "Register"
+            }
+          </button>
           <h1 className='text-center text-lg font-normal text-black1  my-3'> Don't you have an account?
             <Link to='/regitation' className='text-lg hover:underline hover:text-hover duration-300 ml-2 font-normal text-primery inline-block'>Registration</Link>
           </h1>
