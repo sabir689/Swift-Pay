@@ -42,17 +42,25 @@ const Navbar = () => {
                 isPending ? "pending" : isActive ? "text-gray-600" : ""
               }
             >
-              About us
+              FAQ
             </NavLink>
-          </li>
-          <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
-              to="dashboard"
+              to="/contact"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-gray-600" : ""
               }
             >
-              FAQ
+              Contact us
+            </NavLink>
+          </li>
+          <li className="text-xl mr-10 font-semibold text-[#49108B]">
+            <NavLink
+              to="contact"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-gray-600" : ""
+              }
+            >
+              Contact
             </NavLink>
           </li>
 
