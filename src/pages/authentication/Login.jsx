@@ -20,7 +20,7 @@ const Login = () => {
       <title> Login </title>
     </Helmet>
     <div className='container md:w-10/12/ lg:w-2/4 mx-auto px-4'>
-      <div className='bg-white px-6 py-10 rounded-lg'>
+      <div className='bg-white px-6 py-2 rounded-lg'>
         <h1 className='text-2xl font-medium text-black1 mb-5'>Login Your Account</h1>
         <form onSubmit={registration}>
           <label className='text-lg font-normal text-black1 mb-1 ml-1 mt-5 block'>Gmail</label>
@@ -38,7 +38,7 @@ const Login = () => {
           <Link to='/reset-your-password' className='text-base font-normal text-black1 mb-1 ml-1 mt-0 hover:text-red-400 block'>Forgotten password? </Link>
           <input type="submit" value="Login" className='text-lg px-10 py-[14px] bg-neutral-300 rounded-lg text-black mt-5 w-full inline-block duration-300' />
           <h1 className='text-center text-lg font-normal text-black1  my-3'> Don't you have an account?
-            <Link to='/regitation' className='text-lg hover:underline hover:text-hover duration-300 ml-2 font-normal text-primery inline-block'>Regitation</Link>
+            <Link to='/regitation' className='text-lg hover:underline hover:text-hover duration-300 ml-2 font-normal text-primery inline-block'>Registration</Link>
           </h1>
         </form>
       </div>
