@@ -18,7 +18,7 @@ const ForgottenPass = () => {
         
         <span>
           <p className='text-base font-normal'>Password reset initiated successfully. Please check your Gmail account {email}</p>
-        <div className='flex item-center'>
+        <div className='flex item-center justify-center items-center'>
         <button className='text-base px-6 py-2 bg-neutral-300 rounded-md text-black mt-1  text-center duration-300' onClick={() =>{
             window.open('https://mail.google.com', '_blank');
             toast.dismiss(t.id);
