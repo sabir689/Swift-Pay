@@ -1,63 +1,65 @@
-import phone from "../../assets/images/phone.png";
-import email from "../../assets/images/email.png";
-import location from "../../assets/images/location.png";
-import career from "../../assets/images/career.png";
+
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { SlLocationPin } from "react-icons/sl";
+import { MdOutlineEmail } from "react-icons/md";
+import { FiPhone } from "react-icons/fi";
+
 
 const Information = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 p-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 md:p-5">
       {/* phone */}
-      <div className="flex items-center justify-between gap-4 p-3">
+      <div className="flex items-center justify-between gap-4 px-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={phone} alt="" />
+          <FiPhone className=" text-2xl md:text-4xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Call Us</p>
-            <p>+0247 000888</p>
+            <p className="text-xs md:text-base">+0247000888</p>
           </div>
         </div>
-        <button className="btn text-xl px-10 bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-8 md:px-10 text-white hover:text-gray-800 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Call
         </button>
       </div>
       {/* email */}
-      <div className="flex items-center justify-between gap-4 p-3">
+      <div className="flex items-center justify-between gap-4 px-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={email} alt="" />
+          <MdOutlineEmail className="text-2xl md:text-4xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Email</p>
-            <p>info@nagad.com.bd</p>
+            <p className="text-xs md:text-base">info@swift.com.bd</p>
           </div>
         </div>
-        <button className="btn text-xl px-8 bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-6 md:px-9 text-white hover:text-gray-800 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Email
         </button>
       </div>
       {/* career */}
-      <div className="flex items-center justify-between gap-4 p-3">
+      <div className="flex items-center justify-between gap-4 px-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={career} alt="" />
+          <HiOutlineUserGroup className="text-2xl md:text-4xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Career</p>
-            <p>recruitment@nagad.com.bd</p>
+            <p className="text-xs md:text-base">career@swift.com.bd</p>
           </div>
         </div>
-        <button className="btn text-xl px-8 bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-6 md:px-9 text-white hover:text-gray-800 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Email
         </button>
       </div>
       {/* location */}
-      <div className="flex items-center justify-between gap-4 p-3">
+      <div className="flex items-center justify-between gap-4 px-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={location} alt="" />
+          <SlLocationPin className="text-7xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Head Office</p>
-            <p>
+            <p className="text-xs md:text-base">
               Delta Dahlia Tower (Level 13 and 14), 36 Kemal Ataturk Avenue,
               Banani, Dhaka -1213
             </p>
           </div>
         </div>
-        <button className="btn text-xl bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn md:px-6 text-white hover:text-gray-800 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Direction
         </button>
       </div>
