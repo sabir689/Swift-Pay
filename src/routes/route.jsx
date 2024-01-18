@@ -5,6 +5,7 @@ import Register from "../pages/authentication/Registration";
 import ForgottenPass from "../pages/authentication/ForgottenPass";
 import Contact from '../pages/contact/Contacts'
 import Home from "../pages/home/Home";
+import Business from "../pages/home/Business";
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         {
           path: '/contact',
           element: <Contact/>
+        },
+        {
+          path: '/business',
+          element: <Business/>
         },
        
        
