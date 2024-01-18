@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async"
 import UseAuth from '../../hooks/UseAuth'
 import { ImSpinner9 } from "react-icons/im";
 import toast from 'react-hot-toast'
+import PageBanner from '../../Components/Shared/PageBanner'
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const { loading, signIn, setLoading } = UseAuth()
@@ -25,13 +26,14 @@ const Login = () => {
     })
   }
   return (
-    <div className='bg-sectionbg py-14'>
+   <div>
+    <PageBanner lable='Login Your Account'/>
+     <div className='bg-sectionbg py-14'>
     <Helmet>
       <title> Login </title>
     </Helmet>
     <div className='container md:w-10/12/ lg:w-2/4 mx-auto px-4'>
       <div className='bg-white px-6 py-2 rounded-lg'>
-        <h1 className='text-2xl font-medium text-black1 mb-5'>Login Your Account</h1>
         <form onSubmit={registration}>
           <label className='text-lg font-normal text-black1 mb-1 ml-1 mt-5 block'>Gmail</label>
           <input className='text-base placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-4 px-5 w-full' placeholder='gmail' name='email' type='email' required />
@@ -59,6 +61,7 @@ const Login = () => {
       </div>
     </div>
   </div>
+   </div>
   )
 }
 
