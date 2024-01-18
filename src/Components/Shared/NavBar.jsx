@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 // import { FaRegUserCircle } from "react-icons/fa";
 // import { useContext } from "react";
-import { IoMdLogOut } from "react-icons/io";
-import { useContext } from "react";
+import { IoMdArrowDropupCircle, IoMdLogOut } from "react-icons/io";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 // import { IoMdLogOut } from "react-icons/io";
@@ -14,6 +14,22 @@ const Navbar = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+  const [topButton, setTopButton] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setTopButton(true);
+      } else {
+        setTopButton(false);
+      }
+    });
+  }, []);
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
   const links = (
     <div>
@@ -158,6 +174,14 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      {topButton && (
+        <button
+          className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
+          onClick={scrollUp}
+        >
+          <IoMdArrowDropupCircle />
+        </button>
+      )}
     </div>
   );
 };
