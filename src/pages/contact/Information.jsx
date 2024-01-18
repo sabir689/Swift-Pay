@@ -1,7 +1,9 @@
-import phone from "../../assets/images/phone.png";
-import email from "../../assets/images/email.png";
-import location from "../../assets/images/location.png";
-import career from "../../assets/images/career.png";
+
+import { HiOutlineUserGroup } from "react-icons/hi";
+import { SlLocationPin } from "react-icons/sl";
+import { MdOutlineEmail } from "react-icons/md";
+import { FiPhone } from "react-icons/fi";
+
 
 const Information = () => {
   return (
@@ -9,46 +11,46 @@ const Information = () => {
       {/* phone */}
       <div className="flex items-center justify-between gap-4 p-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={phone} alt="" />
+          <FiPhone className="text-4xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Call Us</p>
             <p>+0247 000888</p>
           </div>
         </div>
-        <button className="btn text-xl px-10 bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-10 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Call
         </button>
       </div>
       {/* email */}
       <div className="flex items-center justify-between gap-4 p-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={email} alt="" />
+          <MdOutlineEmail className="text-4xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Email</p>
             <p>info@nagad.com.bd</p>
           </div>
         </div>
-        <button className="btn text-xl px-8 bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-9 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Email
         </button>
       </div>
       {/* career */}
       <div className="flex items-center justify-between gap-4 p-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={career} alt="" />
+          <HiOutlineUserGroup className="text-4xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Career</p>
             <p>recruitment@nagad.com.bd</p>
           </div>
         </div>
-        <button className="btn text-xl px-8 bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-9 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Email
         </button>
       </div>
       {/* location */}
       <div className="flex items-center justify-between gap-4 p-3">
         <div className="flex items-center justify-between gap-4 p-3">
-          <img className="h-10" src={location} alt="" />
+          <SlLocationPin className="text-7xl text-cyan-500" />
           <div className="flex flex-col gap-3">
             <p className="text-xl font-semibold">Head Office</p>
             <p>
@@ -57,7 +59,7 @@ const Information = () => {
             </p>
           </div>
         </div>
-        <button className="btn text-xl bg-orange-600 hover:border-orange-600 border-2 hover:bg-white">
+        <button className="btn px-6 bg-cyan-500 hover:border-cyan-400 border-2 hover:bg-white">
           Direction
         </button>
       </div>
