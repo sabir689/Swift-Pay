@@ -1,6 +1,11 @@
+import toast from "react-hot-toast";
 import { FaLocationArrow } from "react-icons/fa6";
 
 const Feedback = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      toast.success("Thank you for your feedback");
+    };
   return (
     <div>
       <div className="card bg-white rounded-2xl p-5 flex flex-col">
@@ -47,7 +52,10 @@ const Feedback = () => {
             className="py-5 px-3 w-full md:w-[600px] rounded-md border border-gray-300 mb-4 outline-none bg-transparent"
           ></textarea>
 
-          <button className="btn text-xl px-10 text-white hover:text-gray-800 bg-cyan-500 hover:border-cyan-500 border-2 hover:bg-white">
+          <button
+            onClick={handleSubmit}
+            className="btn text-xl px-10 text-white hover:text-gray-800 bg-cyan-500 hover:border-cyan-500 border-2 hover:bg-white"
+          >
             Send <FaLocationArrow />
           </button>
         </div>
