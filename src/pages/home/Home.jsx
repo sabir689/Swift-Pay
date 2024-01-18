@@ -9,6 +9,7 @@ const Home = () => {
     <div className="mt-20 mb-10">
       <Banner></Banner>
     </div>
+
   );
 };
 
