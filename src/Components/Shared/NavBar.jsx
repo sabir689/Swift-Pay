@@ -44,14 +44,7 @@ const Navbar = () => {
             >
               FAQ
             </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-gray-600" : ""
-              }
-            >
-              Contact us
-            </NavLink>
+            
           </li>
           <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
@@ -64,7 +57,7 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li className="text-xl font-semibold text-[#49108B]">
+          <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
               to="/login"
               className={({ isActive, isPending }) =>
@@ -73,14 +66,7 @@ const Navbar = () => {
             >
               Login
             </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-gray-600" : ""
-              }
-            >
-              Contact us
-            </NavLink>
+          
           </li>
         </nav>
       </div>
