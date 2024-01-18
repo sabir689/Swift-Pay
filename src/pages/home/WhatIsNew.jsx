@@ -2,6 +2,7 @@ const WhatIsNew = () => {
   return (
     <div className="grid grid-cols-3">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        {/* checking */}
         <figure>
           <img
             src="https://i.ibb.co/gMbVPL6/bigstock-islamic-finance-economy-islam-1528572957459-ezgif-com-webp-to-jpg-converter.jpg"

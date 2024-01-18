@@ -1,8 +1,9 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className="footer p-10 bg-base-200 text-base-content ">
         <nav>
+          {/* max-w-screen-2xl mx-auto */}
           <header className="footer-title">Services</header>
           <a className="link link-hover">Transaction</a>
           <a className="link link-hover">Zakat Calculation</a>
