@@ -15,7 +15,16 @@ const Banner = () => {
       bg-gradient-to-r from-[rgba(9,9,121,1)]  to-[rgba(179,0,255,1)] text-transparent bg-clip-text typed group"
             >
               Elevate Your Money Movement Experience <br /> with a Gateway to
-              Quick and Secure <span className="text-purple-400">Payments</span>
+              Quick and Secure{" "}
+              <span
+                className="text-purple-400"
+                data-aos="fade-left"
+                data-aos-anchor="#example-anchor"
+                data-aos-offset="500"
+                data-aos-duration="500"
+              >
+                Payments
+              </span>
               .
             </p>
             <br />
