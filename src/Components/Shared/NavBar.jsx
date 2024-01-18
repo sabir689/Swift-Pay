@@ -2,15 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 // import { useContext } from "react";
 import { IoMdLogOut } from "react-icons/io";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   };
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const links = (
     <div>
       <div className="">
@@ -113,13 +115,13 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <div className="">logo</div>
+            <div className="w-[100px]">logo</div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal py-1">{links}</ul>
           </div>
           <div className="navbar-end text-3xl">
-            {/* {user ? (
+            {user ? (
               <>
                 <div className="dropdown dropdown-end">
                   <summary tabIndex={0} className="btn btn-ghost rounded-btn">
@@ -130,11 +132,11 @@ const Navbar = () => {
                             className=" rounded-full border-2 border-black"
                             src={user?.photoURL}
                           />
-                        ) : ( */}
-            <div className="text-3xl">
-              <FaRegUserCircle />
-            </div>
-            {/* )}
+                        ) : (
+                          <div className="text-3xl">
+                            <FaRegUserCircle />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </summary>
@@ -160,7 +162,7 @@ const Navbar = () => {
               </>
             ) : (
               <></>
-            )} */}
+            )}
           </div>
         </div>
       </div>
