@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async"
 import UseAuth from '../../hooks/UseAuth'
 import toast from 'react-hot-toast'
 import { ImSpinner9 } from "react-icons/im";
+import PageBanner from '../../Components/Shared/PageBanner'
 const Register = () => {
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth()
   const [showPassword, setShowPassword] = useState(false)
@@ -55,13 +56,14 @@ const Register = () => {
       })
   }
   return (
-    <div className='bg-sectionbg py-14'>
+   <div>
+    <PageBanner lable='Create your Account'/>
+     <div className='bg-sectionbg py-14'>
       <Helmet>
         <title> Regitation </title>
       </Helmet>
       <div className='container md:w-10/12/ lg:w-2/4 mx-auto px-4'>
         <div className='bg-white px-6 py-10 rounded-lg'>
-          <h1 className='text-2xl font-medium text-black1 mb-5'>Create your Account</h1>
           <form onSubmit={registration}>
             <label className='text-lg font-normal text-black1 mb-1 ml-1 mt-5 block'>Full Name</label>
             <input className='text-base placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-4 px-5 w-full' placeholder='Name' name='name' type='text' />
@@ -101,6 +103,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+   </div>
   )
 }
 export default Register
