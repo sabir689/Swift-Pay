@@ -10,7 +10,7 @@ const WhatIsNew = () => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Interest Free Banking</h2>
+          <h2 className="card-title">Interest Free Banking!</h2>
           {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
         </div>
       </div>
