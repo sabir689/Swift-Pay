@@ -1,16 +1,36 @@
 import { Link, NavLink } from "react-router-dom";
-import { FaRegUserCircle } from "react-icons/fa";
+// import { FaRegUserCircle } from "react-icons/fa";
 // import { useContext } from "react";
-import { IoMdLogOut } from "react-icons/io";
+import { IoMdArrowDropupCircle, IoMdLogOut } from "react-icons/io";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { FaRegUserCircle } from "react-icons/fa";
+// import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   };
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const [topButton, setTopButton] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setTopButton(true);
+      } else {
+        setTopButton(false);
+      }
+    });
+  }, []);
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   const links = (
     <div>
       <div className="">
@@ -47,16 +67,6 @@ const Navbar = () => {
           </li>
           <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
-              to="aboutUs"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-gray-600" : ""
-              }
-            >
-              About us
-            </NavLink>
-          </li>
-          <li className="text-xl mr-10 font-semibold text-[#49108B]">
-            <NavLink
               to="contact"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-gray-600" : ""
@@ -66,7 +76,7 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li className="text-xl font-semibold text-[#49108B]">
+          <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
               to="/login"
               className={({ isActive, isPending }) =>
@@ -113,13 +123,13 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <div className="">logo</div>
+            <div className="w-[100px]">logo</div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal py-1">{links}</ul>
           </div>
           <div className="navbar-end text-3xl">
-            {/* {user ? (
+            {user ? (
               <>
                 <div className="dropdown dropdown-end">
                   <summary tabIndex={0} className="btn btn-ghost rounded-btn">
@@ -130,11 +140,11 @@ const Navbar = () => {
                             className=" rounded-full border-2 border-black"
                             src={user?.photoURL}
                           />
-                        ) : ( */}
-            <div className="text-3xl">
-              <FaRegUserCircle />
-            </div>
-            {/* )}
+                        ) : (
+                          <div className="text-3xl">
+                            <FaRegUserCircle />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </summary>
@@ -160,10 +170,18 @@ const Navbar = () => {
               </>
             ) : (
               <></>
-            )} */}
+            )}
           </div>
         </div>
       </div>
+      {topButton && (
+        <button
+          className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
+          onClick={scrollUp}
+        >
+          <IoMdArrowDropupCircle />
+        </button>
+      )}
     </div>
   );
 };
