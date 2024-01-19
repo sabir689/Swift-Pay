@@ -2,10 +2,11 @@ import toast from "react-hot-toast";
 import { FaLocationArrow } from "react-icons/fa6";
 
 const Feedback = () => {
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      toast.success("Thank you for your feedback");
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Thank you for your feedback");
+  };
+
   return (
     <div>
       <div className="card bg-white rounded-2xl p-5 flex flex-col">

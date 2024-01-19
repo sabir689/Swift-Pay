@@ -19,7 +19,7 @@ const Contacts = () => {
         <p className="text-3xl md:text-4xl text-center font-semibold pt-10 ">Contact Us</p>
         <p className="text-center text-sm md:text-base p-3">
           Want to talk to us? Feel free to knock anytime for any queries
-          regarding Swift-Pay.
+          regarding Swift-Pay
         </p>
         <Information />
         <p className=" text-3xl md:text-4xl text-center font-semibold pt-4 pb-4 md:pb-6">

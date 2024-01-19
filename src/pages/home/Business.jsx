@@ -14,7 +14,7 @@ const Business = () => {
         </Helmet>
         <div className="text-center mx-auto py-4 lg:w-1/2">
           <h1 className="text-4xl font-bold text-black">
-            SwiftPay For Business
+            <span className="text-cyan-500">SwiftPay</span> For Business
           </h1>
           <p className="py-4 font-light">
             SwiftPay financial solutions make your business transactions faster,
@@ -25,29 +25,29 @@ const Business = () => {
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="w-full lg:w-44 h-52 shadow-xl flex flex-col justify-center items-center">
-              <MdOutlineSendToMobile className="text-7xl"></MdOutlineSendToMobile>
+              <MdOutlineSendToMobile className="text-7xl text-cyan-500"></MdOutlineSendToMobile>
               <h1 className="text-xl py-2">Online Business</h1>
             </div>
             <div className="w-full lg:w-44 h-52 shadow-xl flex flex-col justify-center items-center">
-              <FaUserSecret className="text-7xl"></FaUserSecret>
+              <FaUserSecret className="text-7xl text-cyan-500"></FaUserSecret>
               <h1 className="text-xl py-2">Merchant</h1>
             </div>
             <div className="w-full lg:w-44 h-52 shadow-xl flex flex-col justify-center items-center">
-              <FaSchool className="text-7xl"></FaSchool>
+              <FaSchool className="text-7xl text-cyan-500"></FaSchool>
               <h1 className="text-xl py-2 mx-auto text-center">
                 Educational Institutions
               </h1>
             </div>
             <div className="w-full lg:w-44 h-52 shadow-xl flex flex-col justify-center items-center">
-              <FaUsers className="text-7xl"></FaUsers>
+              <FaUsers className="text-7xl text-cyan-500"></FaUsers>
               <h1 className="text-xl py-2">Corporate</h1>
             </div>
             <div className="w-full lg:w-44 h-52 shadow-xl flex flex-col justify-center items-center">
-              <FaHandsHolding className="text-7xl"></FaHandsHolding>
+              <FaHandsHolding className="text-7xl text-cyan-500"></FaHandsHolding>
               <h1 className="text-xl py-2">Microfinance</h1>
             </div>
             <div className="w-full lg:w-44 h-52 shadow-xl flex flex-col justify-center items-center">
-              <GrNext className="text-7xl"></GrNext>
+              <GrNext className="text-7xl text-cyan-500"></GrNext>
             </div>
           </div>
           <div className="lg:ml-8">
