@@ -1,4 +1,3 @@
-
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { SlLocationPin } from "react-icons/sl";
 import { MdOutlineEmail } from "react-icons/md";
