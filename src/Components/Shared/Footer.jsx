@@ -28,7 +28,7 @@ const Footer = () => {
           <img
             className="w-28"
             src="https://i.ibb.co/w4RZXZ4/download.png"
-            alt=""
+            alt="logo"
           />
           <div className="grid grid-flow-col gap-x-7 gap-y-20 mt-3">
             <a>
