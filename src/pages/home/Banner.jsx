@@ -14,8 +14,9 @@ const Banner = () => {
               className="text-7xl text-center font-bold 
       bg-gradient-to-r from-[rgba(9,9,121,1)]  to-[rgba(179,0,255,1)] text-transparent bg-clip-text typed group"
             >
-              Elevate Your Money Movement Experience <br /> with a Gateway to
-              Quick and Secure{" "}
+              Elevate Your <span className="font-thin">Money</span> Movement
+              Experience <br /> with a Gateway to{" "}
+              <span className="font-thin">Quick</span> and Secure{" "}
               <span
                 className="text-purple-400"
                 data-aos="fade-left"
@@ -25,7 +26,7 @@ const Banner = () => {
               >
                 Payments
               </span>
-              .
+              <span className="animate-blink text-[#49108B]">.</span>
             </p>
             <br />
             {/* button */}

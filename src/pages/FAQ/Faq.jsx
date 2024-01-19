@@ -1,6 +1,6 @@
 const Faq = () => {
   return (
-    <div className="my-20">
+    <div className="mt-20 mb-32">
       <div className="collapse collapse-arrow bg-base-200 mb-5">
         <input type="radio" name="my-accordion-2" checked="checked" />
         <div className="collapse-title text-xl font-medium text-[#49108B]">
