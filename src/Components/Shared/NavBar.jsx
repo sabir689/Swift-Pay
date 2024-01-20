@@ -9,6 +9,15 @@ import logo from "../../assets/images/logo-removebg-preview.png";
 // import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [color, setColor] = useState(false);
+  const changeColor = () => {
+    if (window.scrollY >= 90) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
+  };
+  window.addEventListener("scroll", changeColor);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -97,9 +106,15 @@ const Navbar = () => {
     </div>
   );
   return (
-    <div>
+    <div className="">
       <div>
-        <div className="navbar">
+        <div
+          className={
+            color
+              ? "navbar fixed top-[0px] z-50 backdrop-blur-md bg-opacity-20 bg-white"
+              : "navbar fixed top-[0px] z-50"
+          }
+        >
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -144,16 +159,16 @@ const Navbar = () => {
             {user ? (
               <>
                 <div className="dropdown dropdown-end">
-                  <summary tabIndex={0} className="btn btn-ghost rounded-btn">
+                  <summary tabIndex={0} className="btn btn-ghost btn-circle">
                     <div className="avatar">
-                      <div className="rounded-full w-[40px] h-[40px]">
+                      <div className="rounded-full w-[40px] h-[40px] p-1">
                         {user?.photoURL ? (
                           <img
                             className=" rounded-full border-2 border-black"
                             src={user?.photoURL}
                           />
                         ) : (
-                          <div className="text-3xl">
+                          <div className="text-3xl ">
                             <FaRegUserCircle />
                           </div>
                         )}
@@ -173,7 +188,7 @@ const Navbar = () => {
                       <li className="flex justify-between">
                         <button onClick={handleLogOut}>
                           Logout
-                          <IoMdLogOut className="text-black ml-20" />
+                          <IoMdLogOut className="text-red-500 ml-20" />
                         </button>
                       </li>
                     </Link>
