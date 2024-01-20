@@ -1,8 +1,6 @@
 import Banner from "./Banner";
 import WhatIsNew from "./WhatIsNew";
 
-
-
 const Home = () => {
   return (
     <div className="">
@@ -14,7 +12,6 @@ const Home = () => {
         <WhatIsNew></WhatIsNew>
       </div>
     </div>
-
   );
 };
 

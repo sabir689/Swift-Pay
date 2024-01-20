@@ -5,6 +5,7 @@ import { IoMdArrowDropupCircle, IoMdLogOut } from "react-icons/io";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
+import logo from "../../assets/images/logo-removebg-preview.png";
 // import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -55,15 +56,20 @@ const Navbar = () => {
               Transaction
             </NavLink>
           </li>
-          <li className="text-xl mr-10 font-semibold text-[#49108B]">
-            <NavLink
-              to="dashboard"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-gray-600" : ""
-              }
-            >
-              FAQ
-            </NavLink>
+          <li className="dropdown dropdown-hover text-xl mr-10 font-semibold text-[#49108B]">
+            <details className="">
+              <summary className="">About us</summary>
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-blue-100 rounded-box w-52">
+                <Link to="/faq">
+                  <li>
+                    <a>F.A.Q</a>
+                  </li>
+                </Link>
+                {/* <li>
+                  <a>Item 2</a>
+                </li> */}
+              </ul>
+            </details>
           </li>
           <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
@@ -123,7 +129,13 @@ const Navbar = () => {
                 {links}
               </ul>
             </div>
-            <div className="w-[100px]">logo</div>
+            <div className="w-[100px]">
+              <img
+                className="bg-gray-600 w-[80px] rounded-full"
+                src={logo}
+                alt=""
+              />
+            </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal py-1">{links}</ul>
