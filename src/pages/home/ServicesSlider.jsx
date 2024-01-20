@@ -18,7 +18,7 @@ import donation from "../../assets/icons/donation.png";
 import pay from "../../assets/icons/pay.png";
 import personal from "../../assets/icons/personal.png";
 import recharge from "../../assets/icons/recharge.png";
-import cashOut from "../../assets/icons/svg.png";
+import cashOut from "../../assets/icons/card.png";
 import addMoney from "../../assets/icons/top-up.png";
 
 const ServicesSlider = () => {
@@ -117,7 +117,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center mx-auto h-60 w-60 border-gray-300  border-2  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center  h-60 w-60 border-gray-300  border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
