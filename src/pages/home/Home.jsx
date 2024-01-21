@@ -5,7 +5,6 @@ import WhatIsNew from "./WhatIsNew";
 
 const Home = () => {
   return (
-
     <div className="">
       <div className="mt-20 mb-10">
         <Banner></Banner>
