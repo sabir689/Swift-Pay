@@ -10,7 +10,7 @@ const AllPlatform = () => {
         All <span className="font-thin text-[#49108B]">solutions</span> in One
         platform <span className="animate-blink text-[#49108B]">.</span>
       </p>
-      <div className="grid grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
         {/* first card */}
         <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80">
           <div className="w-[200px] mx-auto">
