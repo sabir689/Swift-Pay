@@ -27,10 +27,7 @@ const AllPlatform = () => {
               section.
             </p>
 
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-            >
+            <a className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
               <button className="button2 text-[#49108B]">
                 <span>Details</span>
                 <svg
@@ -75,10 +72,7 @@ const AllPlatform = () => {
               swift and secure transactions.
             </p>
 
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-            >
+            <a className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
               <button className="button2 text-[#49108B]">
                 <span>Details</span>
                 <svg
@@ -120,10 +114,7 @@ const AllPlatform = () => {
               splitting bills or helping out a friend,
             </p>
 
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-            >
+            <a className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
               <button className="button2 text-[#49108B]">
                 <span>Details</span>
                 <svg
@@ -166,10 +157,7 @@ const AllPlatform = () => {
               convenience.
             </p>
 
-            <a
-              href="#"
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-            >
+            <a className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
               <button className="button2 text-[#49108B]">
                 <span>Details</span>
                 <svg
