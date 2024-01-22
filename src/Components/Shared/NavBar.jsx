@@ -75,6 +75,16 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
+          <li className="text-xl mr-10 font-semibold text-[#49108B]">
+            <NavLink
+              to="blog"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-gray-600" : ""
+              }
+            >
+              Blog
+            </NavLink>
+          </li>
 
           <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
