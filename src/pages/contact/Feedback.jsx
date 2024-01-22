@@ -9,7 +9,7 @@ const Feedback = () => {
 
   return (
     <div>
-      <div className="card bg-white rounded-2xl p-5 flex flex-col">
+      <div className=" bg-white rounded-2xl p-5 flex flex-col">
         <div className="title text-4xl font-semibold text-center pb-5">
           Send us your <span className="text-cyan-500">Feedback</span>
         </div>
