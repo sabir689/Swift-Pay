@@ -7,6 +7,8 @@ import Contact from "../pages/contact/Contacts";
 import Home from "../pages/home/Home";
 import Business from "../pages/home/Business";
 import Faq from "../pages/FAQ/Faq";
+import Offer from "../pages/home/Offer";
+import OffersDetails from "../pages/OffersDetails/OffersDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
       {
         path: "/faq",
         element: <Faq />,
+      },
+      {
+        path: "/offer",
+        element: <Offer />,
+      },
+      {
+        path: "/offersDetails",
+        element: <OffersDetails/>,
       },
     ],
   },
