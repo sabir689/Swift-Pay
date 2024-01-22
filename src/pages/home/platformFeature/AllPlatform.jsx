@@ -6,13 +6,17 @@ import cashOut from "../../../assets/animations/SonkejnWRQ.json";
 const AllPlatform = () => {
   return (
     <div className="max-w-screen-xl mx-auto">
-      <p className="text-center text-5xl text-gray-800 mb-8 font-bold">
+      <p className="text-center text-5xl text-[#212427] mb-8 font-bold">
         All <span className="font-thin text-[#49108B]">solutions</span> in One
-        platform <span className="animate-blink text-[#49108B]">.</span>
+        platform<span className="animate-blink text-[#49108B]">.</span>
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
         {/* first card */}
-        <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80">
+        <article
+          data-aos="zoom-out"
+          data-aos-delay="100"
+          className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80"
+        >
           <div className="w-[200px] mx-auto">
             <Lottie animationData={payment} loop={true}></Lottie>
           </div>
@@ -54,7 +58,11 @@ const AllPlatform = () => {
           </div>
         </article>
         {/* second card */}
-        <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80">
+        <article
+          data-aos="zoom-out"
+          data-aos-delay="200"
+          className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80"
+        >
           <div className="w-[200px] mx-auto">
             <Lottie animationData={recharge} loop={true}></Lottie>
           </div>
@@ -99,7 +107,11 @@ const AllPlatform = () => {
           </div>
         </article>
         {/* third card */}
-        <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80">
+        <article
+          data-aos="zoom-out"
+          data-aos-delay="300"
+          className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80"
+        >
           <div className="w-[200px] h-[200px] mx-auto">
             <Lottie animationData={send} loop={true}></Lottie>
           </div>
@@ -141,7 +153,11 @@ const AllPlatform = () => {
           </div>
         </article>
         {/* four card */}
-        <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80">
+        <article
+          data-aos="zoom-out"
+          data-aos-delay="400"
+          className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm w-80"
+        >
           <div className="w-[200px] mx-auto">
             <Lottie animationData={cashOut} loop={true}></Lottie>
           </div>
