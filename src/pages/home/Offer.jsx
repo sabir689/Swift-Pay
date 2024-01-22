@@ -37,7 +37,11 @@ const Offer = () => {
                 alt="Catalogue-pana.svg"
               />
               <div className="flex gap-5">
-                <div className="card shadow-lg">
+                <div
+                  className="card shadow-lg"
+                  data-aos="zoom-out"
+                  data-aos-delay="100"
+                >
                   <img
                     className="w-full h-60 lg:max-w-xl rounded-lg rounded-bl-none rounded-br-none object-cover object-center"
                     src="https://i.ibb.co/YZYKPKQ/9781383.jpg"
@@ -51,7 +55,11 @@ const Offer = () => {
                     </p>
                   </div>
                 </div>
-                <div className="card shadow-lg">
+                <div
+                  className="card shadow-lg"
+                  data-aos="zoom-out"
+                  data-aos-delay="200"
+                >
                   <img
                     className="w-full h-60 lg:max-w-xl rounded-bl-none rounded-br-none  rounded-lg object-cover object-center"
                     src="https://i.ibb.co/VwMY2vd/tamanna-rumee-m-Iqy-Yp-SNq3o-unsplash-1.jpg"

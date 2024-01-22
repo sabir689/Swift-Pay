@@ -27,7 +27,7 @@ const Gallery = () => {
       <hr className="border-l-0 border-gray-200 border-2 h-[500px] mx-10" />
       <div className="">
         <div className="text-5xl font-bold  relative">
-          <div className="text-7xl font-bold relative">
+          <div className="text-5xl font-bold relative">
             <span className="spaan --i text-[#212427]">R</span>
             <span className="spaan --i text-[#212427]">e</span>
             <span className="spaan --i text-[#212427]">a</span>
