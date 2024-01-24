@@ -106,3 +106,74 @@
 .animate-blink {
   animation: blink 1s infinite;
 }
+/* jump */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* button 2 */
+.button2 {
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 8px 12px;
+  border-radius: 100px;
+  background: white;
+  border: 1px solid #838389;
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.button2:hover {
+  background: rgb(161, 18, 233);
+  color: white;
+}
+
+.button2 > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button2:hover svg {
+  transform: translateX(5px);
+  color: white;
+}
+
+.button2:active {
+  transform: scale(0.95);
+}
+/* text effect */
+.spaan {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 5px;
+  animation: waveAnim 2s infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+@keyframes waveAnim {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-70px);
+  }
+}

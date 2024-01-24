@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 // import { FaRegUserCircle } from "react-icons/fa";
 // import { useContext } from "react";
-import { IoMdArrowDropupCircle, IoMdLogOut } from "react-icons/io";
-import { useContext, useEffect, useState } from "react";
+import { IoMdLogOut } from "react-icons/io";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 import logo from "../../assets/images/logo-removebg-preview.png";
@@ -25,22 +25,7 @@ const Navbar = () => {
         console.log(error);
       });
   };
-  const [topButton, setTopButton] = useState(false);
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        setTopButton(true);
-      } else {
-        setTopButton(false);
-      }
-    });
-  }, []);
-  const scrollUp = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+
   const links = (
     <div>
       <div className="">
@@ -88,6 +73,16 @@ const Navbar = () => {
               }
             >
               Contact
+            </NavLink>
+          </li>
+          <li className="text-xl mr-10 font-semibold text-[#49108B]">
+            <NavLink
+              to="blog"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-gray-600" : ""
+              }
+            >
+              Blog
             </NavLink>
           </li>
 
@@ -201,14 +196,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {topButton && (
-        <button
-          className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
-          onClick={scrollUp}
-        >
-          <IoMdArrowDropupCircle />
-        </button>
-      )}
     </div>
   );
 };

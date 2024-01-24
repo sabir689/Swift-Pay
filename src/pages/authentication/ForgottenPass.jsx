@@ -53,8 +53,8 @@ const ForgottenPass = () => {
     <div className='container md:w-10/12/ lg:w-2/4 mx-auto px-4'>
       <div className='bg-white px-6 py-10 rounded-lg'>
         <form onSubmit={forgotePass}>
-          <label className='text-lg font-normal text-black1 mb-1 ml-1 mt-5 block'>Your Account Gmail</label>
-          <input className='text-base placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-4 px-5 w-full' placeholder='gmail' name='email' type='email' required />
+          <label className='text-base font-normal text-neutral-600 mb-1 ml-1 mt-4 block'>Your Account Gmail</label>
+          <input className='text-base placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-3 px-3 w-full' placeholder='gmail' name='email' type='email' required />
           <button type="submit"
           className='text-lg px-10 py-[14px] bg-neutral-300 rounded-lg text-black mt-5 w-full inline-block duration-300'>
             {

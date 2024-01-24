@@ -24,7 +24,7 @@ import addMoney from "../../assets/icons/top-up.png";
 const ServicesSlider = () => {
   return (
     <div className="max-w-screen-xl mx-auto">
-      <h3 className="text-center text-gray-800 text-5xl p-20 font-bold">
+      <h3 className="text-center text-[#212427]  text-5xl p-20 font-bold">
         See Our <span className="text-[#49108B] font-thin">Services</span>
         <span className="animate-blink">.</span>
       </h3>

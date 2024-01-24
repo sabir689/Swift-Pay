@@ -7,6 +7,10 @@ import Contact from "../pages/contact/Contacts";
 import Home from "../pages/home/Home";
 import Business from "../pages/home/Business";
 import Help from "../pages/Help/Help";
+import Faq from "../pages/FAQ/Faq";
+import Blog from "../pages/Blog/Blog";
+import Offer from "../pages/home/Offer";
+import OffersDetails from "../pages/OffersDetails/OffersDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -38,7 +42,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "/help",
-        element: <Help/>
+        element: <Help />
+      },
+      {
+        path: "/blog",
+        element: <Blog/>,
+      },
+      {
+        path: "/faq",
+        element: <Faq />,
+      },
+      {
+        path: "/offer",
+        element: <Offer />,
+      },
+      {
+        path: "/offersDetails",
+        element: <OffersDetails/>,
       },
     ],
   },
