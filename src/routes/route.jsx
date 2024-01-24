@@ -6,6 +6,7 @@ import ForgottenPass from "../pages/authentication/ForgottenPass";
 import Contact from "../pages/contact/Contacts";
 import Home from "../pages/home/Home";
 import Business from "../pages/home/Business";
+import Help from "../pages/Help/Help";
 import Faq from "../pages/FAQ/Faq";
 import Blog from "../pages/Blog/Blog";
 import Offer from "../pages/home/Offer";
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "/business",
         element: <Business />,
+      },
+      {
+        path: "/help",
+        element: <Help />
       },
       {
         path: "/blog",
