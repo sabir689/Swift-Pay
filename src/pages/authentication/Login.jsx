@@ -71,7 +71,7 @@ const Login = () => {
                   required
                 />
                 <span
-                  className="absolute top-4 right-5 text-2xl"
+                  className="absolute top-3 right-5 text-2xl"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <PiEye> </PiEye> : <PiEyeSlash> </PiEyeSlash>}

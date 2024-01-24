@@ -11,6 +11,10 @@ import Faq from "../pages/FAQ/Faq";
 import Blog from "../pages/Blog/Blog";
 import Offer from "../pages/home/Offer";
 import OffersDetails from "../pages/OffersDetails/OffersDetails";
+import Dashboard from "../Dashboard/Dashboard";
+import NewContact from "../Dashboard/NewContact";
+import SendMoney from "../Dashboard/SendMoney";
+import ReceiveMoney from "../Dashboard/ReceiveMoney";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -42,11 +46,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/help",
-        element: <Help />
+        element: <Help />,
       },
       {
         path: "/blog",
-        element: <Blog/>,
+        element: <Blog />,
       },
       {
         path: "/faq",
@@ -58,7 +62,25 @@ export const router = createBrowserRouter([
       },
       {
         path: "/offersDetails",
-        element: <OffersDetails/>,
+        element: <OffersDetails />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "contact",
+        element: <NewContact></NewContact>,
+      },
+      {
+        path: "sendMoney",
+        element: <SendMoney></SendMoney>,
+      },
+      {
+        path: "receiveMoney",
+        element: <ReceiveMoney></ReceiveMoney>,
       },
     ],
   },
