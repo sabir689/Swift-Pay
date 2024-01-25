@@ -1,7 +1,7 @@
 const NewContact = () => {
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      {/* <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
           <img
             src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
@@ -15,7 +15,8 @@ const NewContact = () => {
             <button className="btn btn-primary">Buy Now</button>
           </div>
         </div>
-      </div>
+      </div> */}
+      hello
     </div>
   );
 };
