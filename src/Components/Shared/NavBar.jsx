@@ -99,7 +99,7 @@ const Navbar = () => {
           </li>
           <li className="text-2xl mr-10 font-semibold text-[#49108B]">
             <NavLink
-              to="/dashboard"
+              to="/dashboard/myDashboard"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-gray-600" : ""
               }
