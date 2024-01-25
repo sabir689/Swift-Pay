@@ -7,7 +7,7 @@ const Footer = () => {
           <header className="footer-title">Services</header>
           <a className="link link-hover">Transaction</a>
           <a className="link link-hover">Zakat Calculation</a>
-          <a className="link link-hover">Gift Wrappers</a>
+          <a className="link link-hover">Gift Wrapper</a>
         </nav>
         <nav>
           <header className="footer-title">Company</header>
