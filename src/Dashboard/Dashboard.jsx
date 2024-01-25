@@ -1,13 +1,15 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { IoCashOutline, IoHome } from "react-icons/io5";
 import { TbSend } from "react-icons/tb";
-import logo from "../../src/assets/images/logo-removebg-preview.png";
+import logo from "../../src/assets/images/swiftpay logo.png";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { IoMdLogOut } from "react-icons/io";
 import { GiReceiveMoney } from "react-icons/gi";
 import { AiOutlineTransaction } from "react-icons/ai";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { BsBoundingBox } from "react-icons/bs";
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -24,7 +26,11 @@ const Dashboard = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           <div className="flex-1 max-w-screen-xl mx-auto mt-10">
-            <div className="w-[1200px] mx-auto mb-5 rounded-lg border-2 border-gray-200 flex items-center justify-end">
+            <div className="w-[1200px]  mx-auto mb-5 rounded-lg border-2 border-gray-200 flex items-center justify-end">
+              <BsBoundingBox className="mr-5 cursor-pointer text-gray-600 font-bold text-xl" />
+              <p className="mr-5 font-bold text-[#49108B]">
+                {user?.displayName}
+              </p>
               {user ? (
                 <>
                   <div className="dropdown dropdown-end">
@@ -85,12 +91,12 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-60 min-h-full bg-[#F3F8FF] text-gray-900">
+          <ul className="menu p-4 w-64 border-r-[1px] border-gray-300 min-h-full bg-[#F3F8FF] text-gray-900">
             <div className="flex items-center justify-center mb-5">
-              <div className="bg-gray-400 rounded-full w-fit">
+              <div className="">
                 <img className="w-[50px]" src={logo} alt="" />
               </div>
-              <p className="text-2xl ml-2 text-start font-semibold text-[#49108B]">
+              <p className="text-2xl ml-1 text-start font-semibold text-[#49108B]">
                 Dash<span className="font-thin text-gray-900">board</span>
               </p>
             </div>
@@ -109,6 +115,21 @@ const Dashboard = () => {
               >
                 <IoHome className="mr-2" />
                 Home
+              </NavLink>
+            </li>
+            <li className="text-base text-gray-600 mb-1 rounded-md">
+              <NavLink
+                to="myDashboard"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "text-gray-600  bg-gray-200"
+                    : ""
+                }
+              >
+                <MdOutlineSpaceDashboard className="mr-2" />
+                Dashboard
               </NavLink>
             </li>
             <li className="text-base text-gray-600 mb-1 rounded-md">
@@ -141,9 +162,9 @@ const Dashboard = () => {
                 Received money
               </NavLink>
             </li>
-            <li className="text-base text-gray-600 mb-1 rounded-md">
+            {/* <li className="text-base text-gray-600 mb-1 rounded-md">
               <NavLink
-                to="receiveMoney"
+                to=""
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -155,10 +176,10 @@ const Dashboard = () => {
                 <IoCashOutline className="mr-2" />
                 Cash out
               </NavLink>
-            </li>
+            </li> */}
             <li className="text-base text-gray-600 mb-1 rounded-md">
               <NavLink
-                to=""
+                to="transactions"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
