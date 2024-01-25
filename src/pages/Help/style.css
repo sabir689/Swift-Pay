@@ -1,4 +1,4 @@
-.card {
+.help-card {
   box-sizing: border-box;
   width: 250px;
   background: rgba(217, 217, 217, 0.58);
@@ -14,18 +14,18 @@
   color: black;
 }
 
-.card:hover {
+.help-card:hover {
   border: 1px solid black;
   transform: scale(1.05);
 }
 
-.card:active {
+.help-card:active {
   transform: scale(0.95) rotateZ(1.7deg);
 }
 
 /* button */
 
-.button {
+.help-button {
   position: relative;
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
@@ -49,20 +49,20 @@
   transition: all 0.3s ease-in-out;
 }
 
-.button:hover {
+.help-button:hover {
   transform: scale(1.05);
   border-color: #fff9;
 }
 
-.button:hover .icon {
+.help-button:hover .icon {
   transform: translate(4px);
 }
 
-.button:hover::before {
+.help-button:hover::before {
   animation: shine 1.5s ease-out infinite;
 }
 
-.button::before {
+.help-button::before {
   content: "";
   position: absolute;
   width: 100px;
