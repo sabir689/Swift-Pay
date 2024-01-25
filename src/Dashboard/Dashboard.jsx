@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { IoMdLogOut } from "react-icons/io";
 import { GiReceiveMoney } from "react-icons/gi";
+import { AiOutlineTransaction } from "react-icons/ai";
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -89,7 +90,7 @@ const Dashboard = () => {
               <div className="bg-gray-400 rounded-full w-fit">
                 <img className="w-[50px]" src={logo} alt="" />
               </div>
-              <p className="text-2xl ml-3 text-start font-semibold text-[#49108B]">
+              <p className="text-2xl ml-2 text-start font-semibold text-[#49108B]">
                 Dash<span className="font-thin text-gray-900">board</span>
               </p>
             </div>
@@ -153,6 +154,20 @@ const Dashboard = () => {
               >
                 <IoCashOutline className="mr-2" />
                 Cash out
+              </NavLink>
+            </li>
+            <li className="text-base text-gray-600 mb-1 rounded-md">
+              <NavLink
+                to=""
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "text-gray-600 bg-gray-200"
+                    : ""
+                }
+              >
+                <AiOutlineTransaction className="mr-2" /> Transactions
               </NavLink>
             </li>
           </ul>

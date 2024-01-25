@@ -27,8 +27,7 @@ const Login = () => {
   };
   return (
     <div>
-      <PageBanner lable="Login Your Account" />
-      <div className="bg-sectionbg my-14">
+      <div className="bg-section flex justify-center items-center h-screen">
         <Helmet>
           <title> Login </title>
         </Helmet>
@@ -52,7 +51,7 @@ const Login = () => {
                 Gmail
               </label>
               <input
-                className="text-sm placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm bg-gray-200 focus:border-[#49108B] outline-none py-3 px-3 w-full placeholder:text-sm"
+                className="text-sm placeholder:text-textColor bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm bg-gray-200 focus:border-[#49108B] outline-none py-3 px-3 w-full placeholder:text-sm"
                 placeholder="gmail"
                 name="email"
                 type="email"
@@ -64,14 +63,14 @@ const Login = () => {
               </label>
               <div className="h-14 relative">
                 <input
-                  className="text-sm placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm bg-gray-200 focus:border-[#49108B] outline-none py-3 px-3 w-full placeholder:text-sm"
+                  className="text-sm placeholder:text-textColor bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm bg-gray-200 focus:border-[#49108B] outline-none py-3 px-3 w-full placeholder:text-sm"
                   placeholder="Password"
                   name="password"
                   type={showPassword ? "text" : "password"}
                   required
                 />
                 <span
-                  className="absolute top-3 right-5 text-2xl"
+                  className="absolute top-3 right-5 text-xl"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <PiEye> </PiEye> : <PiEyeSlash> </PiEyeSlash>}
@@ -79,7 +78,7 @@ const Login = () => {
               </div>
               <Link
                 to="/reset-your-password"
-                className="text-sm font-normal text-neutral hover:text-cyan-500 block"
+                className="text-sm font-normal text-[#49108B] hover:text-cyan-500 block"
               >
                 Forgotten password?{" "}
               </Link>

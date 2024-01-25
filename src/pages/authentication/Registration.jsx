@@ -50,8 +50,7 @@ const Register = () => {
   };
   return (
     <div>
-      <PageBanner lable="Create your Account" />
-      <div className="bg-sectionbg py-14">
+      <div className="bg-section flex justify-center items-center h-screen">
         <Helmet>
           <title> Registration </title>
         </Helmet>
@@ -60,11 +59,11 @@ const Register = () => {
             <h1 className="text-3xl font-semibold text-[#212427] mb-1 block">
               Create an account
             </h1>
-            <h1 className=" text-md font-normal text-neutral-600 ">
+            <h1 className="text-md font-normal text-neutral-600 ">
               Already have an account?
               <Link
                 to="/login"
-                className="text-lg hover:underline text-cyan-500  duration-300 ml-2 font-normal text-primery inline-block"
+                className="text-sm hover:underline text-cyan-500  duration-300 ml-1 font-normal text-primery inline-block"
               >
                 Login
               </Link>
@@ -76,7 +75,7 @@ const Register = () => {
                     First Name
                   </label> */}
                   <input
-                    className="focus:border-[#49108B] text-base placeholder:text-textColor placeholder:text-sm bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-3 px-3 w-full bg-gray-200"
+                    className="focus:border-[#49108B]  text-base placeholder:text-textColor placeholder:text-sm bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm outline-none py-3 px-3 w-full bg-gray-200"
                     placeholder="First name"
                     name="name"
                     type="text"
@@ -88,7 +87,7 @@ const Register = () => {
                     Last Name
                   </label> */}
                   <input
-                    className="focus:border-[#49108B] text-base placeholder:text-textColor placeholder:text-sm bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border focus:border-primery outline-none py-3 px-3 w-full bg-gray-200"
+                    className="focus:border-[#49108B] text-base placeholder:text-textColor placeholder:text-sm bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm outline-none py-3 px-3 w-full bg-gray-200"
                     placeholder="Last name"
                     name="name"
                     type="text"
@@ -100,7 +99,7 @@ const Register = () => {
                 Gmail
               </label>
               <input
-                className="text-sm focus:border-[#49108B]  placeholder:text-sm placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm outline-none py-3 px-3 w-full"
+                className="text-sm  focus:border-[#49108B]  placeholder:text-sm placeholder:text-textColor bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm outline-none py-3 px-3 w-full"
                 placeholder="gmail"
                 name="email"
                 type="email"
@@ -112,7 +111,7 @@ const Register = () => {
               </label>
               <div className="h-14 relative">
                 <input
-                  className="focus:border-[#49108B] text-sm placeholder:text-sm placeholder:text-textColor bg-sectionbg rounded-lg border duration-300 focus:bg-white focus:shadow-sm focus:border outline-none py-3 px-3 w-full"
+                  className="focus:border-[#49108B] text-sm placeholder:text-sm placeholder:text-textColor bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm  outline-none py-3 px-3 w-full"
                   placeholder="Password"
                   name="password"
                   type={showPassword ? "text" : "password"}
@@ -136,7 +135,7 @@ const Register = () => {
               </div>
               <button
                 type="submit"
-                className="text-base font-medium px-10 py-[14px] bg-[#49108B] rounded-md text-white mt-5 w-full inline-block duration-300"
+                className="text-base font-medium px-10 py-[10px] bg-[#49108B] rounded-md text-white mt-5 w-full inline-block duration-300"
               >
                 {loading ? (
                   <ImSpinner9 className="animate-spin text-center inline-block" />
