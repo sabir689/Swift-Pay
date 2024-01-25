@@ -40,16 +40,16 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li className="text-xl mr-10 font-semibold text-[#49108B]">
+          {/* <li className="text-xl mr-10 font-semibold text-[#49108B]">
             <NavLink
-              to="dashboard"
+              // to="dashboard"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-gray-600" : ""
               }
             >
               Transaction
             </NavLink>
-          </li>
+          </li> */}
           <li className="dropdown dropdown-hover text-xl mr-10 font-semibold text-[#49108B]">
             <details className="">
               <summary className="">About us</summary>
