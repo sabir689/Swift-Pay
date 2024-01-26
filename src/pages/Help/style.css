@@ -7,9 +7,6 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.5s;
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
   user-select: none;
   color: black;
 }

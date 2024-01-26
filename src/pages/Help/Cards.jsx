@@ -2,19 +2,22 @@
 
 const Cards = () => {
     return (
-      <div className="w-[1100px] mx-auto">
+      <div className="max-w-[1100px] mx-auto flex flex-col items-center">
         <h1 className="text-4xl text-center font-bold py-10">
           We are Here to <span className="text-cyan-600">Help</span>
         </h1>
-        <div className="grid gap-4 grid-cols-4">
-          <div className="card p-5">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {/* 1 */}
+          <div className="help-card flex flex-col items-center justify-center p-5">
             <img
-              src="https://www.bkash.com/uploaded_contents/contents/04_1687112343466.webp"
+              src="https://www.bkash.com/uploaded_contents/contents/01_1687112016521.webp"
               alt=""
             />
             <p className="text-2xl font-bold">Customer Care Point</p>
-            <p>Visit Customer care center to get any service of swift pay.</p>
-            <button className="button">
+            <p className="my-5">
+              Visit Customer care center to get any service of swift pay.
+            </p>
+            <button className="help-button">
               Learn more
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
@@ -25,14 +28,17 @@ const Cards = () => {
               </svg>
             </button>
           </div>
-          <div className="card p-5">
+          {/* 2 */}
+          <div className="help-card flex flex-col items-center justify-center p-5">
             <img
-              src="https://www.bkash.com/uploaded_contents/contents/04_1687112343466.webp"
+              src="https://www.bkash.com/uploaded_contents/contents/03_1687112202755.webp"
               alt=""
             />
-            <p className="text-2xl font-bold">Customer Care Point</p>
-            <p>Visit Customer care center to get any service of swift pay.</p>
-            <button className="button">
+            <p className="text-2xl font-bold">Charge Calculator</p>
+            <p className="my-5">
+              Visit Customer care center to get any service of swift pay.
+            </p>
+            <button className="help-button">
               Learn more
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
@@ -43,14 +49,17 @@ const Cards = () => {
               </svg>
             </button>
           </div>
-          <div className="card p-5">
+          {/* 3 */}
+          <div className="help-card flex flex-col items-center justify-center p-5">
             <img
-              src="https://www.bkash.com/uploaded_contents/contents/04_1687112343466.webp"
+              src="https://www.bkash.com/uploaded_contents/contents/02_1687112135828.webp"
               alt=""
             />
-            <p className="text-2xl font-bold">Customer Care Point</p>
-            <p>Visit Customer care center to get any service of swift pay.</p>
-            <button className="button">
+            <p className="text-2xl font-bold">Avoid <br /> Fraud</p>
+            <p className="my-5">
+              Visit Customer care center to get any service of swift pay.
+            </p>
+            <button className="help-button">
               Learn more
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
@@ -61,14 +70,17 @@ const Cards = () => {
               </svg>
             </button>
           </div>
-          <div className="card p-5">
+          {/* 4 */}
+          <div className="help-card flex flex-col items-center justify-center p-5">
             <img
               src="https://www.bkash.com/uploaded_contents/contents/04_1687112343466.webp"
               alt=""
             />
-            <p className="text-2xl font-bold">Customer Care Point</p>
-            <p>Visit Customer care center to get any service of swift pay.</p>
-            <button className="button">
+            <p className="text-2xl font-bold">Frequently Ask Question</p>
+            <p className="my-5">
+              Visit Customer care center to get any service of swift pay.
+            </p>
+            <button className="help-button">
               Learn more
               <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
                 <path
