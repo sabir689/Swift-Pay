@@ -39,29 +39,26 @@ const Home = () => {
       <div className="my-10">
         <ServicesSlider></ServicesSlider>
       </div>
-      <div className="">
-        <ServicesSlider></ServicesSlider>
-        <div className=" mt-10">
-          <Business></Business>
-        </div>
-        <div className="max-w-screen-2xl mx-auto mt-20 mb-10">
-          <WhatIsNew></WhatIsNew>
-        </div>
-        <div className="mt-10 mb-10">
-          <Offer></Offer>
-        </div>
-        <div className="mt-32 mb-10">
-          <Gallery></Gallery>
-        </div>
-        {topButton && (
-          <button
-            className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
-            onClick={scrollUp}
-          >
-            <IoMdArrowDropupCircle />
-          </button>
-        )}
+      <div className="mt-10">
+        <Business></Business>
       </div>
+      <div className="max-w-screen-2xl mx-auto mt-20 mb-10">
+        <WhatIsNew></WhatIsNew>
+      </div>
+      <div className="mt-10 mb-10">
+        <Offer></Offer>
+      </div>
+      <div className="mt-32 mb-10">
+        <Gallery></Gallery>
+      </div>
+      {topButton && (
+        <button
+          className="fixed bottom-[50px] right-[50px] lg:bottom-[50px] lg:right-[50px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px] text-4xl text-purple-600"
+          onClick={scrollUp}
+        >
+          <IoMdArrowDropupCircle />
+        </button>
+      )}
     </div>
   );
 };
