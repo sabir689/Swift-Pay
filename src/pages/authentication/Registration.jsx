@@ -18,7 +18,9 @@ const Register = () => {
   const registration = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const name= firstName +" "+ lastName
     const email = form.email.value;
     const password = form.password.value;
     setRegistrationError("");
@@ -77,7 +79,7 @@ const Register = () => {
                   <input
                     className="focus:border-[#49108B]  text-base placeholder:text-textColor placeholder:text-sm bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm outline-none py-3 px-3 w-full bg-gray-200"
                     placeholder="First name"
-                    name="name"
+                    name="firstName"
                     type="text"
                   />
                 </div>
@@ -89,7 +91,7 @@ const Register = () => {
                   <input
                     className="focus:border-[#49108B] text-base placeholder:text-textColor placeholder:text-sm bg-sectionbg rounded-lg border-2 duration-300 focus:bg-white focus:shadow-sm outline-none py-3 px-3 w-full bg-gray-200"
                     placeholder="Last name"
-                    name="name"
+                    name="lastName"
                     type="text"
                   />
                 </div>
