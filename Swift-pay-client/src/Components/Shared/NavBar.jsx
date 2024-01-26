@@ -5,7 +5,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
-import logo from "../../assets/images/logo-removebg-preview.png";
+import logo from "../../assets/images/swiftpay logo.png";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 // import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
@@ -99,7 +99,7 @@ const Navbar = () => {
           </li>
           <li className="text-2xl mr-10 font-semibold text-[#49108B]">
             <NavLink
-              to="/dashboard"
+              to="/dashboard/myDashboard"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "text-gray-600" : ""
               }
@@ -151,11 +151,7 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="w-[100px]">
-              <img
-                className="bg-gray-600 w-[80px] rounded-full"
-                src={logo}
-                alt=""
-              />
+              <img className=" w-[50px]" src={logo} alt="" />
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">

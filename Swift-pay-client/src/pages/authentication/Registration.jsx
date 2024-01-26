@@ -6,7 +6,9 @@ import UseAuth from "../../hooks/UseAuth";
 import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
 import PageBanner from "../../Components/Shared/PageBanner";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Register = () => {
+  const axiosPublic = useAxiosPublic()
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
@@ -35,19 +37,28 @@ const Register = () => {
       setRegistrationError("Password at least one number.");
       return;
     }
-    createUser(email, password)
-      .then(() => {
-        updateUserProfile(name).then(() => {
-          toast.success("Account created successfully!");
-          return;
-        });
-      })
-      .catch((error) => {
-        toast.error(error.message.slice(22, 42) + ".");
-        setLoading(false);
-        return;
-      });
+    try {
+      await createUser(email, password);
+      const userData = await updateUserProfile(name); // Assuming updateUserProfile returns data
+
+      const userInfo = {
+        name: userData.name,
+        email: userData.email,
+      };
+
+      const response = await axiosPublic.post('/users', userInfo);
+
+      if (response.data.insertedId) {
+        console.log('User added to the database');
+        form.reset();
+        toast.success("Account created successfully!");
+      }
+    } catch (error) {
+      toast.error(error.message.slice(22, 42) + ".");
+      setLoading(false);
+    }
   };
+
   return (
     <div>
       <div className="bg-section flex justify-center items-center h-screen">

@@ -40,7 +40,7 @@ const Login = () => {
               {" "}
               New to Swift Pay?
               <Link
-                to="/regitation"
+                to="/registration"
                 className="text-sm ml-2 hover:underline text-cyan-500  duration-300 font-normal text-primery inline-block"
               >
                 Create an account
