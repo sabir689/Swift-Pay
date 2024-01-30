@@ -18,6 +18,10 @@ import ReceiveMoney from "../Dashboard/ReceiveMoney";
 import PrivateRoute from "./PrivateRoute";
 import MyDashboard from "../Dashboard/MyDashboard";
 import Transactions from "../Dashboard/Transactions";
+import TestDashboard from "../Dashboard/TestDashboard";
+import Test2Dashboard from "../Dashboard/Test2Dashboard";
+import SellPost from "../Dashboard/SellPost";
+import Market from "../Dashboard/Market";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -69,11 +73,12 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard></Dashboard>
+        <Test2Dashboard></Test2Dashboard>
       </PrivateRoute>
     ),
     children: [
@@ -96,6 +101,18 @@ export const router = createBrowserRouter([
       {
         path: "transactions",
         element: <Transactions></Transactions>,
+      },
+      {
+        path: "transactions",
+        element: <Transactions></Transactions>,
+      },
+      {
+        path: "sellPost",
+        element: <SellPost></SellPost>,
+      },
+      {
+        path: "market",
+        element: <Market></Market>,
       },
     ],
   },

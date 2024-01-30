@@ -1,7 +1,8 @@
+import logo from "../../assets/images/logo-removebg-preview.png";
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-base-200 text-base-content ">
+    <div className="bg-gradient-to-r from-purple-900 to-indigo-600">
+      <footer className="footer flex items-center justify-between px-20 p-10  text-white">
         <nav>
           {/* max-w-screen-2xl mx-auto */}
           <header className="footer-title">Services</header>
@@ -23,13 +24,9 @@ const Footer = () => {
         </nav>
       </footer>
 
-      <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
-        <aside className="items-center mt-7">
-          <img
-            className="w-28"
-            src="https://i.ibb.co/w4RZXZ4/download.png"
-            alt="logo"
-          />
+      <footer className="footer px-10 py-4 text-white border-base-300">
+        <aside className="flex flex-col items-center mt-7">
+          <img className="w-36" src={logo} alt="logo" />
           <div className="grid grid-flow-col gap-x-7 gap-y-20 mt-3">
             <a>
               <svg
