@@ -119,7 +119,7 @@ const Dashboard = () => {
             </li>
             <li className="text-base text-gray-600 mb-1 rounded-md">
               <NavLink
-                to="myDashboard"
+                to="/dashboard/myDashboard"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -134,7 +134,7 @@ const Dashboard = () => {
             </li>
             <li className="text-base text-gray-600 mb-1 rounded-md">
               <NavLink
-                to="sendMoney"
+                to="/dashboard/sendMoney"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -149,7 +149,7 @@ const Dashboard = () => {
             </li>
             <li className="text-base text-gray-600 mb-1 rounded-md">
               <NavLink
-                to="receiveMoney"
+                to="/dashboard/receiveMoney"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"
@@ -179,7 +179,7 @@ const Dashboard = () => {
             </li> */}
             <li className="text-base text-gray-600 mb-1 rounded-md">
               <NavLink
-                to="transactions"
+                to="/dashboard/transactions"
                 className={({ isActive, isPending }) =>
                   isPending
                     ? "pending"

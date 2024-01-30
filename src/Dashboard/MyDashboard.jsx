@@ -3,7 +3,7 @@ import receive from "../../src/assets/icons/reciever.png";
 import sent from "../../src/assets/icons/money.png";
 const MyDashboard = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center">
       <div className="w-[800px] px-8  py-8 pb-12 mt-16 bg-gray-800 rounded-lg shadow-lg ">
         <div className="flex justify-start items-start -mt-16 md:justify-end">
           <img
@@ -14,13 +14,13 @@ const MyDashboard = () => {
         </div>
 
         <h2 className="mt-2 mb-5 ml-[34px] text-3xl font-semibold text-gray-800 dark:text-white md:mt-0">
-          My Dashboard <span></span>
+          Overview<span></span>
         </h2>
 
         <div className="flex items-center justify-center">
           <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#673ab7] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
             <p className="text-white text-2xl font-semibold">2256 $</p>
-            <p className="text-white text-sm">Total Received money</p>
+            <p className="text-white text-sm">Total Product sold</p>
             <img className="w-[50px]  mt-2" src={receive} alt="" />
           </div>
           {/* <button className="mr-5 border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
@@ -32,7 +32,7 @@ const MyDashboard = () => {
           </button> */}
           <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#4157ff] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
             <p className="text-white text-2xl font-semibold">1530 $</p>
-            <p className="text-white text-sm">Total Received money</p>
+            <p className="text-white text-sm">Total Sell Post</p>
             <img className="w-[50px]  mt-2" src={sent} alt="" />
           </div>
           <button className="border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">

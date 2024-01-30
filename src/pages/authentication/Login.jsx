@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PiEyeSlash, PiEye } from "react-icons/pi";
 import { Helmet } from "react-helmet-async";
 import UseAuth from "../../hooks/UseAuth";
@@ -9,6 +9,7 @@ import PageBanner from "../../Components/Shared/PageBanner";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loading, signIn, setLoading } = UseAuth();
+  const navigate = useNavigate();
   const registration = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -17,6 +18,7 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         toast.success("Login successful. Redirecting to the account page");
+        navigate("/dashboard/myDashboard");
         return;
       })
       .catch((error) => {

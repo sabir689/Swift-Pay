@@ -20,7 +20,7 @@ const Register = () => {
     const form = e.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
-    const name= firstName +" "+ lastName
+    const name = firstName + " " + lastName;
     const email = form.email.value;
     const password = form.password.value;
     setRegistrationError("");
