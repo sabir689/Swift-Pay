@@ -126,8 +126,8 @@ const Test2Dashboard = () => {
           ))}
         </div>
       </div>
-      <div className="flex-1 m-3">
-        <div className="max-w-screen-xl mx-auto mt-10">
+      <div className="flex-1 mr-3 mt-3 max-w-screen-2xl mx-auto">
+        <div className="mt-2 w-[300px] lg:w-full">
           <div className="mb-5 rounded-lg border-[1px] border-gray-400 p-2 flex items-center justify-end">
             <BsCart2 className="mr-10 cursor-pointer text-gray-600 font-bold text-2xl" />
             <BsBoundingBox className="mr-5 cursor-pointer text-gray-600 font-bold text-2xl" />

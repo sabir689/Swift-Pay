@@ -1,12 +1,16 @@
+import React from "react";
+import { CiLocationOn } from "react-icons/ci";
+// import { FaBookmark } from "react-icons/fa";
+
 const Market = () => {
   return (
-    <div>
+    <React.Fragment className="">
       <div>
         <div className="mb-5 mt-7">
-          <div className="relative mb-4 flex w-80 flex-wrap items-stretch">
+          <div className="mb-4 flex w-80 flex-wrap items-stretch">
             <input
               type="search"
-              className="relative m-0 block min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-gray-500 dark:focus:border-primary"
+              className="m-0 block min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-gray-500 dark:focus:border-primary"
               placeholder="Search"
               aria-label="Search"
               aria-describedby="button-addon2"
@@ -33,32 +37,110 @@ const Market = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-          <div className="px-4 py-2">
-            <h1 className="text-xl font-bold text-gray-800 uppercase dark:text-white">
-              NIKE AIR
-            </h1>
-            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quos
-              quidem sequi illum facere recusandae voluptatibus
-            </p>
+        <div className="max-w-[300px] overflow-hidden bg-transparent rounded-lg border-[1px] border-gray-300">
+          <div>
+            <img
+              className="object-cover object-center w-full h-56"
+              src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+              alt="avatar"
+            />
+            {/* <div className="absolute right-[1px]">
+              <FaBookmark className="" />
+            </div> */}
           </div>
 
-          <img
-            className="object-cover w-full h-48 mt-2"
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
-            alt="NIKE AIR"
-          />
-
-          <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
-            <h1 className="text-lg font-bold text-white">$129</h1>
-            <button className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
-              Add to cart
-            </button>
+          <div className="py-2 pl-3">
+            <p className="block text-lg text-start text-gray-800">John Doe</p>
+            <p className="text-sm text-start text-gray-500">
+              Software Engineer
+            </p>
+            <React.Fragment className="flex">
+              <div>
+                <CiLocationOn className="text-blue-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Dhaka, Bangladesh</p>
+              </div>
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+                className="btn"
+              >
+                Pay
+              </button>
+            </React.Fragment>
           </div>
         </div>
       </div>
-    </div>
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box">
+          <form
+            // onSubmit={handleSubmit(onSubmit)}
+            className="px-7  grid justify-center items-center"
+          >
+            <div className="grid gap-6" id="form">
+              <div className="w-full flex gap-3">
+                <input
+                  // {...register("name")}
+                  className="text-sm rounded-lg border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#9e6bd7]  py-3 px-3 w-full placeholder:text-sm"
+                  type="text"
+                  placeholder="your name"
+                  required=""
+                />
+              </div>
+
+              <div className="grid gap-6 w-full">
+                <input
+                  // {...register("email")}
+                  className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm"
+                  type="text"
+                  placeholder="post code"
+                />
+              </div>
+              <div className="">
+                <input
+                  // {...register("address")}
+                  className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] mb-5 py-3 px-3 w-full placeholder:text-sm"
+                  type="text"
+                  placeholder="your address"
+                  id="address"
+                />
+                <input
+                  // {...register("number")}
+                  className="mt-2 text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] mb-5 py-3 px-3 w-full placeholder:text-sm"
+                  type="number"
+                  placeholder="phone number"
+                  id="number"
+                  name="number"
+                />
+                <select
+                  // {...register("category")}
+                  className="select text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300 focus:shadow-sm focus:border-[#49108B] py-3 px-3 mt-2 w-full placeholder:text-sm"
+                >
+                  <option className="text-sm">BDT</option>
+                  <option className="text-sm">USD</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                className="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-[#0D9276] border-2  rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
+              >
+                {" "}
+                complete payment
+              </button>
+            </div>
+          </form>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </React.Fragment>
   );
 };
 

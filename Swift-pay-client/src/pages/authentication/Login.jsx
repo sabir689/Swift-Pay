@@ -18,22 +18,16 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         toast.success("Login successful. Redirecting to the account page");
-<<<<<<< HEAD:src/pages/authentication/Login.jsx
-        navigate("/dashboard/myDashboard");
-=======
-        navigate('/dashboard');
-        
->>>>>>> 25e4155bfaaa90c34d4ca3309b5023fb9251802a:Swift-pay-client/src/pages/authentication/Login.jsx
+        navigate("/dashboard");
+
         return;
-        
       })
-     
+
       .catch((error) => {
         toast.error("Invalid gmail, Please check your credentials");
         setLoading(false);
         return;
       });
-
   };
   return (
     <div>

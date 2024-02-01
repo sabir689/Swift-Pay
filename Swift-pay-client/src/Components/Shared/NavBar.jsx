@@ -43,22 +43,7 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li className="text-xl mr-10 font-semibold text-[#49108B]">
-            <NavLink
-              // to="dashboard"
-              className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-gray-600" : ""
-              }
-            >
-              Transaction
-            </NavLink>
-<<<<<<< HEAD:src/Components/Shared/NavBar.jsx
-          </li> */}
           <li className="dropdown dropdown-hover text-lg mr-10 font-semibold text-[#49108B]">
-=======
-          </li>
-          <li className="dropdown dropdown-hover text-xl mr-10 font-semibold text-[#49108B]">
->>>>>>> 25e4155bfaaa90c34d4ca3309b5023fb9251802a:Swift-pay-client/src/Components/Shared/NavBar.jsx
             <details className="">
               <summary className="">About us</summary>
               <ul className="p-2 shadow menu dropdown-content z-[1] bg-blue-100 rounded-box w-52">
@@ -239,8 +224,8 @@ const Navbar = () => {
       <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="flex flex-col items-center justify-center h-screen dark">
-            <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-200 mb-4">
+            <div className="w-full max-w-md bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
+              <h2 className="text-2xl font-semibold text-gray-200 mb-4">
                 Update profile
               </h2>
               <form className="flex flex-col">
@@ -268,7 +253,7 @@ const Navbar = () => {
                 />
                 <input
                   type="file"
-                  className="file-input rounded-lg bg-purple-200 mb-5 w-full"
+                  className="file-input rounded-lg bg-transparent border-[1px] border-gray-200 mb-5 w-full"
                 />
                 <label
                   className="text-sm mb-2 text-gray-200 cursor-pointer"
@@ -296,7 +281,7 @@ const Navbar = () => {
                 />
 
                 <button
-                  className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+                  className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
                   type="submit"
                 >
                   Update
