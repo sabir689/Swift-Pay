@@ -6,6 +6,7 @@ import UseAuth from "../../hooks/UseAuth";
 import { ImSpinner9 } from "react-icons/im";
 import toast from "react-hot-toast";
 import PageBanner from "../../Components/Shared/PageBanner";
+import SocialLogin from "./SocialLogin";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loading, signIn, setLoading } = UseAuth();
@@ -48,6 +49,7 @@ const Login = () => {
                 Create an account
               </Link>
             </h1>
+            <SocialLogin/>
             <form onSubmit={registration}>
               <label className="text-sm font-normal text-neutral-600 mb-1 ml-1 mt-5 block">
                 Gmail
