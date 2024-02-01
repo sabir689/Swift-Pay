@@ -70,7 +70,7 @@ const AllPlatform = () => {
           <div className="p-4 sm:p-6">
             <a href="#">
               <h3 className="text-lg font-medium text-gray-900">
-                Mobile recharge
+                Sell product
               </h3>
             </a>
 
@@ -118,7 +118,7 @@ const AllPlatform = () => {
 
           <div className="p-4 sm:p-6">
             <a href="#">
-              <h3 className="text-lg font-medium text-gray-900">Send money</h3>
+              <h3 className="text-lg font-medium text-gray-900">Easy buy</h3>
             </a>
 
             <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 h-[68.25px]">
@@ -164,7 +164,7 @@ const AllPlatform = () => {
 
           <div className="p-4 sm:p-6">
             <a href="#">
-              <h3 className="text-lg font-medium text-gray-900">Cash out</h3>
+              <h3 className="text-lg font-medium text-gray-900">Monitoring</h3>
             </a>
 
             <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 h-[68.25px]">
