@@ -6,6 +6,7 @@ import UseAuth from "../../hooks/UseAuth";
 import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
 import PageBanner from "../../Components/Shared/PageBanner";
+import SocialLogin from "./SocialLogin";
 const Register = () => {
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
@@ -70,6 +71,7 @@ const Register = () => {
                 Login
               </Link>
             </h1>
+            <SocialLogin/>
             <form onSubmit={registration}>
               <div className="flex flex-col md:flex-row gap-3 mt-5">
                 <div className="flex-1">
