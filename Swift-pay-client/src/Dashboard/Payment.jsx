@@ -2,13 +2,12 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 // import useAxiosPublic from "../hooks/useAxiosPublic";
-// import UseAuth from "../hooks/UseAuth";
+import UseAuth from "../hooks/UseAuth";
 // import { useQuery } from "@tanstack/react-query";
 
-const Payment = () => {
+const Payment = ({isOpen, setIsOpen, productId}) => {
   //   const axiosPublic = useAxiosPublic();
-  const { id } = useParams();
-
+  const { user } = UseAuth();
   const {
     register,
     handleSubmit,
@@ -16,7 +15,7 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
-  //   const { user } = UseAuth();
+  //   
   //   const { data: products = [] } = useQuery({
   //     queryKey: ["products"],
   //     queryFn: async () => {
@@ -26,26 +25,28 @@ const Payment = () => {
   //   });
   //   console.log(products);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/api/products`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/api/products`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
 
   const onSubmit = (data) => {
     console.log(data);
+    const orderInfo = {
+      email: user.email,
+      displayName: user.displayName,
+      image: data.image,
+      photoURL: user.photoURL,
+      title: data.title,
+      description: data.description,
+      price: data.price,
+      procuctId:productId
+    }
 
-    // const orderInfo = {
-    //   email: user.email,
-    //   displayName: user.displayName,
-    //   image: data.image,
-    //   photoURL: user.photoURL,
-    //   title: data.title,
-    //   description: data.description,
-    //   price: data.price,
-    // };
+    console.log(orderInfo);
 
     // axiosPublic.post("/order", orderInfo).then((res) => {
     //   if (res.data.insertedId) {
@@ -53,7 +54,7 @@ const Payment = () => {
     //   }
     // });
 
-    data.productId = id;
+   
 
     fetch("http://localhost:5000/order", {
       method: "POST",
@@ -64,7 +65,7 @@ const Payment = () => {
 
   return (
     <div>
-      <dialog id="my_modal_1" className="modal">
+      <dialog open={isOpen} onClose={() => setIsOpen(false)} id="my_modal_1" className="modal">
         <div className="modal-box">
           <form
             onSubmit={handleSubmit(onSubmit)}
