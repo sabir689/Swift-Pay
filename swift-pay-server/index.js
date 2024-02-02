@@ -64,7 +64,28 @@ async function run() {
       res.send(result);
     });
 
+
     // const tran_id = new ObjectId().toString();
+=======
+    // offers get
+    app.get("/offers", async (req, res) => {
+      const cursor = offerCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //  offers post
+    app.post("/offers", async (req, res) => {
+      const offers = req.body;
+      const result = await offerCollection.insertOne(offers);
+    });
+    // bookmark api
+    app.post("/api/bookmarks", async (req, res) => {
+      const bookmarks = req.body;
+      const result = await bookmarkCollection.insertOne(bookmarks);
+      res.send(result);
+    });
+
 
     // payment post
     app.post("/order", async (req, res) => {
