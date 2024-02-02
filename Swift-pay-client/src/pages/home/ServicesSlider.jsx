@@ -13,12 +13,12 @@ import { TbDeviceMobileMessage } from "react-icons/tb";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { FaDonate } from "react-icons/fa";
 import { MdAddCard } from "react-icons/md";
-import receive from "../../assets/icons/receive-amount.png";
-import donation from "../../assets/icons/donation.png";
-import pay from "../../assets/icons/pay.png";
-import personal from "../../assets/icons/personal.png";
-import recharge from "../../assets/icons/recharge.png";
-import cashOut from "../../assets/icons/card.png";
+import receive from "../../assets/icons/received.png";
+import location from "../../assets/icons/location.png";
+import buy from "../../assets/icons/buy.png";
+import easy from "../../assets/icons/easy-to-use.png";
+import easyChat from "../../assets/icons/Chat.png";
+import ui from "../../assets/icons/ui-design.png";
 import addMoney from "../../assets/icons/top-up.png";
 
 const ServicesSlider = () => {
@@ -45,7 +45,7 @@ const ServicesSlider = () => {
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
                   <img className="w-[90px]" src={receive} alt="" />
-                  <h4 className="mt-2">Receive Money</h4>
+                  <h4 className="mt-2">Receive Product</h4>
                 </div>
               </div>
             </div>
@@ -55,8 +55,8 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={pay} alt="" />
-                  <h4 className="mt-2">Pay Money</h4>
+                  <img className="w-[90px]" src={location} alt="" />
+                  <h4 className="mt-2">Location</h4>
                 </div>
               </div>
             </div>
@@ -66,8 +66,8 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={cashOut} alt="" />
-                  <h4 className="mt-2">Cash Out</h4>
+                  <img className="w-[90px]" src={buy} alt="" />
+                  <h4 className="mt-2">Easy Buy</h4>
                 </div>
               </div>
             </div>
@@ -77,8 +77,8 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={recharge} alt="" />
-                  <h4 className="mt-2">Mobile recharge</h4>
+                  <img className="w-[90px]" src={easy} alt="" />
+                  <h4 className="mt-2">Easy to use</h4>
                 </div>
               </div>
             </div>
@@ -88,8 +88,8 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={personal} alt="" />
-                  <h4 className="mt-2">EMI payment</h4>
+                  <img className="w-[90px]" src={easyChat} alt="" />
+                  <h4 className="mt-2">Easy Communication</h4>
                 </div>
               </div>
             </div>
@@ -99,30 +99,30 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={donation} alt="" />
-                  <h4 className="mt-2">Donate Money</h4>
+                  <img className="w-[90px]" src={ui} alt="" />
+                  <h4 className="mt-2">Appealing interface</h4>
                 </div>
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          {/* <SwiperSlide>
             <div className="flex justify-center items-center h-60 w-60 border-gray-300  border-2  rounded-full hover:bg-purple-300">
               <div>
-                {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
+      
                 <div className="flex items-center justify-center flex-col">
                   <img className="w-[90px]" src={addMoney} alt="" />
                   <h4 className="mt-2">Add money from card</h4>
                 </div>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
           <SwiperSlide>
             <div className="flex justify-center items-center  h-60 w-60 border-gray-300  border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
                   <img className="w-[90px]" src={receive} alt="" />
-                  <h4 className="mt-2">Receive Money</h4>
+                  <h4 className="mt-2">Receive Product</h4>
                 </div>
               </div>
             </div>
