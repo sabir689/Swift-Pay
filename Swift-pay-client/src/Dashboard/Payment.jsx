@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+<<<<<<< HEAD
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import UseAuth from "../hooks/UseAuth";
 // import { useQuery } from "@tanstack/react-query";
@@ -9,6 +10,15 @@ const Payment = () => {
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
 
+=======
+// import useAxiosPublic from "../hooks/useAxiosPublic";
+import UseAuth from "../hooks/UseAuth";
+// import { useQuery } from "@tanstack/react-query";
+
+const Payment = ({isOpen, setIsOpen, productId}) => {
+  //   const axiosPublic = useAxiosPublic();
+  const { user } = UseAuth();
+>>>>>>> 79f3596c9b226d4a3b177659910a776c7a38351c
   const {
     register,
     handleSubmit,
@@ -16,7 +26,11 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
+<<<<<<< HEAD
   const { user } = UseAuth();
+=======
+  //   
+>>>>>>> 79f3596c9b226d4a3b177659910a776c7a38351c
   //   const { data: products = [] } = useQuery({
   //     queryKey: ["products"],
   //     queryFn: async () => {
@@ -26,6 +40,7 @@ const Payment = () => {
   //   });
   //   console.log(products);
 
+<<<<<<< HEAD
   useEffect(() => {
     fetch(`http://localhost:5000/api/products/${id}`)
       .then((res) => res.json())
@@ -33,10 +48,30 @@ const Payment = () => {
         console.log(data);
       });
   }, [id]);
+=======
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/api/products`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
+>>>>>>> 79f3596c9b226d4a3b177659910a776c7a38351c
 
   const onSubmit = (data) => {
     console.log(data);
+    const orderInfo = {
+      email: user.email,
+      displayName: user.displayName,
+      image: data.image,
+      photoURL: user.photoURL,
+      title: data.title,
+      description: data.description,
+      price: data.price,
+      procuctId:productId
+    }
 
+<<<<<<< HEAD
     const orderInfo = {
       email: user.email,
       displayName: user.displayName,
@@ -47,6 +82,9 @@ const Payment = () => {
       price: data.price,
       productId: id,
     };
+=======
+    console.log(orderInfo);
+>>>>>>> 79f3596c9b226d4a3b177659910a776c7a38351c
 
     console.log(orderInfo);
     // axiosPublic.post("/order", orderInfo).then((res) => {
@@ -55,7 +93,11 @@ const Payment = () => {
     //   }
     // });
 
+<<<<<<< HEAD
     // data.productId = id;
+=======
+   
+>>>>>>> 79f3596c9b226d4a3b177659910a776c7a38351c
 
     // fetch("http://localhost:5000/order", {
     //   method: "POST",
@@ -66,7 +108,7 @@ const Payment = () => {
 
   return (
     <div>
-      <dialog id="my_modal_1" className="modal">
+      <dialog open={isOpen} onClose={() => setIsOpen(false)} id="my_modal_1" className="modal">
         <div className="modal-box">
           <form
             onSubmit={handleSubmit(onSubmit)}
