@@ -1,11 +1,20 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import Container from "../../Components/Shared/Container";
-
+import { useQuery } from "@tanstack/react-query";
 const Offer = () => {
+  const { data: offers = [] } = useQuery({
+    queryKey: ["offers"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/api/offers");
+      return res.data;
+    },
+  });
   return (
     <Container>
       <div>
+
+      
         <div className="container mx-auto">
           <div className="items-center lg:flex">
             <div className="">

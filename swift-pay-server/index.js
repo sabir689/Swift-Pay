@@ -27,6 +27,8 @@ async function run() {
     const userCollection = client.db("SwiftPayDb").collection("users");
     // product collection
     const productCollection = client.db("SwiftPayDb").collection("products");
+    // offers collection
+    const offerCollection = client.db("SwiftPayDb").collection("offers");
     // user post
     app.post("/api/users", async (req, res) => {
       const user = req.body;
@@ -42,6 +44,14 @@ async function run() {
     app.post("/api/products", async (req, res) => {
       const products = req.body;
       const result = await productCollection.insertOne(products);
+      res.send(result);
+    });
+
+
+
+    // offers page
+    app.get("/api/offers", async (req, res) => {
+      const result = await offerCollection.find().toArray();
       res.send(result);
     });
 
