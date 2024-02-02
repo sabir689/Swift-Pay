@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaBookmark } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [search, setSearch] = useState(" ");
   const [sorting, setSorting] = useState(" ");
   const axiosPublic = useAxiosPublic();
+  const queryClient = useQueryClient();
   // const [showAllNames, setShowAllNames] = useState({});
   // const toggleShowAllNames = (productId) => {
   //   setShowAllNames((prevState) => ({
@@ -28,7 +29,13 @@ const Market = () => {
       return res.data;
     },
   });
-
+  const { data: savedProducts = [] } = useQuery({
+    queryKey: ["savedProducts"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/api/bookmarks?email=${user.email}`);
+      return res.data;
+    },
+  });
 
   const handleBookmark = (product) => {
     const Bookmark = {
@@ -45,6 +52,7 @@ const Market = () => {
       console.log(res.data);
       if (res.data.insertedId) {
         toast.success("Added to Bookmarks");
+        queryClient.invalidateQueries("savedProducts");
       }
     });
   };
@@ -119,12 +127,23 @@ const Market = () => {
               className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
               style={{ backgroundImage: `url(${product?.image})` }}
             >
-              <div
-                onClick={()=>handleBookmark(product)}
-                className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
-              >
-                <FaBookmark className="" />
-              </div>
+              {savedProducts.find(
+                (savedProduct) => savedProduct.product_id === product._id
+              ) ? (
+                <div
+                  onClick={() => handleBookmark(product)}
+                  className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-red-400"
+                >
+                  <FaBookmark className="" />
+                </div>
+              ) : (
+                <div
+                  onClick={() => handleBookmark(product)}
+                  className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
+                >
+                  <FaBookmark className="" />
+                </div>
+              )}
             </div>
             <div className="p-4">
               <div className="">
