@@ -27,8 +27,6 @@ async function run() {
     const userCollection = client.db("SwiftPayDb").collection("users");
     // product collection
     const productCollection = client.db("SwiftPayDb").collection("products");
-    // bookmark collection
-    const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     // user post
     app.post("/api/users", async (req, res) => {
       const user = req.body;
@@ -37,7 +35,20 @@ async function run() {
     });
     // product get
     app.get("/api/products", async (req, res) => {
-      const result = await productCollection.find().toArray();
+      const { search, sort } = req.query;
+      const query = {
+        productName: { $regex: search, $options: "i" },
+      };
+      const sortOptions = {};
+      if (sort === "lowToHigh") {
+        sortOptions.price = 1;
+      } else if (sort === "highToLow") {
+        sortOptions.price = -1;
+      }
+      const result = await productCollection
+        .find(query)
+        .sort(sortOptions)
+        .toArray();
       res.send(result);
     });
     // product post
@@ -57,6 +68,14 @@ async function run() {
        const result = await bookmarkCollection.find().toArray();
        res.send(result);
      });
+
+
+
+    // offers page
+    app.get("/api/offers", async (req, res) => {
+      const result = await offerCollection.find().toArray();
+      res.send(result);
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
