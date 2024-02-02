@@ -27,7 +27,7 @@ const Test2Dashboard = () => {
   const location = useLocation();
   const menus = [
     {
-      name: "Sell",
+      name: "SELL",
       link: "/dashboard/sellPost",
       icon: GiSellCard,
     },
@@ -46,24 +46,22 @@ const Test2Dashboard = () => {
       link: "/dashboard/myDashboard",
       icon: MdOutlineDashboard,
     },
-
+    { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
     { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
     { name: "messages", link: "/", icon: FiMessageSquare },
     {
       name: "analytics",
       link: "/",
       icon: TbReportAnalytics,
-
-      className: "text-blue-400",
     },
     { name: "File Manager", link: "/", icon: FiFolder },
     { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart },
+
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
   return (
-    <section className="flex gap-6">
+    <aside className="flex gap-6">
       <div
         className={`bg-[#0e0e0e]  min-h-screen ${
           open ? "w-72" : "w-20"
@@ -104,7 +102,7 @@ const Test2Dashboard = () => {
                 className={`whitespace-pre duration-500 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"
                 } ${
-                  menu?.name === "Sell" && menu?.icon === GiSellCard
+                  menu?.name === "SELL" && menu?.icon === GiSellCard
                     ? "bg-gradient-to-r from-purple-900 text-3xl tracking-[8px] to-indigo-600 py-7 px-10 rounded-3xl"
                     : ""
                 }${
@@ -197,7 +195,7 @@ const Test2Dashboard = () => {
           </div>
         </div>
       </dialog>
-    </section>
+    </aside>
   );
 };
 

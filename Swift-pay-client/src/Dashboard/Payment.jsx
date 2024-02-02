@@ -1,26 +1,65 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+// import useAxiosPublic from "../hooks/useAxiosPublic";
+// import UseAuth from "../hooks/UseAuth";
+// import { useQuery } from "@tanstack/react-query";
+
 const Payment = () => {
-  const { _id } = useParams();
+  //   const axiosPublic = useAxiosPublic();
+  const { id } = useParams();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
+  //   const { user } = UseAuth();
+  //   const { data: products = [] } = useQuery({
+  //     queryKey: ["products"],
+  //     queryFn: async () => {
+  //       const res = await axiosPublic.get("/api/products");
+  //       return res.data;
+  //     },
+  //   });
+  //   console.log(products);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
   const onSubmit = (data) => {
     console.log(data);
-    data.productId = _id;
+
+    // const orderInfo = {
+    //   email: user.email,
+    //   displayName: user.displayName,
+    //   image: data.image,
+    //   photoURL: user.photoURL,
+    //   title: data.title,
+    //   description: data.description,
+    //   price: data.price,
+    // };
+
+    // axiosPublic.post("/order", orderInfo).then((res) => {
+    //   if (res.data.insertedId) {
+    //     console.log("user added to the database");
+    //   }
+    // });
+
+    data.productId = id;
+
     fetch("http://localhost:5000/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        window.location.replace(result.url);
-        console.log(result);
-      });
+    });
   };
 
   return (

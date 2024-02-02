@@ -52,6 +52,16 @@ const Navbar = () => {
                     <a>F.A.Q</a>
                   </li>
                 </Link>
+                <Link to="/blog">
+                  <li>
+                    <a>Blog</a>
+                  </li>
+                </Link>
+                <Link to="/help">
+                  <li>
+                    <a>Help</a>
+                  </li>
+                </Link>
                 {/* <li>
                   <a>Item 2</a>
                 </li> */}
@@ -68,7 +78,7 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
-          <li className="text-lg mr-10 font-semibold text-[#49108B]">
+          {/* <li className="text-lg mr-10 font-semibold text-[#49108B]">
             <NavLink
               to="blog"
               className={({ isActive, isPending }) =>
@@ -77,8 +87,8 @@ const Navbar = () => {
             >
               Blog
             </NavLink>
-          </li>
-          <li className="text-lg mr-10 font-semibold text-[#49108B]">
+          </li> */}
+          {/* <li className="text-lg mr-10 font-semibold text-[#49108B]">
             <NavLink
               to="help"
               className={({ isActive, isPending }) =>
@@ -87,7 +97,7 @@ const Navbar = () => {
             >
               Help
             </NavLink>
-          </li>
+          </li> */}
 
           <li className="text-lg mr-10 font-semibold text-[#49108B]">
             <NavLink
@@ -129,7 +139,7 @@ const Navbar = () => {
         <div
           className={
             color
-              ? "navbar fixed top-[0px] z-50 backdrop-blur-md bg-opacity-20 bg-gray-100"
+              ? "navbar fixed top-[0px] z-50 backdrop-blur-md bg-opacity-20 rounded-bl-lg rounded-br-lg bg-gray-100"
               : "navbar fixed top-[0px] z-50"
           }
         >
