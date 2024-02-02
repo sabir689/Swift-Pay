@@ -7,7 +7,10 @@ import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
 import PageBanner from "../../Components/Shared/PageBanner";
 import SocialLogin from "./SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import axios from "axios";
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
@@ -38,10 +41,16 @@ const Register = () => {
       setRegistrationError("Password at least one number.");
       return;
     }
+    const userData = { firstName, lastName, email };
     createUser(email, password)
       .then(() => {
         updateUserProfile(name).then(() => {
           toast.success("Account created successfully!");
+          axiosPublic.post("/api/users", userData).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added");
+            }
+          });
           return;
         });
       })
