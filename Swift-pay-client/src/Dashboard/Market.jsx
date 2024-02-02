@@ -3,6 +3,7 @@ import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaBookmark } from "react-icons/fa";
+import toast from "react-hot-toast";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
@@ -25,15 +26,6 @@ const Market = () => {
       return res.data;
     },
   });
-  // search
-  // const [searchProducts, setSearchProducts] = useState([]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const searchText = e.target.search.value;
-    setSearch(searchText);
-    console.log("searched");
-  };
   return (
     <React.Fragment>
       <div>
@@ -95,7 +87,10 @@ const Market = () => {
               className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
               style={{ backgroundImage: `url(${product?.image})` }}
             >
-              <div className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400">
+              <div
+                onClick={()=>handleBookmark(product)}
+                className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
+              >
                 <FaBookmark />
               </div>
             </div>
