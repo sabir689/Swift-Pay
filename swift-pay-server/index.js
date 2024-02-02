@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
@@ -27,6 +27,8 @@ async function run() {
     const userCollection = client.db("SwiftPayDb").collection("users");
     // product collection
     const productCollection = client.db("SwiftPayDb").collection("products");
+    // bookmark collection
+    const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     // offers collection
     const offerCollection = client.db("SwiftPayDb").collection("offers");
     // user post
@@ -37,9 +39,28 @@ async function run() {
     });
     // product get
     app.get("/api/products", async (req, res) => {
-      const result = await productCollection.find().toArray();
+      let query = {};
+      const { search, sort } = req.query;
+
+      // Check if search is defined and it's a string
+      if (search && typeof search === "string") {
+        query.productName = { $regex: search, $options: "i" };
+      }
+
+      const sortOptions = {};
+      if (sort === "lowToHigh") {
+        sortOptions.price = 1;
+      } else if (sort === "highToLow") {
+        sortOptions.price = -1;
+      }
+
+      const result = await productCollection
+        .find(query)
+        .sort(sortOptions)
+        .toArray();
       res.send(result);
     });
+
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
@@ -58,6 +79,34 @@ async function run() {
     app.post("/offers", async (req, res) => {
       const offers = req.body;
       const result = await offerCollection.insertOne(offers);
+    });
+    // bookmark api
+    app.post("/api/bookmarks", async (req, res) => {
+      const bookmarks = req.body;
+      const result = await bookmarkCollection.insertOne(bookmarks);
+      res.send(result);
+    });
+
+    app.get("/api/bookmarks", async (req, res) => {
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await bookmarkCollection.find(query).toArray();
+      res.send(result);
+    });
+
+   
+    app.delete("/api/bookmarks/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await bookmarkCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    // offers page
+    app.get("/api/offers", async (req, res) => {
+      const result = await offerCollection.find().toArray();
       res.send(result);
     });
 

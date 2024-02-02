@@ -11,7 +11,6 @@ import Faq from "../pages/FAQ/Faq";
 import Blog from "../pages/Blog/Blog";
 import Offer from "../pages/home/Offer";
 import OffersDetails from "../pages/OffersDetails/OffersDetails";
-import Dashboard from "../Dashboard/Dashboard";
 import NewContact from "../Dashboard/NewContact";
 import SendMoney from "../Dashboard/SendMoney";
 import ReceiveMoney from "../Dashboard/ReceiveMoney";
@@ -19,10 +18,10 @@ import ReceiveMoney from "../Dashboard/ReceiveMoney";
 import PrivateRoute from "./PrivateRoute";
 import MyDashboard from "../Dashboard/MyDashboard";
 import Transactions from "../Dashboard/Transactions";
-import TestDashboard from "../Dashboard/TestDashboard";
 import Test2Dashboard from "../Dashboard/Test2Dashboard";
 import SellPost from "../Dashboard/SellPost";
 import Market from "../Dashboard/Market";
+import Saved from "../Dashboard/Saved";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -114,6 +113,10 @@ export const router = createBrowserRouter([
       {
         path: "market",
         element: <Market></Market>,
+      },
+      {
+        path: "saved",
+        element: <Saved></Saved>,
       },
     ],
   },

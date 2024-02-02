@@ -52,6 +52,16 @@ const Navbar = () => {
                     <a>F.A.Q</a>
                   </li>
                 </Link>
+                <Link to="/blog">
+                  <li>
+                    <a>Blog</a>
+                  </li>
+                </Link>
+                <Link to="/help">
+                  <li>
+                    <a>Help</a>
+                  </li>
+                </Link>
                 {/* <li>
                   <a>Item 2</a>
                 </li> */}
@@ -68,7 +78,7 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
-          <li className="text-lg mr-10 font-semibold text-[#49108B]">
+          {/* <li className="text-lg mr-10 font-semibold text-[#49108B]">
             <NavLink
               to="blog"
               className={({ isActive, isPending }) =>
@@ -77,8 +87,8 @@ const Navbar = () => {
             >
               Blog
             </NavLink>
-          </li>
-          <li className="text-lg mr-10 font-semibold text-[#49108B]">
+          </li> */}
+          {/* <li className="text-lg mr-10 font-semibold text-[#49108B]">
             <NavLink
               to="help"
               className={({ isActive, isPending }) =>
@@ -87,7 +97,7 @@ const Navbar = () => {
             >
               Help
             </NavLink>
-          </li>
+          </li> */}
 
           <li className="text-lg mr-10 font-semibold text-[#49108B]">
             <NavLink
@@ -222,9 +232,9 @@ const Navbar = () => {
         </div>
       </div>
       <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <div className="flex flex-col items-center justify-center h-screen dark">
-            <div className="w-full max-w-md bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
+        <div className="bg-white p-7 rounded-md">
+          <div className="flex items-center justify-center dark">
+            <div className="bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-semibold text-gray-200 mb-4">
                 Update profile
               </h2>
@@ -252,8 +262,9 @@ const Navbar = () => {
                   type="text"
                 />
                 <input
-                  type="file"
-                  className="file-input rounded-lg bg-transparent border-[1px] border-gray-200 mb-5 w-full"
+                  type="text"
+                  className="p-5 py-2 rounded-lg bg-transparent border-[1px] border-gray-200 mb-5 w-full"
+                  placeholder="your image link"
                 />
                 <label
                   className="text-sm mb-2 text-gray-200 cursor-pointer"
