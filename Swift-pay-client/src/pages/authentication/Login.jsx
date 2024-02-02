@@ -36,22 +36,22 @@ const Login = () => {
         <Helmet>
           <title> Login </title>
         </Helmet>
-        <div className="container md:w-10/12/ lg:w-96 mx-auto px-4">
+        <div className="container md:w-10/12/ lg:w-96 mx-auto px-4 border-[1px] border-gray-200 rounded-md">
           <div className="bg-white px-9 pt-8 pb-9 rounded-lg">
             <h1 className="text-3xl font-semibold text-[#212427] mb-1  mt-5 block">
               Log in
             </h1>
-            <h1 className="text-md font-normal text-neutral-600 ">
+            <h1 className="text-md font-normal mr-1 text-neutral-600 ">
               {" "}
               New to Swift Pay?
               <Link
                 to="/registration"
-                className="text-sm ml-2 hover:underline text-cyan-500  duration-300 font-normal text-primery inline-block"
+                className="text-sm  hover:underline text-cyan-500  duration-300 font-normal text-primery inline-block"
               >
                 Create an account
               </Link>
             </h1>
-            <SocialLogin/>
+            <SocialLogin />
             <form onSubmit={registration}>
               <label className="text-sm font-normal text-neutral-600 mb-1 ml-1 mt-5 block">
                 Gmail

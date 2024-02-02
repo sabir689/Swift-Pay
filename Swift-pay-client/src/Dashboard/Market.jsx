@@ -70,7 +70,7 @@ const Market = () => {
     <React.Fragment>
       <div>
         <div className="mb-5 mt-7">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col lg:flex-row justify-between items-center">
             {/* search */}
             <form onSubmit={handleSubmit}>
               <div className="flex items-center justify-start">
@@ -103,7 +103,9 @@ const Market = () => {
               </div>
             </form>
             {/* filter */}
-            <div>
+            <div className="mt-4 lg:mt-0 flex items-center">
+              <p className="mr-3 text-purple-800">Filter</p>
+              <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
               <select
                 value={sorting}
                 onChange={(e) => setSorting(e.target.value)}
@@ -132,9 +134,12 @@ const Market = () => {
               ) ? (
                 <div
                   onClick={() => handleBookmark(product)}
-                  className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-red-400"
+                  className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center"
                 >
-                  <FaBookmark className="" />
+                  <FaBookmark className="text-xl " />
+                  <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
+                    Saved
+                  </p>
                 </div>
               ) : (
                 <div
