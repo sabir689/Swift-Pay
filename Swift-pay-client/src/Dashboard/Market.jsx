@@ -70,54 +70,88 @@ const Market = () => {
     <React.Fragment>
       <div>
         <div className="mb-5 mt-7">
-          <div className="flex flex-col lg:flex-row justify-between items-center">
-            {/* search */}
-            <form onSubmit={handleSubmit}>
-              <div className="flex items-center justify-start">
-                <div className="rounded-lg bg-gray-200 border-[1px] border-gray-800">
-                  <div className="flex">
-                    <div className="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white">
-                      <svg
-                        viewBox="0 0 20 20"
-                        aria-hidden="true"
-                        className="pointer-events-none absolute w-5 fill-gray-500 transition"
+          <div className="flex justify-between items-center">
+            <div className="flex">
+              {/* search */}
+              <form onSubmit={handleSubmit}>
+                <div className="">
+                  <div className="rounded-md bg-gray-200 border-[1px] border-gray-400">
+                    <div className="flex">
+                      <div className="flex w-10 items-center justify-center rounded-tl-md rounded-bl-md border-r border-gray-200 bg-white">
+                        <svg
+                          viewBox="0 0 20 20"
+                          aria-hidden="true"
+                          className="pointer-events-none absolute w-5 fill-gray-500 transition"
+                        >
+                          <path d="M16.72 17.78a.75.75 0 1 0 1.06-1.06l-1.06 1.06ZM9 14.5A5.5 5.5 0 0 1 3.5 9H2a7 7 0 0 0 7 7v-1.5ZM3.5 9A5.5 5.5 0 0 1 9 3.5V2a7 7 0 0 0-7 7h1.5ZM9 3.5A5.5 5.5 0 0 1 14.5 9H16a7 7 0 0 0-7-7v1.5Zm3.89 10.45 3.83 3.83 1.06-1.06-3.83-3.83-1.06 1.06ZM14.5 9a5.48 5.48 0 0 1-1.61 3.89l1.06 1.06A6.98 6.98 0 0 0 16 9h-1.5Zm-1.61 3.89A5.48 5.48 0 0 1 9 14.5V16a6.98 6.98 0 0 0 4.95-2.05l-1.06-1.06Z"></path>
+                        </svg>
+                      </div>
+                      <input
+                        name="search"
+                        type="text"
+                        className="w-full max-w-[160px] bg-white pl-2 text-gray-600 text-sm font-medium outline-0"
+                        placeholder=""
+                        id=""
+                      />
+                      <button
+                        type="submit"
+                        className="bg-[#37B5B6] p-2 rounded-tr-md rounded-br-md text-white font-medium hover:bg-blue-800 transition-colors"
                       >
-                        <path d="M16.72 17.78a.75.75 0 1 0 1.06-1.06l-1.06 1.06ZM9 14.5A5.5 5.5 0 0 1 3.5 9H2a7 7 0 0 0 7 7v-1.5ZM3.5 9A5.5 5.5 0 0 1 9 3.5V2a7 7 0 0 0-7 7h1.5ZM9 3.5A5.5 5.5 0 0 1 14.5 9H16a7 7 0 0 0-7-7v1.5Zm3.89 10.45 3.83 3.83 1.06-1.06-3.83-3.83-1.06 1.06ZM14.5 9a5.48 5.48 0 0 1-1.61 3.89l1.06 1.06A6.98 6.98 0 0 0 16 9h-1.5Zm-1.61 3.89A5.48 5.48 0 0 1 9 14.5V16a6.98 6.98 0 0 0 4.95-2.05l-1.06-1.06Z"></path>
-                      </svg>
+                        Search
+                      </button>
                     </div>
-                    <input
-                      name="search"
-                      type="text"
-                      className="w-full max-w-[160px] bg-white pl-2 text-base font-semibold outline-0"
-                      placeholder=""
-                      id=""
-                    />
-                    <button
-                      type="submit"
-                      className="bg-[#37B5B6] p-2 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors"
-                    >
-                      Search
-                    </button>
                   </div>
                 </div>
+              </form>
+              {/* dropdown */}
+              <div className="ml-5">
+                <div className="drapdown inline-block relative">
+                  <button className="bg-purple-800 text-gray-200 text-md font-normal py-2 px-4 rounded inline-flex items-center">
+                    <span className="mr-1">Shop by categories</span>
+                    <svg
+                      className="fill-current h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
+                    </svg>
+                  </button>
+                  <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 transition-transform duration-600">
+                    {[
+                      ...new Set(products.map((product) => product.category)),
+                    ].map((category) => (
+                      <li key={category} className="">
+                        <a
+                          className="rounded-none  bg-gray-100 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap text-sm"
+                          href="#"
+                        >
+                          {category}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </form>
+            </div>
             {/* filter */}
-            <div className="mt-4 lg:mt-0 flex items-center">
-              <p className="mr-3 text-purple-800">Filter</p>
-              <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
-              <select
-                value={sorting}
-                onChange={(e) => setSorting(e.target.value)}
-                className="select  join-item bg-transparent border-[1px] border-gray-800"
-              >
-                <option value="lowToHigh">Low to High</option>
-                <option value="highToLow">High to Low</option>
-              </select>
+            <div className="">
+              <div className="flex items-center justify-end">
+                <p className="mr-3 text-purple-800">Filter</p>
+                <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
+                <select
+                  value={sorting}
+                  onChange={(e) => setSorting(e.target.value)}
+                  className="select  join-item bg-transparent border-[1px] border-gray-800"
+                >
+                  <option value="lowToHigh">Low to High</option>
+                  <option value="highToLow">High to Low</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
       {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {products.map((product) => (
@@ -138,7 +172,7 @@ const Market = () => {
                 >
                   <FaBookmark className="text-xl " />
                   <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
-                    Saved
+                    SAVED
                   </p>
                 </div>
               ) : (
