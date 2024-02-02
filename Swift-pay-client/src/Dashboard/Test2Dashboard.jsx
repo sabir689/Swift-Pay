@@ -14,6 +14,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BsBoundingBox, BsCart2 } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
+import { IoHome } from "react-icons/io5";
 
 const Test2Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -127,56 +128,62 @@ const Test2Dashboard = () => {
       <div className="flex-1 mr-3 mt-3 max-w-screen-2xl mx-auto">
         <div className="mt-2 w-[300px] lg:w-full">
           <div className="mb-5 rounded-lg border-[1px] border-gray-400 p-2 flex items-center justify-end">
-            <BsCart2 className="mr-10 cursor-pointer text-gray-600 font-bold text-2xl" />
-            <BsBoundingBox className="mr-5 cursor-pointer text-gray-600 font-bold text-2xl" />
-            <p className="mr-3  font-semibold text-[#49108B]">
-              {user?.displayName}
-            </p>
-            {user ? (
-              <>
-                <div className="dropdown dropdown-end">
-                  <summary tabIndex={0} className="btn btn-ghost btn-circle">
-                    <div className="avatar">
-                      <div className="rounded-full w-[40px] h-[40px] p-1">
-                        {user?.photoURL ? (
-                          <img
-                            className=" rounded-full border-2 border-black"
-                            src={user?.photoURL}
-                          />
-                        ) : (
-                          <div className="text-3xl ">
-                            <FaRegUserCircle />
-                          </div>
-                        )}
+            <div className="flex items-center justify-between">
+              <Link to="/">
+                <IoHome className="text-2xl hover:text-blue-400" />
+              </Link>
+              <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mx-4" />
+              <BsCart2 className="mr-10 cursor-pointer text-gray-600 font-bold text-2xl" />
+              {/* <BsBoundingBox className="mr-5 cursor-pointer text-gray-600 font-bold text-2xl" /> */}
+              <p className="mr-3  font-semibold text-[#49108B]">
+                {user?.displayName}
+              </p>
+              {user ? (
+                <>
+                  <div className="dropdown dropdown-end">
+                    <summary tabIndex={0} className="btn btn-ghost btn-circle">
+                      <div className="avatar">
+                        <div className="rounded-full w-[40px] h-[40px] p-1">
+                          {user?.photoURL ? (
+                            <img
+                              className=" rounded-full border-2 border-black"
+                              src={user?.photoURL}
+                            />
+                          ) : (
+                            <div className="text-3xl ">
+                              <FaRegUserCircle />
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </summary>
-                  <ul
-                    tabIndex={0}
-                    className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4"
-                  >
-                    <Link>
-                      <li className="flex justify-between">
-                        <button
-                          onClick={() =>
-                            document.getElementById("my_modal_1").showModal()
-                          }
-                        >
-                          Profile
-                          <RxAvatar className="text-blue-500 ml-[84px]" />
-                        </button>
-                        <button onClick={handleLogOut}>
-                          Logout
-                          <IoMdLogOut className="text-red-500 ml-20" />
-                        </button>
-                      </li>
-                    </Link>
-                  </ul>
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
+                    </summary>
+                    <ul
+                      tabIndex={0}
+                      className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+                    >
+                      <Link>
+                        <li className="flex justify-between">
+                          <button
+                            onClick={() =>
+                              document.getElementById("my_modal_1").showModal()
+                            }
+                          >
+                            Profile
+                            <RxAvatar className="text-blue-500 ml-[84px]" />
+                          </button>
+                          <button onClick={handleLogOut}>
+                            Logout
+                            <IoMdLogOut className="text-red-500 ml-20" />
+                          </button>
+                        </li>
+                      </Link>
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
         <Outlet></Outlet>

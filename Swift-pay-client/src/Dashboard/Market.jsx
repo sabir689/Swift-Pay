@@ -1,15 +1,20 @@
 import Payment from "./Payment";
-import React, { useEffect, useState } from "react";
+
+import React, { useContext, useEffect, useState } from "react";
 import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaBookmark } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { AuthContext } from "../provider/AuthProvider";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
+  const { user } = useContext(AuthContext);
   const [search, setSearch] = useState(" ");
   const [sorting, setSorting] = useState(" ");
   const axiosPublic = useAxiosPublic();
+  const queryClient = useQueryClient();
   // const [showAllNames, setShowAllNames] = useState({});
   // const toggleShowAllNames = (productId) => {
   //   setShowAllNames((prevState) => ({
@@ -26,6 +31,34 @@ const Market = () => {
       return res.data;
     },
   });
+  const { data: savedProducts = [] } = useQuery({
+    queryKey: ["savedProducts"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/api/bookmarks?email=${user.email}`);
+      return res.data;
+    },
+  });
+
+  const handleBookmark = (product) => {
+    const Bookmark = {
+      email: user.email,
+      product_id: product._id,
+      productName: product.productName,
+      category: product.category,
+      image: product.image,
+      price: product.price,
+      location: product.location,
+      description: product.description,
+    };
+    axiosPublic.post("/api/bookmarks", Bookmark).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        toast.success("Added to Bookmarks");
+        queryClient.invalidateQueries("savedProducts");
+      }
+    });
+  };
+
   // search
   // const [searchProducts, setSearchProducts] = useState([]);
 
@@ -39,7 +72,7 @@ const Market = () => {
     <React.Fragment>
       <div>
         <div className="mb-5 mt-7">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col lg:flex-row justify-between items-center">
             {/* search */}
             <form onSubmit={handleSubmit}>
               <div className="flex items-center justify-start">
@@ -72,7 +105,9 @@ const Market = () => {
               </div>
             </form>
             {/* filter */}
-            <div>
+            <div className="mt-4 lg:mt-0 flex items-center">
+              <p className="mr-3 text-purple-800">Filter</p>
+              <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
               <select
                 value={sorting}
                 onChange={(e) => setSorting(e.target.value)}
@@ -96,9 +131,26 @@ const Market = () => {
               className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
               style={{ backgroundImage: `url(${product?.image})` }}
             >
-              <div className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400">
-                <FaBookmark />
-              </div>
+              {savedProducts.find(
+                (savedProduct) => savedProduct.product_id === product._id
+              ) ? (
+                <div
+                  onClick={() => handleBookmark(product)}
+                  className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center"
+                >
+                  <FaBookmark className="text-xl " />
+                  <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
+                    Saved
+                  </p>
+                </div>
+              ) : (
+                <div
+                  onClick={() => handleBookmark(product)}
+                  className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
+                >
+                  <FaBookmark className="" />
+                </div>
+              )}
             </div>
             <div className="p-4">
               <div className="">
