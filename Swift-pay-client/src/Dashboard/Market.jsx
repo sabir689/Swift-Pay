@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaBookmark } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { AuthContext } from "../provider/AuthProvider";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
+    const { user } = useContext(AuthContext);
   const [search, setSearch] = useState(" ");
   const [sorting, setSorting] = useState(" ");
   const axiosPublic = useAxiosPublic();
@@ -26,6 +28,36 @@ const Market = () => {
       return res.data;
     },
   });
+
+
+  const handleBookmark = (product) => {
+    const Bookmark = {
+      email: user.email,
+      product_id: product._id,
+      productName: product.productName,
+      category: product.category,
+      image: product.image,
+      price: product.price,
+      location: product.location,
+      description: product.description,
+    };
+    axiosPublic.post("/api/bookmarks", Bookmark).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        toast.success("Added to Bookmarks");
+      }
+    });
+  };
+
+  // search
+  // const [searchProducts, setSearchProducts] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const searchText = e.target.search.value;
+    setSearch(searchText);
+    console.log("searched");
+  };
   return (
     <React.Fragment>
       <div>
@@ -91,7 +123,7 @@ const Market = () => {
                 onClick={()=>handleBookmark(product)}
                 className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
               >
-                <FaBookmark />
+                <FaBookmark className="" />
               </div>
             </div>
             <div className="p-4">
