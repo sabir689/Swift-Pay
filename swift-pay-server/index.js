@@ -68,6 +68,18 @@ async function run() {
       res.send(result);
     });
 
+    // offers get
+    app.get("/offers", async (req, res) => {
+      const cursor = offerCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //  offers post
+    app.post("/offers", async (req, res) => {
+      const offers = req.body;
+      const result = await offerCollection.insertOne(offers);
+    });
     // bookmark api
     app.post("/api/bookmarks", async (req, res) => {
       const bookmarks = req.body;
