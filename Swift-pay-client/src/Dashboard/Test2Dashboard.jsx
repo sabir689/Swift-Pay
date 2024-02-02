@@ -46,19 +46,17 @@ const Test2Dashboard = () => {
       link: "/dashboard/myDashboard",
       icon: MdOutlineDashboard,
     },
-
+    { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
     { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
     { name: "messages", link: "/", icon: FiMessageSquare },
     {
       name: "analytics",
       link: "/",
       icon: TbReportAnalytics,
-
-      className: "text-blue-400",
     },
     { name: "File Manager", link: "/", icon: FiFolder },
     { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart },
+
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);

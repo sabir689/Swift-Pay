@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
@@ -6,28 +6,41 @@ import { FaBookmark } from "react-icons/fa";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
+  const [search, setSearch] = useState(" ");
+  const [sorting, setSorting] = useState(" ");
   const axiosPublic = useAxiosPublic();
-  const [showAllNames, setShowAllNames] = useState({});
-  const toggleShowAllNames = (productId) => {
-    setShowAllNames((prevState) => ({
-      ...prevState,
-      [productId]: !prevState[productId], // Toggle state for the specific product
-    }));
-  };
+  // const [showAllNames, setShowAllNames] = useState({});
+  // const toggleShowAllNames = (productId) => {
+  //   setShowAllNames((prevState) => ({
+  //     ...prevState,
+  //     [productId]: !prevState[productId], // Toggle state for the specific product
+  //   }));
+  // };
   const { data: products = [] } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", search, sorting],
     queryFn: async () => {
-      const res = await axiosPublic.get("/api/products");
+      const res = await axiosPublic.get(
+        `/api/products?search=${search}&sort=${sorting}`
+      );
       return res.data;
     },
   });
+  // search
+  // const [searchProducts, setSearchProducts] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const searchText = e.target.search.value;
+    setSearch(searchText);
+    console.log("searched");
+  };
   return (
-    <React.Fragment className="">
+    <React.Fragment>
       <div>
         <div className="mb-5 mt-7">
           <div className="flex justify-between items-center">
             {/* search */}
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="flex items-center justify-start">
                 <div className="rounded-lg bg-gray-200 border-[1px] border-gray-800">
                   <div className="flex">
@@ -41,35 +54,32 @@ const Market = () => {
                       </svg>
                     </div>
                     <input
+                      name="search"
                       type="text"
                       className="w-full max-w-[160px] bg-white pl-2 text-base font-semibold outline-0"
                       placeholder=""
                       id=""
                     />
-                    <input
-                      type="button"
-                      value="Search"
+                    <button
+                      type="submit"
                       className="bg-[#37B5B6] p-2 rounded-tr-lg rounded-br-lg text-white font-semibold hover:bg-blue-800 transition-colors"
-                    />
+                    >
+                      Search
+                    </button>
                   </div>
                 </div>
               </div>
             </form>
             {/* filter */}
             <div>
-              <details className="dropdown">
-                <summary className="m-1 btn bg-transparent border-[1px] rounded-sm px-5 border-gray-800">
-                  Filter <CiFilter />
-                </summary>
-                <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                  <li>
-                    <a>Item 1</a>
-                  </li>
-                  <li>
-                    <a>Item 2</a>
-                  </li>
-                </ul>
-              </details>
+              <select
+                value={sorting}
+                onChange={(e) => setSorting(e.target.value)}
+                className="select  join-item bg-transparent border-[1px] border-gray-800"
+              >
+                <option value="lowToHigh">Low to High</option>
+                <option value="highToLow">High to Low</option>
+              </select>
             </div>
           </div>
         </div>

@@ -35,7 +35,20 @@ async function run() {
     });
     // product get
     app.get("/api/products", async (req, res) => {
-      const result = await productCollection.find().toArray();
+      const { search, sort } = req.query;
+      const query = {
+        productName: { $regex: search, $options: "i" },
+      };
+      const sortOptions = {};
+      if (sort === "lowToHigh") {
+        sortOptions.price = 1;
+      } else if (sort === "highToLow") {
+        sortOptions.price = -1;
+      }
+      const result = await productCollection
+        .find(query)
+        .sort(sortOptions)
+        .toArray();
       res.send(result);
     });
     // product post

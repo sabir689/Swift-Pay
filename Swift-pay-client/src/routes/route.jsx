@@ -23,6 +23,7 @@ import TestDashboard from "../Dashboard/TestDashboard";
 import Test2Dashboard from "../Dashboard/Test2Dashboard";
 import SellPost from "../Dashboard/SellPost";
 import Market from "../Dashboard/Market";
+import Saved from "../Dashboard/Saved";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
       {
         path: "market",
         element: <Market></Market>,
+      },
+      {
+        path: "saved",
+        element: <Saved></Saved>,
       },
     ],
   },
