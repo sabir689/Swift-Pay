@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-// import useAxiosPublic from "../hooks/useAxiosPublic";
-// import UseAuth from "../hooks/UseAuth";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import UseAuth from "../hooks/UseAuth";
 // import { useQuery } from "@tanstack/react-query";
 
 const Payment = () => {
-  //   const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
   const { id } = useParams();
 
   const {
@@ -16,7 +16,7 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
-  //   const { user } = UseAuth();
+  const { user } = UseAuth();
   //   const { data: products = [] } = useQuery({
   //     queryKey: ["products"],
   //     queryFn: async () => {
@@ -27,39 +27,41 @@ const Payment = () => {
   //   console.log(products);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products`)
+    fetch(`http://localhost:5000/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
       });
-  }, []);
+  }, [id]);
 
   const onSubmit = (data) => {
     console.log(data);
 
-    // const orderInfo = {
-    //   email: user.email,
-    //   displayName: user.displayName,
-    //   image: data.image,
-    //   photoURL: user.photoURL,
-    //   title: data.title,
-    //   description: data.description,
-    //   price: data.price,
-    // };
+    const orderInfo = {
+      email: user.email,
+      displayName: user.displayName,
+      image: data.image,
+      photoURL: user.photoURL,
+      title: data.title,
+      description: data.description,
+      price: data.price,
+      productId: id,
+    };
 
+    console.log(orderInfo);
     // axiosPublic.post("/order", orderInfo).then((res) => {
     //   if (res.data.insertedId) {
     //     console.log("user added to the database");
     //   }
     // });
 
-    data.productId = id;
+    // data.productId = id;
 
-    fetch("http://localhost:5000/order", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    // fetch("http://localhost:5000/order", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(data),
+    // });
   };
 
   return (

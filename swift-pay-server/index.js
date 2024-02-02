@@ -41,22 +41,28 @@ async function run() {
     });
     // product get
     app.get("/api/products", async (req, res) => {
+      let query = {};
       const { search, sort } = req.query;
-      const query = {
-        productName: { $regex: search, $options: "i" },
-      };
+
+      // Check if search is defined and it's a string
+      if (search && typeof search === "string") {
+        query.productName = { $regex: search, $options: "i" };
+      }
+
       const sortOptions = {};
       if (sort === "lowToHigh") {
         sortOptions.price = 1;
       } else if (sort === "highToLow") {
         sortOptions.price = -1;
       }
+
       const result = await productCollection
         .find(query)
         .sort(sortOptions)
         .toArray();
       res.send(result);
     });
+
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
@@ -64,9 +70,8 @@ async function run() {
       res.send(result);
     });
 
-
     // const tran_id = new ObjectId().toString();
-=======
+
     // offers get
     app.get("/offers", async (req, res) => {
       const cursor = offerCollection.find();
@@ -85,7 +90,6 @@ async function run() {
       const result = await bookmarkCollection.insertOne(bookmarks);
       res.send(result);
     });
-
 
     // payment post
     app.post("/order", async (req, res) => {
