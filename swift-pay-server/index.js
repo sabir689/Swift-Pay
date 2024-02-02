@@ -27,6 +27,8 @@ async function run() {
     const userCollection = client.db("SwiftPayDb").collection("users");
     // product collection
     const productCollection = client.db("SwiftPayDb").collection("products");
+    // bookmark collection
+    const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     // user post
     app.post("/api/users", async (req, res) => {
       const user = req.body;
@@ -44,6 +46,17 @@ async function run() {
       const result = await productCollection.insertOne(products);
       res.send(result);
     });
+
+    // bookmark api
+     app.post("/api/bookmarks", async (req, res) => {
+       const bookmarks = req.body;
+       const result = await bookmarkCollection.insertOne(bookmarks);
+       res.send(result);
+     });
+     app.get("/api/bookmarks", async (req, res) => {
+       const result = await bookmarkCollection.find().toArray();
+       res.send(result);
+     });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
