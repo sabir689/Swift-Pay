@@ -3,6 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaBookmark } from "react-icons/fa";
+import toast from "react-hot-toast";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
@@ -21,6 +22,26 @@ const Market = () => {
       return res.data;
     },
   });
+
+
+  const handleBookmark = (product) => {
+    const Bookmark = {
+      product_id: product._id,
+      productName: product.productName,
+      category: product.category,
+      image: product.image,
+      price: product.price,
+      location: product.location,
+      description: product.description,
+    };
+    axiosPublic.post("/api/bookmarks", Bookmark).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        toast.success("Added to Bookmarks");
+      }
+    });
+  };
+
   return (
     <React.Fragment className="">
       <div>
@@ -65,7 +86,10 @@ const Market = () => {
               className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
               style={{ backgroundImage: `url(${product?.image})` }}
             >
-              <div className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400">
+              <div
+                onClick={()=>handleBookmark(product)}
+                className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
+              >
                 <FaBookmark />
               </div>
             </div>
