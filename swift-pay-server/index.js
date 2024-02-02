@@ -33,6 +33,11 @@ async function run() {
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
+    // product get
+    app.get("/api/products", async (req, res) => {
+      const result = await productCollection.find().toArray();
+      res.send(result);
+    });
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;

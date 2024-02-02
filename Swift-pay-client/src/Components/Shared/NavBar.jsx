@@ -129,7 +129,7 @@ const Navbar = () => {
         <div
           className={
             color
-              ? "navbar fixed top-[0px] z-50 backdrop-blur-md bg-opacity-20 bg-gray-100"
+              ? "navbar fixed top-[0px] z-50 backdrop-blur-md bg-opacity-20 rounded-bl-lg rounded-br-lg bg-gray-100"
               : "navbar fixed top-[0px] z-50"
           }
         >

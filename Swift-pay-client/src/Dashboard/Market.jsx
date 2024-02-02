@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import { FaBookmark } from "react-icons/fa";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
+  const axiosPublic = useAxiosPublic();
+  const [showAllNames, setShowAllNames] = useState({});
+  const toggleShowAllNames = (productId) => {
+    setShowAllNames((prevState) => ({
+      ...prevState,
+      [productId]: !prevState[productId], // Toggle state for the specific product
+    }));
+  };
+  const { data: products = [] } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/api/products");
+      return res.data;
+    },
+  });
   return (
     <React.Fragment className="">
       <div>
@@ -36,42 +54,49 @@ const Market = () => {
           </div>
         </div>
       </div>
+      {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div className="max-w-[300px] overflow-hidden bg-transparent rounded-lg border-[1px] border-gray-300">
-          <div>
-            <img
-              className="object-cover object-center w-full h-56"
-              src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-              alt="avatar"
-            />
-            {/* <div className="absolute right-[1px]">
-              <FaBookmark className="" />
-            </div> */}
-          </div>
-
-          <div className="py-2 pl-3">
-            <p className="block text-lg text-start text-gray-800">John Doe</p>
-            <p className="text-sm text-start text-gray-500">
-              Software Engineer
-            </p>
-            <React.Fragment className="flex">
-              <div>
-                <CiLocationOn className="text-blue-500" />
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="w-72 mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
+          >
+            <div
+              className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
+              style={{ backgroundImage: `url(${product?.image})` }}
+            >
+              <div className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400">
+                <FaBookmark />
               </div>
-              <div>
-                <p className="text-sm text-gray-500">Dhaka, Bangladesh</p>
-              </div>
-              <button
+            </div>
+            <div className="p-4">
+              <div className="">
+                <h1 className="text-gray-600 font-medium">
+                  {product?.productName}
+                </h1>
+                <button className="text-gray-500 hover:text-gray-900">
+                  {" "}
+                  ${product?.price}
+                </button>{" "}
+              </div>{" "}
+              <p className="text-gray-400 text-sm my-1">{product?.name}</p>
+              <p className="text-gray-400 text-sm my-1 flex items-center">
+                <p>
+                  <CiLocationOn className="text-blue-400" />{" "}
+                </p>
+                {product?.location}
+              </p>
+              <span
                 onClick={() =>
                   document.getElementById("my_modal_1").showModal()
                 }
-                className="btn"
+                className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
               >
                 Pay
-              </button>
-            </React.Fragment>
+              </span>{" "}
+            </div>{" "}
           </div>
-        </div>
+        ))}
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <dialog id="my_modal_1" className="modal">
