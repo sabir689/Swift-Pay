@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaSearch } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
@@ -91,50 +91,58 @@ const Market = () => {
       <div>
         <div className="mb-5 mt-7">
           <div className="flex flex-col lg:flex-row gap-5 lg:gap-5 justify-between items-center">
-            <div className="flex">
+            <div className="flex items-center  flex-col lg:flex-row">
               {/* search */}
               <form onSubmit={handleSubmit}>
                 <div className="mr-5 lg:mr-5">
-                  <div className="rounded-md bg-gray-200 border-[1px] border-gray-400">
-                    <div className="flex">
-                      <div className="flex w-0 lg:w-10 items-center justify-center rounded-tl-md rounded-bl-md border-r border-gray-200 bg-none lg:bg-white">
-                        <svg
-                          viewBox="0 0 20 20"
-                          aria-hidden="true"
-                          className="hidden lg:block pointer-events-none absolute w-5 fill-gray-500 transition"
-                        >
-                          <path d="M16.72 17.78a.75.75 0 1 0 1.06-1.06l-1.06 1.06ZM9 14.5A5.5 5.5 0 0 1 3.5 9H2a7 7 0 0 0 7 7v-1.5ZM3.5 9A5.5 5.5 0 0 1 9 3.5V2a7 7 0 0 0-7 7h1.5ZM9 3.5A5.5 5.5 0 0 1 14.5 9H16a7 7 0 0 0-7-7v1.5Zm3.89 10.45 3.83 3.83 1.06-1.06-3.83-3.83-1.06 1.06ZM14.5 9a5.48 5.48 0 0 1-1.61 3.89l1.06 1.06A6.98 6.98 0 0 0 16 9h-1.5Zm-1.61 3.89A5.48 5.48 0 0 1 9 14.5V16a6.98 6.98 0 0 0 4.95-2.05l-1.06-1.06Z"></path>
-                        </svg>
-                      </div>
-                      <input
-                        name="search"
-                        type="text"
-                        className="w-full max-w-[160px] bg-white pl-2 text-gray-500 text-sm font-medium outline-0"
-                        placeholder=""
-                        id=""
-                      />
+                  <div className="relative">
+                    <label className="sr-only"> Search </label>
+                    <input
+                      name="search"
+                      type="text"
+                      id="Search"
+                      placeholder="Search"
+                      className="w-full rounded-md  py-2.5 px-2 border-[1px] border-gray-400 shadow-sm sm:text-sm"
+                    />
+
+                    <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
                       <button
                         type="submit"
-                        className="bg-[#37B5B6] p-2 rounded-tr-md rounded-br-md text-white font-medium hover:bg-blue-800 transition-colors"
+                        className="text-gray-600 hover:text-gray-700"
                       >
-                        Search
+                        <span className="sr-only">Search</span>
+
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="h-4 w-4"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                          />
+                        </svg>
                       </button>
-                    </div>
+                    </span>
                   </div>
                 </div>
               </form>
               {/* dropdown */}
-              <div className="">
+              <div className="mt-5 lg:mt-0">
                 <div className="flex items-center justify-end">
-                  <p className="mr-3 text-purple-800 font-semibold">
+                  <p className="hidden lg:block mr-3 text-xs lg:text-sm text-purple-800 font-semibold">
                     Shop by Category
                   </p>
-                  <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
+                  <hr className="hidden lg:block  border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
                   <select
                     id="category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="select  join-item bg-transparent rounded-md border-[1px] border-gray-800"
+                    className="select w-40 hover:text-purple-800 px-4 py-2 join-item bg-transparent rounded-md border-[1px] border-gray-800"
                   >
                     <option value="">All</option>
                     <option value="Electronics">Electronics</option>
@@ -156,12 +164,12 @@ const Market = () => {
             {/* filter */}
             <div className="">
               <div className="flex items-center justify-end">
-                <p className="mr-3 text-purple-800">Filter</p>
-                <hr className="border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
+                <p className="mr-3 text-purple-800 hidden lg:block ">Filter</p>
+                <hr className="hidden lg:block  border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
                 <select
                   value={sorting}
                   onChange={(e) => setSorting(e.target.value)}
-                  className="select  join-item bg-transparent border-[1px] border-gray-800"
+                  className="select rounded-md join-item bg-transparent border-[1px] border-gray-800"
                 >
                   <option value="lowToHigh">Low to High</option>
                   <option value="highToLow">High to Low</option>
@@ -180,7 +188,7 @@ const Market = () => {
             return (
               <div
                 key={product.id}
-                className="w-72 mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
+                className="w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]  cursor-pointer"
               >
                 <div
                   className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
