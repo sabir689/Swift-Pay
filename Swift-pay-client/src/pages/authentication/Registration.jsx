@@ -40,6 +40,7 @@ const Register = () => {
       setRegistrationError("Password at least one number.");
       return;
     }
+    const userData = { firstName, lastName, email };
     createUser(email, password)
       .then(() => {
         updateUserProfile(name).then(() => {
@@ -72,7 +73,7 @@ const Register = () => {
         <Helmet>
           <title> Registration </title>
         </Helmet>
-        <div className="container md:w-10/12/ w-[450px] mx-auto px-4">
+        <div className="container md:w-10/12/ w-[450px] mx-auto px-4 border-[1px] border-gray-200 rounded-md">
           <div className="bg-white px-10 py-10 rounded-lg">
             <h1 className="text-3xl font-semibold text-[#212427] mb-1 block">
               Create an account
@@ -86,7 +87,7 @@ const Register = () => {
                 Login
               </Link>
             </h1>
-            <SocialLogin/>
+            <SocialLogin />
             <form onSubmit={registration}>
               <div className="flex flex-col md:flex-row gap-3 mt-5">
                 <div className="flex-1">

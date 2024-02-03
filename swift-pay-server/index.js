@@ -98,28 +98,7 @@ async function run() {
       res.send(result);
     });
 
-    // bookmark api
-    app.post("/api/bookmarks", async (req, res) => {
-      const bookmarks = req.body;
-      const result = await bookmarkCollection.insertOne(bookmarks);
-      res.send(result);
-    });
-
-    app.get("/api/bookmarks", async (req, res) => {
-      let query = {};
-      if (req.query?.email) {
-        query = { email: req.query.email };
-      }
-      const result = await bookmarkCollection.find(query).toArray();
-      res.send(result);
-    });
-
-    app.delete("/api/bookmarks/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
-      const result = await bookmarkCollection.deleteOne(query);
-      res.send(result);
-    });
+    
 
     // offers page
     app.get("/api/offers", async (req, res) => {
