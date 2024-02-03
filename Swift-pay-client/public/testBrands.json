@@ -1,0 +1,32 @@
+{
+    "apparelBrands": [
+      {
+        "brandName": "UrbanStyle",
+        "products": [
+          {"type": "Shoes", "name": "Urban Sneakers", "price": 59.99, "sizes": ["US 7", "US 8", "US 9"], "colors": ["Black", "White", "Red"], "image": "urban_sneakers.jpg"},
+          {"type": "T-Shirt", "name": "Classic Logo Tee", "price": 24.99, "sizes": ["S", "M", "L"], "colors": ["White", "Black", "Gray"], "image": "classic_logo_tee.jpg"},
+          {"type": "Jeans", "name": "Slim Fit Denim", "price": 49.99, "sizes": ["28W 30L", "30W 32L", "32W 32L"], "colors": ["Blue", "Black", "Gray"], "image": "slim_fit_denim.jpg"},
+          {"type": "Dress", "name": "Urban Elegance Dress", "price": 69.99, "sizes": ["S", "M", "L"], "colors": ["Navy", "Burgundy", "Forest Green"], "image": "urban_elegance_dress.jpg"},
+          {"type": "Jacket", "name": "Street Chic Bomber", "price": 79.99, "sizes": ["M", "L", "XL"], "colors": ["Olive", "Camel", "Black"], "image": "street_chic_bomber.jpg"},
+          {"type": "Sweater", "name": "Cozy Knit Pullover", "price": 54.99, "sizes": ["S", "M", "L"], "colors": ["Blush Pink", "Heather Gray", "Mustard"], "image": "cozy_knit_pullover.jpg"},
+          {"type": "Shorts", "name": "Urban Explorer Shorts", "price": 34.99, "sizes": ["S", "M", "L"], "colors": ["Khaki", "Denim Blue", "Charcoal"], "image": "urban_explorer_shorts.jpg"},
+          {"type": "Hoodie", "name": "Street Vibes Hoodie", "price": 44.99, "sizes": ["M", "L", "XL"], "colors": ["Urban Black", "Navy Blue", "Crimson Red"], "image": "street_vibes_hoodie.jpg"}
+        ]
+      },
+      {
+        "brandName": "CasualChic",
+        "products": [
+          {"type": "Shoes", "name": "Comfy Slip-Ons", "price": 39.99, "sizes": ["US 6", "US 7", "US 8"], "colors": ["Beige", "Navy", "White"], "image": "comfy_slip_ons.jpg"},
+          {"type": "T-Shirt", "name": "Everyday Essentials Tee", "price": 26.99, "sizes": ["S", "M", "L"], "colors": ["White", "Blue", "Red"], "image": "everyday_essentials_tee.jpg"},
+          {"type": "Jeans", "name": "Casual Comfort Jeans", "price": 47.99, "sizes": ["28W 30L", "30W 32L", "32W 32L"], "colors": ["Light Wash", "Dark Wash", "Medium Blue"], "image": "casual_comfort_jeans.jpg"},
+          {"type": "Dress", "name": "Chic Midi Dress", "price": 59.99, "sizes": ["S", "M", "L"], "colors": ["Blush Pink", "Charcoal", "Navy Floral"], "image": "chic_midi_dress.jpg"},
+          {"type": "Jacket", "name": "Casual Blazer", "price": 74.99, "sizes": ["M", "L", "XL"], "colors": ["Taupe", "Olive", "Caramel"], "image": "casual_blazer.jpg"},
+          {"type": "Sweater", "name": "Relaxed Knit Sweater", "price": 39.99, "sizes": ["S", "M", "L"], "colors": ["Heather Gray", "Burgundy", "Mustard"], "image": "relaxed_knit_sweater.jpg"},
+          {"type": "Shorts", "name": "Casual Denim Shorts", "price": 29.99, "sizes": ["S", "M", "L"], "colors": ["Light Blue", "Medium Wash", "Black"], "image": "casual_denim_shorts.jpg"},
+          {"type": "Hoodie", "name": "Cozy Hooded Sweatshirt", "price": 49.99, "sizes": ["M", "L", "XL"], "colors": ["Charcoal", "Navy Blue", "Olive"], "image": "cozy_hooded_sweatshirt.jpg"}
+        ]
+      }
+     
+    ]
+  }
+  

@@ -44,6 +44,11 @@ const Test2Dashboard = () => {
       icon: GoHome,
     },
     {
+      name: "Branded Shop",
+      link: "/dashboard/branded",
+      icon: GoHome,
+    },
+    {
       name: "dashboard",
       link: "/dashboard/myDashboard",
       icon: MdOutlineDashboard,
