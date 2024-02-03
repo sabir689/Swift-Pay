@@ -48,6 +48,7 @@ const Register = () => {
           const userInfo = {
             firstName,
             lastName,
+            name,
             email,
             password,
           };

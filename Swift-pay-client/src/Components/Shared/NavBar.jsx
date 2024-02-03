@@ -220,10 +220,10 @@ const Navbar = () => {
                   <summary tabIndex={0} className="btn btn-ghost btn-circle">
                     <div className="avatar">
                       <div className="rounded-full w-[40px] h-[40px] p-1">
-                        {user?.photoURL ? (
+                        {profileInfo?.photoURL ? (
                           <img
                             className=" rounded-full border-2 border-black"
-                            src={user?.photoURL}
+                            src={profileInfo?.photoURL}
                           />
                         ) : (
                           <div className="text-3xl ">
@@ -239,7 +239,7 @@ const Navbar = () => {
                   >
                     <li>
                       <a className="cursor-none font-bold">
-                        {user?.displayName}
+                        {profileInfo?.firstName}
                       </a>
                     </li>
                     <li className="">
