@@ -31,12 +31,48 @@ async function run() {
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     // offers collection
     const offerCollection = client.db("SwiftPayDb").collection("offers");
+
     // user post
     app.post("/api/users", async (req, res) => {
       const user = req.body;
+      // insert email if user doesn't exists:
+      // you can do this many ways (1. email unique, 2. upsert 3. simple checking)
+      const query = { email: user.email };
+      const existingUser = await userCollection.findOne(query);
+      if (existingUser) {
+        return res.send({ message: "user already exists", insertedId: null });
+      }
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
+
+    app.get("/api/users", async (req, res) => {
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await userCollection.find(query).toArray();
+      res.send(result);
+    });
+
+    app.patch("/api/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const item = req.body;
+      const updatedDoc = {
+        $set: {
+          firstName: item.firstName,
+          lastName: item.lastName,
+          address: item.address,
+          age: item.age,
+          gender: item.image,
+          photoURL: item.photoURL,
+        },
+      };
+      const result = await userCollection.updateOne(filter, updatedDoc);
+      res.send(result);
+    });
+
     // product get
     app.get("/api/products", async (req, res) => {
       const { search, sort } = req.query;
@@ -78,7 +114,6 @@ async function run() {
       res.send(result);
     });
 
-   
     app.delete("/api/bookmarks/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };

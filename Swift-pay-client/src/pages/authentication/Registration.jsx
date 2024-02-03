@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { PiEyeSlash, PiEye } from "react-icons/pi";
 import { Helmet } from "react-helmet-async";
 import UseAuth from "../../hooks/UseAuth";
@@ -7,7 +7,9 @@ import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
 import PageBanner from "../../Components/Shared/PageBanner";
 import SocialLogin from "./SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
@@ -41,7 +43,20 @@ const Register = () => {
     createUser(email, password)
       .then(() => {
         updateUserProfile(name).then(() => {
-          toast.success("Account created successfully!");
+          // create user entry in the database
+          const userInfo = {
+            firstName,
+            lastName,
+            email,
+            password,
+          };
+          axiosPublic.post("/api/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the database");
+              toast.success("Account created successfully!");
+              Navigate("/");
+            }
+          });
           return;
         });
       })

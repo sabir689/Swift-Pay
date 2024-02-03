@@ -6,11 +6,45 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 import logo from "../../assets/images/swiftpay logo.png";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { RxAvatar } from "react-icons/rx";
 import { AiOutlineShop } from "react-icons/ai";
-// import { IoMdLogOut } from "react-icons/io";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useUser from "../../hooks/useUser";
+import toast from "react-hot-toast";
+
 const Navbar = () => {
+  const [profileInfo, refetch] = useUser();
+
+  const axiosPublic = useAxiosPublic();
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    // const name = firstName + " " + lastName;
+    const address = form.address.value;
+    const gender = form.gender.value;
+    const photoURL = form.photoURL.value;
+    const age = form.age.value;
+
+    const updateProfileInfo = {
+      firstName,
+      lastName,
+      address,
+      age,
+      gender,
+      photoURL,
+    };
+    axiosPublic
+      .patch(`/api/users/${profileInfo._id}`, updateProfileInfo)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Updated Profile");
+        refetch();
+      });
+  };
+
   const { user, logOut } = useContext(AuthContext);
   const [color, setColor] = useState(false);
   const changeColor = () => {
@@ -211,7 +245,7 @@ const Navbar = () => {
                     <li className="">
                       <button
                         onClick={() =>
-                          document.getElementById("my_modal_1").showModal()
+                          document.getElementById("my_modal_3").showModal()
                         }
                       >
                         Profile
@@ -231,80 +265,93 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
+      <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          <div className="flex flex-col items-center justify-center h-screen dark">
-            <div className="w-full max-w-md bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-                Update profile
-              </h2>
-              <form className="flex flex-col">
-                <div className="flex space-x-4 mb-4">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <div className="bg-white p-7 rounded-md">
+            <div className="flex items-center justify-center dark">
+              <div className="bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
+                <h2 className="text-2xl text-center font-semibold text-gray-200 mb-4">
+                  Update profile
+                </h2>
+                <form onSubmit={handleUpdate} className="flex flex-col">
+                  <div className="flex space-x-4 mb-4">
+                    <input
+                      name="firstName"
+                      placeholder="First Name"
+                      defaultValue={profileInfo?.firstName}
+                      className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                      type="text"
+                    />
+                    <input
+                      name="lastName"
+                      placeholder="Last Name"
+                      defaultValue={profileInfo?.lastName}
+                      className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                      type="text"
+                    />
+                  </div>
                   <input
-                    placeholder="First Name"
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                    placeholder="Email"
+                    defaultValue={profileInfo?.email}
+                    readOnly
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                    type="email"
+                  />
+                  <input
+                    name="address"
+                    placeholder="Current address"
+                    defaultValue={profileInfo?.address}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                     type="text"
                   />
                   <input
-                    placeholder="Last Name"
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                    name="photoURL"
+                    placeholder="Your Photo Image link"
+                    defaultValue={profileInfo?.photoURL}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                     type="text"
                   />
-                </div>
-                <input
-                  placeholder="Email"
-                  className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                  type="email"
-                />
-                <input
-                  placeholder="Current address"
-                  className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                  type="text"
-                />
-                <input
-                  type="file"
-                  className="file-input rounded-lg bg-transparent border-[1px] border-gray-200 mb-5 w-full"
-                />
-                <label
-                  className="text-sm mb-2 text-gray-200 cursor-pointer"
-                  for="gender"
-                >
-                  Gender
-                </label>
-                <select
-                  className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                  id="gender"
-                >
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-                <label
-                  className="text-sm mb-2 text-gray-200 cursor-pointer"
-                  for="age"
-                >
-                  Age
-                </label>
-                <input
-                  className="bg-gray-700 text-gray-200 border-0 rounded-md p-2"
-                  id="age"
-                  type="date"
-                />
 
-                <button
-                  className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
-                  type="submit"
-                >
-                  Update
-                </button>
-              </form>
+                  <label className="text-sm mb-2 text-gray-200 cursor-pointer">
+                    Gender
+                  </label>
+                  <select
+                    name="gender"
+                    defaultValue={profileInfo?.gender}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                  >
+                    <option disabled selected>
+                      Select one
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+
+                  <label className="text-sm mb-2 text-gray-200 cursor-pointer">
+                    Age
+                  </label>
+                  <input
+                    name="age"
+                    defaultValue={profileInfo?.age}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2"
+                    type="date"
+                  />
+
+                  <button
+                    className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+                    type="submit"
+                  >
+                    Update
+                  </button>
+                </form>
+              </div>
             </div>
-          </div>
-
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn rounded-lg">Close</button>
-            </form>
           </div>
         </div>
       </dialog>
