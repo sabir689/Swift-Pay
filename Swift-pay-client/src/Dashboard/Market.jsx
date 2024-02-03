@@ -15,8 +15,8 @@ const Market = () => {
   const [sorting, setSorting] = useState(" ");
   const axiosPublic = useAxiosPublic();
   const queryClient = useQueryClient();
-  let [isOpen, setIsOpen] = useState(false)
-  const [productId, setProductId]=useState('')
+  let [isOpen, setIsOpen] = useState(false);
+  const [productId, setProductId] = useState("");
 
   // const [showAllNames, setShowAllNames] = useState({});
   // const toggleShowAllNames = (productId) => {
@@ -70,12 +70,11 @@ const Market = () => {
     const searchText = e.target.search.value;
     setSearch(searchText);
     console.log("searched");
-  }
-  const handlePay=(id)=>{
-    setIsOpen(true)
+  };
+  const handlePay = (id) => {
+    setIsOpen(true);
     setProductId(id);
-    
-  }
+  };
   return (
     <React.Fragment>
       <div>
@@ -211,7 +210,8 @@ const Market = () => {
                 </p>
                 {product?.location}
               </p>
-              <span onClick={()=>handlePay(product._id)}
+              <span
+                onClick={() => handlePay(product._id)}
                 // onClick={() =>
                 //   document.getElementById("my_modal_1").showModal()
                 // }
@@ -220,12 +220,11 @@ const Market = () => {
                 Pay
               </span>{" "}
             </div>{" "}
-           
           </div>
         ))}
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <Payment setIsOpen={setIsOpen} isOpen={isOpen} productId={productId}/>
+      <Payment setIsOpen={setIsOpen} isOpen={isOpen} productId={productId} />
     </React.Fragment>
   );
 };
