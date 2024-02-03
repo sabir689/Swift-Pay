@@ -40,11 +40,14 @@ async function run() {
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
-    // product get
+    // product get with(search, filter ,category)
     app.get("/api/products", async (req, res) => {
       let query = {};
+      const category = req.query.category;
       const { search, sort } = req.query;
-
+      if (category) {
+        query.Category = category;
+      }
       // Check if search is defined and it's a string
       if (search && typeof search === "string") {
         query.productName = { $regex: search, $options: "i" };
@@ -63,7 +66,6 @@ async function run() {
         .toArray();
       res.send(result);
     });
-
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
@@ -96,12 +98,12 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
-    app.delete('/api/bookmarks/:id', async (req, res) => {
+    app.delete("/api/bookmarks/:id", async (req, res) => {
       const id = req.params.id;
-      const query = { _id: new ObjectId(id) }
+      const query = { _id: new ObjectId(id) };
       const result = await bookmarkCollection.deleteOne(query);
       res.send(result);
-    })
+    });
 
     // payment post
     app.post("/order", async (req, res) => {
