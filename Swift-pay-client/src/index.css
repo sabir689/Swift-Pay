@@ -177,4 +177,7 @@
     transform: translateY(-70px);
   }
 }
-/* search css */
+/* dropdown */
+.drapdown:hover .dropdown-menu {
+  display: block;
+}
