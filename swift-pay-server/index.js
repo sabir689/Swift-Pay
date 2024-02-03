@@ -33,6 +33,7 @@ async function run() {
     // product collection
     const productCollection = client.db("SwiftPayDb").collection("products");
     const orderCollection = client.db("SwiftPayDb").collection("order");
+    const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     // user post
     app.post("/api/users", async (req, res) => {
       const user = req.body;
@@ -85,7 +86,17 @@ async function run() {
       const result = await bookmarkCollection.insertOne(bookmarks);
       res.send(result);
     });
-
+    app.get("/api/bookmarks", async (req, res) => {
+      const cursor = bookmarkCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+    app.delete('/api/bookmarks/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) }
+      const result = await bookmarkCollection.deleteOne(query);
+      res.send(result);
+    })
 
     // payment post
     app.post("/order", async (req, res) => {
