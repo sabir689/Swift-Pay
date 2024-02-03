@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-// import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import UseAuth from "../hooks/UseAuth";
-// import { useQuery } from "@tanstack/react-query";
 
-const Payment = ({isOpen, setIsOpen, productId}) => {
-  //   const axiosPublic = useAxiosPublic();
-  const { user } = UseAuth();
+const Payment = () => {
+  const axiosPublic = useAxiosPublic();
+  const { id } = useParams();
+
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ const Payment = ({isOpen, setIsOpen, productId}) => {
     formState: { errors },
   } = useForm();
 
-  //   
+  const { user } = UseAuth();
   //   const { data: products = [] } = useQuery({
   //     queryKey: ["products"],
   //     queryFn: async () => {
@@ -25,16 +25,17 @@ const Payment = ({isOpen, setIsOpen, productId}) => {
   //   });
   //   console.log(products);
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/api/products`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, [id]);
 
   const onSubmit = async(data) => {
     console.log(data);
+
     const orderInfo = {
       email: user.email,
       displayName: user.displayName,
@@ -45,24 +46,33 @@ const Payment = ({isOpen, setIsOpen, productId}) => {
       productId:productId,
       productInfo: data
     }
-    console.log(orderInfo);
+      productId: id,
+    };
 
+    console.log(orderInfo);
     // axiosPublic.post("/order", orderInfo).then((res) => {
     //   if (res.data.insertedId) {
     //     console.log("user added to the database");
     //   }
     // });
 
+    // data.productId = id;
+
     fetch("http://localhost:5000/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),
     });
+    // fetch("http://localhost:5000/order", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(data),
+    // });
   };
 
   return (
     <div>
-      <dialog open={isOpen} onClose={() => setIsOpen(false)} id="my_modal_1" className="modal">
+      <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <form
             onSubmit={handleSubmit(onSubmit)}
