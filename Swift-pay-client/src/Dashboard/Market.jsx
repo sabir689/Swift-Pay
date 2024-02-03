@@ -10,6 +10,7 @@ import { AuthContext } from "../provider/AuthProvider";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
+  const [visible, setVisible] = useState(12);
   const { user } = useContext(AuthContext);
   const [search, setSearch] = useState(" ");
   const [sorting, setSorting] = useState(" ");
@@ -75,6 +76,12 @@ const Market = () => {
     setIsOpen(true);
     setProductt(id);
   };
+  // show more
+  const showMore = () => {
+    // Calculate the new value of visible based on the current length of products
+    setVisible((prevValue) => Math.min(prevValue + 12, products.length));
+  };
+
   return (
     <React.Fragment>
       <div>
@@ -163,7 +170,7 @@ const Market = () => {
 
       {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        {products.map((product) => (
+        {products.slice(0, visible).map((product) => (
           <div
             key={product.id}
             className="w-72 mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
@@ -222,6 +229,18 @@ const Market = () => {
             </div>{" "}
           </div>
         ))}
+      </div>
+      <div className="text-end">
+        <div className="text-end">
+          {visible < products.length && (
+            <button
+              onClick={showMore}
+              className="my-5 btn rounded-sm py-1 px-4 text-sm border-[1px] border-gray-800 text-gray-800 bg-transparent"
+            >
+              Show more
+            </button>
+          )}
+        </div>
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} />
