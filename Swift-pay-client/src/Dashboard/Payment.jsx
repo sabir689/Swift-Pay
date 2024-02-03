@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import UseAuth from "../hooks/UseAuth";
 
-const Payment = () => {
-  const axiosPublic = useAxiosPublic();
+const Payment = ({ isOpen, setIsOpen, productt }) => {
+  // const axiosPublic = useAxiosPublic();
   const { id } = useParams();
 
   const {
@@ -25,26 +25,27 @@ const Payment = () => {
   //   });
   //   console.log(products);
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, [id]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/api/products/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, [id]);
 
   const onSubmit = (data) => {
     console.log(data);
-
+    // change
     const orderInfo = {
       email: user.email,
       displayName: user.displayName,
-      image: data.image,
+      image: productt?.image,
       photoURL: user.photoURL,
-      title: data.title,
-      description: data.description,
-      price: data.price,
-      productId: id,
+      productName: productt?.productName,
+      description: productt.description,
+      price: productt?.price,
+      productId: productt?._id,
+      userInfo: data,
     };
 
     console.log(orderInfo);
@@ -56,16 +57,21 @@ const Payment = () => {
 
     // data.productId = id;
 
-    // fetch("http://localhost:5000/order", {
-    //   method: "POST",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(data),
-    // });
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(orderInfo),
+    });
   };
 
   return (
     <div>
-      <dialog id="my_modal_1" className="modal">
+      <dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        id="my_modal_1"
+        className="modal"
+      >
         <div className="modal-box">
           <form
             onSubmit={handleSubmit(onSubmit)}
