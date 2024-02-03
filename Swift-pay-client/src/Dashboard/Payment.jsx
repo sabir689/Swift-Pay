@@ -46,8 +46,7 @@ const Payment = () => {
       productId:productId,
       productInfo: data
     }
-      productId: id,
-    };
+  
 
     console.log(orderInfo);
     // axiosPublic.post("/order", orderInfo).then((res) => {
