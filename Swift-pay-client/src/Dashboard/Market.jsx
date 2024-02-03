@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Payment from "./Payment";
 
 import React, { useContext, useEffect, useState } from "react";
