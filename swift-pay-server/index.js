@@ -31,8 +31,7 @@ async function run() {
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     const offerCollection = client.db("SwiftPayDb").collection("offers");
     // offers collection
-    const offerCollection = client.db("SwiftPayDb").collection("offers");
-    // oder collection
+   
     const orderCollection = client.db("SwiftPayDb").collection("order");
 
     // user post
