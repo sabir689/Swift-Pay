@@ -23,7 +23,6 @@ const Login = () => {
 
         return;
       })
-
       .catch((error) => {
         toast.error("Invalid gmail, Please check your credentials");
         setLoading(false);

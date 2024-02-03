@@ -73,8 +73,7 @@ const Market = () => {
   }
   const handlePay=(id)=>{
     setIsOpen(true)
-    setProductId(id);
-    
+    setProductId(id)
   }
   return (
     <React.Fragment>
