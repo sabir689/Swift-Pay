@@ -89,7 +89,7 @@ async function run() {
     });
 
     // Get Product for Different User
-    app.get('/my-products', async(req, res)=>{
+    app.get('/myproducts', async(req, res)=>{
       var query={}
       if(req.query?.email){
         query={email:res.req?.email}

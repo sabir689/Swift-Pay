@@ -23,6 +23,7 @@ import SellPost from "../Dashboard/SellPost";
 import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
 import Branded from "../Dashboard/Branded/Branded";
+import Products from "../Dashboard/myProducts/Products";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -123,6 +124,11 @@ export const router = createBrowserRouter([
       {
         path: "saved",
         element: <Saved></Saved>,
+      },
+      // my products page
+      {
+        path: "my-products",
+        element: <Products/>,
       },
     ],
   },

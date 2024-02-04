@@ -53,6 +53,11 @@ const Test2Dashboard = () => {
       link: "/dashboard/myDashboard",
       icon: MdOutlineDashboard,
     },
+    {
+      name: "My Products",
+      link: "/dashboard/my-products",
+      icon: MdOutlineDashboard,
+    },
     { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
     { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
     { name: "messages", link: "/", icon: FiMessageSquare },
