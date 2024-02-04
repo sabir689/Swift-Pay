@@ -90,6 +90,11 @@ async function run() {
 
     // product get
     app.get("/api/products", async (req, res) => {
+      const products = req.body;
+      const result = await productCollection.find(products).toArray();
+      res.send(result);
+    });
+    app.get("/api/products", async (req, res) => {
       let query = {};
       const category = req.query.category;
       const { search, sort } = req.query;
