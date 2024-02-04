@@ -13,7 +13,7 @@ const Saved = () => {
   const { data: bookmarks = [], refetch } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/api/bookmarks?email=${user.email}`);
+      const res = await axiosPublic.get(`/api/bookmarks?email=${user?.email}`);
       return res.data;
     },
   });
