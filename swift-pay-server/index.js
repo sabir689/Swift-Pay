@@ -136,8 +136,11 @@ async function run() {
       res.send(result);
     });
     app.get("/api/bookmarks", async (req, res) => {
-      const cursor = bookmarkCollection.find();
-      const result = await cursor.toArray();
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await bookmarkCollection.find(query).toArray();
       res.send(result);
     });
     app.delete("/api/bookmarks/:id", async (req, res) => {

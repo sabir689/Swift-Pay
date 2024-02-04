@@ -172,6 +172,7 @@ const Market = () => {
                   onChange={(e) => setSorting(e.target.value)}
                   className="select rounded-md join-item bg-transparent border-[1px] border-gray-800"
                 >
+             
                   <option value="lowToHigh">Low to High</option>
                   <option value="highToLow">High to Low</option>
                 </select>
