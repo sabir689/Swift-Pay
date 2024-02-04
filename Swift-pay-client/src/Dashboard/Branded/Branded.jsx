@@ -17,7 +17,7 @@ const Branded = () => {
                 <title>SwiftNess | SeeBrands</title>
             </Helmet>
 
-            <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+            <Tabs  defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList>
                     <Tab>Apparel</Tab>
                     <Tab>Electronics</Tab>

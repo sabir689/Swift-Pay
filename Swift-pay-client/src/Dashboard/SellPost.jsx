@@ -14,27 +14,32 @@ const SellPost = () => {
   } = useForm();
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
+
   const onSubmit = async (data) => {
+    // console.log(date);
     const imageFile = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
         "content-type": "multipart/form-data",
       },
     });
-    if (res.data.success) {
+    if (res?.data?.success) {
       console.log(data);
       const productData = {
         name: data.name,
+        date: new Date().toDateString(),
         productName: data.productName,
-        email: data.email,
+        email: data.user?.email,
         number: data.number,
         price: data.price,
         description: data.description,
         address: data.address,
-        image: res.data.data.display_url,
+        image: res?.data.data.display_url,
+        category: data.category,
       };
+      console.log(productData.data);
       const postProduct = await axiosPublic.post("/api/products", productData);
-      if (postProduct.data.insertedId) {
+      if (postProduct.data?.insertedId) {
         toast.success("Product posted successfully!");
       }
       console.log(postProduct.data);
@@ -53,6 +58,7 @@ const SellPost = () => {
     //     console.log(res.data);
     //   });
   };
+
   return (
     <div className="h-screen flex justify-center items-center mt-10">
       <div>
@@ -96,12 +102,13 @@ const SellPost = () => {
             </div>
             <div className="grid gap-6 w-full">
               <input
-                {...register("email")}
-                className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm"
+                // {...register("email")}
+                className="hidden text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm cursor-not-allowed"
                 type="Email"
                 placeholder="your email"
                 id="Email"
                 name="email"
+                value={user?.email}
               />
               <div className="flex gap-4">
                 <textarea
@@ -144,15 +151,18 @@ const SellPost = () => {
                 {...register("category")}
                 className="select text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300 focus:shadow-sm focus:border-[#49108B] py-3 px-3 mt-2 w-full placeholder:text-sm"
               >
-                <option className="text-sm">Technology</option>
-                <option className="text-sm">Phone</option>
-                <option className="text-sm">Computer</option>
-                <option className="text-sm">High</option>
-                <option className="text-sm">High</option>
-                <option className="text-sm">High</option>
-                <option className="text-sm">High</option>
-                <option className="text-sm">High</option>
-                <option className="text-sm">High</option>
+                <option className="text-sm">Electronics</option>
+                <option className="text-sm">Photography</option>
+                <option className="text-sm">Fitness</option>
+                <option className="text-sm">Cafe Corner</option>
+                <option className="text-sm">Fashion</option>
+                <option className="text-sm">Art & Design</option>
+                <option className="text-sm">Outdoor</option>
+                <option className="text-sm">Appliances</option>
+                <option className="text-sm">Home & security</option>
+                <option className="text-sm">Home & Living </option>
+                <option className="text-sm">Home Automation</option>
+                <option className="text-sm">Home & Kitchen</option>
               </select>
             </div>
             <button

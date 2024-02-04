@@ -33,6 +33,7 @@ const Market = () => {
   // };
   const { data: products = [] } = useQuery({
     queryKey: ["products", search, sorting],
+
     queryFn: async () => {
       const res = await axiosPublic.get(
         `/api/products?search=${search}&sort=${sorting}&category=${category}`
@@ -41,6 +42,7 @@ const Market = () => {
       return res.data;
     },
   });
+
   const { data: savedProducts = [] } = useQuery({
     queryKey: ["savedProducts"],
     queryFn: async () => {
@@ -69,9 +71,6 @@ const Market = () => {
     });
   };
 
-  // search
-  // const [searchProducts, setSearchProducts] = useState([]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const searchText = e.target.search.value;
@@ -87,6 +86,7 @@ const Market = () => {
     // Calculate the new value of visible based on the current length of products
     setVisible((prevValue) => Math.min(prevValue + 12, products.length));
   };
+
   return (
     <React.Fragment>
       <div>
@@ -146,7 +146,9 @@ const Market = () => {
                     className="select w-40 hover:text-purple-800 px-4 py-2 join-item bg-transparent rounded-md border-[1px] border-gray-800"
                   >
                     <option value="">All</option>
-                    <option value="Electronics">Electronics</option>
+                    <option className="" value="Electronics">
+                      Electronics
+                    </option>
                     <option value="Photography">Photography</option>
                     <option value="Fitness">Fitness</option>
                     <option value="Cafe Corner">Cafe Corner</option>
@@ -172,6 +174,7 @@ const Market = () => {
                   onChange={(e) => setSorting(e.target.value)}
                   className="select rounded-md join-item bg-transparent border-[1px] border-gray-800"
                 >
+             
                   <option value="lowToHigh">Low to High</option>
                   <option value="highToLow">High to Low</option>
                 </select>
@@ -187,62 +190,68 @@ const Market = () => {
           const newCategory = !category || product.category === category;
           if (newCategory) {
             return (
-              <div
-                key={product.id}
-                className="w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]  cursor-pointer"
-              >
+              <div>
                 <div
-                  className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${product?.image})` }}
+                  key={product.id}
+                  className="w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]  cursor-pointer"
                 >
-                  {savedProducts.find(
-                    (savedProduct) => savedProduct.product_id === product._id
-                  ) ? (
-                    <div
-                      onClick={() => handleBookmark(product)}
-                      className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center"
-                    >
-                      <FaBookmark className="text-xl " />
-                      <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
-                        SAVED
-                      </p>
-                    </div>
-                  ) : (
-                    <div
-                      onClick={() => handleBookmark(product)}
-                      className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
-                    >
-                      <FaBookmark className="" />
-                    </div>
-                  )}
-                </div>
-                <div className="p-4">
-                  <div className="">
-                    <h1 className="text-gray-600 font-medium">
-                      {product?.productName}
-                    </h1>
-                    <button className="text-gray-500 hover:text-gray-900">
-                      {" "}
-                      ${product?.price}
-                    </button>{" "}
-                  </div>{" "}
-                  <p className="text-gray-400 text-sm my-1">{product?.name}</p>
-                  <p className="text-gray-400 text-sm my-1 flex items-center">
-                    <p>
-                      <CiLocationOn className="text-blue-400" />{" "}
-                    </p>
-                    {product?.location}
-                  </p>
-                  <span
-                    onClick={() => handlePay(product)}
-                    // onClick={() =>
-                    //   document.getElementById("my_modal_1").showModal()
-                    // }
-                    className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
+                  <div
+                    className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${product?.image})` }}
                   >
-                    Pay
-                  </span>{" "}
-                </div>{" "}
+                    {savedProducts.find(
+                      (savedProduct) => savedProduct.product_id === product._id
+                    ) ? (
+                      <div
+                        onClick={() => handleBookmark(product)}
+                        className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center"
+                      >
+                        <FaBookmark className="text-xl " />
+                        <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
+                          SAVED
+                        </p>
+                      </div>
+                    ) : (
+                      <div
+                        onClick={() => handleBookmark(product)}
+                        className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
+                      >
+                        <FaBookmark className="" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <div className="">
+                      <h1 className="text-gray-600 font-medium">
+                        {product?.productName.length > 24
+                          ? `${product?.productName.slice(0, 24)}...`
+                          : product?.productName}
+                      </h1>
+                      <button className="text-gray-500 hover:text-gray-900">
+                        {" "}
+                        ${product?.price}
+                      </button>{" "}
+                    </div>{" "}
+                    <p className="text-gray-400 text-sm my-1">
+                      {product?.name}
+                    </p>
+                    <p className="text-gray-400 text-sm my-1 flex items-center">
+                      <p>
+                        <CiLocationOn className="text-blue-400" />{" "}
+                      </p>
+                      {product?.location}
+                    </p>
+                    <span
+                      onClick={() => handlePay(product)}
+                      // onClick={() =>
+                      //   document.getElementById("my_modal_1").showModal()
+                      // }
+                      className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
+                    >
+                      Pay
+                    </span>{" "}
+                  </div>{" "}
+                </div>
               </div>
             );
           }
