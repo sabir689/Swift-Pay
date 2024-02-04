@@ -91,13 +91,15 @@ async function run() {
     // product get
     app.get("/api/products", async (req, res) => {
       let query = {};
+      const category = req.query.category;
       const { search, sort } = req.query;
-
+      if (category) {
+        query.Category = category;
+      }
       // Check if search is defined and it's a string
       if (search && typeof search === "string") {
         query.productName = { $regex: search, $options: "i" };
       }
-
       const sortOptions = {};
       if (sort === "lowToHigh") {
         sortOptions.price = 1;

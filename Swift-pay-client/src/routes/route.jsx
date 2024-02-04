@@ -22,6 +22,7 @@ import Test2Dashboard from "../Dashboard/Test2Dashboard";
 import SellPost from "../Dashboard/SellPost";
 import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
+import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
 export const router = createBrowserRouter([
   {
@@ -118,11 +119,15 @@ export const router = createBrowserRouter([
       {
         path: "branded",
         element: <Branded></Branded>,
-        
       },
       {
         path: "saved",
         element: <Saved></Saved>,
+      },
+      {
+        path: "details/:id",
+        element: <Details></Details>,
+        loader: () => fetch(`http://localhost:5000/api/products`),
       },
     ],
   },
