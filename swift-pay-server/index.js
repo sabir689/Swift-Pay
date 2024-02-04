@@ -75,6 +75,16 @@ async function run() {
       res.send(result);
     });
 
+    // Get Product for Different User
+    app.get('/my-products', async(req, res)=>{
+      var query={}
+      if(req.query?.email){
+        query={email:res.req?.email}
+      }
+      const result= await productCollection.find(query).toArray()
+      res.send(result)
+    })
+
     // product get
     app.get("/api/products", async (req, res) => {
       const { search, sort } = req.query;
