@@ -117,7 +117,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "branded",
-        element: <Branded></Branded>
+        element: <Branded></Branded>,
+        
       },
       {
         path: "saved",

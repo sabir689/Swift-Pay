@@ -3,6 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Apparel from './Apparel';
+import Electronics from './Electronics';
+import Beauty from './Beauty';
+import Living from './Living';
+import Sports from './Sports';
+
 
 const Branded = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -24,16 +29,16 @@ const Branded = () => {
                    <Apparel></Apparel>
                 </TabPanel>
                 <TabPanel>
-                    Electronics
+                   <Electronics></Electronics>
                 </TabPanel>
                 <TabPanel>
-                    Beauty and Personal Care
+                    <Beauty></Beauty>
                 </TabPanel>
                 <TabPanel>
-                    Home and Living
+                   <Living></Living>
                 </TabPanel>
                 <TabPanel>
-                    Sports and Outdoors
+                   <Sports></Sports>
                 </TabPanel>
             </Tabs>
         </div>

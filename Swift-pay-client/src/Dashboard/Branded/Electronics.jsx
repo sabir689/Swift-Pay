@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 
-const Apparel = () => {
+const Electronics = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
@@ -22,18 +22,18 @@ const Apparel = () => {
       
       {brands.map((brand) => (
         <div key={brand._id}>
-          {brand.apparelBrands.map((apparelBrand) => (
-            <div key={apparelBrand.brandId}>
-              <h2 className='text-3xl'>{apparelBrand.brandName}</h2>
+          {brand.electronicsBrands.map((electronicsBrand) => (
+            <div key={electronicsBrand.brandId}>
+              <h2 className='text-3xl'>{electronicsBrand.brandName}</h2>
               <div className=' grid grid-cols-3'>
-                {apparelBrand.products.map((product) => (
+                {electronicsBrand.products.map((product) => (
                   <div className='border-2 mr-6 mb-6' key={product.productId}>
                     <img src={product.image} alt={product.name} style={{ maxWidth: '100px' }} />
                     <h3>{product.name}</h3>
                     <p>Type: {product.type}</p>
                     <p>Price: ${product.price}</p>
-                    <p>Sizes: {product.sizes.join(', ')}</p>
-                    <p>Colors: {product.colors.join(', ')}</p>
+                    {/* <p>Sizes: {product.sizes.join(', ')}</p>
+                    <p>Colors: {product.colors.join(', ')}</p> */}
                     
                   </div>
                 ))}
@@ -46,4 +46,4 @@ const Apparel = () => {
   );
 };
 
-export default Apparel;
+export default Electronics;

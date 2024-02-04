@@ -33,8 +33,13 @@ async function run() {
     // offers collection
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
-    const orderCollection = client.db("SwiftPayDb").collection("order");
+    const orderCollection = client.db("SwiftPayDb").collection("orders");
 
+    app.post("/api/orders", async (req, res) => {
+      const orders = req.body;
+      const result = await orderCollection.insertOne(orders);
+      res.send(result);
+    });
 
     app.get("/api/brands", async (req, res) => {
       const cursor = brandCollection.find();
