@@ -23,6 +23,7 @@ import SellPost from "../Dashboard/SellPost";
 import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
+import Branded from "../Dashboard/Branded/Branded";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
       {
         path: "market",
         element: <Market></Market>,
+      },
+      {
+        path: "branded",
+        element: <Branded></Branded>,
       },
       {
         path: "saved",
