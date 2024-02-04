@@ -4,7 +4,7 @@
 import Payment from "./Payment";
 
 import React, { useContext, useEffect, useState } from "react";
-import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
+import { CiFilter, CiLocationOn, CiSearch, CiUser } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaBookmark, FaSearch } from "react-icons/fa";
@@ -53,7 +53,7 @@ const Market = () => {
 
   const handleBookmark = (product) => {
     const Bookmark = {
-      email: user.email,
+      email: user?.email,
       product_id: product._id,
       productName: product.productName,
       category: product.category,
@@ -192,7 +192,7 @@ const Market = () => {
               <div>
                 <div
                   key={product.id}
-                  className="w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]  cursor-pointer"
+                  className="min-w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]"
                 >
                   <div
                     className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
@@ -201,11 +201,8 @@ const Market = () => {
                     {savedProducts.find(
                       (savedProduct) => savedProduct.product_id === product._id
                     ) ? (
-                      <div
-                        onClick={() => handleBookmark(product)}
-                        className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center"
-                      >
-                        <FaBookmark className="text-xl " />
+                      <div className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center">
+                        <FaBookmark className="text-xl" />
                         <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
                           SAVED
                         </p>
@@ -213,7 +210,7 @@ const Market = () => {
                     ) : (
                       <div
                         onClick={() => handleBookmark(product)}
-                        className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
+                        className="w-8 h-9 cursor-pointer bg-gray-200 rounded flex items-center justify-center text-blue-400"
                       >
                         <FaBookmark className="" />
                       </div>
@@ -222,7 +219,7 @@ const Market = () => {
                   <div className="p-4">
                     <div className="">
                       <h1 className="text-gray-600 font-medium">
-                        {product?.productName.length > 24
+                        {product?.productName?.length > 24
                           ? `${product?.productName.slice(0, 24)}...`
                           : product?.productName}
                       </h1>
@@ -231,7 +228,8 @@ const Market = () => {
                         ${product?.price}
                       </button>{" "}
                     </div>{" "}
-                    <p className="text-gray-400 text-sm my-1">
+                    <p className="text-gray-400 text-sm my-1 flex items-center">
+                      <CiUser className="text-gray-400" />
                       {product?.name}
                     </p>
                     <p className="text-gray-400 text-sm my-1 flex items-center">
@@ -240,15 +238,11 @@ const Market = () => {
                       </p>
                       {product?.location}
                     </p>
-                    <span
-                      onClick={() => handlePay(product)}
-                      // onClick={() =>
-                      //   document.getElementById("my_modal_1").showModal()
-                      // }
-                      className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
-                    >
-                      Pay
-                    </span>{" "}
+                    <Link to={`/dashboard/details/${product._id}`}>
+                      <button className="bg-purple-500 text-sm text-white px-4 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+                        Details
+                      </button>
+                    </Link>
                   </div>{" "}
                 </div>
               </div>
@@ -273,7 +267,7 @@ const Market = () => {
         </div>
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} />
+      {/* <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} /> */}
     </React.Fragment>
   );
 };
