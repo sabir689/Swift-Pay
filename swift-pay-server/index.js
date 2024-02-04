@@ -29,10 +29,23 @@ async function run() {
     const productCollection = client.db("SwiftPayDb").collection("products");
     // bookmark collection
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
-    // offers collection
     const offerCollection = client.db("SwiftPayDb").collection("offers");
-    // oder collection
-    const orderCollection = client.db("SwiftPayDb").collection("order");
+    // offers collection
+    // brand collection
+    const brandCollection = client.db("SwiftPayDb").collection("brands");
+    const orderCollection = client.db("SwiftPayDb").collection("orders");
+
+    app.post("/api/orders", async (req, res) => {
+      const orders = req.body;
+      const result = await orderCollection.insertOne(orders);
+      res.send(result);
+    });
+
+    app.get("/api/brands", async (req, res) => {
+      const cursor = brandCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
 
     // user post
     app.post("/api/users", async (req, res) => {
@@ -87,16 +100,21 @@ async function run() {
 
     // product get
     app.get("/api/products", async (req, res) => {
+      let query = {};
       const { search, sort } = req.query;
-      const query = {
-        productName: { $regex: search, $options: "i" },
-      };
+
+      // Check if search is defined and it's a string
+      if (search && typeof search === "string") {
+        query.productName = { $regex: search, $options: "i" };
+      }
+
       const sortOptions = {};
       if (sort === "lowToHigh") {
         sortOptions.price = 1;
       } else if (sort === "highToLow") {
         sortOptions.price = -1;
       }
+
       const result = await productCollection
         .find(query)
         .sort(sortOptions)

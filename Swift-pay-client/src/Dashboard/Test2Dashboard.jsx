@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -40,6 +41,11 @@ const Test2Dashboard = () => {
     {
       name: "Home",
       link: "/",
+      icon: GoHome,
+    },
+    {
+      name: "Branded Shop",
+      link: "/dashboard/branded",
       icon: GoHome,
     },
     {

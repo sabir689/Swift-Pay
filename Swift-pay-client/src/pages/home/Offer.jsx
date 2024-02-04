@@ -2,11 +2,12 @@
 import { Link } from "react-router-dom";
 import Container from "../../Components/Shared/Container";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Offer = () => {
-  const { data: offers = [] } = useQuery({
+  const { data: Offers = [] } = useQuery({
     queryKey: ["offers"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/api/offers");
+      const res = await useAxiosPublic.get("/api/offers");
       return res.data;
     },
   });
