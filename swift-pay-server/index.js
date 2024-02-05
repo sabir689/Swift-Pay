@@ -104,16 +104,16 @@ async function run() {
       try {
         let query = {};
         const category = req.query.category;
-        const { search, sort } = req.query;
+        const { sort } = req.query;
 
         if (category) {
           query.Category = category;
         }
 
         // Check if search is defined and it's a string
-        if (search && typeof search === "string") {
-          query.productName = { $regex: search, $options: "i" };
-        }
+        // if (search && typeof search === "string") {
+        //   query.productName = { $regex: search, $options: "i" };
+        // }
 
         const sortOptions = {};
 
