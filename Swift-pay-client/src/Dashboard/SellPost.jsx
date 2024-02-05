@@ -41,7 +41,9 @@ const SellPost = () => {
       console.log(productData.data);
       const postProduct = await axiosPublic.post("/api/products", productData);
       if (postProduct.data?.insertedId) {
-        toast.success("Product posted successfully!");
+        toast.success("Product posted successfully!", {
+          position: "bottom-right", // Set the position to bottom-right
+        });
         queryClient.invalidateQueries([]);
       }
       console.log(postProduct.data);
@@ -62,7 +64,7 @@ const SellPost = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-10 border-[1px] w-[500px] py-8 rounded-md mx-auto">
+    <div className="flex justify-center items-center mt-10 border-[1px] h-[800px] border-gray-300 w-[500px] py-10 px-8 rounded-lg mx-auto">
       <div>
         <p className="text-start ml-7 mb-5 text-[#49108B] font-bold text-4xl">
           Sell product
@@ -163,13 +165,14 @@ const SellPost = () => {
                 <option className="text-sm">Home & Kitchen</option>
               </select>
             </div>
-            <button
-              type="submit"
-              className="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-[#21251f] border-[1px] border-black rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
-            >
-              {" "}
-              Sell
-            </button>
+            <div className="text-end mt-4">
+              <button
+                type="submit"
+                className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-purple-600  border-gray-900 rounded-full inline-flex hover:bg-transparent hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+              >
+                Sell
+              </button>
+            </div>
           </div>
         </form>
       </div>
