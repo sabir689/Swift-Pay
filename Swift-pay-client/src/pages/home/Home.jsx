@@ -30,7 +30,7 @@ const Home = () => {
   return (
     // <div>Home</div>
     <div className="">
-      <div className="mt-20 mb-10 bg-purple-200 rounded-lg mx-2">
+      <div className="mt-20 mb-10 rounded-lg mx-2">
         <Banner></Banner>
       </div>
       <div className="mt-10 mb-10">

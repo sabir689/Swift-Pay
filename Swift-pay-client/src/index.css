@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* stroke text */
+.stroke-text {
+  -webkit-text-fill-color: transparent; /* This makes the text transparent */
+  -webkit-text-stroke-width: 1px; /* Width of the stroke */
+  -webkit-text-stroke-color: #000; /* Color of the stroke */
+}
+.shadow-text {
+  text-shadow: 2px 1px 10px rgba(0, 0, 0, 0.55);
+}
 /* banner button */
 .batton {
   position: relative;
