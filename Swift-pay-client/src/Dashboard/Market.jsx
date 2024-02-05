@@ -38,7 +38,6 @@ const Market = () => {
       const res = await axiosPublic.get(
         `/api/products?search=${search}&sort=${sorting}&category=${category}`
       );
-      queryClient.invalidateQueries("savedProducts");
       return res.data;
     },
   });
@@ -46,8 +45,8 @@ const Market = () => {
   const { data: savedProducts = [] } = useQuery({
     queryKey: ["savedProducts"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/api/bookmarks?email=${user.email}`);
-      return res.data;
+      const res = await axiosPublic.get(`/api/bookmarks?email=${user?.email}`);
+      return res?.data;
     },
   });
 
@@ -64,7 +63,7 @@ const Market = () => {
     };
     axiosPublic.post("/api/bookmarks", Bookmark).then((res) => {
       console.log(res.data);
-      if (res.data.insertedId) {
+      if (res?.data?.insertedId) {
         toast.success("Added to Bookmarks");
         queryClient.invalidateQueries("savedProducts");
       }
@@ -143,23 +142,81 @@ const Market = () => {
                     id="category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="select w-40 hover:text-purple-800 px-4 py-2 join-item bg-transparent rounded-md border-[1px] border-gray-800"
+                    className="select w-40 bg-purple-400 border-none text-white  hover:text-purple-800 px-4 py-2 join-item bg-transparent rounded-md border-gray-800"
                   >
                     <option value="">All</option>
-                    <option className="" value="Electronics">
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Electronics"
+                    >
                       Electronics
                     </option>
-                    <option value="Photography">Photography</option>
-                    <option value="Fitness">Fitness</option>
-                    <option value="Cafe Corner">Cafe Corner</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Art & Design">Art & Design</option>
-                    <option value="Outdoor">Outdoor</option>
-                    <option value="Appliances">Appliances</option>
-                    <option value="Home Security">Home Security</option>
-                    <option value="Home & Living">Home & Living</option>
-                    <option value="Home Automation">Home Automation</option>
-                    <option value="Home & Kitchen">Home & Kitchen</option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Photography"
+                    >
+                      Photography
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Fitness"
+                    >
+                      Fitness
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Cafe Corner"
+                    >
+                      Cafe Corner
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Fashion"
+                    >
+                      Fashion
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Art & Design"
+                    >
+                      Art & Design
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Outdoor"
+                    >
+                      Outdoor
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Appliances"
+                    >
+                      Appliances
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home Security"
+                    >
+                      Home Security
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home & Living"
+                    >
+                      Home & Living
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home Automation"
+                    >
+                      Home Automation
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home & Kitchen"
+                    >
+                      Home & Kitchen
+                    </option>
                   </select>
                 </div>
               </div>
@@ -186,7 +243,7 @@ const Market = () => {
 
       {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        {products.slice(0, visible).map((product) => {
+        {products?.slice(0, visible).map((product) => {
           const newCategory = !category || product.category === category;
           if (newCategory) {
             return (
@@ -199,7 +256,7 @@ const Market = () => {
                     className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
                     style={{ backgroundImage: `url(${product?.image})` }}
                   >
-                    {savedProducts.find(
+                    {savedProducts?.find(
                       (savedProduct) => savedProduct.product_id === product._id
                     ) ? (
                       <div className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center">
