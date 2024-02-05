@@ -5,7 +5,7 @@ import texty from "../../assets/animations/Vk1XaZm3ys (1).json";
 const Banner = () => {
   return (
     <div
-      className="bg-center bg-cover relative"
+      className="bg-center bg-cover relative bg-fixed"
       style={{ backgroundImage: `url(${bannerImage})` }}
     >
       <div className="hero min-h-screen">

@@ -81,14 +81,6 @@ const Saved = () => {
                 </p>
                 {product?.location}
               </p>
-              <span
-                onClick={() =>
-                  document.getElementById("my_modal_1").showModal()
-                }
-                className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
-              >
-                Pay
-              </span>{" "}
             </div>{" "}
           </div>
         ))}

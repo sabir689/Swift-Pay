@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
+import { TbCategory } from "react-icons/tb";
 import { useLoaderData } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
+import Payment from "../../Dashboard/Payment";
 
 const Details = () => {
   const { id } = useParams();
   const [showData, setShowData] = useState(null);
+  let [isOpen, setIsOpen] = useState(false);
+  const [productt, setProductt] = useState("");
   const products = useLoaderData();
   const { Name } = products;
   console.log(products);
@@ -23,30 +27,27 @@ const Details = () => {
   console.log(showData);
   return (
     <div>
-      <p>details</p>
       {showData && (
-        <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <div className="my-10 block rounded-lg p-4 shadow-sm shadow-indigo-100">
           <img
-            className="object-cover object-center w-full"
+            alt="Home"
             src={showData?.image}
+            className="w-full rounded-md object-cover object-center"
           />
 
-          <div className="p-6">
-            <div>
-              <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
-                {showData?.productName}
-              </span>
-              <a className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white">
-                $ {showData?.price}
-              </a>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                {showData?.description}
-              </p>
-            </div>
+          <div className="mt-2">
+            <dl>
+              <div>
+                <dt className="sr-only">Price</dt>
 
-            <div className="mt-4">
-              <div className="flex flex-col">
-                <div className="flex items-center">
+                <dd className="text-xl font-medium text-gray-500">
+                  $ <span>{showData?.price}</span>
+                </dd>
+              </div>
+
+              <div>
+                <dd className="font-medium mb-5">{showData?.productName}</dd>
+                <dd className="font-medium flex items-center">
                   {showData?.displayURL ? (
                     <img
                       className="object-cover h-10 rounded-full"
@@ -54,30 +55,51 @@ const Details = () => {
                       alt="Avatar"
                     />
                   ) : (
-                    <div className="text-3xl text-white">
+                    <div className="text-3xl text-blue-400">
                       <FaRegUserCircle />
                     </div>
                   )}
-                  <a
-                    href="#"
-                    className="mx-2 font-semibold text-gray-100"
-                    tabindex="0"
-                    role="link"
-                  >
-                    {showData?.name}
-                  </a>
+                  <p className="text-gray-500 ml-2">{showData?.name}</p>
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-2 text-gray-400">{showData?.description}</p>
+            <div className="mt-6 flex items-center justify-evenly text-xs">
+              <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                <CiLocationOn className="text-blue-400 text-xl" />
+
+                <div className="mt-1.5 sm:mt-0">
+                  <p className="text-gray-500">Location</p>
+
+                  <p className="font-medium">{showData?.address}</p>
                 </div>
-                <span className="mx-1 text-md font-semibold text-gray-100">
-                  Posted date:{" "}
-                  <span className="font-thin text-sm">{showData?.date}</span>
-                </span>
-                <p className="flex text-white items-center ">
-                  <CiLocationOn className="text-blue-400 text-xl"></CiLocationOn>
-                  {showData?.location}
-                </p>
+              </div>
+
+              <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                <TbCategory className="text-xl" />
+
+                <div className="mt-1.5 sm:mt-0">
+                  <p className="text-gray-500">Category</p>
+
+                  <p className="font-medium">{showData?.category}</p>
+                </div>
+              </div>
+
+              <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                <div className="mt-1.5 sm:mt-0">
+                  <button
+                    onClick={() =>
+                      document.getElementById("my_modal_1").showModal()
+                    }
+                    className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-green-600  border-gray-900 rounded-full inline-flex hover:bg-transparent hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+                  >
+                    Pay
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+          <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} />
         </div>
       )}
     </div>
