@@ -65,6 +65,7 @@ const Market = () => {
       console.log(res.data);
       if (res?.data?.insertedId) {
         toast.success("Added to Bookmarks");
+        queryClient.invalidateQueries("products");
         queryClient.invalidateQueries("savedProducts");
       }
     });
@@ -142,7 +143,7 @@ const Market = () => {
                     id="category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="select w-40 bg-purple-400 border-none text-white  hover:text-purple-800 px-4 py-2 join-item bg-transparent rounded-md border-gray-800"
+                    className="select w-40 bg-purple-400 border-none text-white px-4 py-2 join-item rounded-md"
                   >
                     <option value="">All</option>
                     <option
@@ -243,77 +244,88 @@ const Market = () => {
 
       {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        {products?.slice(0, visible).map((product) => {
-          const newCategory = !category || product.category === category;
-          if (newCategory) {
+        {products
+          ?.filter((product) => {
             return (
-              <div>
-                <div
-                  key={product.id}
-                  className="min-w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]"
-                >
-                  <div
-                    className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${product?.image})` }}
-                  >
-                    {savedProducts?.find(
-                      (savedProduct) => savedProduct.product_id === product._id
-                    ) ? (
-                      <div className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center">
-                        <FaBookmark className="text-xl" />
-                        <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
-                          SAVED
-                        </p>
-                      </div>
-                    ) : (
-                      <div
-                        onClick={() => handleBookmark(product)}
-                        className="w-8 h-9 cursor-pointer bg-gray-200 rounded flex items-center justify-center text-blue-400"
-                      >
-                        <FaBookmark className="" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <div className="">
-                      <h1 className="text-gray-600 font-medium">
-                        {product?.productName?.length > 24
-                          ? `${product?.productName.slice(0, 24)}...`
-                          : product?.productName}
-                      </h1>
-                      <button className="text-gray-500 hover:text-gray-900">
-                        {" "}
-                        ${product?.price}
-                      </button>{" "}
-                    </div>{" "}
-                    <p className="text-gray-400 text-sm my-1 flex items-center">
-                      <CiUser className="text-gray-400" />
-                      {product?.name}
-                    </p>
-                    <p className="text-gray-400 text-sm my-1 flex items-center">
-                      <p>
-                        <CiLocationOn className="text-blue-400" />{" "}
-                      </p>
-                      {product?.location}
-                    </p>
-                    <Link to={`/dashboard/details/${product._id}`}>
-                      <button className="bg-purple-500 text-sm text-white px-4 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
-                        Details
-                      </button>
-                    </Link>
-                  </div>{" "}
-                </div>
-              </div>
+              search.toLowerCase() === " " ||
+              (product?.productName &&
+                product?.productName
+                  .toLowerCase()
+                  .includes(search.toLowerCase()))
             );
-          }
-          return null;
-          // else {
-          //   return products;
-          // }
-        })}
+          })
+          .map((product) => {
+            const newCategory = !category || product.category === category;
+            if (newCategory) {
+              return (
+                <div>
+                  <div
+                    key={product.id}
+                    className="min-w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]"
+                  >
+                    <div
+                      className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${product?.image})` }}
+                    >
+                      {savedProducts?.find(
+                        (savedProduct) =>
+                          savedProduct.product_id === product._id
+                      ) ? (
+                        <div className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center">
+                          <FaBookmark className="text-xl" />
+                          <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
+                            SAVED
+                          </p>
+                        </div>
+                      ) : (
+                        <div
+                          onClick={() => handleBookmark(product)}
+                          className="w-8 h-9 cursor-pointer bg-gray-200 rounded flex items-center justify-center text-blue-400"
+                        >
+                          <FaBookmark className="" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <div className="">
+                        <h1 className="text-gray-600 font-medium">
+                          {product?.productName?.length > 24
+                            ? `${product?.productName.slice(0, 24)}...`
+                            : product?.productName}
+                        </h1>
+                        <button className="text-gray-500 hover:text-gray-900">
+                          {" "}
+                          ${product?.price}
+                        </button>{" "}
+                      </div>{" "}
+                      <p className="text-gray-400 text-sm my-1 flex items-center">
+                        <CiUser className="text-gray-400" />
+                        {product?.name}
+                      </p>
+                      <p className="text-gray-400 text-sm my-1 flex items-center">
+                        <p>
+                          <CiLocationOn className="text-blue-400" />{" "}
+                        </p>
+                        {product?.location}
+                      </p>
+                      <Link to={`/dashboard/details/${product._id}`}>
+                        <button className="bg-purple-500 text-sm text-white px-4 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+                          Details
+                        </button>
+                      </Link>
+                    </div>{" "}
+                  </div>
+                </div>
+              );
+            }
+            return null;
+            // else {
+            //   return products;
+            // }
+          })}
       </div>
       <div className="text-end">
-        <div className="text-end">
+        {/* <div className="text-end">
           {visible < products.length && (
             <button
               onClick={showMore}
@@ -322,7 +334,7 @@ const Market = () => {
               Show more
             </button>
           )}
-        </div>
+        </div> */}
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       {/* <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} /> */}
