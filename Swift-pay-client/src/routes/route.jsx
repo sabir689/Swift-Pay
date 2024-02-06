@@ -131,6 +131,10 @@ export const router = createBrowserRouter([
         element: <Details></Details>,
         loader: () => fetch(`http://localhost:5000/api/products`),
       },
+      {
+        path: "addBrand",
+        element: <AddBrand></AddBrand>,
+      },
       // admin
       {
         path: "allUsers",
