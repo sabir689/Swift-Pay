@@ -25,6 +25,7 @@ import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
+import AddBrand from "../Dashboard/Branded/AddBrand";
 export const router = createBrowserRouter([
   {
     path: "/",
