@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 

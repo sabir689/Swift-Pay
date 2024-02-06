@@ -21,6 +21,7 @@ import useUser from "../hooks/useUser";
 const Test2Dashboard = () => {
   const { logOut, user } = useContext(AuthContext);
   const [mainUser] = useUser();
+  console.log(mainUser);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
