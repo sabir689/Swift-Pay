@@ -31,7 +31,7 @@ const Market = () => {
   //     [productId]: !prevState[productId], // Toggle state for the specific product
   //   }));
   // };
-  const { data: products = [] } = useQuery({
+  const { isLoading: productsLoading, data: products = [] } = useQuery({
     queryKey: ["products", search, sorting],
 
     queryFn: async () => {
@@ -89,6 +89,13 @@ const Market = () => {
 
   return (
     <React.Fragment>
+      {productsLoading && (
+        <div className="flex flex-row gap-2 items-center justify-center h-screen">
+          <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce"></div>
+          <div className="w-4 h-4 rounded-full bg-red-700 animate-bounce [animation-delay:-.3s]"></div>
+          <div className="w-4 h-4 rounded-full bg-green-400 animate-bounce [animation-delay:-.5s]"></div>
+        </div>
+      )}
       <div>
         <div className="mb-5 mt-7">
           <div className="flex flex-col lg:flex-row gap-5 lg:gap-5 justify-between items-center">
@@ -232,7 +239,6 @@ const Market = () => {
                   onChange={(e) => setSorting(e.target.value)}
                   className="select rounded-md join-item bg-transparent border-[1px] border-gray-800"
                 >
-             
                   <option value="lowToHigh">Low to High</option>
                   <option value="highToLow">High to Low</option>
                 </select>
@@ -245,7 +251,8 @@ const Market = () => {
       {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {products
-          ?.filter((product) => {
+          ?.slice(0, visible)
+          .filter((product) => {
             return (
               search.toLowerCase() === " " ||
               (product?.productName &&
@@ -325,7 +332,7 @@ const Market = () => {
           })}
       </div>
       <div className="text-end">
-        {/* <div className="text-end">
+        <div className="text-end">
           {visible < products.length && (
             <button
               onClick={showMore}
@@ -334,7 +341,7 @@ const Market = () => {
               Show more
             </button>
           )}
-        </div> */}
+        </div>
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       {/* <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} /> */}

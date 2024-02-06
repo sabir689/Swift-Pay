@@ -33,7 +33,6 @@ async function run() {
     // offers collection
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
-  
 
     app.post("/api/orders", async (req, res) => {
       const orders = req.body;
@@ -60,7 +59,10 @@ async function run() {
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
-
+    app.get("/api/users", async (req, res) => {
+      const result = await userCollection.find().toArray();
+      res.send(result);
+    });
     app.get("/api/users", async (req, res) => {
       let query = {};
       if (req.query?.email) {
@@ -133,40 +135,8 @@ async function run() {
         console.error("Error fetching products:", error);
         res.status(500).json({ error: "Internal Server Error" });
       }
-      try {
-        let query = {};
-        const category = req.query.category;
-        const { search, sort } = req.query;
-    
-        if (category) {
-          query.Category = category;
-        }
-    
-        // Check if search is defined and it's a string
-        if (search && typeof search === "string") {
-          query.productName = { $regex: search, $options: "i" };
-        }
-    
-        const sortOptions = {};
-    
-        if (sort === "lowToHigh") {
-          sortOptions.price = 1;
-        } else if (sort === "highToLow") {
-          sortOptions.price = -1;
-        }
-    
-        const result = await productCollection
-          .find(query)
-          .sort(sortOptions)
-          .toArray();
-    
-        res.json(result);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
     });
-    
+
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
@@ -207,7 +177,6 @@ async function run() {
     });
 
     // payment post
-   
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });

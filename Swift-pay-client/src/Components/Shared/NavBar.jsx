@@ -16,7 +16,6 @@ const Navbar = () => {
   const [profileInfo, refetch] = useUser();
 
   const axiosPublic = useAxiosPublic();
-
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
