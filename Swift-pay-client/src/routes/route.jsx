@@ -123,6 +123,10 @@ export const router = createBrowserRouter([
         element: <Branded></Branded>,
       },
       {
+        path: "addBrand",
+        element: <AddBrand></AddBrand>,
+      },
+      {
         path: "saved",
         element: <Saved></Saved>,
       },

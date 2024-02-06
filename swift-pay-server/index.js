@@ -33,7 +33,6 @@ async function run() {
     // offers collection
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
-    const orderCollection = client.db("SwiftPayDb").collection("orders");
 
     app.post("/api/orders", async (req, res) => {
       const orders = req.body;
@@ -138,6 +137,13 @@ async function run() {
       }
     });
 
+    // product post
+    app.post("/api/products", async (req, res) => {
+      const products = req.body;
+      const result = await productCollection.insertOne(products);
+      res.send(result);
+    });
+
     // offers page
     app.get("/api/offers", async (req, res) => {
       const result = await offerCollection.find().toArray();
@@ -171,58 +177,6 @@ async function run() {
     });
 
     // payment post
-    app.post("/order", async (req, res) => {
-      // const product = await orderCollection.findOne({
-      //   _id: new ObjectId(req.body.productId),
-      // });
-      console.log(req.body);
-      // console.log(product);
-      // const order = req.body;
-      // console.log(req.body);
-      // const data = {
-      //   total_amount: product?.price,
-      //   currency: order.category,
-      //   tran_id: tran_id, // use unique tran_id for each api call
-      //   success_url: `http://localhost:5000/payment/success/${tran_id}`,
-      //   fail_url: "http://localhost:3030/fail",
-      //   cancel_url: "http://localhost:3030/cancel",
-      //   ipn_url: "http://localhost:3030/ipn",
-      //   shipping_method: "Courier",
-      //   product_name: "Computer.",
-      //   product_category: "Electronic",
-      //   product_profile: "general",
-      //   cus_name: order.name,
-      //   cus_email: "customer@example.com",
-      //   cus_add1: order.address,
-      //   cus_add2: "Dhaka",
-      //   cus_city: "Dhaka",
-      //   cus_state: "Dhaka",
-      //   cus_postcode: "1000",
-      //   cus_country: "Bangladesh",
-      //   cus_phone: order.number,
-      //   cus_fax: "01711111111",
-      //   ship_name: "Customer Name",
-      //   ship_add1: "Dhaka",
-      //   ship_add2: "Dhaka",
-      //   ship_city: "Dhaka",
-      //   ship_state: "Dhaka",
-      //   ship_postcode: order.postCode,
-      //   ship_country: "Bangladesh",
-      // };
-
-      // console.log(data);
-      // const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
-      // sslcz.init(data).then((apiResponse) => {
-      //   // Redirect the user to payment gateway
-      //   let GatewayPageURL = apiResponse.GatewayPageURL;
-      //   res.send({ url: GatewayPageURL });
-      //   console.log("Redirecting to: ", GatewayPageURL);
-      // });
-
-      app.post("/payment/success/:tranId", async (req, res) => {
-        console.log(req.params.tranId);
-      });
-    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });

@@ -7,6 +7,7 @@ import Electronics from './Electronics';
 import Beauty from './Beauty';
 import Living from './Living';
 import Sports from './Sports';
+import { Link } from 'react-router-dom';
 
 
 const Branded = () => {
@@ -16,6 +17,16 @@ const Branded = () => {
             <Helmet>
                 <title>SwiftNess | SeeBrands</title>
             </Helmet>
+           
+           <div className=' mb-10 mt-10'>
+                <h3 className='text-4xl' >Open your own brand fill the form</h3>
+
+              <div className='flex justify-between'>
+              <h2> Add at least 5 products to start your own brand:</h2>
+               <h4> <Link to={'/dashboard/addBrand'}> <span className='text-black border-2 p-4 hover:bg-green-300 rounded-full'>Add Brand</span></Link></h4>
+              </div>
+                
+            </div>
 
             <Tabs  defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList>

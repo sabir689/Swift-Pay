@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import { useContext } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SellPost = () => {
@@ -16,6 +17,7 @@ const SellPost = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const queryClient = useQueryClient();
+  
   const onSubmit = async (data) => {
     // console.log(date);
     const imageFile = { image: data.image[0] };
@@ -31,6 +33,7 @@ const SellPost = () => {
         date: new Date().toDateString(),
         productName: data.productName,
         email: user?.email,
+        
         number: data.number,
         price: data.price,
         description: data.description,
@@ -45,6 +48,7 @@ const SellPost = () => {
           position: "bottom-right", // Set the position to bottom-right
         });
         queryClient.invalidateQueries([]);
+ 
       }
       console.log(postProduct.data);
     }
@@ -105,6 +109,7 @@ const SellPost = () => {
               <input
                 {...register("email")}
                 className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm cursor-not-allowed"
+               
                 type="Email"
                 placeholder="your email"
                 id="Email"
