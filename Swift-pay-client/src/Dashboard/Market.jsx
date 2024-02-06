@@ -232,8 +232,13 @@ const Market = () => {
                         ${product?.price}
                       </button>{" "}
                     </div>{" "}
+
                     <p className="text-gray-400 text-sm my-1">
                       {product?.name}
+                    </p>
+
+                    <p className="text-gray-400 text-sm my-1">
+                      {product?.email}
                     </p>
                     <p className="text-gray-400 text-sm my-1 flex items-center">
                       <p>

@@ -89,14 +89,14 @@ async function run() {
     });
 
     // Get Product for Different User
-    app.get('/myproducts', async(req, res)=>{
-      var query={}
-      if(req.query?.email){
-        query={email:res.req?.email}
+    app.get('/myproduct', async (req, res) => {
+      var query = {}
+      if (req.query?.email) {
+          query = { email: req.query?.email }
       }
-      const result= await productCollection.find(query).toArray()
+      const result = await productCollection.find(query).toArray()
       res.send(result)
-    })
+  })
 
     // product get
     app.get("/api/products", async (req, res) => {

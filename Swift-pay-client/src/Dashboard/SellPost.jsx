@@ -29,7 +29,7 @@ const SellPost = () => {
         name: data.name,
         date: new Date().toDateString(),
         productName: data.productName,
-        email: data.user?.email,
+        email: user?.email,
         number: data.number,
         price: data.price,
         description: data.description,

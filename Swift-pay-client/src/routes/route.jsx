@@ -125,17 +125,15 @@ export const router = createBrowserRouter([
         path: "saved",
         element: <Saved></Saved>,
       },
-<<<<<<< HEAD
       // my products page
       {
         path: "my-products",
-        element: <Products/>,
-=======
+        element: <Products/>
+      }, 
       {
         path: "details/:id",
         element: <Details></Details>,
         loader: () => fetch(`http://localhost:5000/api/products`),
->>>>>>> a149746f0a3f2c94520e306818e8b504409b758c
       },
     ],
   },
