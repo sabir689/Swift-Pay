@@ -4,7 +4,7 @@
 import Payment from "./Payment";
 
 import React, { useContext, useEffect, useState } from "react";
-import { CiFilter, CiLocationOn, CiSearch } from "react-icons/ci";
+import { CiFilter, CiLocationOn, CiSearch, CiUser } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { FaBookmark, FaSearch } from "react-icons/fa";
@@ -38,7 +38,6 @@ const Market = () => {
       const res = await axiosPublic.get(
         `/api/products?search=${search}&sort=${sorting}&category=${category}`
       );
-      queryClient.invalidateQueries("savedProducts");
       return res.data;
     },
   });
@@ -46,14 +45,14 @@ const Market = () => {
   const { data: savedProducts = [] } = useQuery({
     queryKey: ["savedProducts"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/api/bookmarks?email=${user.email}`);
-      return res.data;
+      const res = await axiosPublic.get(`/api/bookmarks?email=${user?.email}`);
+      return res?.data;
     },
   });
 
   const handleBookmark = (product) => {
     const Bookmark = {
-      email: user.email,
+      email: user?.email,
       product_id: product._id,
       productName: product.productName,
       category: product.category,
@@ -64,8 +63,9 @@ const Market = () => {
     };
     axiosPublic.post("/api/bookmarks", Bookmark).then((res) => {
       console.log(res.data);
-      if (res.data.insertedId) {
+      if (res?.data?.insertedId) {
         toast.success("Added to Bookmarks");
+        queryClient.invalidateQueries("products");
         queryClient.invalidateQueries("savedProducts");
       }
     });
@@ -143,23 +143,81 @@ const Market = () => {
                     id="category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="select w-40 hover:text-purple-800 px-4 py-2 join-item bg-transparent rounded-md border-[1px] border-gray-800"
+                    className="select w-40 bg-purple-400 border-none text-white px-4 py-2 join-item rounded-md"
                   >
                     <option value="">All</option>
-                    <option className="" value="Electronics">
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Electronics"
+                    >
                       Electronics
                     </option>
-                    <option value="Photography">Photography</option>
-                    <option value="Fitness">Fitness</option>
-                    <option value="Cafe Corner">Cafe Corner</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Art & Design">Art & Design</option>
-                    <option value="Outdoor">Outdoor</option>
-                    <option value="Appliances">Appliances</option>
-                    <option value="Home Security">Home Security</option>
-                    <option value="Home & Living">Home & Living</option>
-                    <option value="Home Automation">Home Automation</option>
-                    <option value="Home & Kitchen">Home & Kitchen</option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Photography"
+                    >
+                      Photography
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Fitness"
+                    >
+                      Fitness
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Cafe Corner"
+                    >
+                      Cafe Corner
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Fashion"
+                    >
+                      Fashion
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Art & Design"
+                    >
+                      Art & Design
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Outdoor"
+                    >
+                      Outdoor
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Appliances"
+                    >
+                      Appliances
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home Security"
+                    >
+                      Home Security
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home & Living"
+                    >
+                      Home & Living
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home Automation"
+                    >
+                      Home Automation
+                    </option>
+                    <option
+                      className="text-gray-800 bg-gray-100"
+                      value="Home & Kitchen"
+                    >
+                      Home & Kitchen
+                    </option>
                   </select>
                 </div>
               </div>
@@ -186,88 +244,88 @@ const Market = () => {
 
       {/* card */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        {products.slice(0, visible).map((product) => {
-          const newCategory = !category || product.category === category;
-          if (newCategory) {
+        {products
+          ?.filter((product) => {
             return (
-              <div>
-                <div
-                  key={product.id}
-                  className="w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]  cursor-pointer"
-                >
-                  <div
-                    className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${product?.image})` }}
-                  >
-                    {savedProducts.find(
-                      (savedProduct) => savedProduct.product_id === product._id
-                    ) ? (
-                      <div
-                        onClick={() => handleBookmark(product)}
-                        className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center"
-                      >
-                        <FaBookmark className="text-xl " />
-                        <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
-                          SAVED
-                        </p>
-                      </div>
-                    ) : (
-                      <div
-                        onClick={() => handleBookmark(product)}
-                        className="w-8 h-9 bg-gray-200 rounded flex items-center justify-center text-blue-400"
-                      >
-                        <FaBookmark className="" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <div className="">
-                      <h1 className="text-gray-600 font-medium">
-                        {product?.productName.length > 24
-                          ? `${product?.productName.slice(0, 24)}...`
-                          : product?.productName}
-                      </h1>
-                      <button className="text-gray-500 hover:text-gray-900">
-                        {" "}
-                        ${product?.price}
-                      </button>{" "}
-                    </div>{" "}
-
-                    <p className="text-gray-400 text-sm my-1">
-                      {product?.name}
-                    </p>
-
-                    <p className="text-gray-400 text-sm my-1">
-                      {product?.email}
-                    </p>
-                    <p className="text-gray-400 text-sm my-1 flex items-center">
-                      <p>
-                        <CiLocationOn className="text-blue-400" />{" "}
-                      </p>
-                      {product?.location}
-                    </p>
-                    <span
-                      onClick={() => handlePay(product)}
-                      // onClick={() =>
-                      //   document.getElementById("my_modal_1").showModal()
-                      // }
-                      className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
-                    >
-                      Pay
-                    </span>{" "}
-                  </div>{" "}
-                </div>
-              </div>
+              search.toLowerCase() === " " ||
+              (product?.productName &&
+                product?.productName
+                  .toLowerCase()
+                  .includes(search.toLowerCase()))
             );
-          }
-          return null;
-          // else {
-          //   return products;
-          // }
-        })}
+          })
+          .map((product) => {
+            const newCategory = !category || product.category === category;
+            if (newCategory) {
+              return (
+                <div>
+                  <div
+                    key={product.id}
+                    className="min-w-72 mb-5 bg-transparent rounded-lg border-[1px] border-gray-300 hover:border-[#49108B]"
+                  >
+                    <div
+                      className="h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${product?.image})` }}
+                    >
+                      {savedProducts?.find(
+                        (savedProduct) =>
+                          savedProduct.product_id === product._id
+                      ) ? (
+                        <div className="w-8 h-9 shadow-xl ml-2 flex items-center justify-center">
+                          <FaBookmark className="text-xl" />
+                          <p className="text-sm bg-gray-900 border-[1px] border-white shadow-md w-fit px-2 py-1 text-white">
+                            SAVED
+                          </p>
+                        </div>
+                      ) : (
+                        <div
+                          onClick={() => handleBookmark(product)}
+                          className="w-8 h-9 cursor-pointer bg-gray-200 rounded flex items-center justify-center text-blue-400"
+                        >
+                          <FaBookmark className="" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <div className="">
+                        <h1 className="text-gray-600 font-medium">
+                          {product?.productName?.length > 24
+                            ? `${product?.productName.slice(0, 24)}...`
+                            : product?.productName}
+                        </h1>
+                        <button className="text-gray-500 hover:text-gray-900">
+                          {" "}
+                          ${product?.price}
+                        </button>{" "}
+                      </div>{" "}
+                      <p className="text-gray-400 text-sm my-1 flex items-center">
+                        <CiUser className="text-gray-400" />
+                        {product?.name}
+                      </p>
+                      <p className="text-gray-400 text-sm my-1 flex items-center">
+                        <p>
+                          <CiLocationOn className="text-blue-400" />{" "}
+                        </p>
+                        {product?.location}
+                      </p>
+                      <Link to={`/dashboard/details/${product._id}`}>
+                        <button className="bg-purple-500 text-sm text-white px-4 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+                          Details
+                        </button>
+                      </Link>
+                    </div>{" "}
+                  </div>
+                </div>
+              );
+            }
+            return null;
+            // else {
+            //   return products;
+            // }
+          })}
       </div>
       <div className="text-end">
-        <div className="text-end">
+        {/* <div className="text-end">
           {visible < products.length && (
             <button
               onClick={showMore}
@@ -276,10 +334,10 @@ const Market = () => {
               Show more
             </button>
           )}
-        </div>
+        </div> */}
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} />
+      {/* <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} /> */}
     </React.Fragment>
   );
 };

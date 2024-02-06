@@ -3,7 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { MdAutoDelete, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 
 const Saved = () => {
@@ -13,11 +13,11 @@ const Saved = () => {
   const { data: bookmarks = [], refetch } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
+      // const res = await axiosPublic.get(`/api/bookmarks`);
       const res = await axiosPublic.get(`/api/bookmarks?email=${user?.email}`);
       return res.data;
     },
   });
-  console.log(bookmarks);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -55,7 +55,7 @@ const Saved = () => {
           >
             <div
               className="relative h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
-              style={{ backgroundImage: `url(${product?.image})` }}
+              style={{ backgroundImage: `url(${product.image || product.product.image})` }}
             >
               <div
                 onClick={() => handleDelete(product._id)}
@@ -67,24 +67,25 @@ const Saved = () => {
             <div className="p-4">
               <div className="">
                 <h1 className="text-gray-600 font-medium">
-                  {product?.productName}
+                  {product.productName || product.product.name}
                 </h1>
                 <button className="text-gray-500 hover:text-gray-900">
                   {" "}
-                  ${product?.price}
+                  ${product.price || product.product.price}
                 </button>{" "}
               </div>{" "}
-              <p className="text-gray-400 text-sm my-1">{product?.name}</p>
+              <p className="text-gray-400 text-sm my-1">
+                {product.description || product.product.description}
+              </p>
               <p className="text-gray-400 text-sm my-1 flex items-center">
                 <p>
                   <CiLocationOn className="text-blue-400" />{" "}
                 </p>
-                {product?.location}
+                {product.location || product.product.location}
               </p>
+              {/* Adjust this part based on your modal implementation */}
               <span
-                onClick={() =>
-                  document.getElementById("my_modal_1").showModal()
-                }
+                onClick={() => {}}
                 className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
               >
                 Pay

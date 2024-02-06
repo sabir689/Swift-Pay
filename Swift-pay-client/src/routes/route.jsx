@@ -25,6 +25,7 @@ import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
 import Products from "../Dashboard/myProducts/Products";
+import AddBrand from "../Dashboard/Branded/AddBrand";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -120,6 +121,10 @@ export const router = createBrowserRouter([
       {
         path: "branded",
         element: <Branded></Branded>,
+      },
+      {
+        path: "addBrand",
+        element: <AddBrand></AddBrand>
       },
       {
         path: "saved",
