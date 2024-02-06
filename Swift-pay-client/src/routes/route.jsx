@@ -26,6 +26,7 @@ import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
 import Products from "../Dashboard/myProducts/Products";
 import AddBrand from "../Dashboard/Branded/AddBrand";
+import EditProduct from "../Dashboard/myProducts/EditProduct";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -134,6 +135,10 @@ export const router = createBrowserRouter([
       {
         path: "my-products",
         element: <Products/>
+      }, 
+      {
+        path: "productedit/:id",
+        element: <EditProduct/>
       }, 
       {
         path: "details/:id",

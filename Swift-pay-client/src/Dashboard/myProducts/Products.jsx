@@ -3,6 +3,11 @@ import { getMyPorducts } from '../../apis/GetMethod'
 import { AuthContext } from '../../provider/AuthProvider'
 import { MdDelete } from 'react-icons/md'
 import { CiLocationOn } from 'react-icons/ci'
+import Swal from 'sweetalert2'
+import { deleteMyproduct } from '../../apis/deleteMothod'
+import toast from 'react-hot-toast'
+import { LiaEditSolid } from "react-icons/lia";
+import { Link } from 'react-router-dom'
 const Products = () => {
     const [myProduct, setMyProducts]= useState([])
     const [loading, setLoading]=useState(false)
@@ -30,17 +35,17 @@ const Products = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axiosPublic.delete(`/api/bookmarks/${id}`).then((res) => {
-            console.log(res.data);
-            if (res.data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Item has been deleted.",
-                icon: "success",
-              });
-              refetch();
-            }
-          });
+         deleteMyproduct(id)
+         .then(()=>{
+            Swal.fire({
+              title: "Deleted!",
+              text: "Item has been deleted.",
+              icon: "success",
+            })
+         })
+         .catch(()=>{
+          toast.error('Oops! Something went wrong. Your product could not be deleted.')
+         })
         }
       });
     };
@@ -48,22 +53,32 @@ const Products = () => {
 
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+<div>
+  {
+    loading? <></> :
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
     {myProduct.map((product) => (
-      <div
-        key={product._id}
-        className="w-72 mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
+      <div key={product._id}
+        className="mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
       >
         <div
           className="relative h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
           style={{ backgroundImage: `url(${product?.image})` }}
         >
-          <div
+         <div className='flex flex-col gap-3 absolute top-2 right-3'>
+         <div
             onClick={() => handleDelete(product._id)}
-            className="absolute top-2 right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-blue-400"
-          >
-            <MdDelete className="text-2xl text-red-700" />
+            className=" w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+            <MdDelete className="text-3xl text-red-700" />
           </div>
+          
+          <Link
+          to={`/dashboard/productedit/${product.productName.replace(/\s/g, '-')}`} 
+          state={{data:product?._id}}
+           className=" w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-blue-400">
+            <LiaEditSolid className="text-3xl text-red-700 hover:text-blue-400" />
+          </Link>
+         </div>
         </div>
         <div className="p-4">
           <div className="">
@@ -87,6 +102,8 @@ const Products = () => {
       </div>
     ))}
   </div>
+  }
+</div>
   )
 }
 

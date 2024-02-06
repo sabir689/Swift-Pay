@@ -16,7 +16,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { BsBoundingBox, BsCart2 } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
 import { IoHome } from "react-icons/io5";
-
+import { BsFillBagDashFill } from "react-icons/bs";
 const Test2Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -56,7 +56,7 @@ const Test2Dashboard = () => {
     {
       name: "My Products",
       link: "/dashboard/my-products",
-      icon: MdOutlineDashboard,
+      icon: BsFillBagDashFill,
     },
     { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
     { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
