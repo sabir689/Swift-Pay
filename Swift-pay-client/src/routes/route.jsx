@@ -24,6 +24,7 @@ import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
+import AllUsers from "../Admin/Dashboard pages/AllUsers";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -128,6 +129,11 @@ export const router = createBrowserRouter([
         path: "details/:id",
         element: <Details></Details>,
         loader: () => fetch(`http://localhost:5000/api/products`),
+      },
+      // admin
+      {
+        path: "allUsers",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },
