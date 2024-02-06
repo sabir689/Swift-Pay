@@ -90,29 +90,40 @@ async function run() {
 
     // product get
     app.get("/api/products", async (req, res) => {
-      let query = {};
-      const category = req.query.category;
-      const { search, sort } = req.query;
-      if (category) {
-        query.Category = category;
+      try {
+        let query = {};
+        const category = req.query.category;
+        const { search, sort } = req.query;
+    
+        if (category) {
+          query.Category = category;
+        }
+    
+        // Check if search is defined and it's a string
+        if (search && typeof search === "string") {
+          query.productName = { $regex: search, $options: "i" };
+        }
+    
+        const sortOptions = {};
+    
+        if (sort === "lowToHigh") {
+          sortOptions.price = 1;
+        } else if (sort === "highToLow") {
+          sortOptions.price = -1;
+        }
+    
+        const result = await productCollection
+          .find(query)
+          .sort(sortOptions)
+          .toArray();
+    
+        res.json(result);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        res.status(500).json({ error: "Internal Server Error" });
       }
-      // Check if search is defined and it's a string
-      if (search && typeof search === "string") {
-        query.productName = { $regex: search, $options: "i" };
-      }
-      const sortOptions = {};
-      if (sort === "lowToHigh") {
-        sortOptions.price = 1;
-      } else if (sort === "highToLow") {
-        sortOptions.price = -1;
-      }
-
-      const result = await productCollection
-        .find(query)
-        .sort(sortOptions)
-        .toArray();
-      res.send(result);
     });
+    
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
