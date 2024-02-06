@@ -30,7 +30,7 @@ const Apparel = () => {
   const addToCart = async () => {
     try {
       if (!user) {
-        console.error('User not authenticated.'); 
+        console.error('User not authenticated.');
         return;
       }
 
@@ -44,7 +44,7 @@ const Apparel = () => {
 
       if (response.ok) {
         console.log('Product added to cart successfully!');
-        
+
         closeDetails();
       } else {
         console.error('Failed to add product to cart.');
@@ -84,14 +84,14 @@ const Apparel = () => {
                           <p className='mb-2'>Price: ${product.price}</p>
                           <p className='mb-2'>Sizes: {product.sizes.join(', ')}</p>
                           <p className='mb-2'>Colors: {product.colors.join(', ')}</p>
-                         <div className='flex justify-between'>
-                         <button className="btn btn-outline" onClick={closeDetails}>
-                            Close
-                          </button>
-                          <button className="btn btn-outline"onClick={addToCart} >
-                            Add to cart
-                          </button>
-                         </div>
+                          <div className='flex justify-between'>
+                            <button className="btn btn-outline" onClick={closeDetails}>
+                              Close
+                            </button>
+                            <button className="btn btn-outline" onClick={addToCart} >
+                              Add to cart
+                            </button>
+                          </div>
                         </div>
                       </div>
                     )}
