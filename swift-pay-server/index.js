@@ -35,15 +35,20 @@ async function run() {
     const brandCollection = client.db("SwiftPayDb").collection("brands");
   
 
-    app.post("/api/orders", async (req, res) => {
-      const orders = req.body;
-      const result = await orderCollection.insertOne(orders);
-      res.send(result);
-    });
+    // app.post("/api/orders", async (req, res) => {
+    //   const orders = req.body;
+    //   const result = await orderCollection.insertOne(orders);
+    //   res.send(result);
+    // });
 
     app.get("/api/brands", async (req, res) => {
       const cursor = brandCollection.find();
       const result = await cursor.toArray();
+      res.send(result);
+    });
+    app.post("/api/brands", async (req, res) => {
+      const brands = req.body;
+      const result = await brandCollection.insertOne(brands);
       res.send(result);
     });
 
@@ -104,38 +109,6 @@ async function run() {
       try {
         let query = {};
         const category = req.query.category;
-        const { sort } = req.query;
-
-        if (category) {
-          query.Category = category;
-        }
-
-        // Check if search is defined and it's a string
-        // if (search && typeof search === "string") {
-        //   query.productName = { $regex: search, $options: "i" };
-        // }
-
-        const sortOptions = {};
-
-        if (sort === "lowToHigh") {
-          sortOptions.price = 1;
-        } else if (sort === "highToLow") {
-          sortOptions.price = -1;
-        }
-
-        const result = await productCollection
-          .find(query)
-          .sort(sortOptions)
-          .toArray();
-
-        res.json(result);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-      }
-      try {
-        let query = {};
-        const category = req.query.category;
         const { search, sort } = req.query;
     
         if (category) {
@@ -166,6 +139,7 @@ async function run() {
         res.status(500).json({ error: "Internal Server Error" });
       }
     });
+    
     
     // product post
     app.post("/api/products", async (req, res) => {

@@ -1,721 +1,758 @@
-{
-  "apparelBrands": [
-    {
-      "brandName": "UrbanStyle",
-      "products": [
-        {
-          "type": "Shoes",
-          "name": "Urban Sneakers",
-          "price": 59.99,
-          "sizes": [
-            "US 7",
-            "US 8",
-            "US 9"
-          ],
-          "colors": [
-            "Black",
-            "White",
-            "Red"
-          ],
-          "image": "urban_sneakers.jpg"
-        },
-        {
-          "type": "T-Shirt",
-          "name": "Classic Logo Tee",
-          "price": 24.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "White",
-            "Black",
-            "Gray"
-          ],
-          "image": "classic_logo_tee.jpg"
-        },
-        {
-          "type": "Jeans",
-          "name": "Slim Fit Denim",
-          "price": 49.99,
-          "sizes": [
-            "28W 30L",
-            "30W 32L",
-            "32W 32L"
-          ],
-          "colors": [
-            "Blue",
-            "Black",
-            "Gray"
-          ],
-          "image": "slim_fit_denim.jpg"
-        },
-        {
-          "type": "Dress",
-          "name": "Urban Elegance Dress",
-          "price": 69.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "Navy",
-            "Burgundy",
-            "Forest Green"
-          ],
-          "image": "urban_elegance_dress.jpg"
-        },
-        {
-          "type": "Jacket",
-          "name": "Street Chic Bomber",
-          "price": 79.99,
-          "sizes": [
-            "M",
-            "L",
-            "XL"
-          ],
-          "colors": [
-            "Olive",
-            "Camel",
-            "Black"
-          ],
-          "image": "street_chic_bomber.jpg"
-        },
-        {
-          "type": "Sweater",
-          "name": "Cozy Knit Pullover",
-          "price": 54.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "Blush Pink",
-            "Heather Gray",
-            "Mustard"
-          ],
-          "image": "cozy_knit_pullover.jpg"
-        },
-        {
-          "type": "Shorts",
-          "name": "Urban Explorer Shorts",
-          "price": 34.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "Khaki",
-            "Denim Blue",
-            "Charcoal"
-          ],
-          "image": "urban_explorer_shorts.jpg"
-        },
-        {
-          "type": "Hoodie",
-          "name": "Street Vibes Hoodie",
-          "price": 44.99,
-          "sizes": [
-            "M",
-            "L",
-            "XL"
-          ],
-          "colors": [
-            "Urban Black",
-            "Navy Blue",
-            "Crimson Red"
-          ],
-          "image": "street_vibes_hoodie.jpg"
-        }
-      ]
-    },
-    {
-      "brandName": "CasualChic",
-      "products": [
-        {
-          "type": "Shoes",
-          "name": "Comfy Slip-Ons",
-          "price": 39.99,
-          "sizes": [
-            "US 6",
-            "US 7",
-            "US 8"
-          ],
-          "colors": [
-            "Beige",
-            "Navy",
-            "White"
-          ],
-          "image": "comfy_slip_ons.jpg"
-        },
-        {
-          "type": "T-Shirt",
-          "name": "Everyday Essentials Tee",
-          "price": 26.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "White",
-            "Blue",
-            "Red"
-          ],
-          "image": "everyday_essentials_tee.jpg"
-        },
-        {
-          "type": "Jeans",
-          "name": "Casual Comfort Jeans",
-          "price": 47.99,
-          "sizes": [
-            "28W 30L",
-            "30W 32L",
-            "32W 32L"
-          ],
-          "colors": [
-            "Light Wash",
-            "Dark Wash",
-            "Medium Blue"
-          ],
-          "image": "casual_comfort_jeans.jpg"
-        },
-        {
-          "type": "Dress",
-          "name": "Chic Midi Dress",
-          "price": 59.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "Blush Pink",
-            "Charcoal",
-            "Navy Floral"
-          ],
-          "image": "chic_midi_dress.jpg"
-        },
-        {
-          "type": "Jacket",
-          "name": "Casual Blazer",
-          "price": 74.99,
-          "sizes": [
-            "M",
-            "L",
-            "XL"
-          ],
-          "colors": [
-            "Taupe",
-            "Olive",
-            "Caramel"
-          ],
-          "image": "casual_blazer.jpg"
-        },
-        {
-          "type": "Sweater",
-          "name": "Relaxed Knit Sweater",
-          "price": 39.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "Heather Gray",
-            "Burgundy",
-            "Mustard"
-          ],
-          "image": "relaxed_knit_sweater.jpg"
-        },
-        {
-          "type": "Shorts",
-          "name": "Casual Denim Shorts",
-          "price": 29.99,
-          "sizes": [
-            "S",
-            "M",
-            "L"
-          ],
-          "colors": [
-            "Light Blue",
-            "Medium Wash",
-            "Black"
-          ],
-          "image": "casual_denim_shorts.jpg"
-        },
-        {
-          "type": "Hoodie",
-          "name": "Cozy Hooded Sweatshirt",
-          "price": 49.99,
-          "sizes": [
-            "M",
-            "L",
-            "XL"
-          ],
-          "colors": [
-            "Charcoal",
-            "Navy Blue",
-            "Olive"
-          ],
-          "image": "cozy_hooded_sweatshirt.jpg"
-        }
-      ]
-    }
-  ],
-  "electronicsBrands": [
-    {
-      "brandName": "TechMaster",
-      "products": [
-        {
-          "type": "Laptop",
-          "name": "High Performance Notebook",
-          "price": 1099.99,
-          "specs": [
-            "Intel i7",
-            "16GB RAM",
-            "512GB SSD"
-          ],
-          "image": "high_performance_notebook.jpg"
-        },
-        {
-          "type": "Smartphone",
-          "name": "Flagship Android Phone",
-          "price": 799.99,
-          "specs": [
-            "6.5-inch AMOLED",
-            "Snapdragon 888",
-            "128GB Storage"
-          ],
-          "image": "flagship_android_phone.jpg"
-        },
-        {
-          "type": "Headphones",
-          "name": "Wireless Noise-Canceling Headset",
-          "price": 249.99,
-          "features": [
-            "Bluetooth 5.0",
-            "20-hour battery life",
-            "Active Noise Cancellation"
-          ],
-          "image": "wireless_headphones.jpg"
-        },
-        {
-          "type": "Smartwatch",
-          "name": "Fitness Tracker Watch",
-          "price": 159.99,
-          "features": [
-            "Heart rate monitor",
-            "Sleep tracking",
-            "Water-resistant"
-          ],
-          "image": "fitness_tracker_watch.jpg"
-        },
-        {
-          "type": "Gaming Console",
-          "name": "Next-Gen Gaming Console",
-          "price": 499.99,
-          "specs": [
-            "4K gaming",
-            "Ray tracing",
-            "1TB SSD"
-          ],
-          "image": "next_gen_gaming_console.jpg"
-        }
-      ]
-    },
-    {
-      "brandName": "GadgetZone",
-      "products": [
-        {
-          "type": "Tablet",
-          "name": "Slim and Lightweight Tablet",
-          "price": 349.99,
-          "specs": [
-            "10.1-inch display",
-            "Octa-core processor",
-            "64GB Storage"
-          ],
-          "image": "slim_tablet.jpg"
-        },
-        {
-          "type": "Wireless Earbuds",
-          "name": "True Wireless Earbuds",
-          "price": 79.99,
-          "features": [
-            "IPX7 waterproof",
-            "Touch controls",
-            "Wireless charging"
-          ],
-          "image": "wireless_earbuds.jpg"
-        },
-        {
-          "type": "Smart Speaker",
-          "name": "Voice Assistant Speaker",
-          "price": 129.99,
-          "features": [
-            "Alexa integration",
-            "360-degree sound",
-            "Smart home control"
-          ],
-          "image": "smart_speaker.jpg"
-        },
-        {
-          "type": "Camera",
-          "name": "Mirrorless Digital Camera",
-          "price": 899.99,
-          "specs": [
-            "24MP sensor",
-            "4K video recording",
-            "Interchangeable lenses"
-          ],
-          "image": "mirrorless_camera.jpg"
-        },
-        {
-          "type": "VR Headset",
-          "name": "Immersive Virtual Reality Headset",
-          "price": 399.99,
-          "features": [
-            "Wireless connectivity",
-            "Motion tracking",
-            "High-resolution display"
-          ],
-          "image": "vr_headset.jpg"
-        }
-      ]
-    }
-  ],
-  "beautyAndPersonalCareBrands": [
-    {
-      "brandName": "GlamourEssentials",
-      "products": [
-        {
-          "type": "Skincare Set",
-          "name": "Radiant Skin Collection",
-          "price": 79.99,
-          "includes": [
-            "Cleanser",
-            "Toner",
-            "Moisturizer",
-            "Serum"
-          ],
-          "image": "radiant_skin_collection.jpg"
-        },
-        {
-          "type": "Makeup Palette",
-          "name": "Everyday Glam Palette",
-          "price": 49.99,
-          "includes": [
-            "Eyeshadows",
-            "Blush",
-            "Highlighter",
-            "Lipsticks"
-          ],
-          "image": "everyday_glam_palette.jpg"
-        },
-        {
-          "type": "Hair Care Kit",
-          "name": "Silky Smooth Hair Bundle",
-          "price": 34.99,
-          "includes": [
-            "Shampoo",
-            "Conditioner",
-            "Hair Mask"
-          ],
-          "image": "silky_smooth_hair_bundle.jpg"
-        },
-        {
-          "type": "Fragrance",
-          "name": "Luxury Perfume",
-          "price": 89.99,
-          "scent": "Floral and Musk",
-          "image": "luxury_perfume.jpg"
-        },
-        {
-          "type": "Men's Grooming Set",
-          "name": "Ultimate Beard Care Kit",
-          "price": 54.99,
-          "includes": [
-            "Beard Oil",
-            "Beard Balm",
-            "Beard Comb"
-          ],
-          "image": "beard_care_kit.jpg"
-        }
-      ]
-    },
-    {
-      "brandName": "OrganicBeauty",
-      "products": [
-        {
-          "type": "Natural Face Mask",
-          "name": "Organic Clay Mask",
-          "price": 19.99,
-          "ingredients": [
-            "Kaolin Clay",
-            "Chamomile Extract",
-            "Rosehip Oil"
-          ],
-          "image": "organic_clay_mask.jpg"
-        },
-        {
-          "type": "Vegan Lipstick",
-          "name": "Cruelty-Free Matte Lip Color",
-          "price": 14.99,
-          "shade": "Berry Bliss",
-          "image": "vegan_lipstick.jpg"
-        },
-        {
-          "type": "Organic Hair Serum",
-          "name": "Nourishing Argan Oil Serum",
-          "price": 29.99,
-          "ingredients": [
-            "Argan Oil",
-            "Vitamin E",
-            "Jojoba Oil"
-          ],
-          "image": "organic_hair_serum.jpg"
-        },
-        {
-          "type": "Essential Oil Set",
-          "name": "Aromatherapy Relaxation Kit",
-          "price": 39.99,
-          "includes": [
-            "Lavender",
-            "Peppermint",
-            "Eucalyptus"
-          ],
-          "image": "aromatherapy_kit.jpg"
-        },
-        {
-          "type": "Natural Deodorant",
-          "name": "Aluminum-Free Fresh Scent Deodorant",
-          "price": 12.99,
-          "scent": "Citrus Grove",
-          "image": "natural_deodorant.jpg"
-        }
-      ]
-    }
-  ],
-  "homeAndLivingBrands": [
-    {
-      "brandName": "ModernHome",
-      "products": [
-        {
-          "type": "Sofa",
-          "name": "Contemporary Leather Sofa",
-          "price": 899.99,
-          "color": "Charcoal Gray",
-          "dimensions": "84W x 36D x 30H",
-          "image": "leather_sofa.jpg"
-        },
-        {
-          "type": "Dining Table",
-          "name": "Extendable Wood Dining Table",
-          "price": 549.99,
-          "material": "Solid Oak",
-          "seats": 6,
-          "image": "dining_table.jpg"
-        },
-        {
-          "type": "Bedding Set",
-          "name": "Luxury 6-Piece Bedding Ensemble",
-          "price": 129.99,
-          "includes": [
-            "Comforter",
-            "Sheets",
-            "Pillowcases"
-          ],
-          "size": "Queen",
-          "image": "bedding_set.jpg"
-        },
-        {
-          "type": "Wall Art",
-          "name": "Abstract Canvas Painting",
-          "price": 79.99,
-          "dimensions": "36W x 24H",
-          "image": "canvas_painting.jpg"
-        },
-        {
-          "type": "Smart Home System",
-          "name": "Home Automation Starter Kit",
-          "price": 299.99,
-          "features": [
-            "Smart Bulbs",
-            "Smart Thermostat",
-            "Voice Control"
-          ],
-          "image": "home_automation_kit.jpg"
-        }
-      ]
-    },
-    {
-      "brandName": "CozyNook",
-      "products": [
-        {
-          "type": "Bean Bag Chair",
-          "name": "Memory Foam Bean Bag",
-          "price": 129.99,
-          "color": "Navy Blue",
-          "dimensions": "36W x 36D x 24H",
-          "image": "bean_bag_chair.jpg"
-        },
-        {
-          "type": "Candle Set",
-          "name": "Scented Soy Candles",
-          "price": 24.99,
-          "scents": [
-            "Vanilla Lavender",
-            "Citrus Burst",
-            "Warm Amber"
-          ],
-          "image": "scented_candles.jpg"
-        },
-        {
-          "type": "Cozy Throw Blanket",
-          "name": "Knit Chenille Throw",
-          "price": 39.99,
-          "color": "Blush Pink",
-          "dimensions": "50W x 60L",
-          "image": "throw_blanket.jpg"
-        },
-        {
-          "type": "Rustic Wall Shelf",
-          "name": "Wooden Floating Shelf",
-          "price": 49.99,
-          "dimensions": "24W x 12D x 2H",
-          "image": "floating_shelf.jpg"
-        },
-        {
-          "type": "Indoor Plants Set",
-          "name": "Assorted Potted Plants",
-          "price": 59.99,
-          "includes": [
-            "Snake Plant",
-            "Fiddle Leaf Fig",
-            "Peace Lily"
-          ],
-          "image": "potted_plants.jpg"
-        }
-      ]
-    }
-  ],
-  "sportsAndOutdoorsBrands": [
-    {
-      "brandName": "ActivePro",
-      "products": [
-        {
-          "type": "Running Shoes",
-          "name": "Performance Running Sneakers",
-          "price": 79.99,
-          "sizes": [
-            "US 7",
-            "US 8",
-            "US 9"
-          ],
-          "colors": [
-            "Black/White",
-            "Blue/Green",
-            "Red/Gray"
-          ],
-          "image": "running_sneakers.jpg"
-        },
-        {
-          "type": "Fitness Tracker",
-          "name": "Waterproof Activity Tracker",
-          "price": 49.99,
-          "features": [
-            "Heart rate monitoring",
-            "Step counter",
-            "Sleep tracking"
-          ],
-          "image": "fitness_tracker.jpg"
-        },
-        {
-          "type": "Outdoor Backpack",
-          "name": "Multi-Pocket Hiking Backpack",
-          "price": 69.99,
-          "capacity": "30L",
-          "color": "Forest Green",
-          "image": "hiking_backpack.jpg"
-        },
-        {
-          "type": "Yoga Mat",
-          "name": "Non-Slip Eco-Friendly Mat",
-          "price": 29.99,
-          "thickness": "6mm",
-          "color": "Purple",
-          "image": "yoga_mat.jpg"
-        },
-        {
-          "type": "Camping Tent",
-          "name": "3-Person Dome Tent",
-          "price": 129.99,
-          "features": [
-            "Weather-resistant",
-            "Easy setup",
-            "Mesh windows"
-          ],
-          "image": "camping_tent.jpg"
-        }
-      ]
-    },
-    {
-      "brandName": "OutdoorXplorer",
-      "products": [
-        {
-          "type": "Trail Running Shoes",
-          "name": "Lightweight Trail Sneakers",
-          "price": 89.99,
-          "sizes": [
-            "US 7",
-            "US 8",
-            "US 9"
-          ],
-          "colors": [
-            "Gray/Orange",
-            "Black/Yellow",
-            "Blue/Purple"
-          ],
-          "image": "trail_running_sneakers.jpg"
-        },
-        {
-          "type": "Cycling Helmet",
-          "name": "Aero Performance Helmet",
-          "price": 59.99,
-          "size": "M/L",
-          "color": "Matte Black",
-          "image": "cycling_helmet.jpg"
-        },
-        {
-          "type": "Fishing Rod",
-          "name": "Telescopic Spinning Rod",
-          "price": 79.99,
-          "length": "7ft",
-          "power": "Medium",
-          "image": "fishing_rod.jpg"
-        },
-        {
-          "type": "Outdoor Hammock",
-          "name": "Portable Camping Hammock",
-          "price": 34.99,
-          "color": "Ocean Blue",
-          "capacity": "300 lbs",
-          "image": "camping_hammock.jpg"
-        },
-        {
-          "type": "Hydration Pack",
-          "name": "Compact Hydration Backpack",
-          "price": 39.99,
-          "capacity": "2L",
-          "color": "Red/Gray",
-          "image": "hydration_backpack.jpg"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "apparelBrands": [
+      {
+        "brandName": "UrbanStyle",
+        "products": [
+          {
+            "type": "Shoes",
+            "name": "Urban Sneakers",
+            "price": {
+              "$numberDouble": "59.99"
+            },
+            "sizes": [
+              "US 7",
+              "US 8",
+              "US 9"
+            ],
+            "colors": [
+              "Black",
+              "White",
+              "Red"
+            ],
+            "image": "https://i.ibb.co/yy7xgyH/new-sneakers.jpg"
+          },
+          {
+            "type": "T-Shirt",
+            "name": "Classic Logo Tee",
+            "price": {
+              "$numberDouble": "24.99"
+            },
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "White",
+              "Black",
+              "Gray"
+            ],
+            "image": "https://i.ibb.co/dpV4G5g/shirt-mockup-concept-with-plain-clothing.jpg"
+          },
+          {
+            "type": "Jeans",
+            "name": "Slim Fit Denim",
+            "price": 49.99,
+            "sizes": [
+              "28W 30L",
+              "30W 32L",
+              "32W 32L"
+            ],
+            "colors": [
+              "Blue",
+              "Black",
+              "Gray"
+            ],
+            "image": "https://i.ibb.co/ZYHv77D/pexels-mica-asato-1082528.jpg"
+          },
+          {
+            "type": "Dress",
+            "name": "Urban Elegance Dress",
+            "price": 69.99,
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Navy",
+              "Burgundy",
+              "Forest Green"
+            ],
+            "image": "https://i.ibb.co/K02Psn3/young-woman-beautiful-red-dress.jpg"
+          },
+          {
+            "type": "Jacket",
+            "name": "Street Chic Bomber",
+            "price": 79.99,
+            "sizes": [
+              "M",
+              "L",
+              "XL"
+            ],
+            "colors": [
+              "Olive",
+              "Camel",
+              "Black"
+            ],
+            "image": "https://i.ibb.co/L5d8pRr/white-denim-jacket-front-view-streetwear-fashion.jpg"
+          },
+          {
+            "type": "Sweater",
+            "name": "Cozy Knit Pullover",
+            "price": 54.99,
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Blush Pink",
+              "Heather Gray",
+              "Mustard"
+            ],
+            "image": "https://i.ibb.co/qM963F4/simple-white-sweater-unisex-streetwear-apparel.jpg"
+          },
+          {
+            "type": "Shorts",
+            "name": "Urban Explorer Shorts",
+            "price": 34.99,
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Khaki",
+              "Denim Blue",
+              "Charcoal"
+            ],
+            "image": "https://i.ibb.co/9rfnf0F/casual-men-short-pants.jpg"
+          },
+          {
+            "type": "Hoodie",
+            "name": "Street Vibes Hoodie",
+            "price": 44.99,
+            "sizes": [
+              "M",
+              "L",
+              "XL"
+            ],
+            "colors": [
+              "Urban Black",
+              "Navy Blue",
+              "Crimson Red"
+            ],
+            "image": "https://i.ibb.co/TtqwLVb/pexels-angela-roma-7479808.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "apparelBrands": [
+      {
+        "brandName": "CasualChic",
+        "products": [
+          {
+            "type": "Shoes",
+            "name": "Comfy Slip-Ons",
+            "price": {
+              "$numberDouble": "39.99"
+            },
+            "sizes": [
+              "US 6",
+              "US 7",
+              "US 8"
+            ],
+            "colors": [
+              "Beige",
+              "Navy",
+              "White"
+            ],
+            "image": "https://i.ibb.co/KmZh4T6/luis-felipe-lins-LG88-A2-Xg-IXY-unsplash.jpg"
+          },
+          {
+            "type": "T-Shirt",
+            "name": "Everyday Essentials Tee",
+            "price": {
+              "$numberDouble": "26.99"
+            },
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "White",
+              "Blue",
+              "Red"
+            ],
+            "image": "https://i.ibb.co/yX0tmy5/faith-yarn-Wr0-Tp-Kqf26s-unsplash.jpg"
+          },{
+            "type": "Jeans",
+            "name": "Casual Comfort Jeans",
+            "price": 47.99,
+            "sizes": [
+              "28W 30L",
+              "30W 32L",
+              "32W 32L"
+            ],
+            "colors": [
+              "Light Wash",
+              "Dark Wash",
+              "Medium Blue"
+            ],
+            "image": "https://i.ibb.co/ZS0C2YD/5theway-vietnam-OCr-GGDg-Ohc-I-unsplash.jpg"
+          },
+          {
+            "type": "Dress",
+            "name": "Chic Midi Dress",
+            "price": 59.99,
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Blush Pink",
+              "Charcoal",
+              "Navy Floral"
+            ],
+            "image": "https://i.ibb.co/WHmkV8v/stylish-young-brunette-female-model-red-dress.jpg"
+          },
+          {
+            "type": "Jacket",
+            "name": "Casual Blazer",
+            "price": 74.99,
+            "sizes": [
+              "M",
+              "L",
+              "XL"
+            ],
+            "colors": [
+              "Taupe",
+              "Olive",
+              "Caramel"
+            ],
+            "image": "https://i.ibb.co/B6WjZ39/still-life-rendering-jackets-display.jpg"
+          },
+          {
+            "type": "Sweater",
+            "name": "Relaxed Knit Sweater",
+            "price": 39.99,
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Heather Gray",
+              "Burgundy",
+              "Mustard"
+            ],
+            "image": "https://i.ibb.co/VSyqZXZ/pink-sweater-front.jpg"
+          },
+          {
+            "type": "Shorts",
+            "name": "Casual Denim Shorts",
+            "price": 29.99,
+            "sizes": [
+              "S",
+              "M",
+              "L"
+            ],
+            "colors": [
+              "Light Blue",
+              "Medium Wash",
+              "Black"
+            ],
+            "image": "https://i.ibb.co/DYL9hTC/man-wearing-beige-shorts-close-up.jpg"
+          },
+          {
+            "type": "Hoodie",
+            "name": "Cozy Hooded Sweatshirt",
+            "price": 49.99,
+            "sizes": [
+              "M",
+              "L",
+              "XL"
+            ],
+            "colors": [
+              "Charcoal",
+              "Navy Blue",
+              "Olive"
+            ],
+            "image": "https://i.ibb.co/NK5KYqW/pexels-ron-lach-9594679.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "electronicsBrands": [
+      {
+        "brandName": "TechMaster",
+        "products": [
+          {
+            "type": "Laptop",
+            "name": "High Performance Notebook",
+            "price": 1099.99,
+            "specs": [
+              "Intel i7",
+              "16GB RAM",
+              "512GB SSD"
+            ],
+            "image": "https://i.ibb.co/c6hKZXn/pexels-life-of-pix-7974.jpg"
+          },
+          {
+            "type": "Smartphone",
+            "name": "Flagship Android Phone",
+            "price": 799.99,
+            "specs": [
+              "6.5-inch AMOLED",
+              "Snapdragon 888",
+              "128GB Storage"
+            ],
+            "image": "https://i.ibb.co/17jWBSG/pexels-tyler-lastovich-699122.jpg"
+          },
+          {
+            "type": "Headphones",
+            "name": "Wireless Noise-Canceling Headset",
+            "price": 249.99,
+            "features": [
+              "Bluetooth 5.0",
+              "20-hour battery life",
+              "Active Noise Cancellation"
+            ],
+            "image": "https://i.ibb.co/r0JYYp3/pexels-sound-on-3394663.jpg"
+          },
+          {
+            "type": "Smartwatch",
+            "name": "Fitness Tracker Watch",
+            "price": 159.99,
+            "features": [
+              "Heart rate monitor",
+              "Sleep tracking",
+              "Water-resistant"
+            ],
+            "image": "https://i.ibb.co/vh15PCq/pexels-alexandr-borecky-393047.jpg"
+          },
+          {
+            "type": "Gaming Console",
+            "name": "Next-Gen Gaming Console",
+            "price": 499.99,
+            "specs": [
+              "4K gaming",
+              "Ray tracing",
+              "1TB SSD"
+            ],
+            "image": "https://i.ibb.co/CHyh0rT/pexels-cottonbro-studio-3945657.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "electronicsBrands": [
+      {
+        "brandName": "GadgetZone",
+        "products": [
+          {
+            "type": "Tablet",
+            "name": "Slim and Lightweight Tablet",
+            "price": 349.99,
+            "specs": [
+              "10.1-inch display",
+              "Octa-core processor",
+              "64GB Storage"
+            ],
+            "image": "https://i.ibb.co/T0Th4vF/pexels-marek-levak-2320369.jpg"
+          },
+          {
+            "type": "Wireless Earbuds",
+            "name": "True Wireless Earbuds",
+            "price": 79.99,
+            "features": [
+              "IPX7 waterproof",
+              "Touch controls",
+              "Wireless charging"
+            ],
+            "image": "https://i.ibb.co/PjdDzvX/pexels-soulful-pizza-3780681.jpg"
+          },
+          {
+            "type": "Smart Speaker",
+            "name": "Voice Assistant Speaker",
+            "price": 129.99,
+            "features": [
+              "Alexa integration",
+              "360-degree sound",
+              "Smart home control"
+            ],
+            "image": "https://i.ibb.co/YWHZQ1b/pexels-fabian-hurnaus-977296.jpg"
+          },
+          {
+            "type": "Camera",
+            "name": "Mirrorless Digital Camera",
+            "price": 899.99,
+            "specs": [
+              "24MP sensor",
+              "4K video recording",
+              "Interchangeable lenses"
+            ],
+            "image": "https://i.ibb.co/YRFrzk2/pexels-math-249597.jpg"
+          },
+          {
+            "type": "VR Headset",
+            "name": "Immersive Virtual Reality Headset",
+            "price": 399.99,
+            "features": [
+              "Wireless connectivity",
+              "Motion tracking",
+              "High-resolution display"
+            ],
+            "image": "https://i.ibb.co/brVpVHh/pexels-olia-danilevich-5309562.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "beautyAndPersonalCareBrands": [
+      {
+        "brandName": "GlamourEssentials",
+        "products": [
+          {
+            "type": "Skincare Set",
+            "name": "Radiant Skin Collection",
+            "price": 79.99,
+            "includes": [
+              "Cleanser",
+              "Toner",
+              "Moisturizer",
+              "Serum"
+            ],
+            "image": "https://i.ibb.co/t8xj0L6/pexels-karolina-grabowska-4202325.jpg"
+          },
+          {
+            "type": "Makeup Palette",
+            "name": "Everyday Glam Palette",
+            "price": 49.99,
+            "includes": [
+              "Eyeshadows",
+              "Blush",
+              "Highlighter",
+              "Lipsticks"
+            ],
+            "image": "https://i.ibb.co/gFy2Dpk/pexels-2639947.jpg"
+          },
+          {
+            "type": "Hair Care Kit",
+            "name": "Silky Smooth Hair Bundle",
+            "price": 34.99,
+            "includes": [
+              "Shampoo",
+              "Conditioner",
+              "Hair Mask"
+            ],
+            "image": "https://i.ibb.co/5KhpFRf/pexels-maria-orlova-4969856.jpg"
+          },
+          {
+            "type": "Fragrance",
+            "name": "Luxury Perfume",
+            "price": 89.99,
+            "scent": "Floral and Musk",
+            "image": "https://i.ibb.co/x3wY5CM/pexels-valeria-boltneva-965989.jpg"
+          },
+          {
+            "type": "Men's Grooming Set",
+            "name": "Ultimate Beard Care Kit",
+            "price": 54.99,
+            "includes": [
+              "Beard Oil",
+              "Beard Balm",
+              "Beard Comb"
+            ],
+            "image": "https://i.ibb.co/v1BMKB3/pexels-nataliya-vaitkevich-8468134.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "beautyAndPersonalCareBrands": [
+      {
+        "brandName": "OrganicBeauty",
+        "products": [
+          {
+            "type": "Natural Face Mask",
+            "name": "Organic Clay Mask",
+            "price": 19.99,
+            "ingredients": [
+              "Kaolin Clay",
+              "Chamomile Extract",
+              "Rosehip Oil"
+            ],
+            "image": "https://i.ibb.co/dbpY5v1/pexels-gustavo-fring-3985360.jpg"
+          },
+          {
+            "type": "Vegan Lipstick",
+            "name": "Cruelty-Free Matte Lip Color",
+            "price": 14.99,
+            "shade": "Berry Bliss",
+            "image": "https://i.ibb.co/V9vyFj3/pexels-pnw-production-9218700.jpg"
+          },
+          {
+            "type": "Organic Hair Serum",
+            "name": "Nourishing Argan Oil Serum",
+            "price": 29.99,
+            "ingredients": [
+              "Argan Oil",
+              "Vitamin E",
+              "Jojoba Oil"
+            ],
+            "image": "https://i.ibb.co/Xs0mVRC/pexels-dominika-roseclay-5462672.jpg"
+          },
+          {
+            "type": "Essential Oil Set",
+            "name": "Aromatherapy Relaxation Kit",
+            "price": 39.99,
+            "includes": [
+              "Lavender",
+              "Peppermint",
+              "Eucalyptus"
+            ],
+            "image": "https://i.ibb.co/prH3m0p/pexels-monstera-production-6621461.jpg"
+          },
+          {
+            "type": "Natural Deodorant",
+            "name": "Aluminum-Free Fresh Scent Deodorant",
+            "price": 12.99,
+            "scent": "Citrus Grove",
+            "image": "https://i.ibb.co/7VQ05tD/pexels-nam-mau-13931592.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "homeAndLivingBrands": [
+      {
+        "brandName": "ModernHome",
+        "products": [
+          {
+            "type": "Sofa",
+            "name": "Contemporary Leather Sofa",
+            "price": 899.99,
+            "color": "Charcoal Gray",
+            "dimensions": "84W x 36D x 30H",
+            "image": "https://i.ibb.co/dkr9DMr/pexels-andrea-piacquadio-3757055.jpg"
+          },
+          {
+            "type": "Dining Table",
+            "name": "Extendable Wood Dining Table",
+            "price": 549.99,
+            "material": "Solid Oak",
+            "seats": 6,
+            "image": "https://i.ibb.co/4T4tzCN/pexels-jonathan-borba-3144581.jpg"
+          },
+          {
+            "type": "Bedding Set",
+            "name": "Luxury 6-Piece Bedding Ensemble",
+            "price": 129.99,
+            "includes": [
+              "Comforter",
+              "Sheets",
+              "Pillowcases"
+            ],
+            "size": "Queen",
+            "image": "https://i.ibb.co/4jbLXvF/febrian-zakaria-2-QTs-Co-Qnoag-unsplash.jpg"
+          },
+          {
+            "type": "Wall Art",
+            "name": "Abstract Canvas Painting",
+            "price": 79.99,
+            "dimensions": "36W x 24H",
+            "image": "https://i.ibb.co/j8bNBnr/pexels-medhat-ayad-383568.jpg"
+          },
+          {
+            "type": "Smart Home System",
+            "name": "Home Automation Starter Kit",
+            "price": 299.99,
+            "features": [
+              "Smart Bulbs",
+              "Smart Thermostat",
+              "Voice Control"
+            ],
+            "image": "https://i.ibb.co/VTchKTw/pexels-y-cel-zel-7876185.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "homeAndLivingBrands": [
+      {
+        "brandName": "CozyNook",
+        "products": [
+          {
+            "type": "Bean Bag Chair",
+            "name": "Memory Foam Bean Bag",
+            "price": 129.99,
+            "color": "Navy Blue",
+            "dimensions": "36W x 36D x 24H",
+            "image": "https://i.ibb.co/DGRTx91/pexels-max-rahubovskiy-6444262.jpg"
+          },
+          {
+            "type": "Candle Set",
+            "name": "Scented Soy Candles",
+            "price": 24.99,
+            "scents": [
+              "Vanilla Lavender",
+              "Citrus Burst",
+              "Warm Amber"
+            ],
+            "image": "throw_blanket.jpghttps://i.ibb.co/WgHpZCp/pexels-jill-burrow-6069752.jpg"
+          },
+          {
+            "type": "Cozy Throw Blanket",
+            "name": "Knit Chenille Throw",
+            "price": 39.99,
+            "color": "Blush Pink",
+            "dimensions": "50W x 60L",
+            "image": "https://i.ibb.co/Xkp3Mz7/pexels-alex-andrews-821649.jpg"
+          },
+          {
+            "type": "Rustic Wall Shelf",
+            "name": "Wooden Floating Shelf",
+            "price": 49.99,
+            "dimensions": "24W x 12D x 2H",
+            "image": "https://i.ibb.co/sFn10LW/pexels-karolina-grabowska-4207785.jpg"
+          },
+          {
+            "type": "Indoor Plants Set",
+            "name": "Assorted Potted Plants",
+            "price": 59.99,
+            "includes": [
+              "Snake Plant",
+              "Fiddle Leaf Fig",
+              "Peace Lily"
+            ],
+            "image": "https://i.ibb.co/nnn5Bmr/pexels-matheus-bertelli-17109114.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sportsAndOutdoorsBrands": [
+      {
+        "brandName": "ActivePro",
+        "products": [
+          {
+            "type": "Running Shoes",
+            "name": "Performance Running Sneakers",
+            "price": 79.99,
+            "sizes": [
+              "US 7",
+              "US 8",
+              "US 9"
+            ],
+            "colors": [
+              "Black/White",
+              "Blue/Green",
+              "Red/Gray"
+            ],
+            "image": "https://i.ibb.co/yhrDBzP/pexels-melvin-buezo-2529148.jpg"
+          },
+          {
+            "type": "Fitness Tracker",
+            "name": "Waterproof Activity Tracker",
+            "price": 49.99,
+            "features": [
+              "Heart rate monitoring",
+              "Step counter",
+              "Sleep tracking"
+            ],
+            "image": "https://i.ibb.co/0cqTsyT/pexels-ketut-subiyanto-4426515.jpg"
+          },
+          {
+            "type": "Outdoor Backpack",
+            "name": "Multi-Pocket Hiking Backpack",
+            "price": 69.99,
+            "capacity": "30L",
+            "color": "Forest Green",
+            "image": "https://i.ibb.co/ZXMMF38/pexels-lalu-fatoni-732632.jpg"
+          },
+          {
+            "type": "Yoga Mat",
+            "name": "Non-Slip Eco-Friendly Mat",
+            "price": 29.99,
+            "thickness": "6mm",
+            "color": "Purple",
+            "image": "https://i.ibb.co/5Fk9SkS/pexels-dmytro-2394051.jpg"
+          },
+          {
+            "type": "Camping Tent",
+            "name": "3-Person Dome Tent",
+            "price": 129.99,
+            "features": [
+              "Weather-resistant",
+              "Easy setup",
+              "Mesh windows"
+            ],
+            "image": "https://i.ibb.co/D4DfQ3y/pexels-xue-guangjian-1687845.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sportsAndOutdoorsBrands": [
+      {
+        "brandName": "OutdoorXplorer",
+        "products": [
+          {
+            "type": "Trail Running Shoes",
+            "name": "Lightweight Trail Sneakers",
+            "price": 89.99,
+            "sizes": [
+              "US 7",
+              "US 8",
+              "US 9"
+            ],
+            "colors": [
+              "Gray/Orange",
+              "Black/Yellow",
+              "Blue/Purple"
+            ],
+            "image": "https://i.ibb.co/4gcF7gM/pexels-alteredsnaps-16234307.jpg"
+          },
+          {
+            "type": "Cycling Helmet",
+            "name": "Aero Performance Helmet",
+            "price": 59.99,
+            "size": "M/L",
+            "color": "Matte Black",
+            "image": "https://i.ibb.co/G3CprMx/jan-kopriva-f6-My6grkxv0-unsplash.jpg"
+          },
+          {
+            "type": "Fishing Rod",
+            "name": "Telescopic Spinning Rod",
+            "price": 79.99,
+            "length": "7ft",
+            "power": "Medium",
+            "image": "https://i.ibb.co/nzgx9Yc/mathieu-le-roux-6-Hqv-Y1-E7-NI-unsplash.jpg"
+          },
+          {
+            "type": "Outdoor Hammock",
+            "name": "Portable Camping Hammock",
+            "price": 34.99,
+            "color": "Ocean Blue",
+            "capacity": "300 lbs",
+            "image": "https://i.ibb.co/RPzdL1B/pexels-ksenia-chernaya-10807599.jpg"
+          },
+          {
+            "type": "Hydration Pack",
+            "name": "Compact Hydration Backpack",
+            "price": 39.99,
+            "capacity": "2L",
+            "color": "Red/Gray",
+            "image": "https://i.ibb.co/kXKCJ4x/sam-hojati-uxjo-Wys-S-A-unsplash.jpg"
+          }
+        ]
+      }
+    ]
+  }
+]
