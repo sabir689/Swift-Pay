@@ -1,5 +1,6 @@
 import Banner from "./Banner";
-import Business from "./Business";
+import Customers from "./Customers";
+import Featured from "./Featured";
 import Offer from "./Offer";
 import ServicesSlider from "./ServicesSlider";
 import WhatIsNew from "./WhatIsNew";
@@ -40,13 +41,16 @@ const Home = () => {
         <ServicesSlider></ServicesSlider>
       </div>
       <div className="mt-10">
-        <Business></Business>
+       <Featured></Featured>
       </div>
       <div className="max-w-screen-2xl mx-auto mt-20 mb-10">
         <WhatIsNew></WhatIsNew>
       </div>
       <div className="mt-10 mb-10">
         <Offer></Offer>
+      </div>
+      <div className="mt-10 mb-10">
+        <Customers></Customers>
       </div>
       <div className="mt-32 mb-10">
         <Gallery></Gallery>

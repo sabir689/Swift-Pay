@@ -20,9 +20,10 @@ const Banner = () => {
               <p className="tracking-wide -leading-10 text-3xl lg:text-7xl font-bold bg-gradient-to-r from-[rgba(179,0,2551)]  to-[rgba(9,9,121,1)] text-transparent bg-clip-text typed group">
                 Explore <span className="font-thin">Endless</span> Opportuniti
                 <span className="text-white shadow-text">es</span>
-                <br className="mt-5" /> Market place Journey{" "}
+                <br className="mt-5" /> Market pla
+                <span className="text-white shadow-text">ce</span> Journey{" "}
                 <span className="text-white shadow-text">Starts Here</span>
-                <span className="animate-blink text-[#49108B]">.</span>
+                <span className="animate-blink text-[#cbbbde]">.</span>
               </p>
               <div className="mt-5">
                 <Link to="/login">

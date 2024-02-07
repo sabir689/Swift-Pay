@@ -14,7 +14,6 @@ import OffersDetails from "../pages/OffersDetails/OffersDetails";
 import NewContact from "../Dashboard/NewContact";
 import SendMoney from "../Dashboard/SendMoney";
 import ReceiveMoney from "../Dashboard/ReceiveMoney";
-
 import PrivateRoute from "./PrivateRoute";
 import MyDashboard from "../Dashboard/MyDashboard";
 import Transactions from "../Dashboard/Transactions";
@@ -24,7 +23,10 @@ import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
+
 import AddBrand from "../Dashboard/Branded/AddBrand";
+import AllUsers from "../Admin/Dashboard pages/AllUsers";
+import Customers from "../pages/home/Customers";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -123,7 +125,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "addBrand",
-        element: <AddBrand></AddBrand>
+        element: <AddBrand></AddBrand>,
       },
       {
         path: "saved",
@@ -133,6 +135,15 @@ export const router = createBrowserRouter([
         path: "details/:id",
         element: <Details></Details>,
         loader: () => fetch(`http://localhost:5000/api/products`),
+      },
+      {
+        path: "addBrand",
+        element: <AddBrand></AddBrand>,
+      },
+      // admin
+      {
+        path: "allUsers",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },
