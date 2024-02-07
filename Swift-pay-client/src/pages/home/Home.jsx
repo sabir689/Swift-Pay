@@ -87,7 +87,7 @@ const Home = () => {
         </button>
       )}
       {speedButton && (
-        <details className="dropdown shadow-transparent dropdown-top fixed bottom-[50px] right-[50px] lg:bottom-[110px] lg:right-[78px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px]">
+        <details className="dropdown shadow-transparent dropdown-top fixed bottom-[100px] right-[77px] lg:bottom-[110px] lg:right-[78px] h-[50px] w-[50px] lg:h-[50px] lg:w-[50px]">
           <summary className="m-1 btn bg-transparent border-none hover:bg-transparent">
             <p
               className="group cursor-pointer outline-none z-[50] hover:rotate-90 duration-300"
