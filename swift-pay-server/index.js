@@ -39,10 +39,22 @@ async function run() {
       const result = await orderCollection.insertOne(orders);
       res.send(result);
     });
+  
+
+    // app.post("/api/orders", async (req, res) => {
+    //   const orders = req.body;
+    //   const result = await orderCollection.insertOne(orders);
+    //   res.send(result);
+    // });
 
     app.get("/api/brands", async (req, res) => {
       const cursor = brandCollection.find();
       const result = await cursor.toArray();
+      res.send(result);
+    });
+    app.post("/api/brands", async (req, res) => {
+      const brands = req.body;
+      const result = await brandCollection.insertOne(brands);
       res.send(result);
     });
 
@@ -137,6 +149,8 @@ async function run() {
       }
     });
 
+    
+    
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
