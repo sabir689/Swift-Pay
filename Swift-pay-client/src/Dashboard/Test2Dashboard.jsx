@@ -17,7 +17,7 @@ import { BsBoundingBox, BsCart2 } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
 import { IoHome } from "react-icons/io5";
 import useUser from "../hooks/useUser";
-
+import { SiBrandfolder } from "react-icons/si";
 const Test2Dashboard = () => {
   const { logOut, user } = useContext(AuthContext);
   const [mainUser] = useUser();
@@ -52,7 +52,7 @@ const Test2Dashboard = () => {
       {
         name: "Branded Shop",
         link: "/dashboard/branded",
-        icon: GoHome,
+        icon: SiBrandfolder,
       },
       {
         name: "dashboard",
@@ -93,7 +93,7 @@ const Test2Dashboard = () => {
       {
         name: "Branded Shop",
         link: "/dashboard/branded",
-        icon: GoHome,
+        icon: SiBrandfolder,
       },
       {
         name: "dashboard",

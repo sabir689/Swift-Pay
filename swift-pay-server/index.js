@@ -33,14 +33,17 @@ async function run() {
     // offers collection
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
-
+    // post order
     app.post("/api/orders", async (req, res) => {
       const orders = req.body;
       const result = await orderCollection.insertOne(orders);
       res.send(result);
     });
-  
-
+    // app.post("/api/orders", async (req, res) => {
+    //   const orders = req.body;
+    //   const result = await orderCollection.insertOne(orders);
+    //   res.send(result);
+    // });
     // app.post("/api/orders", async (req, res) => {
     //   const orders = req.body;
     //   const result = await orderCollection.insertOne(orders);
@@ -149,8 +152,6 @@ async function run() {
       }
     });
 
-    
-    
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
