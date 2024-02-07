@@ -55,23 +55,27 @@ const Saved = () => {
           >
             <div
               className="relative h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
-              style={{ backgroundImage: `url(${product.image || product.product.image})` }}
+              style={{
+                backgroundImage: `url(${
+                  product?.image || product?.product?.image
+                })`,
+              }}
             >
               <div
                 onClick={() => handleDelete(product._id)}
                 className="absolute top-2 right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-blue-400"
               >
-                <MdDelete className="text-2xl text-red-700" />
+                <MdDelete className="text-2xl text-red-500" />
               </div>
             </div>
             <div className="p-4">
               <div className="">
                 <h1 className="text-gray-600 font-medium">
-                  {product.productName || product.product.name}
+                  {product?.productName || product?.product.name}
                 </h1>
                 <button className="text-gray-500 hover:text-gray-900">
                   {" "}
-                  ${product.price || product.product.price}
+                  ${product?.price || product?.product.price}
                 </button>{" "}
               </div>{" "}
               <p className="text-gray-400 text-sm my-1">
@@ -84,12 +88,12 @@ const Saved = () => {
                 {product.location || product.product.location}
               </p>
               {/* Adjust this part based on your modal implementation */}
-              <span
+              {/* <span
                 onClick={() => {}}
                 className="uppercase text-xs bg-green-50 px-2 py-1 border-green-500 border rounded text-green-700 font-medium"
               >
                 Pay
-              </span>{" "}
+              </span>{" "} */}
             </div>{" "}
           </div>
         ))}

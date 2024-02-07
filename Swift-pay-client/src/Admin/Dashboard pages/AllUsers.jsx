@@ -1,12 +1,15 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/no-unknown-property */
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import OnlineStatus from "../../Components/Shared/Online status/OnlineStatus";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
+import useUser from "../../hooks/useUser";
 
 const AllUsers = () => {
   const axiosPublic = useAxiosPublic();
+  const [user] = useUser();
   const { data: profile = [] } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
@@ -14,6 +17,17 @@ const AllUsers = () => {
       return res.data;
     },
   });
+  const { data: postedProducts = [] } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      // const res = await axiosPublic.get(`/api/bookmarks`);
+      const res = await axiosPublic.get("/api/users");
+      return res.data;
+    },
+  });
+  const handleSubmit = (email) => {
+    console.log("email user");
+  };
   return (
     <div>
       <section className="container px-4 mx-auto mt-10">
@@ -189,11 +203,12 @@ const AllUsers = () => {
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             <button
-                              onClick={() =>
+                              onClick={() => {
+                                handleSubmit(profileUser?.email);
                                 document
                                   .getElementById("my_modal_1")
-                                  .showModal()
-                              }
+                                  .showModal();
+                              }}
                               className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800"
                             >
                               <span className="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
@@ -269,9 +284,14 @@ const AllUsers = () => {
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
-            Press ESC key or click the button below to close
-          </p>
+          {postedProducts
+            ?.filter((product) => product?.email === "email")
+            .map((product) => (
+              <div>
+                <p>{product?.productName}</p>
+                <p>{product?.email}</p>
+              </div>
+            ))}
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>
