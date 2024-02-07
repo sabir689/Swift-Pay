@@ -26,6 +26,7 @@ import Branded from "../Dashboard/Branded/Branded";
 
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
+import Customers from "../pages/home/Customers";
 export const router = createBrowserRouter([
   {
     path: "/",
