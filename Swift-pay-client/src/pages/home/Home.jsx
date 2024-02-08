@@ -58,7 +58,7 @@ const Home = () => {
         <AllPlatform></AllPlatform>
       </div>
       <div
-        className="my-10 bg-cover bg-center max-w-screen-xl mx-auto rounded-lg"
+        className="my-20 bg-cover bg-center max-w-screen-xl mx-auto rounded-lg"
         style={{ backgroundImage: `url(${banner})` }}
       >
         <ServicesSlider></ServicesSlider>
