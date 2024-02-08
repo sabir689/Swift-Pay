@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../../Components/Shared/Container";
+import { Link } from "react-router-dom";
 
 const Featured = () => {
   const backgroundImageUrl =
@@ -24,6 +25,11 @@ const Featured = () => {
               scalability, and cutting-edge features for optimal business
               performance.
             </p>
+            <Link to="/dashboard/branded">
+              <button className="w-fit border-2 border-gray-100 px-8 py-4 hover:scale-95">
+                Visit our Branded shop
+              </button>
+            </Link>
           </div>
         </div>
       </div>

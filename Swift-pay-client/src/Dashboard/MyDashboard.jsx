@@ -88,50 +88,55 @@ const MyDashboard = () => {
   const kitchenEmails = kitchenProducts.reduce((emails, product) => {
     return [...emails, product?.email];
   }, []);
+
   return (
-    <div className="flex items-center justify-center flex-col my-20">
-      <div className="w-[800px] px-8  py-8 pb-12 bg-gray-800 rounded-lg shadow-lg ">
-        <div className="flex justify-start items-start -mt-16 md:justify-end">
-          <img
-            className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400"
-            alt="Testimonial avatar"
-            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
-          />
+    <div className="flex flex-col my-20">
+      <div className="flex items-center justify-between">
+        <div className="w-[600px] px-8  py-8 pb-12 bg-gray-800 rounded-lg shadow-lg ">
+          <h2 className="mt-2 mb-5 ml-[34px] text-3xl font-semibold text-gray-800 dark:text-white md:mt-0">
+            Overview<span></span>
+          </h2>
+
+          <div className="flex items-center justify-center">
+            <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#673ab7] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
+              <p className="text-white text-2xl font-semibold">
+                Total products
+              </p>
+              <p className="text-gray-200 text-2xl">{products?.length}</p>
+              <img className="w-[50px]  mt-2" src={receive} alt="" />
+            </div>
+            <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#4157ff] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
+              <p className="text-white text-2xl font-semibold">1530 $</p>
+              <p className="text-white text-sm">Total Sell Post</p>
+              <img className="w-[50px]  mt-2" src={sent} alt="" />
+            </div>
+          </div>
         </div>
+        {/*  */}
+        <div>
+          <div className="border-[1px]  w-fit rounded-lg">
+            <article className="w-96 overflow-hidden  shadow transition hover:shadow-lg">
+              <div className="bg-white p-4 sm:p-6">
+                <a>
+                  <h3 className="mt-0.5 text-lg text-gray-900">
+                    Most products in category
+                  </h3>
+                </a>
 
-        <h2 className="mt-2 mb-5 ml-[34px] text-3xl font-semibold text-gray-800 dark:text-white md:mt-0">
-          Overview<span></span>
-        </h2>
+                <p className="flex items-center mt-2 line-clamp-3 text-sm/relaxed text-gray-900">
+                  <span className="text-4xl mr-3">Electronics:</span>
+                  <span className="text-5xl text-purple-400 font-semibold">
+                    {electronicsProducts?.length}
+                  </span>
 
-        <div className="flex items-center justify-center">
-          <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#673ab7] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
-            <p className="text-white text-2xl font-semibold">2256 $</p>
-            <p className="text-white text-sm">Total Product sold</p>
-            <img className="w-[50px]  mt-2" src={receive} alt="" />
+                  {/* {electronicsProducts.map((product) => (
+                  ))} */}
+                </p>
+              </div>
+            </article>
           </div>
-          {/* <button className="mr-5 border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-700 right-12 top-12 bg-yellow-500"></div>
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-12 h-12 rounded-full group-hover:scale-150  duration-700 right-20 -top-6 bg-orange-500"></div>
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-8 h-8   rounded-full group-hover:scale-150  duration-700 right-32 top-6 bg-pink-500"></div>
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-4 h-4   rounded-full group-hover:scale-150  duration-700 right-2 top-12 bg-red-600"></div>
-            <p className="z-10 absolute bottom-2 left-2">History</p>
-          </button> */}
-          <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#4157ff] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
-            <p className="text-white text-2xl font-semibold">1530 $</p>
-            <p className="text-white text-sm">Total Sell Post</p>
-            <img className="w-[50px]  mt-2" src={sent} alt="" />
-          </div>
-          {/* <button className="border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-700 right-12 top-12 bg-yellow-500"></div>
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-12 h-12 rounded-full group-hover:scale-150  duration-700 right-20 -top-6 bg-orange-500"></div>
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-8 h-8   rounded-full group-hover:scale-150  duration-700 right-32 top-6 bg-pink-500"></div>
-            <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-4 h-4   rounded-full group-hover:scale-150  duration-700 right-2 top-12 bg-red-600"></div>
-            <p className="z-10 absolute bottom-2 left-2">History</p>
-          </button> */}
         </div>
       </div>
-      {/*  */}
-
       <div className="mt-10 w-[800px] border-[1px] p-5 rounded-lg">
         <p className="mb-7 font-bold text-3xl text-blue-400">
           Categories and products
