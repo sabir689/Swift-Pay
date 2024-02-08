@@ -16,6 +16,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { BsBoundingBox, BsCart2 } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
 import { IoHome } from "react-icons/io5";
+import { BsShop } from "react-icons/bs";
 import useUser from "../hooks/useUser";
 
 const Test2Dashboard = () => {
@@ -38,6 +39,11 @@ const Test2Dashboard = () => {
         name: "SELL",
         link: "/dashboard/sellPost",
         icon: GiSellCard,
+      },
+      {
+        name: "dashboard",
+        link: "/dashboard/myDashboard",
+        icon: MdOutlineDashboard,
       },
       {
         name: "Market",
@@ -81,24 +87,24 @@ const Test2Dashboard = () => {
         icon: GiSellCard,
       },
       {
+        name: "dashboard",
+        link: "/dashboard/myDashboard",
+        icon: MdOutlineDashboard,
+      },
+      {
         name: "Market",
         link: "/dashboard/market",
         icon: LuShoppingBag,
       },
       {
-        name: "Home",
-        link: "/",
-        icon: GoHome,
+        name: "My Products",
+        link: "/dashboard/my-products",
+        icon: BsShop,
       },
       {
         name: "Branded Shop",
         link: "/dashboard/branded",
         icon: GoHome,
-      },
-      {
-        name: "dashboard",
-        link: "/dashboard/myDashboard",
-        icon: MdOutlineDashboard,
       },
       { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
       { name: "All users", link: "/dashboard/allUsers", icon: AiOutlineUser },
@@ -108,10 +114,25 @@ const Test2Dashboard = () => {
         link: "/",
         icon: TbReportAnalytics,
       },
-      { name: "File Manager", link: "/", icon: FiFolder },
-      { name: "Cart", link: "/", icon: FiShoppingCart },
-
-      { name: "Setting", link: "/", icon: RiSettings4Line },
+      { 
+        name: "File Manager",
+       link: "/", 
+       icon: FiFolder 
+      },
+      { 
+        name: "Cart",
+       link: "/", icon: 
+       FiShoppingCart
+       },
+      {
+        name: "Home",
+        link: "/",
+        icon: GoHome,
+      },
+      { name: "Setting",
+      link: "/",
+       icon: RiSettings4Line 
+      },
     ];
   }
   const [open, setOpen] = useState(true);
