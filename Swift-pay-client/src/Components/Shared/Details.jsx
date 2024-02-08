@@ -91,7 +91,7 @@ const Details = () => {
                     onClick={() =>
                       document.getElementById("my_modal_1").showModal()
                     }
-                    className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-green-600  border-gray-900 rounded-full inline-flex hover:bg-transparent hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+                    className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-green-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
                   >
                     Pay
                   </button>

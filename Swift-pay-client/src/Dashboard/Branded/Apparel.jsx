@@ -6,15 +6,17 @@ const Apparel = () => {
   const [brands, setBrands] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/brands");
         const data = await response.json();
         setBrands(data.map((brand) => brand.apparelBrands));
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       }
     };
 
@@ -58,59 +60,66 @@ const Apparel = () => {
 
   return (
     <div>
-      {brands.map((brand, brandIndex) => (
-        <div key={brandIndex}>
-          {brand && brand[0] && (
-            <h2 className="text-4xl text-white rounded-sm bg-red-500 hover:ping-800 p-4 mb-5">
-              {brand[0].brandName}
-            </h2>
-          )}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ml-10">
-            {brand &&
-              brand[0] &&
-              brand[0].products?.map((product, productIndex) => (
-                <div
-                  className="border-[1px] w-[300px] p-4 rounded-lg text-center mb-6"
-                  key={productIndex}
-                >
-                  <img
-                    className="w-72 h-72 rounded-md object-cover object-center"
-                    src={product?.image}
-                    alt={product?.name}
-                  />
-                  <h3 className="text-md font-semibold mb-2 mt-2 text-[#190B14]">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-1">
-                    Type: {product.type}
-                  </p>
-                  <p className="text-sm mb-1 text-gray-500">
-                    Price: ${product.price}
-                  </p>
-                  <p className="text-sm mb-1 text-gray-500">
-                    Sizes: {product.sizes && product.sizes.join(", ")}
-                  </p>
-                  <p className="text-sm mb-1 text-gray-400">
-                    Colors: {product.colors && product.colors.join(", ")}
-                  </p>
-                  <button
-                    onClick={() => openModal(product)}
-                    className="mt-2 overflow-hidden relative w-28  py-3  bg-[#190B14] text-white border-none rounded-md text-sm font-medium cursor-pointer group"
-                  >
-                    Show details
-                    <span className="absolute w-28 h-28 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
-                    <span className="absolute w-28 h-28 -top-8 -left-2 bg-purple-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
-                    <span className="absolute w-28 h-28 -top-8 -left-2 bg-purple-600 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
-                    <span className="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-[12px] left-[48px] z-10">
-                      Go
-                    </span>
-                  </button>
-                </div>
-              ))}
-          </div>
+      {isLoading ? (
+        <div className="flex flex-row gap-2 items-center justify-center h-screen">
+          <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce"></div>
+          <div className="w-4 h-4 rounded-full bg-red-700 animate-bounce [animation-delay:-.3s]"></div>
+          <div className="w-4 h-4 rounded-full bg-green-400 animate-bounce [animation-delay:-.5s]"></div>
         </div>
-      ))}
-
+      ) : (
+        brands.map((brand, brandIndex) => (
+          <div key={brandIndex}>
+            {brand && brand[0] && (
+              <h2 className="text-4xl text-white rounded-sm bg-red-500 hover:ping-800 p-4 mb-5">
+                {brand[0].brandName}
+              </h2>
+            )}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ml-10">
+              {brand &&
+                brand[0] &&
+                brand[0].products?.map((product, productIndex) => (
+                  <div
+                    className="border-[1px] w-[300px] p-4 rounded-lg text-center mb-6"
+                    key={productIndex}
+                  >
+                    <img
+                      className="w-72 h-72 rounded-md object-cover object-center"
+                      src={product?.image}
+                      alt={product?.name}
+                    />
+                    <h3 className="text-md font-semibold mb-2 mt-2 text-[#190B14]">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 mb-1">
+                      Type: {product.type}
+                    </p>
+                    <p className="text-sm mb-1 text-gray-500">
+                      Price: ${product.price}
+                    </p>
+                    <p className="text-sm mb-1 text-gray-500">
+                      Sizes: {product.sizes && product.sizes.join(", ")}
+                    </p>
+                    <p className="text-sm mb-1 text-gray-400">
+                      Colors: {product.colors && product.colors.join(", ")}
+                    </p>
+                    <button
+                      onClick={() => openModal(product)}
+                      className="mt-2 overflow-hidden relative w-28  py-3  bg-[#190B14] text-white border-none rounded-md text-sm font-medium cursor-pointer group"
+                    >
+                      Show details
+                      <span className="absolute w-28 h-28 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
+                      <span className="absolute w-28 h-28 -top-8 -left-2 bg-purple-400 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
+                      <span className="absolute w-28 h-28 -top-8 -left-2 bg-purple-600 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
+                      <span className="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-[12px] left-[48px] z-10">
+                        Go
+                      </span>
+                    </button>
+                  </div>
+                ))}
+            </div>
+          </div>
+        ))
+      )}
       {/* Details Modal */}
       {isModalOpen && selectedProduct && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-60  flex justify-center items-center align-middle">

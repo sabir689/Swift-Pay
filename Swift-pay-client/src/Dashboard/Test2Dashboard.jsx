@@ -41,29 +41,25 @@ const Test2Dashboard = () => {
         icon: GiSellCard,
       },
       {
-        name: "dashboard",
-        link: "/dashboard/myDashboard",
-        icon: MdOutlineDashboard,
-      },
-      {
         name: "Market",
         link: "/dashboard/market",
         icon: LuShoppingBag,
       },
       {
-        name: "Home",
-        link: "/",
-        icon: GoHome,
-      },
-      {
-        name: "Branded Shop",
-        link: "/dashboard/branded",
-        icon: SiBrandfolder,
-      },
-      {
         name: "dashboard",
         link: "/dashboard/myDashboard",
         icon: MdOutlineDashboard,
+      },
+
+      {
+        name: "My Products",
+        link: "/dashboard/my-products",
+        icon: BsShop,
+      },
+      {
+        name: "Home",
+        link: "/",
+        icon: GoHome,
       },
       { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
       { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
@@ -87,24 +83,20 @@ const Test2Dashboard = () => {
         icon: GiSellCard,
       },
       {
-        name: "dashboard",
-        link: "/dashboard/myDashboard",
-        icon: MdOutlineDashboard,
-      },
-      {
         name: "Market",
         link: "/dashboard/market",
         icon: LuShoppingBag,
       },
       {
+        name: "dashboard",
+        link: "/dashboard/myDashboard",
+        icon: MdOutlineDashboard,
+      },
+
+      {
         name: "My Products",
         link: "/dashboard/my-products",
         icon: BsShop,
-      },
-      {
-        name: "Branded Shop",
-        link: "/dashboard/branded",
-        icon: SiBrandfolder,
       },
       { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
       { name: "All users", link: "/dashboard/allUsers", icon: AiOutlineUser },
@@ -114,25 +106,22 @@ const Test2Dashboard = () => {
         link: "/",
         icon: TbReportAnalytics,
       },
-      { 
+      {
         name: "File Manager",
-       link: "/", 
-       icon: FiFolder 
+        link: "/",
+        icon: FiFolder,
       },
-      { 
+      {
         name: "Cart",
-       link: "/", icon: 
-       FiShoppingCart
-       },
+        link: "/",
+        icon: FiShoppingCart,
+      },
       {
         name: "Home",
         link: "/",
         icon: GoHome,
       },
-      { name: "Setting",
-      link: "/",
-       icon: RiSettings4Line 
-      },
+      { name: "Setting", link: "/", icon: RiSettings4Line },
     ];
   }
   const [open, setOpen] = useState(true);
@@ -346,7 +335,21 @@ const Test2Dashboard = () => {
       <div className="flex-1 mr-3 mt-3 max-w-screen-2xl mx-auto">
         <div className="mt-2 w-[300px] lg:w-full">
           <div className="mb-5 rounded-lg border-[1px] border-gray-400 p-2 flex items-center justify-end">
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center mr-5">
+              <p className="text-start mr-2">branded shop</p>
+              <SiBrandfolder className="text-xl" />
+            </div> */}
+            <Link to="/dashboard/branded">
+              <button className="mr-5 border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
+                <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-700 right-12 top-12 bg-yellow-500"></div>
+                <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-12 h-12 rounded-full group-hover:scale-150  duration-700 right-20 -top-6 bg-orange-500"></div>
+                <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-8 h-8   rounded-full group-hover:scale-150  duration-700 right-32 top-6 bg-pink-500"></div>
+                <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-4 h-4   rounded-full group-hover:scale-150  duration-700 right-2 top-12 bg-red-600"></div>
+                <p className="z-10 absolute bottom-2 left-2">Branded shop</p>
+              </button>
+            </Link>
+
+            <div className="flex items-center">
               <Link to="/">
                 <IoHome className="text-2xl hover:text-blue-400" />
               </Link>
