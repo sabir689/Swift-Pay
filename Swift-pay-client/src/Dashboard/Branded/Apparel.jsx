@@ -80,6 +80,7 @@ const Apparel = () => {
                 </div>
               ))}
           </div>
+          
         </div>
       ))}
 
