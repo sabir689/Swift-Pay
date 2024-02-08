@@ -51,6 +51,7 @@ const Register = () => {
             name,
             email,
             password,
+            role: "user",
           };
           axiosPublic.post("/api/users", userInfo).then((res) => {
             if (res.data.insertedId) {

@@ -17,7 +17,7 @@ const SellPost = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const queryClient = useQueryClient();
-  
+
   const onSubmit = async (data) => {
     // console.log(date);
     const imageFile = { image: data.image[0] };
@@ -33,6 +33,7 @@ const SellPost = () => {
         date: new Date().toDateString(),
         productName: data.productName,
         email: user?.email,
+
         number: data.number,
         price: data.price,
         description: data.description,
@@ -47,7 +48,6 @@ const SellPost = () => {
           position: "bottom-right", // Set the position to bottom-right
         });
         queryClient.invalidateQueries([]);
- 
       }
       console.log(postProduct.data);
     }
@@ -108,7 +108,6 @@ const SellPost = () => {
               <input
                 {...register("email")}
                 className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm cursor-not-allowed"
-               
                 type="Email"
                 placeholder="your email"
                 id="Email"
@@ -172,7 +171,7 @@ const SellPost = () => {
             <div className="text-end mt-4">
               <button
                 type="submit"
-                className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-purple-600  border-gray-900 rounded-full inline-flex hover:bg-transparent hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+                className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:text-white  text-sm"
               >
                 Sell
               </button>
