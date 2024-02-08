@@ -87,21 +87,23 @@ const Apparel = () => {
                       src={product?.image}
                       alt={product?.name}
                     />
-                    <h3 className="text-md font-semibold mb-2 mt-2 text-[#190B14]">
-                      {product.name}
-                    </h3>
-                    <p className="text-sm text-gray-500 mb-1">
-                      Type: {product.type}
-                    </p>
-                    <p className="text-sm mb-1 text-gray-500">
-                      Price: ${product.price}
-                    </p>
-                    <p className="text-sm mb-1 text-gray-500">
-                      Sizes: {product.sizes && product.sizes.join(", ")}
-                    </p>
-                    <p className="text-sm mb-1 text-gray-400">
-                      Colors: {product.colors && product.colors.join(", ")}
-                    </p>
+                    <div className="h-[150px] text-center">
+                      <h3 className="text-md font-semibold mb-2 mt-2 text-[#190B14]">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 mb-1">
+                        Type: {product.type}
+                      </p>
+                      <p className="text-sm mb-1 text-gray-500">
+                        Price: ${product.price}
+                      </p>
+                      <p className="text-sm mb-1 text-gray-500">
+                        Sizes: {product.sizes && product.sizes.join(", ")}
+                      </p>
+                      <p className="text-sm mb-1 text-gray-400">
+                        Colors: {product.colors && product.colors.join(", ")}
+                      </p>
+                    </div>
                     <button
                       onClick={() => openModal(product)}
                       className="mt-2 overflow-hidden relative w-28  py-3  bg-[#190B14] text-white border-none rounded-md text-sm font-medium cursor-pointer group"
