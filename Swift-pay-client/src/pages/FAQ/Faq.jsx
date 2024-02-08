@@ -1,8 +1,8 @@
 const Faq = () => {
   return (
     <div className="max-w-screen-xl mx-auto mt-40 mb-20">
-      <div className="collapse collapse-arrow bg-base-200 mb-5">
-        <input type="radio" name="my-accordion-2" checked="checked" />
+      <div className="collapse collapse-arrow collapse-open collapse-close bg-base-200 mb-5">
+        <input type="radio" name="my-accordion-2" />
         <div className="collapse-title text-xl font-medium text-[#49108B]">
           What is Swift Pay?
         </div>
@@ -14,7 +14,7 @@ const Faq = () => {
           </p>
         </div>
       </div>
-      <div className="collapse collapse-arrow bg-base-200 mb-5">
+      {/* <div className="collapse collapse-arrow bg-base-200 mb-5">
         <input type="radio" name="my-accordion-2" />
         <div className="collapse-title text-xl font-medium text-[#49108B]">
           What services can I pay for using Swift Pay?
@@ -39,7 +39,7 @@ const Faq = () => {
             information is protected.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

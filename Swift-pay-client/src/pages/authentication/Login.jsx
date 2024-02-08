@@ -19,7 +19,7 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         toast.success("Login successful. Redirecting to the account page");
-        navigate("/dashboard");
+        navigate("/dashboard/market");
 
         return;
       })

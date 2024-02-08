@@ -47,7 +47,7 @@ const Customers = () => {
         <div className="bg-white min-h-screen flex flex-col justify-between my-20">
           <div className="flex-grow">
             {isImagesLoaded ? (
-              <Marquee gradient={false} speed={300}>
+              <Marquee gradient={false} speed={70}>
                 <div className="carousel lg:h-[350px] h-[250px] w-full">
                   <ul className="list-none h-full flex p-0 m-0">
                     {imageUrls.map((imageUrl, index) => (

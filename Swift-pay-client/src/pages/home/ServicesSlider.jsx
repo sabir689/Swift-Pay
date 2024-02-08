@@ -23,10 +23,10 @@ import addMoney from "../../assets/icons/top-up.png";
 
 const ServicesSlider = () => {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto  rounded-lg pb-5">
       <h3 className="text-center text-[#212427]  text-5xl p-20 font-bold">
-        See Our <span className="text-[#49108B] font-thin">Services</span>
-        <span className="animate-blink">.</span>
+        See Our <span className="   text-[#190B14] font-thin">Services</span>{" "}
+        <span className="animate-blink text-[#49108B]">.</span>
       </h3>
       <Swiper
         slidesPerView={4}
@@ -40,7 +40,7 @@ const ServicesSlider = () => {
       >
         <div className="">
           <SwiperSlide>
-            <div className="mb-20 flex justify-center items-center mx-auto h-60 w-60  border-2 border-gray-300  rounded-full hover:bg-purple-300">
+            <div className="mb-20 flex justify-center items-center mx-auto h-60 w-60 bg-white border-2 border-gray-100  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
@@ -51,7 +51,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center mx-auto h-60 w-60  border-2 border-gray-300  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center mx-auto h-60 w-60 bg-white border-2 border-gray-100  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
@@ -62,7 +62,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center mx-auto h-60 w-60  border-gray-300 border-2  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center mx-auto h-60 w-60 bg-white border-gray-100 border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
@@ -73,7 +73,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center mx-auto h-60 w-60 border-gray-300  border-2  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center mx-auto h-60 w-60 bg-white border-gray-100  border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
@@ -84,7 +84,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center mx-auto h-60 w-60 border-gray-300 border-2  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center mx-auto h-60 w-60 bg-white border-gray-100 border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
@@ -95,7 +95,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex justify-center items-center mx-auto h-60 w-60 border-gray-300 border-2  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center mx-auto h-60 w-60 bg-white border-gray-100 border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
@@ -117,7 +117,7 @@ const ServicesSlider = () => {
             </div>
           </SwiperSlide> */}
           <SwiperSlide>
-            <div className="flex justify-center items-center  h-60 w-60 border-gray-300  border-2  rounded-full hover:bg-purple-300">
+            <div className="flex justify-center items-center  h-60 w-60 bg-white border-gray-100  border-2  rounded-full hover:bg-purple-300">
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
