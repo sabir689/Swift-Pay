@@ -34,7 +34,7 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
   //     });
   // }, [id]);
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     // change
     const orderInfo = {
@@ -49,7 +49,7 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
       userInfo: data,
     };
 
-    console.log(orderInfo)
+    console.log(orderInfo, data);
 
     // axiosPublic.post("/order", orderInfo).then((res) => {
     //   if (res.data.insertedId) {
@@ -57,12 +57,16 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
     //   }
     // });
 
-
-    fetch("http://localhost:5000/order", {
+    fetch("http://localhost:5000/api/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),
-    });
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        window.location.replace(result.url);
+        console.log(result);
+      });
   };
 
   return (
