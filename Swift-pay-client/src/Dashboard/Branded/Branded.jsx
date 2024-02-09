@@ -17,7 +17,7 @@ const Branded = () => {
       <Helmet>
         <title>SwiftNess | SeeBrands</title>
       </Helmet>
-      <div>
+      <div className="">
         <div className=" mb-10 mt-10">
           <div className="flex justify-between items-center mt-3 text-gray-400">
             <div className="flex flex-col">
