@@ -14,12 +14,15 @@ const WhatIsNew = () => {
           {/* checking */}
           <figure>
             <img
+              className="w-full h-[207px]"
               src="https://i.ibb.co/gMbVPL6/bigstock-islamic-finance-economy-islam-1528572957459-ezgif-com-webp-to-jpg-converter.jpg"
               alt="Shoes"
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Interest Free Banking!</h2>
+            <h2 className="card-title text-gray-800 font-medium">
+              Interest Free Banking!
+            </h2>
             {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
           </div>
         </div>
@@ -32,7 +35,9 @@ const WhatIsNew = () => {
             <img src="https://i.ibb.co/6s9hpjB/life-easier.jpg" alt="Shoes" />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Calculate Zakat</h2>
+            <h2 className="card-title text-gray-800 font-medium">
+              Calculate Zakat
+            </h2>
             {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
           </div>
         </div>
@@ -48,7 +53,9 @@ const WhatIsNew = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Digital Banking Award</h2>
+            <h2 className="card-title text-gray-800 font-medium">
+              Digital Banking Award
+            </h2>
             {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
           </div>
         </div>

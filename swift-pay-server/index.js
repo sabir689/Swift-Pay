@@ -183,7 +183,32 @@ async function run() {
       }
       const result = await bookmarkCollection.find(query).toArray();
       res.send(result);
+    })
+
+    // Get My porducts
+    app.get('/myproducts', async(req, res)=>{
+      var query={}
+      if(req.query?.email){
+        query={email:req.query.email};
+      }
+      const result= await productCollection.find(query).toArray();
+      res.send(result)
+    })
+    // My Product delete
+    app.delete("/myPorduct/:id", async (req, res) => {
+      const id = req.params.id
+      const query = { _id: new ObjectId(id) };
+      const result = await productCollection.deleteOne(query);
+      res.send(result);
     });
+    // Find My Product
+    app.get("/editproduct/:id", async (req, res) => {
+      const id = req.params.id
+      const query = { _id: new ObjectId(id) };
+      const result = await productCollection.findOne(query)
+      res.send(result);
+    });
+
     app.delete("/api/bookmarks/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };

@@ -34,7 +34,7 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
   //     });
   // }, [id]);
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log(data);
     // change
     const orderInfo = {
@@ -49,14 +49,14 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
       userInfo: data,
     };
 
-    console.log(orderInfo);
+    console.log(orderInfo)
+
     // axiosPublic.post("/order", orderInfo).then((res) => {
     //   if (res.data.insertedId) {
     //     console.log("user added to the database");
     //   }
     // });
 
-    // data.productId = id;
 
     fetch("http://localhost:5000/order", {
       method: "POST",

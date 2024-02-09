@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-unused-vars */
 import Banner from "./Banner";
 import Customers from "./Customers";
 import Featured from "./Featured";
@@ -58,7 +60,7 @@ const Home = () => {
         <AllPlatform></AllPlatform>
       </div>
       <div
-        className="my-10 bg-cover bg-center max-w-screen-xl mx-auto rounded-lg"
+        className="my-20 bg-cover bg-center max-w-screen-xl mx-auto rounded-lg"
         style={{ backgroundImage: `url(${banner})` }}
       >
         <ServicesSlider></ServicesSlider>
@@ -72,10 +74,10 @@ const Home = () => {
       <div className="mt-10 mb-10">
         <Offer></Offer>
       </div>
-      <div className="mt-10 mb-10">
+      <div className="mt-10 mb-32">
         <Customers></Customers>
       </div>
-      <div className="mt-10 mb-10">
+      <div className="mb-10">
         <Gallery></Gallery>
       </div>
       {topButton && (
@@ -109,29 +111,29 @@ const Home = () => {
               </svg>
             </p>
           </summary>
-          <ul className="p-2 dropdown-content z-[1] ml-[10px]">
+          <ul className="p-2 dropdown-content z-[1] ml-[12px]">
             <Link to="/login">
               <li
-                className="mb-1 tooltip tooltip-info tooltip-left  border-[1px] border-purple-500 w-fit p-2 rounded-full"
+                className="bg-white mb-1 tooltip tooltip-info tooltip-left  border-[1px] border-purple-500 w-fit p-2 rounded-full"
                 data-tip="Login"
               >
-                <IoIosLogIn className="text-purple-400 text-4xl" />
+                <IoIosLogIn className="text-purple-400 text-3xl" />
               </li>
             </Link>
             <Link to="/dashboard/sellPost">
               <li
-                className="mb-1 tooltip tooltip-info tooltip-left border-[1px] border-purple-500 w-fit p-2 rounded-full"
+                className="bg-white  mb-1 tooltip tooltip-info tooltip-left border-[1px] border-purple-500 w-fit p-2 rounded-full"
                 data-tip="sell product"
               >
-                <IoMdAddCircleOutline className="text-blue-400 text-4xl" />
+                <IoMdAddCircleOutline className="text-blue-400 text-3xl" />
               </li>
             </Link>
             <li
-              className="mb-1 tooltip tooltip-info tooltip-left border-[1px] border-purple-500 w-fit p-2 rounded-full"
+              className="bg-white  mb-1 tooltip tooltip-info tooltip-left border-[1px] border-purple-500 w-fit p-2 rounded-full"
               data-tip="market"
             >
               <Link to="/dashboard/market">
-                <RiShoppingBagLine className="text-pink-500 text-4xl " />
+                <RiShoppingBagLine className="text-pink-500 text-3xl " />
               </Link>
             </li>
           </ul>

@@ -23,7 +23,8 @@ import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
 import Branded from "../Dashboard/Branded/Branded";
-
+import Products from "../Dashboard/myProducts/Products";
+import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import Customers from "../pages/home/Customers";
@@ -131,6 +132,15 @@ export const router = createBrowserRouter([
         path: "saved",
         element: <Saved></Saved>,
       },
+      // my products page
+      {
+        path: "my-products",
+        element: <Products/>
+      }, 
+      {
+        path: "productedit/:id",
+        element: <EditProduct/>
+      }, 
       {
         path: "details/:id",
         element: <Details></Details>,

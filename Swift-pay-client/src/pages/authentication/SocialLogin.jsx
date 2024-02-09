@@ -4,28 +4,30 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const { signInWithGoogle, setLoading, singInWithFacebook, singInWithGit } = useContext(AuthContext)
-    const navigate = useNavigate
+    const navigate = useNavigate()
     const handleGoogle = () => {
         signInWithGoogle()
             .then((res) => {
                 toast.success('Login successful! Welcome back!')
-                navigate('/')
+                navigate('/dashboard')
+                setLoading(false)
                 return
             })
             .catch(() => {
                 setLoading(false)
                 toast.error('Login failed. Check your credentials.')
-                return
+                
             })
     }
     const handleFacebook = () => {
         singInWithFacebook()
             .then((res) => {
                 toast.success('Login successful! Welcome back!')
-                navigate('/')
+                navigate('/dashboard')
+                setLoading(false)
                 return
             })
             .catch(() => {
@@ -38,12 +40,14 @@ const SocialLogin = () => {
         singInWithGit()
             .then((res) => {
                 toast.success('Login successful! Welcome back!')
-                navigate('/')
+                navigate('/dashboard')
+                setLoading(false)
                 return
             })
-            .catch(() => {
+            .catch((error) => {
                 setLoading(false)
                 toast.error('Login failed. Check your credentials.')
+                console.log(error);
                 return
             })
     }
