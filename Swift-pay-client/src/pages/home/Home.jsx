@@ -75,7 +75,7 @@ const Home = () => {
       <div className="mt-10 mb-10">
         <Customers></Customers>
       </div>
-      <div className="mt-32 mb-10">
+      <div className="mt-10 mb-10">
         <Gallery></Gallery>
       </div>
       {topButton && (
