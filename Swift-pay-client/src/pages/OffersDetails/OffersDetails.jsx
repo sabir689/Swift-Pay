@@ -14,7 +14,7 @@ const OffersDetails = () => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/offers");
+        const response = await fetch("http://localhost:5000/api/offers");
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }

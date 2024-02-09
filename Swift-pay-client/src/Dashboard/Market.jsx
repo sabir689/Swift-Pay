@@ -323,6 +323,12 @@ const Market = () => {
                               Details
                             </button>
                           </Link>
+                          <button
+                            onClick={() => handlePay(product)}
+                            className="items-center ml-3 justify-center  px-5 py-1 text-center text-white duration-200 bg-green-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+                          >
+                            Pay
+                          </button>
                         </div>{" "}
                       </div>
                     </div>
@@ -350,7 +356,7 @@ const Market = () => {
       )}
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      {/* <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} /> */}
+      <Payment setIsOpen={setIsOpen} isOpen={isOpen} productt={productt} />
     </React.Fragment>
   );
 };

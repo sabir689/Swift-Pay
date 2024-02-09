@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const SSLCommerzPayment = require("sslcommerz-lts");
 const app = express();
 const port = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
@@ -17,7 +18,9 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
-
+const store_id = process.env.STORE_ID;
+const store_passwd = process.env.STORE_PASS;
+const is_live = false; //true for live, false for sandbox
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -30,26 +33,32 @@ async function run() {
     // bookmark collection
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
     const offerCollection = client.db("SwiftPayDb").collection("offers");
-    // offers collection
+    // order collection
+    const orderCollection = client.db("SwiftPayDb").collection("order");
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
     // post order
-    app.post("/api/orders", async (req, res) => {
-      const orders = req.body;
-      const result = await orderCollection.insertOne(orders);
+    // app.post("/api/orders", async (req, res) => {
+    //   const orders = req.body;
+    //   const result = await orderCollection.insertOne(orders);
+    //   res.send(result);
+    // });
+    // app.post("/api/orders", async (req, res) => {
+    //   const orders = req.body;
+    //   const result = await orderCollection.insertOne(orders);
+    //   res.send(result);
+    // });
+    // app.post("/api/orders", async (req, res) => {
+    //   const orders = req.body;
+    //   const result = await orderCollection.insertOne(orders);
+    //   res.send(result);
+    // });
+    // offer
+    app.get("/api/offers", async (req, res) => {
+      const cursor = offerCollection.find();
+      const result = await cursor.toArray();
       res.send(result);
     });
-    // app.post("/api/orders", async (req, res) => {
-    //   const orders = req.body;
-    //   const result = await orderCollection.insertOne(orders);
-    //   res.send(result);
-    // });
-    // app.post("/api/orders", async (req, res) => {
-    //   const orders = req.body;
-    //   const result = await orderCollection.insertOne(orders);
-    //   res.send(result);
-    // });
-
     app.get("/api/brands", async (req, res) => {
       const cursor = brandCollection.find();
       const result = await cursor.toArray();
@@ -183,29 +192,29 @@ async function run() {
       }
       const result = await bookmarkCollection.find(query).toArray();
       res.send(result);
-    })
+    });
 
     // Get My porducts
-    app.get('/myproducts', async(req, res)=>{
-      var query={}
-      if(req.query?.email){
-        query={email:req.query.email};
+    app.get("/myproducts", async (req, res) => {
+      var query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
       }
-      const result= await productCollection.find(query).toArray();
-      res.send(result)
-    })
+      const result = await productCollection.find(query).toArray();
+      res.send(result);
+    });
     // My Product delete
     app.delete("/myPorduct/:id", async (req, res) => {
-      const id = req.params.id
+      const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await productCollection.deleteOne(query);
       res.send(result);
     });
     // Find My Product
     app.get("/editproduct/:id", async (req, res) => {
-      const id = req.params.id
+      const id = req.params.id;
       const query = { _id: new ObjectId(id) };
-      const result = await productCollection.findOne(query)
+      const result = await productCollection.findOne(query);
       res.send(result);
     });
 
@@ -217,6 +226,92 @@ async function run() {
     });
 
     // payment post
+    const tran_id = new ObjectId().toString();
+    app.post("/api/order", async (req, res) => {
+      const product = await productCollection.findOne({
+        _id: new ObjectId(req.body.productId),
+      });
+
+      console.log(product);
+      const order = req.body;
+      // console.log(req.body);
+      const data = {
+        total_amount: product?.price,
+        currency: order.userInfo.category,
+        tran_id: tran_id,
+
+        // success_url: "http://localhost:3030/success",
+        success_url: `http://localhost:5000/payment/success/${tran_id}`,
+
+        fail_url: "http://localhost:3030/fail",
+        cancel_url: "http://localhost:3030/cancel",
+        ipn_url: "http://localhost:3030/ipn",
+        shipping_method: "Courier",
+        product_name: "Computer.",
+        product_category: "Electronic",
+        product_profile: "general",
+        cus_name: order?.userInfo.name,
+        cus_email: "customer@example.com",
+        cus_add1: order?.userInfo.address,
+        cus_add2: "Dhaka",
+        cus_city: "Dhaka",
+        cus_state: "Dhaka",
+        cus_postcode: order?.userInfo.postCode,
+        cus_country: "Bangladesh",
+        cus_phone: order?.userInfo.number,
+        cus_fax: "01711111111",
+        ship_name: order?.userInfo.name,
+        ship_add1: "Dhaka",
+        ship_add2: "Dhaka",
+        ship_city: "Dhaka",
+        ship_state: "Dhaka",
+        ship_postcode: 1000,
+        ship_country: "Bangladesh",
+      };
+      console.log(data);
+      const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
+      sslcz
+        .init(data)
+        .then((apiResponse) => {
+          let GatewayPageURL = apiResponse.GatewayPageURL;
+          res.send({ url: GatewayPageURL });
+          console.log("Redirecting to: ", GatewayPageURL);
+          const finalOrder = {
+            product,
+            paidStatus: false,
+            transactionId: tran_id,
+          };
+          const result = orderCollection.insertOne(finalOrder);
+        })
+        .catch((error) => {
+          console.error("Error during sslCommerzPayment initialization", error);
+          res.status(500).send({ error: "Internal error" });
+        });
+
+      app.get("/api/order", async (req, res) => {
+        const result = orderCollection.find().toArray;
+        res.send(result);
+      });
+      app.post("/payment/success/:tranId", async (req, res) => {
+        console.log(req.params.tranId);
+        const result = await orderCollection.updateOne(
+          { transactionId: req.params.tranId },
+          {
+            $set: {
+              paidStatus: true,
+            },
+          }
+        );
+        console.log(result);
+        if (result.modifiedCount > 0) {
+          res.redirect(
+            `http://localhost:5173/payment/success/${req.params.tranId}`
+          );
+        }
+      });
+
+      // comment
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });

@@ -15,6 +15,14 @@ const MyDashboard = () => {
       return res.data;
     },
   });
+  const { data: branded = [] } = useQuery({
+    queryKey: ["branded"],
+
+    queryFn: async () => {
+      const res = await axiosPublic.get("/api/brands");
+      return res.data;
+    },
+  });
   const electronicsProducts = products?.filter(
     (product) => product?.category === "Electronics"
   );
@@ -106,7 +114,13 @@ const MyDashboard = () => {
               <img className="w-[50px]  mt-2" src={receive} alt="" />
             </div>
             <div className="mr-5 w-[217px] h-[170px] rounded-lg bg-[#4157ff] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]">
-              <p className="text-white text-2xl font-semibold">1530 $</p>
+              <p className="text-white text-2xl font-semibold">
+                {branded?.apparelBrands?.map((brand, index) => (
+                  <div key={index}>
+                    {`Brand: ${brand?.brandName}, Number of Products: ${brand?.products?.length}`}
+                  </div>
+                ))}
+              </p>
               <p className="text-white text-sm">Total Sell Post</p>
               <img className="w-[50px]  mt-2" src={sent} alt="" />
             </div>

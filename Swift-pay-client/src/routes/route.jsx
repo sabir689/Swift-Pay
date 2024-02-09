@@ -28,6 +28,7 @@ import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import Customers from "../pages/home/Customers";
+import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
       {
         path: "/offersDetails",
         element: <OffersDetails />,
+      },
+      {
+        path: "/payment/success/:tranId",
+        element: <PaymentSuccess></PaymentSuccess>,
       },
     ],
   },
@@ -135,12 +140,12 @@ export const router = createBrowserRouter([
       // my products page
       {
         path: "my-products",
-        element: <Products/>
-      }, 
+        element: <Products />,
+      },
       {
         path: "productedit/:id",
-        element: <EditProduct/>
-      }, 
+        element: <EditProduct />,
+      },
       {
         path: "details/:id",
         element: <Details></Details>,
