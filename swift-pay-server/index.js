@@ -29,10 +29,14 @@ async function run() {
     const productCollection = client.db("SwiftPayDb").collection("products");
     // bookmark collection
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
-    const offerCollection = client.db("SwiftPayDb").collection("offers");
     // offers collection
+    const offerCollection = client.db("SwiftPayDb").collection("offers");
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
+
+
+
+
     // post order
     app.post("/api/orders", async (req, res) => {
       const orders = req.body;

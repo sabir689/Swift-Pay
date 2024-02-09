@@ -88,7 +88,40 @@ const Branded = () => {
             <Apparel></Apparel>
           </TabPanel>
           <TabPanel>
-         
+          <div className="carousel w-full relative rounded-2xl mt-5 ">
+              <div id="slide1" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/gdPWw8X/158.jpg" className="w-full brightness-50 shadow-2xl " />
+
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide4" className="btn btn-circle">❮</a>
+                  <a href="#slide2" className="btn btn-circle">❯</a>
+                </div>
+              </div>
+              <div id="slide2" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/bm6LcVh/photo-1512436991641-6745cdb1723f.jpg" className="w-full shadow-2xl brightness-100" />
+
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide1" className="btn btn-circle">❮</a>
+                  <a href="#slide3" className="btn btn-circle">❯</a>
+                </div>
+              </div>
+              <div id="slide3" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/8xLbMK6/2489629.jpg" className="w-full shadow-2xl brightness-75" />
+
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide2" className="btn btn-circle">❮</a>
+                  <a href="#slide4" className="btn btn-circle">❯</a>
+                </div>
+              </div>
+              <div id="slide4" className="carousel-item relative w-full">
+                <img src="https://i.ibb.co/3vxBPvq/Best-Men-s-Clothing-Stores-in-Udaipur.webp" className="w-full shadow-2xl  brightness-75" />
+
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                  <a href="#slide3" className="btn btn-circle">❮</a>
+                  <a href="#slide1" className="btn btn-circle">❯</a>
+                </div>
+              </div>
+            </div>
          
             <Electronics></Electronics>
           </TabPanel>

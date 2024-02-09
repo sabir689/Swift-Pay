@@ -27,7 +27,7 @@ import Products from "../Dashboard/myProducts/Products";
 import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
-import Customers from "../pages/home/Customers";
+import Messages from "../Dashboard/Messages/Messages";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -131,6 +131,10 @@ export const router = createBrowserRouter([
       {
         path: "saved",
         element: <Saved></Saved>,
+      },
+      {
+        path: "message",
+        element: <Messages></Messages>
       },
       // my products page
       {
