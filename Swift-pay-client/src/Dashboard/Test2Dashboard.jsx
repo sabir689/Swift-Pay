@@ -19,6 +19,8 @@ import { IoHome } from "react-icons/io5";
 import { BsShop } from "react-icons/bs";
 import useUser from "../hooks/useUser";
 import { SiBrandfolder } from "react-icons/si";
+import toast from "react-hot-toast";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 const Test2Dashboard = () => {
   const { logOut, user } = useContext(AuthContext);
   const [mainUser] = useUser();
@@ -125,6 +127,37 @@ const Test2Dashboard = () => {
     ];
   }
   const [open, setOpen] = useState(true);
+  const [profileInfo, refetch] = useUser();
+
+  const axiosPublic = useAxiosPublic();
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    // const name = firstName + " " + lastName;
+    const address = form.address.value;
+    const gender = form.gender.value;
+    const photoURL = form.photoURL.value;
+    const age = form.age.value;
+
+    const updateProfileInfo = {
+      firstName,
+      lastName,
+      address,
+      age,
+      gender,
+      photoURL,
+    };
+    axiosPublic
+      .patch(`/api/users/${profileInfo._id}`, updateProfileInfo)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Updated Profile");
+        refetch();
+      });
+  };
+
   return (
     <div className="">
       {mainUser?.role === "user" ? (
@@ -194,6 +227,17 @@ const Test2Dashboard = () => {
           <div className="flex-1 mr-3 mt-3 max-w-screen-2xl mx-auto">
             <div className="mt-2 w-[300px] lg:w-full">
               <div className="mb-5 rounded-lg border-[1px] border-gray-400 p-2 flex items-center justify-end">
+                <Link to="/dashboard/branded">
+                  <button className="mr-5 border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
+                    <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-700 right-12 top-12 bg-yellow-500"></div>
+                    <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-12 h-12 rounded-full group-hover:scale-150  duration-700 right-20 -top-6 bg-orange-500"></div>
+                    <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-8 h-8   rounded-full group-hover:scale-150  duration-700 right-32 top-6 bg-pink-500"></div>
+                    <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-4 h-4   rounded-full group-hover:scale-150  duration-700 right-2 top-12 bg-red-600"></div>
+                    <p className="z-10 absolute bottom-2 left-2">
+                      Branded shop
+                    </p>
+                  </button>
+                </Link>
                 <div className="flex items-center justify-between">
                   <Link to="/">
                     <IoHome className="text-2xl hover:text-blue-400" />
@@ -340,14 +384,14 @@ const Test2Dashboard = () => {
             </div>
           </div>
           <div className="flex-1 mr-3 mt-3 max-w-screen-2xl mx-auto">
-            <div className="mt-2 w-[300px] lg:w-full">
+            <div className="mt-2 w-[300px] mx-auto lg:w-full">
               <div className="mb-5 rounded-lg border-[1px] border-gray-400 p-2 flex items-center justify-end">
                 {/* <div className="flex items-center mr-5">
               <p className="text-start mr-2">branded shop</p>
               <SiBrandfolder className="text-xl" />
             </div> */}
                 <Link to="/dashboard/branded">
-                  <button className="mr-5 border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
+                  <button className="mr-5 border text-gray-50  duration-300 relative group cursor-pointer   overflow-hidden h-16 w-7 lg:w-48 rounded-md bg-neutral-800 p-2  font-extrabold hover:bg-sky-700">
                     <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-16 h-16 rounded-full group-hover:scale-150  duration-700 right-12 top-12 bg-yellow-500"></div>
                     <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-12 h-12 rounded-full group-hover:scale-150  duration-700 right-20 -top-6 bg-orange-500"></div>
                     <div className="absolute group-hover:-top-1 group-hover:-right-2 z-10 w-8 h-8   rounded-full group-hover:scale-150  duration-700 right-32 top-6 bg-pink-500"></div>
@@ -399,7 +443,7 @@ const Test2Dashboard = () => {
                               <button
                                 onClick={() =>
                                   document
-                                    .getElementById("my_modal_1")
+                                    .getElementById("my_modal_3")
                                     .showModal()
                                 }
                               >
@@ -423,22 +467,98 @@ const Test2Dashboard = () => {
             </div>
             <Outlet></Outlet>
           </div>
-          <dialog id="my_modal_1" className="p-5 rounded-lg">
-            <div className="">
-              <h3 className="font-bold text-lg">Hello!</h3>
-              <p className="py-4">
-                Press ESC key or click the button below to close
-              </p>
-              <div className="modal-action">
-                <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
-                  <button className="btn">Close</button>
+        </aside>
+      )}
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <div className="bg-white p-7 rounded-md">
+            <div className="flex items-center justify-center dark">
+              <div className="bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
+                <h2 className="text-2xl text-center font-semibold text-gray-200 mb-4">
+                  Update profile
+                </h2>
+                <form onSubmit={handleUpdate} className="flex flex-col">
+                  <div className="flex space-x-4 mb-4">
+                    <input
+                      name="firstName"
+                      placeholder="First Name"
+                      defaultValue={profileInfo?.firstName}
+                      className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                      type="text"
+                    />
+                    <input
+                      name="lastName"
+                      placeholder="Last Name"
+                      defaultValue={profileInfo?.lastName}
+                      className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                      type="text"
+                    />
+                  </div>
+                  <input
+                    placeholder="Email"
+                    defaultValue={profileInfo?.email}
+                    readOnly
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                    type="email"
+                  />
+                  <input
+                    name="address"
+                    placeholder="Current address"
+                    defaultValue={profileInfo?.address}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                    type="text"
+                  />
+                  <input
+                    name="photoURL"
+                    placeholder="Your Photo Image link"
+                    defaultValue={profileInfo?.photoURL}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                    type="text"
+                  />
+
+                  <label className="text-sm mb-2 text-gray-200 cursor-pointer">
+                    Gender
+                  </label>
+                  <select
+                    name="gender"
+                    defaultValue={profileInfo?.gender}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                  >
+                    <option disabled selected>
+                      Select one
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+
+                  <label className="text-sm mb-2 text-gray-200 cursor-pointer">
+                    Age
+                  </label>
+                  <input
+                    name="age"
+                    defaultValue={profileInfo?.age}
+                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2"
+                    type="date"
+                  />
+
+                  <button
+                    className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+                    type="submit"
+                  >
+                    Update
+                  </button>
                 </form>
               </div>
             </div>
-          </dialog>
-        </aside>
-      )}
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

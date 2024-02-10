@@ -61,7 +61,7 @@ const Sports = () => {
       {brands.map((brand, brandIndex) => (
         <div key={brandIndex}>
           {brand && brand[0] && (
-            <h2 className="text-4xl text-white rounded-sm bg-red-500 hover:ping-800 p-4 mb-5">
+            <h2 className="text-4xl text-white border-2 rounded-box text-center font-bold shadow-2xl  bg-[#7800f9b4]  hover:ping-800 p-4 mb-5">
               {brand[0].brandName}
             </h2>
           )}
