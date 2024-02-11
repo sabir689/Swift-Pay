@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
-import bannerImage from "../../assets/images/13346238_5213451.png";
-import bannerImage2 from "../../assets/images/15628817_5655046.jpg";
 import bannerImage3 from "../../assets/images/19380875_6068262.jpg";
 import Lottie from "lottie-react";
-import texty from "../../assets/animations/Vk1XaZm3ys (1).json";
+
 import banner1 from "../../assets/animations/new/efPxnMuWsf.json";
-import banner2 from "../../assets/animations/new/n00ypWr0U2.json";
-import banner3 from "../../assets/animations/new/oOBYLvevhY.json";
+
 const Banner = () => {
   return (
     <div

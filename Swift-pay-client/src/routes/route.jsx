@@ -1,3 +1,4 @@
+import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Registration";
@@ -19,16 +20,21 @@ import MyDashboard from "../Dashboard/MyDashboard";
 import Transactions from "../Dashboard/Transactions";
 import Test2Dashboard from "../Dashboard/Test2Dashboard";
 import SellPost from "../Dashboard/SellPost";
-import Market from "../Dashboard/Market";
+// import Market from "../Dashboard/Market";
 import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
-import Branded from "../Dashboard/Branded/Branded";
+// import Branded from "../Dashboard/Branded/Branded";
 import Products from "../Dashboard/myProducts/Products";
 import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import Customers from "../pages/home/Customers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
+import Testing from "../Dashboard/testing";
+import EmailProducts from "../Dashboard/EmailProducts";
+
+const LazyMarket = lazy(() => import("../Dashboard/Market"));
+const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -123,11 +129,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "market",
-        element: <Market></Market>,
+        element: (
+          <React.Suspense fallback="loading....">
+            <LazyMarket />
+          </React.Suspense>
+        ),
       },
       {
         path: "branded",
-        element: <Branded></Branded>,
+        element: (
+          <React.Suspense fallback="loading....">
+            <LazyBranded />
+          </React.Suspense>
+        ),
       },
       {
         path: "addBrand",
@@ -157,8 +171,17 @@ export const router = createBrowserRouter([
       },
       // admin
       {
+        path: "emailProducts/:email",
+        element: <EmailProducts></EmailProducts>,
+        loader: () => fetch(`http://localhost:5000/api/products`),
+      },
+      {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "testing",
+        element: <Testing></Testing>,
       },
     ],
   },
