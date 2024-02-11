@@ -6,9 +6,18 @@ import OnlineStatus from "../../Components/Shared/Online status/OnlineStatus";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
 import useUser from "../../hooks/useUser";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import EmailProducts from "../../Dashboard/EmailProducts";
+import { useEffect, useState } from "react";
+import { getMyPorducts } from "../../apis/GetMethod";
 
 const AllUsers = () => {
+  const [myProduct, setMyProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const { email } = useParams();
+  // const emailProducts = useLoaderData();
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const [user] = useUser();
   const { data: profile = [] } = useQuery({
     queryKey: ["profile"],
@@ -21,13 +30,31 @@ const AllUsers = () => {
     queryKey: ["products"],
     queryFn: async () => {
       // const res = await axiosPublic.get(`/api/bookmarks`);
-      const res = await axiosPublic.get("/api/users");
+      const res = await axiosPublic.get("/api/products");
       return res.data;
     },
   });
-  const handleSubmit = (email) => {
-    console.log("email user");
+  // console.log(postedProducts);
+  const handleSubmit = async (email) => {
+    navigate(`/dashboard/emailProducts/${email}`);
+    const res = await axiosPublic.get(`/myroducts?email=${email}`);
+    console.log(res);
+    return res.data;
   };
+  // useEffect(() => {
+  //   const filter = emailProducts?.find((item) => item?.productName === email);
+  //   setData(filter);
+  //   console.log(filter);
+  // }, [email, emailProducts]);
+  useEffect(() => {
+    setLoading(true);
+    getMyPorducts(postedProducts.email).then((res) => {
+      setMyProducts(res);
+      setLoading(false);
+    });
+  }, [postedProducts?.email]);
+  console.log(postedProducts);
+
   return (
     <div>
       <section className="container px-4 mx-auto mt-10">
@@ -203,12 +230,7 @@ const AllUsers = () => {
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             <button
-                              onClick={() => {
-                                handleSubmit(profileUser?.email);
-                                document
-                                  .getElementById("my_modal_1")
-                                  .showModal();
-                              }}
+                              onClick={() => handleSubmit(profileUser?.email)}
                               className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800"
                             >
                               <span className="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
@@ -281,24 +303,7 @@ const AllUsers = () => {
         </div>
       </section>
       {/* modal */}
-      <dialog id="my_modal_1" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          {postedProducts
-            ?.filter((product) => product?.email === "email")
-            .map((product) => (
-              <div>
-                <p>{product?.productName}</p>
-                <p>{product?.email}</p>
-              </div>
-            ))}
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
+      {/* <EmailProducts postedProducts={postedProducts}></EmailProducts> */}
     </div>
   );
 };
