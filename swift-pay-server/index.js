@@ -196,7 +196,7 @@ async function run() {
 
     // Get My porducts
     app.get("/myproducts", async (req, res) => {
-      var query = {};
+      let query = {};
       if (req.query?.email) {
         query = { email: req.query.email };
       }

@@ -88,6 +88,7 @@ const Apparel = () => {
                     key={productIndex}
                   >
                     <img
+                      loading="lazy"
                       className="w-72 h-72 rounded-md object-cover object-center"
                       src={product?.image}
                       alt={product?.name}

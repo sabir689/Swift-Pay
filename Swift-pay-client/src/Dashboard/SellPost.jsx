@@ -67,7 +67,7 @@ const SellPost = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-10 border-[1px] h-[800px] border-gray-300 w-[500px] py-10 px-8 rounded-lg mx-auto">
+    <div className="my-32 flex justify-center items-center mt-10 border-[1px] h-[800px] border-gray-300 w-[500px] py-10 px-8 rounded-lg mx-auto">
       <div>
         <p className="text-start ml-7 mb-5 text-[#49108B] font-bold text-4xl">
           Sell product

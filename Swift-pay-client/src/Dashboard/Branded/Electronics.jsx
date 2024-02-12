@@ -79,6 +79,7 @@ const Electronics = () => {
                   key={productIndex}
                 >
                   <img
+                    loading="lazy"
                     className="w-72 h-72 rounded-md object-cover object-center"
                     src={product.image}
                     alt={product.name}
@@ -122,6 +123,7 @@ const Electronics = () => {
             <img
               className="w-64 h-64 rounded-md object-cover object-center"
               src={selectedProduct.image}
+              loading="lazy"
               alt={selectedProduct.name}
             />
             <div className="mt-4 text-gray-500">

@@ -6,17 +6,14 @@ import ServicesSlider from "./ServicesSlider";
 import WhatIsNew from "./WhatIsNew";
 import AllPlatform from "./platformFeature/AllPlatform";
 import Gallery from "./platformFeature/Gallery";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IoIosLogIn,
   IoMdAddCircleOutline,
   IoMdArrowDropupCircle,
-  IoMdLogOut,
 } from "react-icons/io";
 import banner from "../../assets/images/13684537_5334556.jpg";
-import { FaShoppingBag } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { GrRadialSelected } from "react-icons/gr";
 import { RiShoppingBagLine } from "react-icons/ri";
 // import ServicesSlider from "./ServicesSlider";
 // import WhatIsNew from "./WhatIsNew";
@@ -50,7 +47,7 @@ const Home = () => {
   };
   return (
     // <div>Home</div>
-    <div className="">
+    <React.Fragment>
       <div className="mt-20 mb-10 rounded-lg mx-2">
         <Banner></Banner>
       </div>
@@ -137,7 +134,7 @@ const Home = () => {
           </ul>
         </details>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
