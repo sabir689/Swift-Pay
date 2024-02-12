@@ -149,7 +149,7 @@ export const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <Details></Details>,
-        loader: () => fetch(`http://localhost:5000/api/products`),
+        loader: () => fetch(`https://swift-pay-server.vercel.app/api/products`),
       },
       {
         path: "addBrand",

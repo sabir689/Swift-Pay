@@ -240,12 +240,13 @@ async function run() {
         currency: order.userInfo.category,
         tran_id: tran_id,
 
-        // success_url: "http://localhost:3030/success",
         success_url: `http://localhost:5000/payment/success/${tran_id}`,
+        // success_url: `https://swift-pay-server.vercel.app/payment/success/${tran_id}`,
 
         fail_url: "http://localhost:3030/fail",
         cancel_url: "http://localhost:3030/cancel",
         ipn_url: "http://localhost:3030/ipn",
+        
         shipping_method: "Courier",
         product_name: "Computer.",
         product_category: "Electronic",
@@ -302,10 +303,12 @@ async function run() {
             },
           }
         );
+        
         console.log(result);
         if (result.modifiedCount > 0) {
           res.redirect(
-            `http://localhost:5173/payment/success/${req.params.tranId}`
+            // `http://localhost:5173/payment/success/${req.params.tranId}`
+            `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
           );
         }
       });
