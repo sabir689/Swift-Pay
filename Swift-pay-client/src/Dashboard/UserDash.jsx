@@ -91,6 +91,7 @@ const UserDash = ({
             mainUser={mainUser}
             handleLogOut={handleLogOut}
           ></DashNavbar>
+          <Outlet></Outlet>
         </div>
       </aside>
       <dialog id="my_modal_3" className="modal">

@@ -1,17 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/no-unknown-property */
 import Payment from "./Payment";
-
-import React, { useContext, useEffect, useState } from "react";
-import { CiFilter, CiLocationOn, CiSearch, CiUser } from "react-icons/ci";
+import React, { useContext, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { FaBookmark, FaSearch } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
-import { Link } from "react-router-dom";
 import MarketCards from "./Market/MarketCards";
+import Search from "./MarketUtils/Search";
+import Category from "./MarketUtils/Category";
+import Filter from "./MarketUtils/Filter";
 // import { FaBookmark } from "react-icons/fa";
 
 const Market = () => {
@@ -87,7 +83,6 @@ const Market = () => {
     // Calculate the new value of visible based on the current length of products
     setVisible((prevValue) => Math.min(prevValue + 12, products.length));
   };
-
   return (
     <React.Fragment>
       {productsLoading ? (
@@ -102,151 +97,15 @@ const Market = () => {
             <div className="flex flex-col lg:flex-row gap-5 lg:gap-5 justify-between items-center">
               <div className="flex items-center  flex-col lg:flex-row">
                 {/* search */}
-                <form onSubmit={handleSubmit}>
-                  <div className="mr-5 lg:mr-5">
-                    <div className="relative">
-                      <label className="sr-only"> Search </label>
-                      <input
-                        name="search"
-                        type="text"
-                        id="Search"
-                        placeholder="Search"
-                        className="w-full rounded-md  py-2.5 px-2 border-[1px] border-gray-400 shadow-sm sm:text-sm"
-                      />
-
-                      <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                        <button
-                          type="submit"
-                          className="text-gray-600 hover:text-gray-700"
-                        >
-                          <span className="sr-only">Search</span>
-
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="h-4 w-4"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                            />
-                          </svg>
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                </form>
+                <Search handleSubmit={handleSubmit}></Search>
                 {/* dropdown */}
-                <div className="mt-5 lg:mt-0">
-                  <div className="flex items-center justify-end">
-                    <p className="hidden lg:block mr-3 text-xs lg:text-sm text-purple-800 font-semibold">
-                      Shop by Category
-                    </p>
-                    <hr className="hidden lg:block  border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
-                    <select
-                      id="category"
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      className="select w-40 bg-purple-400 border-none text-white px-4 py-2 join-item rounded-md"
-                    >
-                      <option value="">All</option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Electronics"
-                      >
-                        Electronics
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Photography"
-                      >
-                        Photography
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Fitness"
-                      >
-                        Fitness
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Cafe Corner"
-                      >
-                        Cafe Corner
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Fashion"
-                      >
-                        Fashion
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Art & Design"
-                      >
-                        Art & Design
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Outdoor"
-                      >
-                        Outdoor
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Appliances"
-                      >
-                        Appliances
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Home Security"
-                      >
-                        Home Security
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Home & Living"
-                      >
-                        Home & Living
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Home Automation"
-                      >
-                        Home Automation
-                      </option>
-                      <option
-                        className="text-gray-800 bg-gray-100"
-                        value="Home & Kitchen"
-                      >
-                        Home & Kitchen
-                      </option>
-                    </select>
-                  </div>
-                </div>
+                <Category
+                  category={category}
+                  setCategory={setCategory}
+                ></Category>
               </div>
               {/* filter */}
-              <div className="">
-                <div className="flex items-center justify-end">
-                  <p className="mr-3 text-purple-800 hidden lg:block ">
-                    Filter
-                  </p>
-                  <hr className="hidden lg:block  border-l-0 border-gray-400 border-[1px] h-[20px] mr-4" />
-                  <select
-                    value={sorting}
-                    onChange={(e) => setSorting(e.target.value)}
-                    className="select rounded-md join-item bg-transparent border-[1px] border-gray-800"
-                  >
-                    <option value="lowToHigh">Low to High</option>
-                    <option value="highToLow">High to Low</option>
-                  </select>
-                </div>
-              </div>
+              <Filter sorting={sorting} setSorting={setSorting}></Filter>
             </div>
           </div>
 

@@ -80,7 +80,7 @@ const DashNavbar = ({ user, handleLogOut, mainUser }) => {
           </div>
         </div>
       </div>
-      <Outlet></Outlet>
+      {/* <Outlet></Outlet> */}
     </div>
   );
 };

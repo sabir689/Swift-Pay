@@ -37,9 +37,6 @@ const AllUsers = () => {
   // console.log(postedProducts);
   const handleSubmit = async (email) => {
     navigate(`/dashboard/emailProducts/${email}`);
-    const res = await axiosPublic.get(`/myroducts?email=${email}`);
-    console.log(res);
-    return res.data;
   };
   // useEffect(() => {
   //   const filter = emailProducts?.find((item) => item?.productName === email);
