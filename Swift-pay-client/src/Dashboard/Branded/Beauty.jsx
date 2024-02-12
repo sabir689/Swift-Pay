@@ -113,6 +113,7 @@ const Beauty = () => {
               {selectedProduct.name} Details
             </h3>
             <img
+              loading="lazy"
               className="w-64 h-64 rounded-md object-cover object-center"
               src={selectedProduct.image}
               alt={selectedProduct.name}

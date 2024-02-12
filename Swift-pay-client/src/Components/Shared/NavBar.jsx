@@ -82,17 +82,17 @@ const Navbar = () => {
               <ul className="p-2 shadow menu dropdown-content z-[1] bg-blue-100 rounded-box w-52">
                 <Link to="/faq">
                   <li>
-                    <a>F.A.Q</a>
+                    <p>F.A.Q</p>
                   </li>
                 </Link>
                 <Link to="/blog">
                   <li>
-                    <a>Blog</a>
+                    <p>Blog</p>
                   </li>
                 </Link>
                 <Link to="/help">
                   <li>
-                    <a>Help</a>
+                    <p>Help</p>
                   </li>
                 </Link>
                 {/* <li>
