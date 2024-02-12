@@ -319,6 +319,7 @@ const Branded = () => {
             <div className="carousel w-full relative rounded-2xl mt-5 ">
               <div id="slide1" className="carousel-item relative w-full">
                 <img
+                  loading="lazy"
                   src="https://i.ibb.co/gdPWw8X/158.jpg"
                   className="w-full brightness-50 shadow-2xl "
                 />
@@ -334,6 +335,7 @@ const Branded = () => {
               </div>
               <div id="slide2" className="carousel-item relative w-full">
                 <img
+                  loading="lazy"
                   src="https://i.ibb.co/bm6LcVh/photo-1512436991641-6745cdb1723f.jpg"
                   className="w-full shadow-2xl brightness-100"
                 />
@@ -349,6 +351,7 @@ const Branded = () => {
               </div>
               <div id="slide3" className="carousel-item relative w-full">
                 <img
+                  loading="lazy"
                   src="https://i.ibb.co/8xLbMK6/2489629.jpg"
                   className="w-full shadow-2xl brightness-75"
                 />
@@ -364,6 +367,7 @@ const Branded = () => {
               </div>
               <div id="slide4" className="carousel-item relative w-full">
                 <img
+                  loading="lazy"
                   src="https://i.ibb.co/3vxBPvq/Best-Men-s-Clothing-Stores-in-Udaipur.webp"
                   className="w-full shadow-2xl  brightness-75"
                 />
