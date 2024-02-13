@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { Suspense } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { NavLink, Outlet } from "react-router-dom";
 import DashNavbar from "./DashNavbar.jsx/DashNavbar";
@@ -81,7 +81,9 @@ const AdminDash = ({
           mainUser={mainUser}
           handleLogOut={handleLogOut}
         ></DashNavbar>
-        <Outlet></Outlet>
+        <Suspense fallback={<h1>Loading....</h1>}>
+          <Outlet></Outlet>
+        </Suspense>
       </div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // /* eslint-disable react/prop-types */
-import React from "react";
+import React, { Suspense } from "react";
 import { BsCart2 } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -91,7 +91,9 @@ const UserDash = ({
             mainUser={mainUser}
             handleLogOut={handleLogOut}
           ></DashNavbar>
-          <Outlet></Outlet>
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <Outlet></Outlet>
+          </Suspense>
         </div>
       </aside>
       <dialog id="my_modal_3" className="modal">

@@ -44,7 +44,7 @@ const Apparel = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: user.email, product: selectedProduct }),
+        body: JSON.stringify({ email: user?.email, product: selectedProduct }),
       });
 
       if (response.ok) {

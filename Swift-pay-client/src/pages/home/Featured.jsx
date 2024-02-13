@@ -9,7 +9,7 @@ const Featured = () => {
   return (
     <Container>
       <div
-        className="relative text-white bg-cover bg-center h-[400px] my-20 flex flex-col justify-center items-center rounded-2xl object-cover object-center"
+        className="relative text-white bg-cover bg-center h-[400px] my-20 flex flex-col justify-center items-center rounded-lg object-cover object-center"
         style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       >
         <div className="absolute inset-0 bg-black opacity-30 rounded-2xl"></div>

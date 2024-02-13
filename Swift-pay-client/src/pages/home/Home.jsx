@@ -48,7 +48,7 @@ const Home = () => {
   return (
     // <div>Home</div>
     <React.Fragment>
-      <div className="mt-20 mb-10 rounded-lg mx-2">
+      <div className="mt-20 mb-10 rounded-lg mx-auto">
         <Banner></Banner>
       </div>
       <div className="mt-10 mb-10">
