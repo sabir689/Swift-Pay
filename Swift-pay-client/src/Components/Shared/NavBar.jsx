@@ -14,7 +14,6 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [profileInfo, refetch] = useUser();
-
   const axiosPublic = useAxiosPublic();
   const handleUpdate = (e) => {
     e.preventDefault();

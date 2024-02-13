@@ -18,7 +18,7 @@ const AllUsers = () => {
   // const emailProducts = useLoaderData();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  const [user] = useUser();
+
   const { data: profile = [] } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
@@ -26,15 +26,16 @@ const AllUsers = () => {
       return res.data;
     },
   });
+   console.log(profile);
   const { data: postedProducts = [] } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["postedProducts"],
     queryFn: async () => {
-      // const res = await axiosPublic.get(`/api/bookmarks`);
       const res = await axiosPublic.get("/api/products");
       return res.data;
     },
   });
   // console.log(postedProducts);
+
   const handleSubmit = async (email) => {
     navigate(`/dashboard/emailProducts/${email}`);
     const res = await axiosPublic.get(`/myroducts?email=${email}`);
@@ -229,6 +230,7 @@ const AllUsers = () => {
                             <OnlineStatus></OnlineStatus>
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                            {/* view products button */}
                             <button
                               onClick={() => handleSubmit(profileUser?.email)}
                               className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800"

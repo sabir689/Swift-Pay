@@ -32,6 +32,7 @@ import Customers from "../pages/home/Customers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 import Testing from "../Dashboard/testing";
 import EmailProducts from "../Dashboard/EmailProducts";
+import SellerProfile from "../Components/Reviews/SellerProfile";
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
@@ -174,6 +175,11 @@ export const router = createBrowserRouter([
         path: "emailProducts/:email",
         element: <EmailProducts></EmailProducts>,
         loader: () => fetch(`http://localhost:5000/api/products`),
+      },
+      {
+        path: "sellerprofile/:email",
+        element: <SellerProfile />,
+        loader: () => fetch("http://localhost:5000/api/users"),
       },
       {
         path: "allUsers",
