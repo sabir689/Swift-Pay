@@ -1,12 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { BsCart2 } from "react-icons/bs";
-import { FaRegUserCircle } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { IoMdLogOut } from "react-icons/io";
-import { IoHome } from "react-icons/io5";
-import { RxAvatar } from "react-icons/rx";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import DashNavbar from "./DashNavbar.jsx/DashNavbar";
 
 const AdminDash = ({
@@ -50,11 +45,7 @@ const AdminDash = ({
                   : ""
               }`}
             >
-              <div>
-                {React.createElement(menu?.icon, {
-                  className: `text-xl`,
-                })}
-              </div>
+              <div>{menu?.icon && <menu.icon className="text-xl" />}</div>
               <h2
                 style={{
                   transitionDelay: `${i + 3}00ms`,
@@ -90,11 +81,11 @@ const AdminDash = ({
           mainUser={mainUser}
           handleLogOut={handleLogOut}
         ></DashNavbar>
+        <Outlet></Outlet>
       </div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>

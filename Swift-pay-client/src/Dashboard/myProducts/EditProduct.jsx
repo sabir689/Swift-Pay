@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { GetProduct } from '../../apis/GetMethod'
+import { GetProduct, uploadProduct } from '../../apis/GetMethod'
 import toast from 'react-hot-toast'
 import { AuthContext } from '../../provider/AuthProvider'
+import { ImageHost } from '../../apis/ImageHost'
+import { set } from 'react-hook-form'
 
 const EditProduct = () => {
     const location = useLocation()
@@ -24,8 +26,55 @@ const EditProduct = () => {
             })
     }, [])
     const handleSubmit = (e) => {
-
+        e.preventDefault()
+        const form = e.target
+        const name = form.name.value
+        const email = form.email.value
+        const address = form.address.value
+        const number = form.number.value
+        const productName = form.productName.value
+        const price = form.price.value
+        const category = form.category.value
+        const description = form.description.value
+        const featureImg = form.image.files[0]
+        const id = product._id
+        ImageHost(featureImg)
+            .then((res) => {
+                const image = res.data.display_url
+                const productInfo = {
+                    name, email, address, number, productName, price, category, description, image
+                }
+                uploadProduct(id, productInfo)
+                .then(()=>{
+                    toast.success("Product updated successfully.")
+                })
+                .catch(()=>{
+                    toast.error("Error updating product. Please try again.")
+                })
+            })
+            .catch(() => {
+                toast.error('Failed to upload image. Please try again.')
+            })
     }
+    const [file, setFile] = useState('');
+    const [productImg, setProductImg]=useState('')
+  
+    const  handleChange=(e)=> {
+        const updatedImage=(URL.createObjectURL(e.target.files[0])) 
+        setProductImg(updatedImage)  
+    }
+    useEffect(() => {
+        if (productImg) {
+            setFile(productImg);
+        } else if (product?.image) {
+            setFile(product?.image);
+        }
+    }, [productImg, product]);
+    
+
+ 
+    
+
     return (
         <div className=" mt-16 mb-10 border-[1px] border-gray-300 max-w-2xl px-3 rounded-lg mx-auto">
             <div>
@@ -41,7 +90,7 @@ const EditProduct = () => {
                                     Your Name
                                 </label>
                                 <input
-                                    name='yourName'
+                                    name='name'
                                     className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
                                     type="text"
                                     placeholder="your name"
@@ -64,7 +113,6 @@ const EditProduct = () => {
                                 />
                             </div>
                         </div>
-
                         <div className='flex flex-col md:flex-row gap-4'>
                             <div className='flex-1'>
                                 <label className="mb-1 text-lg font-medium inline-block text-gray-500">
@@ -118,15 +166,18 @@ const EditProduct = () => {
                                     name="image"
                                     className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                                     type="file"
-                                    defaultValue={product?.image}
+                                    onChange={handleChange} 
+                                    // value={product?.image}
                                 />
+                                 <img className='w-28 h-24 object-cover mt-3' src={file} />
+                                 
                             </div>
                             <div className='w-full md:w-40'>
                                 <label className="mb-1 text-lg font-medium inline-block text-gray-500">
                                     Price
                                 </label>
                                 <input
-                                    name=''
+                                    name='price'
                                     className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
                                     type="number"
                                     placeholder="price"
@@ -176,7 +227,7 @@ const EditProduct = () => {
                         <div className="flex items-center justify-center mt-4">
                             <button
                                 type="submit"
-                                className=" px-11 py-3 text-center text-white duration-300 bg-purple-600  border-gray-900 rounded-full inline-flex hover:bg-transparent hover:bg-blue-400  hover:text-white  text-xl font-medium "
+                                className=" px-11 py-3 text-center text-white duration-300 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-blue-400  hover:text-white  text-xl font-medium "
                             >
                                 save Changes
                             </button>
