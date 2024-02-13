@@ -114,6 +114,28 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/updateproduct/:id', async (request, response) => {
+      const getId = request.params.id
+      const data = request.body
+      const filter = { _id: new ObjectId(getId) }
+      const options = { upsert: true };
+      const update = {
+        $set: {
+          name:data.name,
+          email:data.email,
+          address:data.address,
+          number:data.number,
+          productName:data.productName,
+          price:data.price,
+          category:data.category,
+          description:data.description,
+          image:data.image,
+        }
+      }
+      const result= await productCollection.updateOne(filter, update, options)
+      response.send(result)
+    })
+
     // product post
     app.post("/api/products", async (req, res) => {
       const products = req.body;
