@@ -32,6 +32,7 @@ import Customers from "../pages/home/Customers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 import Testing from "../Dashboard/testing";
 import EmailProducts from "../Dashboard/EmailProducts";
+import SellerProfile from "../Components/Reviews/SellerProfile";
 import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
@@ -168,7 +169,7 @@ export const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <Details></Details>,
-        loader: () => fetch(`http://localhost:5000/api/products`),
+        loader: () => fetch(`https://swift-pay-server.vercel.app/api/products`),
       },
       {
         path: "addBrand",
@@ -179,6 +180,11 @@ export const router = createBrowserRouter([
         path: "emailProducts/:email",
         element: <EmailProducts></EmailProducts>,
         loader: () => fetch(`http://localhost:5000/api/products`),
+      },
+      {
+        path: "sellerprofile/:email",
+        element: <SellerProfile />,
+        loader: () => fetch("http://localhost:5000/api/users"),
       },
       {
         path: "allUsers",

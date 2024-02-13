@@ -14,7 +14,9 @@ const OffersDetails = () => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/offers");
+        const response = await fetch(
+          "https://swift-pay-server.vercel.app/api/offers"
+        );
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }

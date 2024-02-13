@@ -37,6 +37,8 @@ async function run() {
     const orderCollection = client.db("SwiftPayDb").collection("order");
     // brand collection
     const brandCollection = client.db("SwiftPayDb").collection("brands");
+    // review collection
+    const reviewCollection = client.db("SwiftPayDb").collection("reviews");
     // post order
     // app.post("/api/orders", async (req, res) => {
     //   const orders = req.body;
@@ -70,6 +72,28 @@ async function run() {
       res.send(result);
     });
 
+    // review api
+    app.post("/api/reviews", async (req, res) => {
+      const reviews = req.body;
+      const result = await reviewCollection.insertOne(reviews);
+      res.send(result);
+    });
+    app.get("/api/reviews", async (req, res) => {
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await reviewCollection.find(query).toArray();
+      res.send(result);
+    });
+    app.delete("/api/reviews/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await reviewCollection.deleteOne(query);
+      res.send(result);
+    });
+
+
     // user post
     app.post("/api/users", async (req, res) => {
       const user = req.body;
@@ -83,10 +107,7 @@ async function run() {
       const result = await userCollection.insertOne(user);
       res.send(result);
     });
-    // app.get("/api/users", async (req, res) => {
-    //   const result = await userCollection.find().toArray();
-    //   res.send(result);
-    // });
+
     app.get("/api/users", async (req, res) => {
       let query = {};
       if (req.query?.email) {
@@ -215,6 +236,12 @@ async function run() {
       const result = await bookmarkCollection.find(query).toArray();
       res.send(result);
     });
+    app.delete("/api/bookmarks/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await bookmarkCollection.deleteOne(query);
+      res.send(result);
+    });
 
     // Get My porducts
     app.get("/myproducts", async (req, res) => {
@@ -240,12 +267,7 @@ async function run() {
       res.send(result);
     });
 
-    app.delete("/api/bookmarks/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
-      const result = await bookmarkCollection.deleteOne(query);
-      res.send(result);
-    });
+    
 
     // payment post
     const tran_id = new ObjectId().toString();
@@ -262,12 +284,13 @@ async function run() {
         currency: order.userInfo.category,
         tran_id: tran_id,
 
-        // success_url: "http://localhost:3030/success",
         success_url: `http://localhost:5000/payment/success/${tran_id}`,
+        // success_url: `https://swift-pay-server.vercel.app/payment/success/${tran_id}`,
 
         fail_url: "http://localhost:3030/fail",
         cancel_url: "http://localhost:3030/cancel",
         ipn_url: "http://localhost:3030/ipn",
+
         shipping_method: "Courier",
         product_name: "Computer.",
         product_category: "Electronic",
@@ -324,10 +347,12 @@ async function run() {
             },
           }
         );
+
         console.log(result);
         if (result.modifiedCount > 0) {
           res.redirect(
-            `http://localhost:5173/payment/success/${req.params.tranId}`
+            // `http://localhost:5173/payment/success/${req.params.tranId}`
+            `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
           );
         }
       });

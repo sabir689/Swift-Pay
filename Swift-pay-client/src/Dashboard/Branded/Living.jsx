@@ -10,7 +10,9 @@ const Living = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/brands");
+        const response = await fetch(
+          "https://swift-pay-server.vercel.app/api/brands"
+        );
         const data = await response.json();
         setBrands(data.map((brand) => brand.homeAndLivingBrands));
       } catch (error) {
@@ -37,13 +39,16 @@ const Living = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/bookmarks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: user.email, product: selectedProduct }),
-      });
+      const response = await fetch(
+        "https://swift-pay-server.vercel.app/api/bookmarks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: user.email, product: selectedProduct }),
+        }
+      );
 
       if (response.ok) {
         console.log("Product added to cart successfully!");

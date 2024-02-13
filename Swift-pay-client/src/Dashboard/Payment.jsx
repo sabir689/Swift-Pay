@@ -27,7 +27,7 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
   //   console.log(products);
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/api/products/${id}`)
+  //   fetch(`https://swift-pay-server.vercel.app/api/products/${id}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -50,12 +50,6 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
     };
 
     console.log(orderInfo, data);
-
-    // axiosPublic.post("/order", orderInfo).then((res) => {
-    //   if (res.data.insertedId) {
-    //     console.log("user added to the database");
-    //   }
-    // });
 
     fetch("http://localhost:5000/api/order", {
       method: "POST",
@@ -136,7 +130,6 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
           </form>
           <div className="modal-action">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button className="btn">Close</button>
             </form>
           </div>
