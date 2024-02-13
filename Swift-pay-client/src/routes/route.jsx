@@ -33,6 +33,7 @@ import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 import Testing from "../Dashboard/testing";
 import EmailProducts from "../Dashboard/EmailProducts";
 import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
+import Address from "../Dashboard/Pages/address.jsx/Address";
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
@@ -131,6 +132,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "billing-address",
+        element: <Address/>
       },
       {
         path: "market",
