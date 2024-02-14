@@ -225,6 +225,15 @@ async function run() {
       res.send(result);
     });
 
+    app.get("/order", async (req, res) => {
+      var query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await orderCollection.find(query).toArray();
+      res.send(result);
+    });
+
     // payment post
     const tran_id = new ObjectId().toString();
     app.post("/api/order", async (req, res) => {
@@ -232,9 +241,11 @@ async function run() {
         _id: new ObjectId(req.body.productId),
       });
 
-      console.log(product);
+      // console.log(product);
       const order = req.body;
-      // console.log(req.body);
+      const customerInfo = req.body.userInfo;
+      const email = req.body.userInfo.email;
+      console.log(req.body.userInfo.email);
       const data = {
         total_amount: product?.price,
         currency: order.userInfo.category,
@@ -251,7 +262,7 @@ async function run() {
         product_category: "Electronic",
         product_profile: "general",
         cus_name: order?.userInfo.name,
-        cus_email: "customer@example.com",
+        cus_email: order?.userInfo.email,
         cus_add1: order?.userInfo.address,
         cus_add2: "Dhaka",
         cus_city: "Dhaka",
@@ -268,7 +279,7 @@ async function run() {
         ship_postcode: 1000,
         ship_country: "Bangladesh",
       };
-      console.log(data);
+      // console.log(data);
       const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
       sslcz
         .init(data)
@@ -277,6 +288,8 @@ async function run() {
           res.send({ url: GatewayPageURL });
           console.log("Redirecting to: ", GatewayPageURL);
           const finalOrder = {
+            email,
+            customerInfo,
             product,
             paidStatus: false,
             transactionId: tran_id,
@@ -288,10 +301,6 @@ async function run() {
           res.status(500).send({ error: "Internal error" });
         });
 
-      app.get("/api/order", async (req, res) => {
-        const result = orderCollection.find().toArray;
-        res.send(result);
-      });
       app.post("/payment/success/:tranId", async (req, res) => {
         console.log(req.params.tranId);
         const result = await orderCollection.updateOne(

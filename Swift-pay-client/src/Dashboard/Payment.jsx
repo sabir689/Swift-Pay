@@ -89,7 +89,18 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
                   className="text-sm rounded-lg border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#9e6bd7]  py-3 px-3 w-full placeholder:text-sm"
                   type="text"
                   placeholder="your name"
-                  required=""
+                  required
+                  defaultValue={user.displayName}
+                />
+              </div>
+              <div className="w-full flex gap-3">
+                <input
+                  {...register("email")}
+                  className="text-sm rounded-lg border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#9e6bd7]  py-3 px-3 w-full placeholder:text-sm"
+                  type="email"
+                  placeholder="your email"
+                  required
+                  defaultValue={user.email}
                 />
               </div>
 

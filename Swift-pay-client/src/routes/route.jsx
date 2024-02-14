@@ -29,6 +29,7 @@ import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import Customers from "../pages/home/Customers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
+import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: "/payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/transactionDetails",
+        element: <TransactionDetails></TransactionDetails>,
       },
     ],
   },
