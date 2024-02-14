@@ -30,13 +30,16 @@ const AddBrand = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/brands", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formattedData),
-      });
+      const response = await fetch(
+        "https://swift-pay-server.vercel.app/api/brands",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        }
+      );
 
       if (response.ok) {
         console.log("Data successfully posted.");

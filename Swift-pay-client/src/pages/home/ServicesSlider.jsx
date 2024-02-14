@@ -5,21 +5,12 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 import { FreeMode, Pagination } from "swiper/modules";
-
-import { GiReceiveMoney } from "react-icons/gi";
-import { GiPayMoney } from "react-icons/gi";
-import { GiTakeMyMoney } from "react-icons/gi";
-import { TbDeviceMobileMessage } from "react-icons/tb";
-import { FaMoneyBillTrendUp } from "react-icons/fa6";
-import { FaDonate } from "react-icons/fa";
-import { MdAddCard } from "react-icons/md";
 import receive from "../../assets/icons/received.png";
 import location from "../../assets/icons/location.png";
 import buy from "../../assets/icons/buy.png";
 import easy from "../../assets/icons/easy-to-use.png";
 import easyChat from "../../assets/icons/Chat.png";
 import ui from "../../assets/icons/ui-design.png";
-import addMoney from "../../assets/icons/top-up.png";
 
 const ServicesSlider = () => {
   return (
@@ -44,7 +35,12 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={receive} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={receive}
+                    alt=""
+                  />
                   <h4 className="mt-2">Receive Product</h4>
                 </div>
               </div>
@@ -55,7 +51,12 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={location} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={location}
+                    alt=""
+                  />
                   <h4 className="mt-2">Location</h4>
                 </div>
               </div>
@@ -66,7 +67,12 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={buy} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={buy}
+                    alt=""
+                  />
                   <h4 className="mt-2">Easy Buy</h4>
                 </div>
               </div>
@@ -77,7 +83,12 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={easy} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={easy}
+                    alt=""
+                  />
                   <h4 className="mt-2">Easy to use</h4>
                 </div>
               </div>
@@ -88,7 +99,12 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={easyChat} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={easyChat}
+                    alt=""
+                  />
                   <h4 className="mt-2">Easy Communication</h4>
                 </div>
               </div>
@@ -99,7 +115,12 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={ui} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={ui}
+                    alt=""
+                  />
                   <h4 className="mt-2">Appealing interface</h4>
                 </div>
               </div>
@@ -121,73 +142,18 @@ const ServicesSlider = () => {
               <div>
                 {/* <GiReceiveMoney className="h-32 w-32 mt-8"></GiReceiveMoney> */}
                 <div className="flex items-center justify-center flex-col">
-                  <img className="w-[90px]" src={receive} alt="" />
+                  <img
+                    loading="lazy"
+                    className="w-[90px] h-auto"
+                    src={receive}
+                    alt=""
+                  />
                   <h4 className="mt-2">Receive Product</h4>
                 </div>
               </div>
             </div>
           </SwiperSlide>
         </div>
-        {/* <SwiperSlide>
-          <div className="flex justify-center   h-64 w-64  border-2  rounded-full hover:bg-cyan-300 ">
-            <div>
-              <GiPayMoney className="h-32 w-32 mt-8"></GiPayMoney>
-              <div>
-                <h4 className="text-center">Pay Money</h4>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center h-64 w-64  border-2  rounded-full hover:bg-cyan-300 ">
-            <div>
-              <GiTakeMyMoney className="h-32 w-32 mt-8"></GiTakeMyMoney>
-              <div>
-                <h4 className="text-center">Cash Out</h4>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center   h-64 w-64  border-2  rounded-full hover:bg-cyan-300 ">
-            <div>
-              <TbDeviceMobileMessage className="h-32 w-32 mt-8"></TbDeviceMobileMessage>
-              <div>
-                <h4 className="text-center">Mobile Recharge</h4>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center   h-64 w-64  border-2  rounded-full hover:bg-cyan-300 ">
-            <div>
-              <FaMoneyBillTrendUp className="h-32 w-32 mt-8"></FaMoneyBillTrendUp>
-              <div>
-                <h4 className="text-center">EMI Payment</h4>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center   h-64 w-64  border-2  rounded-full hover:bg-cyan-300 ">
-            <div>
-              <FaDonate className="h-32 w-32 mt-8"></FaDonate>
-              <div>
-                <h4 className="text-center">Donate Money</h4>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="flex justify-center   h-64 w-64  border-2  rounded-full hover:bg-cyan-300 ">
-            <div>
-              <MdAddCard className="h-32 w-32 mt-8"></MdAddCard>
-              <div>
-                <h4 className="text-center">Add Money from Card</h4>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide> */}
       </Swiper>
     </div>
   );

@@ -65,6 +65,11 @@ const Test2Dashboard = () => {
       { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
       { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
       { name: "messages", link: "/", icon: FiMessageSquare },
+      {
+        name: "Profile",
+        link: "/profile", 
+        icon: RiSettings4Line
+       },
     ];
   } else {
     // admin menus
@@ -108,7 +113,11 @@ const Test2Dashboard = () => {
         link: "/",
         icon: GoHome,
       },
-      { name: "Setting", link: "/", icon: RiSettings4Line },
+      {
+        name: "Profile",
+        link: "profile", 
+        icon: RiSettings4Line
+       },
     ];
   }
   const [open, setOpen] = useState(true);

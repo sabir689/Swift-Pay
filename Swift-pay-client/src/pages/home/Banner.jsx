@@ -13,7 +13,10 @@ const Banner = () => {
     >
       <div className="min-h-screen">
         <div className="max-w-screen-2xl mx-auto">
-          <div className="flex lg:flex-row flex-col items-center justify-center gap-5 mx-auto">
+          <div
+            className="flex lg:flex-row flex-col items-center justify-center gap-5 mx-auto"
+            style={{ minHeight: "100px" }}
+          >
             <div className="mt-40">
               <p className="-tracking-normal -leading-10 text-3xl lg:text-7xl font-bold bg-gradient-to-r from-[rgba(179,0,2551)]  to-[rgba(9,9,121,1)] text-transparent bg-clip-text typed group">
                 Explore <span className="font-thin">Endless</span> Opportunities

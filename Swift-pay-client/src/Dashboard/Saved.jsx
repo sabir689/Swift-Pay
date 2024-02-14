@@ -13,7 +13,6 @@ const Saved = () => {
   const { data: bookmarks = [], refetch } = useQuery({
     queryKey: ["savedProducts"],
     queryFn: async () => {
-      // const res = await axiosPublic.get(`/api/bookmarks`);
       const res = await axiosPublic.get(`/api/bookmarks?email=${user?.email}`);
       return res.data;
     },
@@ -50,7 +49,7 @@ const Saved = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {bookmarks.map((product) => (
           <div
-            key={product._id}
+            key={product?._id}
             className="w-72 mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
           >
             <div
