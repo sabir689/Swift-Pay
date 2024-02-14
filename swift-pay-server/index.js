@@ -39,7 +39,8 @@ async function run() {
     const brandCollection = client.db("SwiftPayDb").collection("brands");
     // review collection
     const reviewCollection = client.db("SwiftPayDb").collection("reviews");
-    // post order
+
+    // order api
     // app.post("/api/orders", async (req, res) => {
     //   const orders = req.body;
     //   const result = await orderCollection.insertOne(orders);
@@ -55,12 +56,22 @@ async function run() {
     //   const result = await orderCollection.insertOne(orders);
     //   res.send(result);
     // });
-    // offer
+
+
+
+
+    // offer api
+    app.post("/offers", async (req, res) => {
+      const offers = req.body;
+      const result = await offerCollection.insertOne(offers);
+    });
     app.get("/api/offers", async (req, res) => {
-      const cursor = offerCollection.find();
-      const result = await cursor.toArray();
+      const result = await offerCollection.find().toArray();
       res.send(result);
     });
+
+
+    // brand api
     app.get("/api/brands", async (req, res) => {
       const cursor = brandCollection.find();
       const result = await cursor.toArray();
@@ -94,11 +105,13 @@ async function run() {
     });
 
 
-    // user post
+
+
+
+    // user api
     app.post("/api/users", async (req, res) => {
       const user = req.body;
       // insert email if user doesn't exists:
-      // you can do this many ways (1. email unique, 2. upsert 3. simple checking)
       const query = { email: user.email };
       const existingUser = await userCollection.findOne(query);
       if (existingUser) {
@@ -135,40 +148,25 @@ async function run() {
       res.send(result);
     });
 
-    app.put('/updateproduct/:id', async (request, response) => {
-      const getId = request.params.id
-      const data = request.body
-      const filter = { _id: new ObjectId(getId) }
-      const options = { upsert: true };
-      const update = {
-        $set: {
-          name:data.name,
-          email:data.email,
-          address:data.address,
-          number:data.number,
-          productName:data.productName,
-          price:data.price,
-          category:data.category,
-          description:data.description,
-          image:data.image,
-        }
-      }
-      const result= await productCollection.updateOne(filter, update, options)
-      response.send(result)
-    })
 
-    // product post
+
+
+
+
+    // product api
     app.post("/api/products", async (req, res) => {
       const products = req.body;
       const result = await productCollection.insertOne(products);
       res.send(result);
     });
+
     // product get
     // app.get("/api/products", async (req, res) => {
     //   const products = req.body;
     //   const result = await productCollection.find(products).toArray();
     //   res.send(result);
     // });
+
     app.get("/api/products", async (req, res) => {
       try {
         let query = {};
@@ -204,24 +202,28 @@ async function run() {
       }
     });
 
-    // product post
-    app.post("/api/products", async (req, res) => {
-      const products = req.body;
-      const result = await productCollection.insertOne(products);
-      res.send(result);
+    app.put("/updateproduct/:id", async (request, response) => {
+      const getId = request.params.id;
+      const data = request.body;
+      const filter = { _id: new ObjectId(getId) };
+      const options = { upsert: true };
+      const update = {
+        $set: {
+          name: data.name,
+          email: data.email,
+          address: data.address,
+          number: data.number,
+          productName: data.productName,
+          price: data.price,
+          category: data.category,
+          description: data.description,
+          image: data.image,
+        },
+      };
+      const result = await productCollection.updateOne(filter, update, options);
+      response.send(result);
     });
 
-    // offers page
-    app.get("/api/offers", async (req, res) => {
-      const result = await offerCollection.find().toArray();
-      res.send(result);
-    });
-
-    //  offers post
-    app.post("/offers", async (req, res) => {
-      const offers = req.body;
-      const result = await offerCollection.insertOne(offers);
-    });
     // bookmark api
     app.post("/api/bookmarks", async (req, res) => {
       const bookmarks = req.body;
@@ -267,9 +269,11 @@ async function run() {
       res.send(result);
     });
 
+
+
     
 
-    // payment post
+    // payment api
     const tran_id = new ObjectId().toString();
     app.post("/api/order", async (req, res) => {
       const product = await productCollection.findOne({
