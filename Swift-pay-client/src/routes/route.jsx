@@ -28,7 +28,6 @@ import Products from "../Dashboard/myProducts/Products";
 import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
-import Customers from "../pages/home/Customers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 import Testing from "../Dashboard/testing";
 import EmailProducts from "../Dashboard/EmailProducts";
@@ -184,12 +183,12 @@ export const router = createBrowserRouter([
       {
         path: "emailProducts/:email",
         element: <EmailProducts></EmailProducts>,
-        loader: () => fetch(`http://localhost:5000/api/products`),
+        loader: () => fetch(`https://swift-pay-server.vercel.app/api/products`),
       },
       {
         path: "sellerprofile/:email",
         element: <SellerProfile />,
-        loader: () => fetch("http://localhost:5000/api/users"),
+        loader: () => fetch("https://swift-pay-server.vercel.app/api/users"),
       },
       {
         path: "allUsers",
