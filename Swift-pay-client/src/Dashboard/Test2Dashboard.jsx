@@ -16,6 +16,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import AdminDash from "./AdminDash";
 import UserDash from "./UserDash";
 import Testing from "./testing";
+import { PiAddressBook } from "react-icons/pi";
 import { IoHome } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
@@ -23,10 +24,9 @@ import { IoMdLogOut } from "react-icons/io";
 const Test2Dashboard = () => {
   const { logOut, user } = useContext(AuthContext);
   const [mainUser] = useUser();
-  console.log(mainUser);
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         console.log(error);
       });
@@ -51,7 +51,6 @@ const Test2Dashboard = () => {
         link: "/dashboard/myDashboard",
         icon: MdOutlineDashboard,
       },
-
       {
         name: "My Products",
         link: "/dashboard/my-products",
@@ -62,14 +61,31 @@ const Test2Dashboard = () => {
         link: "/",
         icon: GoHome,
       },
-      { name: "Saved", link: "/dashboard/saved", icon: AiOutlineHeart },
-      { name: "user", link: "/dashboard/sendMoney", icon: AiOutlineUser },
-      { name: "messages", link: "/", icon: FiMessageSquare },
+      {
+        name: "Saved",
+        link: "/dashboard/saved",
+        icon: AiOutlineHeart
+      },
+      {
+        name: "user",
+        link: "/dashboard/sendMoney",
+        icon: AiOutlineUser
+      },
+      {
+        name: "messages",
+        link: "/",
+        icon: FiMessageSquare
+      },
+      {
+        name: "Address",
+        link: "Billing-address",
+        icon: PiAddressBook
+      },
       {
         name: "Profile",
-        link: "/profile", 
+        link: "profile",
         icon: RiSettings4Line
-       },
+      },
     ];
   } else {
     // admin menus
@@ -114,10 +130,17 @@ const Test2Dashboard = () => {
         icon: GoHome,
       },
       {
+        name: "Address",
+        link: "billing-address",
+        icon: PiAddressBook
+      },
+      {
         name: "Profile",
-        link: "profile", 
+        link: "profile",
         icon: RiSettings4Line
-       },
+      },
+
+
     ];
   }
   const [open, setOpen] = useState(true);

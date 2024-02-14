@@ -4,6 +4,12 @@ export const getMyPorducts=async(email)=>{
 const {data}= await axiosSecure.get(`/myproducts?email=${email}`)
 return data
 }
+// get Single Users
+
+export const getSingleUser= async (email)=> {
+    const {data}= await axiosSecure.get(`/api/users?email=${email}`)
+    return data
+}
 
 // get Single Product info
 export const GetProduct= async(id)=>{
