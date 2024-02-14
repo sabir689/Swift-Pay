@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import Container from "../../Components/Shared/Container";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import { useQuery } from "@tanstack/react-query";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Offer = () => {
-  const axiosPublic = useAxiosPublic();
-  const { data: Offers = [] } = useQuery({
-    queryKey: ["offers"],
-    queryFn: async () => {
-      const res = await axiosPublic.get("/api/offers");
-      return res.data;
-    },
-  });
+  // const axiosPublic = useAxiosPublic();
+  // const { data: Offers = [] } = useQuery({
+  //   queryKey: ["offers"],
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get("/api/offers");
+  //     return res.data;
+  //   },
+  // });
   return (
     <Container>
-      <div>
+     
         <div className="container mx-auto lg:py-20 py-4">
           <div className="items-center lg:flex">
             <div className="">
@@ -47,7 +47,7 @@ const Offer = () => {
             </div>
           </div>
         </div>
-      </div>
+     
     </Container>
   );
 };
