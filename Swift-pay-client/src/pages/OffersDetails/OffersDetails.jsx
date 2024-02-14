@@ -138,7 +138,7 @@ const OffersDetails = () => {
             to="/dashboard/branded"
             className="btn btn-outline font-semibold hover:bg-cyan-500 hover:text-white hover:border-cyan-500"
           >
-            Click Here
+           Brand Shop
           </Link>
         </div>
       </div>
