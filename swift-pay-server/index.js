@@ -57,9 +57,6 @@ async function run() {
     //   res.send(result);
     // });
 
-
-
-
     // offer api
     app.post("/offers", async (req, res) => {
       const offers = req.body;
@@ -69,7 +66,6 @@ async function run() {
       const result = await offerCollection.find().toArray();
       res.send(result);
     });
-
 
     // brand api
     app.get("/api/brands", async (req, res) => {
@@ -103,10 +99,6 @@ async function run() {
       const result = await reviewCollection.deleteOne(query);
       res.send(result);
     });
-
-
-
-
 
     // user api
     app.post("/api/users", async (req, res) => {
@@ -147,11 +139,6 @@ async function run() {
       const result = await userCollection.updateOne(filter, updatedDoc);
       res.send(result);
     });
-
-
-
-
-
 
     // product api
     app.post("/api/products", async (req, res) => {
@@ -268,10 +255,6 @@ async function run() {
       const result = await productCollection.findOne(query);
       res.send(result);
     });
-
-
-
-    
 
     // payment api
     const tran_id = new ObjectId().toString();
