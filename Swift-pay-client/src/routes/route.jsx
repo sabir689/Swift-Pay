@@ -21,7 +21,6 @@ import Transactions from "../Dashboard/Transactions";
 import Test2Dashboard from "../Dashboard/Test2Dashboard";
 import SellPost from "../Dashboard/SellPost";
 // import Market from "../Dashboard/Market";
-import Saved from "../Dashboard/Saved";
 import Details from "../Components/Shared/Details";
 // import Branded from "../Dashboard/Branded/Branded";
 import Products from "../Dashboard/myProducts/Products";
@@ -37,6 +36,8 @@ import Address from "../Dashboard/Pages/address.jsx/Address";
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
+const LazySaved = lazy(() => import("../Dashboard/Saved"));
+// import Saved from "../Dashboard/Saved";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -159,7 +160,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "saved",
-        element: <Saved></Saved>,
+        element: (
+          <React.Suspense fallback="loading">
+            <LazySaved />
+          </React.Suspense>
+        ),
       },
       // my products page
       {

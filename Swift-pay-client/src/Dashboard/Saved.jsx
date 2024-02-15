@@ -11,7 +11,7 @@ const Saved = () => {
   const axiosPublic = useAxiosPublic();
 
   const { data: bookmarks = [], refetch } = useQuery({
-    queryKey: ["savedProducts" ],
+    queryKey: ["savedProducts"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/api/bookmarks?email=${user?.email}`);
       return res.data;
@@ -55,9 +55,7 @@ const Saved = () => {
             <div
               className="relative h-48 w-full bg-gray-200 flex flex-col justify-between rounded-tl-lg rounded-tr-lg p-4 bg-cover bg-center"
               style={{
-                backgroundImage: `url(${
-                  product?.image
-                })`,
+                backgroundImage: `url(${product?.image})`,
               }}
             >
               <div
