@@ -61,7 +61,6 @@ const SellerProfile = () => {
       if (res.data.insertedId) {
         toast.success("Thank you for your review");
         refetch();
-        
       }
     });
   };
@@ -97,20 +96,19 @@ const SellerProfile = () => {
       <div className="grid grid-cols-2">
         {/* seller profile */}
 
-        <div key={showData._id} className="seller-card">
-          <img className="image" src={showData.photoURL} alt="image" />
+        <div key={showData?._id} className="seller-card">
+          <img className="image" src={showData?.photoURL} alt="image" />
           <div className="seller-card-info">
             <span>
               {showData?.firstName} {showData?.lastName}
             </span>
             <p>{showData?.email}</p>
           </div>
-          <button className="button">Follow</button>
         </div>
 
         {/* review form */}
-        <div className="card card-compact w-96 h-64 p-6 bg-base-100 shadow-xl border-t-2">
-          <p className=" text-center text-xl font-semibold ">Give Review</p>
+        <div className="card card-compact w-96 h-64 p-6 rounded-lg border-[1px]">
+          <p className="text-center text-xl font-semibold ">Give Review</p>
 
           <div className="form-control">
             <label className="label text-center">
@@ -131,35 +129,66 @@ const SellerProfile = () => {
         </div>
       </div>
       {/* reviews */}
-      <div className="grid grid-cols-3">
+      <h1 className="text-xl font-semibold text-center text-gray-800 my-10">
+        Reviews
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3">
         {reviews.map((data) => (
-          <div
-            key={data._id}
-            className=" relative w-72 h-40 flex flex-col justify-center gap-2 bg-neutral-50 rounded-lg shadow p-2"
-          >
-            <div className="flex gap-2">
-              <img
-                className="bg-neutral-500 w-24 h-24 shrink-0 rounded-lg"
-                src={data.user_photoURL}
-                alt=""
-              />
-              <div
-                onClick={() => handleDelete(data?._id)}
-                className="absolute top-2 right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-blue-400"
-              >
-                <MdDelete className="text-2xl text-red-500" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-neutral-700 italic">
-                  {data.user_name}
-                </span>
-                <span className="font-bold text-neutral-700 italic">
-                  {data.user_email}
-                </span>
-                <p className="line-clamp-3">{data.review}</p>
-              </div>
+          // <div
+          //   key={data._id}
+          //   className=" relative w-72 h-40 flex flex-col justify-center gap-2 bg-neutral-50 rounded-lg shadow p-2"
+          // >
+          //   <div className="flex gap-2">
+          //     <img
+          //       className="bg-neutral-500 w-24 h-24 shrink-0 rounded-lg"
+          //       src={data?.user_photoURL}
+          //       alt=""
+          //     />
+          //     <div
+          //       onClick={() => handleDelete(data?._id)}
+          //       className="absolute top-2 right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-blue-400"
+          //     >
+          //       <MdDelete className="text-2xl text-red-500" />
+          //     </div>
+          //     <div className="flex flex-col">
+          //       <span className="font-bold text-neutral-700 italic">
+          //         {data.user_name}
+          //       </span>
+          //       <span className="font-bold text-neutral-700 italic">
+          //         {data.user_email}
+          //       </span>
+          //       <p className="line-clamp-3">{data.review}</p>
+          //     </div>
+          //   </div>
+          // </div>
+          <section key={data._id} className="bg-gray-50 rounded-lg w-full">
+            <div className="container px-6 py-10 mx-auto">
+              <section className="">
+                <div className="p-8 border rounded-lg border-amber-900">
+                  <p className="leading-loose text-gray-800  h-[90px]">
+                    <span>&quot;{data?.review}&quot;</span>
+                  </p>
+
+                  <div className="flex items-center mt-8 h-[150px]">
+                    <img
+                      className="object-cover mx-2 rounded-full w-10 shrink-0 h-10 ring-2 ring-gray-300 dark:ring-gray-700"
+                      src={data?.user_photoURL}
+                      alt=""
+                    />
+
+                    <div className="mx-2">
+                      <h1 className="font-semibold text-gray-800">
+                        {data?.user_name}
+                      </h1>
+                      <span className="text-sm text-gray-500">
+                        {data?.user_email}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </div>
