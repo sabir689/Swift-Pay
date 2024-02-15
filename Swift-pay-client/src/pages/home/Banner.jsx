@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import bannerImage3 from "../../assets/images/19380875_6068262.jpg";
+import bannerImage4 from "../../assets/images/13684537_5334556 [Recovered].jpg";
 import Lottie from "lottie-react";
 
 import banner1 from "../../assets/animations/new/efPxnMuWsf.json";
@@ -7,20 +8,27 @@ import banner1 from "../../assets/animations/new/efPxnMuWsf.json";
 const Banner = () => {
   return (
     <div
-      className="bg-center bg-cover bg-fixed rounded-lg shadow-sm shadow-gray-300"
+      className="bg-center bg-cover rounded-lg shadow-sm shadow-gray-300 w-full mx-auto"
       style={{ backgroundImage: `url(${bannerImage3})` }}
     >
-      <div className="hero min-h-screen">
-        <div className="hero-content">
-          <div className="flex lg:flex-row flex-col items-center justify-center gap-5">
-            <div>
-              <p className="tracking-wide -leading-10 text-3xl lg:text-7xl font-bold bg-gradient-to-r from-[rgba(179,0,2551)]  to-[rgba(9,9,121,1)] text-transparent bg-clip-text typed group">
-                Explore <span className="font-thin">Endless</span> Opportuniti
-                <span className="text-white shadow-text">es</span>
-                <br className="mt-5" /> Market pla
-                <span className="text-white shadow-text">ce</span> Journey{" "}
-                <span className="text-white shadow-text">Starts Here</span>
+      <div className="min-h-screen">
+        <div className="max-w-screen-2xl mx-auto">
+          <div
+            className="flex lg:flex-row flex-col items-center justify-center gap-5 mx-auto"
+            style={{ minHeight: "100px" }}
+          >
+            <div className="mt-40">
+              <p className="-tracking-normal -leading-10 text-3xl lg:text-7xl font-bold bg-gradient-to-r from-[rgba(179,0,2551)]  to-[rgba(9,9,121,1)] text-transparent bg-clip-text typed group">
+                Explore <span className="font-thin">Endless</span> Opportunities
+                <br className="mt-5" /> Market place{" "}
+                <span className="font-semibold text-teal-300">Journey</span>{" "}
+                <span className="">Starts Here</span>
                 <span className="animate-blink text-[#cbbbde]">.</span>
+              </p>
+              <p className="text-gray-400 font-thin my-5">
+                Discover Your Perfect Marketplace: Your one-stop destination{" "}
+                <br /> for all your needs. Explore a diverse range of <br />
+                products from trusted sellers.
               </p>
               <div className="mt-5">
                 <Link to="/login">
@@ -36,7 +44,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="w-[370px] mx-auto lg:w-[800px]">
+            <div className="w-[370px] lg:w-[800px]">
               <Lottie animationData={banner1} loop={true}></Lottie>
             </div>
             {/* <p

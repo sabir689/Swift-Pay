@@ -163,9 +163,7 @@ const MyDashboard = () => {
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     Total products
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Date of Birth
-                  </th>
+
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     Category
                   </th>
@@ -182,9 +180,6 @@ const MyDashboard = () => {
                     {electronicsProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Electronics
                   </td>
@@ -208,9 +203,6 @@ const MyDashboard = () => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Photography
                   </td>
                   <td className="whitespace-nowrap  text-center text-gray-700">
@@ -232,9 +224,6 @@ const MyDashboard = () => {
                     {fitnessProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Fitness
                   </td>
@@ -258,9 +247,6 @@ const MyDashboard = () => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Cafe & corners
                   </td>
                   <td className="whitespace-nowrap  text-center text-gray-700">
@@ -282,9 +268,6 @@ const MyDashboard = () => {
                     {fashionProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Fashion
                   </td>
@@ -308,9 +291,6 @@ const MyDashboard = () => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Art & Design
                   </td>
                   <td className="whitespace-nowrap  text-center text-gray-700">
@@ -332,9 +312,6 @@ const MyDashboard = () => {
                     {appProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Appliances
                   </td>
@@ -358,9 +335,6 @@ const MyDashboard = () => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Home security
                   </td>
                   <td className="whitespace-nowrap  text-center text-gray-700">
@@ -382,9 +356,6 @@ const MyDashboard = () => {
                     {securityProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Home & Living
                   </td>
@@ -408,9 +379,6 @@ const MyDashboard = () => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Outdoor
                   </td>
                   <td className="whitespace-nowrap  text-center text-gray-700">
@@ -432,9 +400,6 @@ const MyDashboard = () => {
                     {livingProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Home & living
                   </td>
@@ -458,9 +423,6 @@ const MyDashboard = () => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Home Automation
                   </td>
                   <td className="whitespace-nowrap  text-center text-gray-700">
@@ -482,9 +444,6 @@ const MyDashboard = () => {
                     {kitchenProducts?.length}
                   </td>
 
-                  <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    24/05/1995
-                  </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     Home & Kitchen
                   </td>

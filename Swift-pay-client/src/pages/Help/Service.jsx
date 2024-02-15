@@ -9,6 +9,7 @@ const Service = () => {
         {/* img */}
         <div>
           <img
+            loading="lazy"
             className="w-[800px]"
             src="https://www.bkash.com/uploaded_contents/contents/24by7-support_1677696165917.webp"
             alt=""
@@ -18,8 +19,8 @@ const Service = () => {
         <div>
           <h1 className="text-4xl font-semibold">24/7 at your service:</h1>
           <p className="py-6">
-            Dedicated swift-pay representatives are available 24/7 via 16247, Live
-            Chat & Facebook. You can also take e-Appointments or email at
+            Dedicated swift-pay representatives are available 24/7 via 16247,
+            Live Chat & Facebook. You can also take e-Appointments or email at
             support@swift.com
           </p>
 

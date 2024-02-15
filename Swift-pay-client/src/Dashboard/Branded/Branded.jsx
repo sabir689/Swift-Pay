@@ -17,10 +17,10 @@ const Branded = () => {
         <title>SwiftNess | SeeBrands</title>
       </Helmet>
       <div className="">
-        <div className=" mb-10 mt-10">
-          <div className="flex justify-between items-center mt-3 text-gray-400">
+        <div className="mb-10 mt-10">
+          <div className="flex justify-between items-center mt-3">
             <div className="flex flex-col">
-              <span className="text-4xl block font-semibold text-[#7A00F9]">
+              <span className="text-4xl font-semibold text-[#7A00F9]">
                 Wanna open your own brand ? <br />{" "}
                 <span className="text-[#7800f9b4]">Fill the form</span>{" "}
                 <IoIosArrowRoundForward />
