@@ -105,7 +105,7 @@ const SellerProfile = () => {
             </span>
             <p>{showData?.email}</p>
           </div>
-          <button className="button">Review</button>
+          <button className="button">Follow</button>
         </div>
 
         {/* review form */}
