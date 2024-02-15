@@ -10,7 +10,7 @@ const UseTransaction = () => {
   const { refetch, data: order = [] } = useQuery({
     queryKey: ["order", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/order?email=${user.email}`);
+      const res = await axiosSecure.get(`/orderByEmail?email=${user.email}`);
       return res.data;
     },
   });
