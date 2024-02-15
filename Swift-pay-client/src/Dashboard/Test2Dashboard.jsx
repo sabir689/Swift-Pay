@@ -64,7 +64,7 @@ const Test2Dashboard = () => {
       {
         name: "Transaction History",
         link: "/dashboard/transactionHistory",
-        icon: AiOutlineHeart,
+        icon: TbReportAnalytics,
       },
       {
         name: "user",
@@ -115,8 +115,8 @@ const Test2Dashboard = () => {
       { name: "All users", link: "/dashboard/allUsers", icon: AiOutlineUser },
       { name: "messages", link: "/", icon: FiMessageSquare },
       {
-        name: "analytics",
-        link: "/",
+        name: "Transaction Details",
+        link: "/dashboard/userTransaction",
         icon: TbReportAnalytics,
       },
       {
