@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import React, { Suspense, useContext, useState } from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiShoppingCart } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
 import { LuShoppingBag } from "react-icons/lu";
 import { GoHome } from "react-icons/go";
 import { GiSellCard } from "react-icons/gi";
@@ -13,9 +12,11 @@ import { BsShop } from "react-icons/bs";
 import useUser from "../hooks/useUser";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import AdminDash from "./AdminDash";
-import UserDash from "./UserDash";
 import { PiAddressBook } from "react-icons/pi";
+// import UserDash from "./UserDash";
+const UserDash = React.lazy(() => import("../Dashboard/UserDash"));
+const AdminDash = React.lazy(() => import("../Dashboard/AdminDash"));
+// import AdminDash from "./AdminDash";
 const Test2Dashboard = () => {
   const { logOut, user } = useContext(AuthContext);
   const [mainUser] = useUser();
@@ -170,29 +171,33 @@ const Test2Dashboard = () => {
   return (
     <div className="">
       {mainUser?.role === "user" ? (
-        <UserDash
-          setOpen={setOpen}
-          open={open}
-          menus={menus}
-          user={user}
-          mainUser={mainUser}
-          handleLogOut={handleLogOut}
-          GiSellCard={GiSellCard}
-          profileInfo={profileInfo}
-          handleUpdate={handleUpdate}
-        ></UserDash>
+        <Suspense fallback={<p>loading...</p>}>
+          <UserDash
+            setOpen={setOpen}
+            open={open}
+            menus={menus}
+            user={user}
+            mainUser={mainUser}
+            handleLogOut={handleLogOut}
+            GiSellCard={GiSellCard}
+            profileInfo={profileInfo}
+            handleUpdate={handleUpdate}
+          ></UserDash>
+        </Suspense>
       ) : (
         // admin dashboard
-        <AdminDash
-          setOpen={setOpen}
-          open={open}
-          menus={menus}
-          user={user}
-          mainUser={mainUser}
-          handleLogOut={handleLogOut}
-          profileInfo={profileInfo}
-          GiSellCard={GiSellCard}
-        ></AdminDash>
+        <Suspense fallback={<p>loading...</p>}>
+          <AdminDash
+            setOpen={setOpen}
+            open={open}
+            menus={menus}
+            user={user}
+            mainUser={mainUser}
+            handleLogOut={handleLogOut}
+            profileInfo={profileInfo}
+            GiSellCard={GiSellCard}
+          ></AdminDash>
+        </Suspense>
       )}
     </div>
   );
