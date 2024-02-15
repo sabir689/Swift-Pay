@@ -129,6 +129,9 @@ const SellerProfile = () => {
         </div>
       </div>
       {/* reviews */}
+      <h1 className="text-xl font-semibold text-center text-gray-800 my-10">
+        Reviews
+      </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3">
         {reviews.map((data) => (
           // <div
@@ -160,18 +163,15 @@ const SellerProfile = () => {
           // </div>
           <section key={data._id} className="bg-gray-50 rounded-lg w-full">
             <div className="container px-6 py-10 mx-auto">
-              <h1 className="text-xl font-semibold text-center text-gray-800 capitalize">
-                Reviews
-              </h1>
-              <section className="mt-8 xl:mt-12 ">
-                <div className="p-8 border rounded-lg dark:border-gray-700">
-                  <p className="leading-loose text-gray-500 dark:text-gray-400">
+              <section className="">
+                <div className="p-8 border rounded-lg border-amber-900">
+                  <p className="leading-loose text-gray-800  h-[90px]">
                     <span>&quot;{data?.review}&quot;</span>
                   </p>
 
-                  <div className="flex items-center mt-8 -mx-2">
+                  <div className="flex items-center mt-8 h-[150px]">
                     <img
-                      className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-2 ring-gray-300 dark:ring-gray-700"
+                      className="object-cover mx-2 rounded-full w-10 shrink-0 h-10 ring-2 ring-gray-300 dark:ring-gray-700"
                       src={data?.user_photoURL}
                       alt=""
                     />

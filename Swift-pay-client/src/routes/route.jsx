@@ -32,6 +32,7 @@ import EmailProducts from "../Dashboard/EmailProducts";
 import SellerProfile from "../Components/Reviews/SellerProfile";
 import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 import Address from "../Dashboard/Pages/address.jsx/Address";
+import Modal from "../Components/Modal/Modal";
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
@@ -197,6 +198,10 @@ export const router = createBrowserRouter([
       {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
+      },
+      {
+        path: "modal",
+        element: <Modal></Modal>,
       },
     ],
   },
