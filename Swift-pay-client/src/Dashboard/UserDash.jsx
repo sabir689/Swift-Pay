@@ -1,13 +1,8 @@
 /* eslint-disable react/prop-types */
 // /* eslint-disable react/prop-types */
 import React, { Suspense } from "react";
-import { BsCart2 } from "react-icons/bs";
-import { FaRegUserCircle } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { IoMdLogOut } from "react-icons/io";
-import { IoHome } from "react-icons/io5";
-import { RxAvatar } from "react-icons/rx";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import DashNavbar from "./DashNavbar.jsx/DashNavbar";
 import ProfileModal from "../pages/home/profile modal/profileModal";
 
@@ -22,10 +17,10 @@ const UserDash = ({
   handleUpdate,
 }) => {
   return (
-    <div>
+    <>
       <aside className="flex gap-6">
         <div
-          className={`bg-[#0e0e0e] min-h-screen${
+          className={`bg-[#1B1A55] min-h-screen${
             open ? "w-72" : "w-20"
           } duration-500 text-gray-100 px-4`}
         >
@@ -101,7 +96,7 @@ const UserDash = ({
         handleUpdate={handleUpdate}
         profileInfo={profileInfo}
       ></ProfileModal>
-    </div>
+    </>
   );
 };
 
