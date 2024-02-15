@@ -10,7 +10,9 @@ const Electronics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/brands");
+        const response = await fetch(
+          "https://swift-pay-server.vercel.app/api/brands"
+        );
         const data = await response.json();
         setBrands(data.map((brand) => brand.electronicsBrands));
       } catch (error) {
@@ -37,13 +39,16 @@ const Electronics = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/bookmarks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: user.email, product: selectedProduct }),
-      });
+      const response = await fetch(
+        "https://swift-pay-server.vercel.app/api/bookmarks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: user.email, product: selectedProduct }),
+        }
+      );
 
       if (response.ok) {
         console.log("Product added to cart successfully!");
@@ -74,6 +79,7 @@ const Electronics = () => {
                   key={productIndex}
                 >
                   <img
+                    loading="lazy"
                     className="w-72 h-72 rounded-md object-cover object-center"
                     src={product.image}
                     alt={product.name}
@@ -117,6 +123,7 @@ const Electronics = () => {
             <img
               className="w-64 h-64 rounded-md object-cover object-center"
               src={selectedProduct.image}
+              loading="lazy"
               alt={selectedProduct.name}
             />
             <div className="mt-4 text-gray-500">

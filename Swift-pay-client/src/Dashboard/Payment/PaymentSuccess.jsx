@@ -6,7 +6,7 @@ const PaymentSuccess = () => {
   Swal.fire({
     title:
       "<span style='color: rgb(60, 88, 202)'>Transaction Successful!</span>",
-    html: ` <span style='background-color: rgb(227, 230, 233); padding: 4px; border-radius: 4px; color: black;'>Transaction ID: ${tranId}</span>`,
+    html: `<span style='background-color: rgb(227, 230, 233); padding: 4px; border-radius: 4px; color: black;'>Transaction ID: ${tranId}</span>`,
     imageUrl: "https://i.ibb.co/XzfYZTw/success-56.png",
     imageWidth: 150,
   });

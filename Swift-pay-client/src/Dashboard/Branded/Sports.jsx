@@ -10,7 +10,9 @@ const Sports = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/brands");
+        const response = await fetch(
+          "https://swift-pay-server.vercel.app/api/brands"
+        );
         const data = await response.json();
         setBrands(data.map((brand) => brand.sportsAndOutdoorsBrands));
       } catch (error) {
@@ -37,13 +39,16 @@ const Sports = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/bookmarks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: user.email, product: selectedProduct }),
-      });
+      const response = await fetch(
+        "https://swift-pay-server.vercel.app/api/bookmarks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: user.email, product: selectedProduct }),
+        }
+      );
 
       if (response.ok) {
         console.log("Product added to cart successfully!");
@@ -74,6 +79,7 @@ const Sports = () => {
                   key={productIndex}
                 >
                   <img
+                    loading="lazy"
                     className="w-72 h-72 rounded-md object-cover object-center"
                     src={product.image}
                     alt={product.name}
