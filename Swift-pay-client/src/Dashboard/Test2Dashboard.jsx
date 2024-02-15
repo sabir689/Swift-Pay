@@ -62,6 +62,11 @@ const Test2Dashboard = () => {
         icon: AiOutlineHeart,
       },
       {
+        name: "Transaction History",
+        link: "/dashboard/transactionHistory",
+        icon: AiOutlineHeart,
+      },
+      {
         name: "user",
         link: "/dashboard/sendMoney",
         icon: AiOutlineUser,
