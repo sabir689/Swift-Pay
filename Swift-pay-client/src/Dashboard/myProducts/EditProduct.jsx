@@ -4,15 +4,12 @@ import { GetProduct, uploadProduct } from '../../apis/GetMethod'
 import toast from 'react-hot-toast'
 import { AuthContext } from '../../provider/AuthProvider'
 import { ImageHost } from '../../apis/ImageHost'
-import { set } from 'react-hook-form'
-
 const EditProduct = () => {
     const location = useLocation()
     const receivedData = location.state.data
     const [loading, setLoading] = useState(false)
     const [product, setProduct] = useState([])
     const { user } = useContext(AuthContext);
-
     console.log(product);
     useEffect(() => {
         setLoading(true)
@@ -45,23 +42,23 @@ const EditProduct = () => {
                     name, email, address, number, productName, price, category, description, image
                 }
                 uploadProduct(id, productInfo)
-                .then(()=>{
-                    toast.success("Product updated successfully.")
-                })
-                .catch(()=>{
-                    toast.error("Error updating product. Please try again.")
-                })
+                    .then(() => {
+                        toast.success("Product updated successfully.")
+                    })
+                    .catch(() => {
+                        toast.error("Error updating product. Please try again.")
+                    })
             })
             .catch(() => {
                 toast.error('Failed to upload image. Please try again.')
             })
     }
     const [file, setFile] = useState('');
-    const [productImg, setProductImg]=useState('')
-  
-    const  handleChange=(e)=> {
-        const updatedImage=(URL.createObjectURL(e.target.files[0])) 
-        setProductImg(updatedImage)  
+    const [productImg, setProductImg] = useState('')
+
+    const handleChange = (e) => {
+        const updatedImage = (URL.createObjectURL(e.target.files[0]))
+        setProductImg(updatedImage)
     }
     useEffect(() => {
         if (productImg) {
@@ -70,10 +67,10 @@ const EditProduct = () => {
             setFile(product?.image);
         }
     }, [productImg, product]);
-    
 
- 
-    
+
+
+
 
     return (
         <div className=" mt-16 mb-10 border-[1px] border-gray-300 max-w-2xl px-3 rounded-lg mx-auto">
@@ -166,11 +163,11 @@ const EditProduct = () => {
                                     name="image"
                                     className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                                     type="file"
-                                    onChange={handleChange} 
-                                    // value={product?.image}
+                                    onChange={handleChange}
+
                                 />
-                                 <img className='w-28 h-24 object-cover mt-3' src={file} />
-                                 
+                                <img className='w-28 h-24 object-cover mt-3' src={file} />
+
                             </div>
                             <div className='w-full md:w-40'>
                                 <label className="mb-1 text-lg font-medium inline-block text-gray-500">
@@ -219,7 +216,7 @@ const EditProduct = () => {
                             <textarea
                                 name='description'
                                 placeholder="Product description"
-                                className=" text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 h-32 w-full outline-none"
+                                className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 h-32 w-full outline-none"
                                 defaultValue={product?.description}>
                             </textarea>
                         </div>
