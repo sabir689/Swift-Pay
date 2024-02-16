@@ -20,7 +20,9 @@ const client = new MongoClient(uri, {
 });
 const store_id = process.env.STORE_ID;
 const store_passwd = process.env.STORE_PASS;
-const is_live = false; //true for live, false for sandbox
+const is_live = false; 
+
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -32,6 +34,7 @@ async function run() {
     const productCollection = client.db("SwiftPayDb").collection("products");
     // bookmark collection
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
+    // offer collection
     const offerCollection = client.db("SwiftPayDb").collection("offers");
     // order collection
     const orderCollection = client.db("SwiftPayDb").collection("order");
@@ -39,7 +42,8 @@ async function run() {
     const brandCollection = client.db("SwiftPayDb").collection("brands");
     // review collection
     const reviewCollection = client.db("SwiftPayDb").collection("reviews");
-    // post order
+
+    // order api
     // app.post("/api/orders", async (req, res) => {
     //   const orders = req.body;
     //   const result = await orderCollection.insertOne(orders);
@@ -55,12 +59,18 @@ async function run() {
     //   const result = await orderCollection.insertOne(orders);
     //   res.send(result);
     // });
-    // offer
+
+    // offer api
+    app.post("/offers", async (req, res) => {
+      const offers = req.body;
+      const result = await offerCollection.insertOne(offers);
+    });
     app.get("/api/offers", async (req, res) => {
-      const cursor = offerCollection.find();
-      const result = await cursor.toArray();
+      const result = await offerCollection.find().toArray();
       res.send(result);
     });
+
+    // brand api
     app.get("/api/brands", async (req, res) => {
       const cursor = brandCollection.find();
       const result = await cursor.toArray();
@@ -93,12 +103,10 @@ async function run() {
       res.send(result);
     });
 
-
-    // user post
+    // user api
     app.post("/api/users", async (req, res) => {
       const user = req.body;
       // insert email if user doesn't exists:
-      // you can do this many ways (1. email unique, 2. upsert 3. simple checking)
       const query = { email: user.email };
       const existingUser = await userCollection.findOne(query);
       if (existingUser) {
@@ -135,40 +143,20 @@ async function run() {
       res.send(result);
     });
 
-    app.put('/updateproduct/:id', async (request, response) => {
-      const getId = request.params.id
-      const data = request.body
-      const filter = { _id: new ObjectId(getId) }
-      const options = { upsert: true };
-      const update = {
-        $set: {
-          name:data.name,
-          email:data.email,
-          address:data.address,
-          number:data.number,
-          productName:data.productName,
-          price:data.price,
-          category:data.category,
-          description:data.description,
-          image:data.image,
-        }
-      }
-      const result= await productCollection.updateOne(filter, update, options)
-      response.send(result)
-    })
-
-    // product post
+    // product api
     app.post("/api/products", async (req, res) => {
       const products = req.body;
       const result = await productCollection.insertOne(products);
       res.send(result);
     });
+
     // product get
     // app.get("/api/products", async (req, res) => {
     //   const products = req.body;
     //   const result = await productCollection.find(products).toArray();
     //   res.send(result);
     // });
+
     app.get("/api/products", async (req, res) => {
       try {
         let query = {};
@@ -204,24 +192,28 @@ async function run() {
       }
     });
 
-    // product post
-    app.post("/api/products", async (req, res) => {
-      const products = req.body;
-      const result = await productCollection.insertOne(products);
-      res.send(result);
+    app.put("/updateproduct/:id", async (request, response) => {
+      const getId = request.params.id;
+      const data = request.body;
+      const filter = { _id: new ObjectId(getId) };
+      const options = { upsert: true };
+      const update = {
+        $set: {
+          name: data.name,
+          email: data.email,
+          address: data.address,
+          number: data.number,
+          productName: data.productName,
+          price: data.price,
+          category: data.category,
+          description: data.description,
+          image: data.image,
+        },
+      };
+      const result = await productCollection.updateOne(filter, update, options);
+      response.send(result);
     });
 
-    // offers page
-    app.get("/api/offers", async (req, res) => {
-      const result = await offerCollection.find().toArray();
-      res.send(result);
-    });
-
-    //  offers post
-    app.post("/offers", async (req, res) => {
-      const offers = req.body;
-      const result = await offerCollection.insertOne(offers);
-    });
     // bookmark api
     app.post("/api/bookmarks", async (req, res) => {
       const bookmarks = req.body;
@@ -266,19 +258,33 @@ async function run() {
       const result = await productCollection.findOne(query);
       res.send(result);
     });
-
-    
+    app.get("/order", async (req, res) => {
+      const result = await orderCollection.find().toArray();
+      res.send(result);
+    });
+    app.get("/orderByEmail", async (req, res) => {
+      var query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await orderCollection.find(query).toArray();
+      res.send(result);
+    });
 
     // payment post
+
+    // payment api
     const tran_id = new ObjectId().toString();
     app.post("/api/order", async (req, res) => {
       const product = await productCollection.findOne({
         _id: new ObjectId(req.body.productId),
       });
 
-      console.log(product);
+      // console.log(product);
       const order = req.body;
-      // console.log(req.body);
+      const customerInfo = req.body.userInfo;
+      const email = req.body.userInfo.email;
+      console.log(req.body.userInfo.email);
       const data = {
         total_amount: product?.price,
         currency: order.userInfo.category,
@@ -296,7 +302,7 @@ async function run() {
         product_category: "Electronic",
         product_profile: "general",
         cus_name: order?.userInfo.name,
-        cus_email: "customer@example.com",
+        cus_email: order?.userInfo.email,
         cus_add1: order?.userInfo.address,
         cus_add2: "Dhaka",
         cus_city: "Dhaka",
@@ -313,7 +319,7 @@ async function run() {
         ship_postcode: 1000,
         ship_country: "Bangladesh",
       };
-      console.log(data);
+      // console.log(data);
       const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
       sslcz
         .init(data)
@@ -322,6 +328,8 @@ async function run() {
           res.send({ url: GatewayPageURL });
           console.log("Redirecting to: ", GatewayPageURL);
           const finalOrder = {
+            email,
+            customerInfo,
             product,
             paidStatus: false,
             transactionId: tran_id,
@@ -333,10 +341,6 @@ async function run() {
           res.status(500).send({ error: "Internal error" });
         });
 
-      app.get("/api/order", async (req, res) => {
-        const result = orderCollection.find().toArray;
-        res.send(result);
-      });
       app.post("/payment/success/:tranId", async (req, res) => {
         console.log(req.params.tranId);
         const result = await orderCollection.updateOne(

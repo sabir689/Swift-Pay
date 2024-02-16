@@ -24,8 +24,9 @@ const Details = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {showData && (
-        <div className="my-10 block rounded-lg p-4 shadow-sm shadow-indigo-100">
+        <div className="my-10 block rounded-lg p-4 border-[1px] border-gray-400">
           <img
+            loading="lazy"
             alt="Home"
             src={showData?.image}
             className="w-full object-cover object-center"
@@ -41,7 +42,7 @@ const Details = () => {
                 </dd>
               </div>
               <dd className="font-medium mb-5">{showData?.productName}</dd>
-              {/* profile button */}
+              {/* seller profile button */}
               <Link to={`/dashboard/sellerprofile/${showData?.email}`}>
                 {" "}
                 <button>

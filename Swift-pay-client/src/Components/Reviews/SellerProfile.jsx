@@ -11,6 +11,7 @@ import { MdDelete } from "react-icons/md";
 const SellerProfile = () => {
   const seller = useLoaderData();
   const { email } = useParams();
+  const [modalData, setModalData] = useState({});
   const [showData, setShowData] = useState([]);
   const [review, setReview] = useState("");
   const axiosPublic = useAxiosPublic();
@@ -61,7 +62,6 @@ const SellerProfile = () => {
       if (res.data.insertedId) {
         toast.success("Thank you for your review");
         refetch();
-        
       }
     });
   };
@@ -94,72 +94,93 @@ const SellerProfile = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2">
-        {/* seller profile */}
-
-        <div key={showData._id} className="seller-card">
-          <img className="image" src={showData.photoURL} alt="image" />
+      <div className=" flex justify-center">
+        <div key={showData?._id} className="seller-card">
+          <img className="image" src={showData?.photoURL} alt="" />
           <div className="seller-card-info">
             <span>
               {showData?.firstName} {showData?.lastName}
             </span>
             <p>{showData?.email}</p>
           </div>
-          <button className="button">Review</button>
-        </div>
-
-        {/* review form */}
-        <div className="card card-compact w-96 h-64 p-6 bg-base-100 shadow-xl border-t-2">
-          <p className=" text-center text-xl font-semibold ">Give Review</p>
-
-          <div className="form-control">
-            <label className="label text-center">
-              <span className="label-text"> </span>
-            </label>
-            <textarea
-              onChange={(e) => setReview(e.target.value)}
-              className="textarea textarea-bordered h-24"
-              placeholder="write your review here..."
-            ></textarea>
+          <div className="flex gap-5">
+            <button className="button">Follow</button>
             <button
-              onClick={handleReview}
-              className="btn btn-sm md:btn-md btn-primary mt-4"
+              onClick={() => {
+                window.document.getElementById("my_modal_1").showModal();
+              }}
+              className="button"
             >
-              Send
+              Review
             </button>
+            <dialog id="my_modal_1" className="modal">
+              <div className="space-y-5 modal-box">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                    ✕
+                  </button>
+                </form>
+                <p className="font-bold text-lg text-center">Give Review</p>
+                <textarea
+                  onChange={(e) => setReview(e.target.value)}
+                  className="w-full py-5 textarea textarea-bordered"
+                  placeholder="write your review here..."
+                ></textarea>
+                <div className="modal-action">
+                  <form method="dialog">
+                    <button onClick={handleReview} className="button">
+                      submit{" "}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </dialog>
           </div>
         </div>
       </div>
+
+      <hr />
       {/* reviews */}
-      <div className="grid grid-cols-3">
+      <h1 className="text-2xl font-semibold text-center text-gray-500 my-10">
+        Reviews
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3">
         {reviews.map((data) => (
-          <div
-            key={data._id}
-            className=" relative w-72 h-40 flex flex-col justify-center gap-2 bg-neutral-50 rounded-lg shadow p-2"
-          >
-            <div className="flex gap-2">
-              <img
-                className="bg-neutral-500 w-24 h-24 shrink-0 rounded-lg"
-                src={data.user_photoURL}
-                alt=""
-              />
-              <div
-                onClick={() => handleDelete(data?._id)}
-                className="absolute top-2 right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-blue-400"
+          <section key={data._id} className="bg-gray-50 rounded-lg w-full">
+            <div className=" relative container px-6 py-10 mx-auto">
+              <button
+                onClick={() => handleDelete(data._id)}
+                className="text-red-700 absolute right-6 btn-circle"
               >
-                <MdDelete className="text-2xl text-red-500" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-neutral-700 italic">
-                  {data.user_name}
-                </span>
-                <span className="font-bold text-neutral-700 italic">
-                  {data.user_email}
-                </span>
-                <p className="line-clamp-3">{data.review}</p>
-              </div>
+                ✕
+              </button>
+              <section className="">
+                <div className="p-8 border rounded-lg border-amber-9a00">
+                  <p className="leading-loose text-gray-800  h-[90px]">
+                    <span>&quot;{data?.review}&quot;</span>
+                  </p>
+
+                  <div className="flex items-center mt-8 h-[150px]">
+                    <img
+                      className="object-cover mx-2 rounded-full w-10 shrink-0 h-10 ring-2 ring-gray-300 dark:ring-gray-700"
+                      src={data?.user_photoURL}
+                      alt=""
+                    />
+
+                    <div className="mx-2">
+                      <h1 className="font-semibold text-gray-800">
+                        {data?.user_name}
+                      </h1>
+                      <span className="text-sm text-gray-500">
+                        {data?.user_email}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </div>

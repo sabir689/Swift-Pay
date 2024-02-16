@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import { CiLocationOn, CiUser } from "react-icons/ci";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
+  console.log(product);
   return (
     <div>
       <div
@@ -40,10 +41,13 @@ const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
             ${product?.price}
           </button>{" "}
         </div>{" "}
-        <p className="text-gray-400 text-sm my-1 flex items-center">
-          <CiUser className="text-gray-400" />
-          {product?.name}
-        </p>
+        <Link to={`/dashboard/sellerprofile/${product?.email}`}>
+          <p className="text-cyan-700 text-sm my-1 flex  gap-2 items-center">
+            <CiUser className="text-gray-700" />
+            {product?.name}
+            <FaExternalLinkAlt className=" text-xs " />
+          </p>
+        </Link>
         <h1 className="text-gray-400 text-sm my-1 flex items-center">
           <p>
             <CiLocationOn className="text-blue-400" />{" "}
