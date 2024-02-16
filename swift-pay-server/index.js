@@ -20,8 +20,7 @@ const client = new MongoClient(uri, {
 });
 const store_id = process.env.STORE_ID;
 const store_passwd = process.env.STORE_PASS;
-const is_live = false; 
-
+const is_live = false;
 
 async function run() {
   try {
@@ -137,6 +136,7 @@ async function run() {
           age: item.age,
           gender: item.image,
           photoURL: item.photoURL,
+          note: item.note,
         },
       };
       const result = await userCollection.updateOne(filter, updatedDoc);
@@ -355,8 +355,8 @@ async function run() {
         console.log(result);
         if (result.modifiedCount > 0) {
           res.redirect(
-            // `http://localhost:5173/payment/success/${req.params.tranId}`
-            `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
+            `http://localhost:5173/payment/success/${req.params.tranId}`
+            // `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
           );
         }
       });

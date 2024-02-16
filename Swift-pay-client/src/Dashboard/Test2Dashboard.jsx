@@ -119,11 +119,11 @@ const Test2Dashboard = () => {
         link: "/dashboard/userTransaction",
         icon: TbReportAnalytics,
       },
-      {
-        name: "Cart",
-        link: "/",
-        icon: FiShoppingCart,
-      },
+      // {
+      //   name: "Cart",
+      //   link: "/",
+      //   icon: FiShoppingCart,
+      // },
       {
         name: "Home",
         link: "/",
