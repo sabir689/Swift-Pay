@@ -42,7 +42,7 @@ const Details = () => {
                 </dd>
               </div>
               <dd className="font-medium mb-5">{showData?.productName}</dd>
-              {/* profile button */}
+              {/* seller profile button */}
               <Link to={`/dashboard/sellerprofile/${showData?.email}`}>
                 {" "}
                 <button>
