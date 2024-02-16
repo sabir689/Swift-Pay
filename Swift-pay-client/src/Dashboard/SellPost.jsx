@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -33,7 +33,6 @@ const SellPost = () => {
         date: new Date().toDateString(),
         productName: data.productName,
         email: user?.email,
-
         number: data.number,
         price: data.price,
         description: data.description,
@@ -41,140 +40,182 @@ const SellPost = () => {
         image: res?.data.data.display_url,
         category: data.category,
       };
-      console.log(productData.data);
       const postProduct = await axiosPublic.post("/api/products", productData);
       if (postProduct.data?.insertedId) {
-        toast.success("Product posted successfully!", {
-          position: "bottom-right", // Set the position to bottom-right
+        toast.success("Product posted successfully!",
+        reset(),
+        {
         });
         queryClient.invalidateQueries([]);
       }
-      console.log(postProduct.data);
     }
-    // const res = await axiosPublic.post(image_hosting_api, imageFile);
-
-    // await axiosPublic
-    //   .post("/api/products", formData, image_hosting_api, {
-    //     headers: {
-    //       "content-type": "multipart/form-data",
-    //     },
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data, "product posted");
-    //     toast.success("Product posted successfully!");
-    //     console.log(res.data);
-    //   });
   };
-
+  const [uploadImage, setUploadImage] = useState('')
+  const handlefileUpload = (e) => {
+    const file = URL.createObjectURL(e.target.files[0])
+    setUploadImage(file)
+  }
   return (
-    <div className="my-32 flex justify-center items-center mt-10 border-[1px] h-[800px] border-gray-300 w-[500px] py-10 px-8 rounded-lg mx-auto">
+    <div className="mt-16 mb-10 border-[1px] border-gray-300 max-w-2xl px-3 rounded-md mx-auto">
       <div>
-        <p className="text-start ml-7 mb-5 text-[#49108B] font-bold text-4xl">
+        <p className="text-center text-2xl my-7 md:my-7 text-[#49108B] font-bold md:text-4xl">
           Sell product
         </p>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="px-7  grid justify-center items-center"
+          className="px-2 md:px-6 lg:px-5  grid gap-y-4 justify-center items-center mb-10"
         >
+
           <div className="grid gap-6" id="form">
-            <div className="w-full flex gap-3">
-              <input
-                {...register("name")}
-                className="text-sm rounded-lg border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#9e6bd7]  py-3 px-3 w-full placeholder:text-sm"
-                type="text"
-                placeholder="your name"
-                required=""
-              />
-              <input
-                {...register("productName")}
-                className=" text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm"
-                type="text"
-                placeholder="Product Name"
-                required=""
-              />
+            <div className="w-full flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Your Name
+                </label>
+                <input
+                  {...register("name")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none"
+                  type="text"
+                  placeholder="your name"
+                  required
+                  defaultValue={user.displayName}
+                />
+              </div>
+              <div className="flex-1">
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Email Address
+                </label>
+
+                <input
+                  {...register("email")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none  cursor-not-allowed"
+                  type="Email"
+                  placeholder="your email"
+                  id="Email"
+                  value={user?.email}
+                />
+              </div>
             </div>
-            <div className="mb-3">
-              <label className="mb-2 text-sm inline-block text-gray-500 ">
-                Product image
-              </label>
-              <input
-                name="image"
-                {...register("image")}
-                className="relative m-0 block min-w-full flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
-                type="file"
-                multiple
-              />
+
+            <div className="w-full flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Your Address
+                </label>
+                <input
+                  {...register("address")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
+                  type="text"
+                  placeholder="your address"
+                  id="address"
+                />
+
+              </div>
+              <div className="flex-1">
+
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Phone number
+                </label>
+                <input
+                  {...register("number")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
+                  type="number"
+                  placeholder="phone number"
+                  id="number"
+                  name="number"
+                />
+              </div>
             </div>
-            <div className="grid gap-6 w-full">
-              <input
-                {...register("email")}
-                className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3 w-full placeholder:text-sm cursor-not-allowed"
-                type="Email"
-                placeholder="your email"
-                id="Email"
-                value={user?.email}
-              />
-              <div className="flex gap-4">
-                <textarea
-                  {...register("description")}
-                  placeholder="Product description"
-                  className="cols-span-2 textarea textarea-md text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] w-full py-3 px-3  placeholder:text-sm"
-                ></textarea>
+
+           <div>
+           <div className="w-full flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Product image
+                </label>
+                <input
+                  name="image"
+                  {...register("image")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none"
+                  type="file"
+                  onChange={handlefileUpload}
+                />
+              </div>
+              <div className="flex-1">
+
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Category
+                </label>
+                <select
+                  {...register("category")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
+                >
+                  <option className="text-sm">Electronics</option>
+                  <option className="text-sm">Photography</option>
+                  <option className="text-sm">Fitness</option>
+                  <option className="text-sm">Cafe Corner</option>
+                  <option className="text-sm">Fashion</option>
+                  <option className="text-sm">Art & Design</option>
+                  <option className="text-sm">Outdoor</option>
+                  <option className="text-sm">Appliances</option>
+                  <option className="text-sm">Home & security</option>
+                  <option className="text-sm">Home & Living </option>
+                  <option className="text-sm">Home Automation</option>
+                  <option className="text-sm">Home & Kitchen</option>
+                </select>
+              </div>
+             
+            </div>
+            {
+                uploadImage && <img src={uploadImage} className="w-28 h-auto object-cover mt-2"/>
+              }
+           </div>
+
+            <div className="w-full flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Product Name
+                </label>
+                <input
+                  {...register("productName")}
+                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none"
+                  type="text"
+                  placeholder="Product Name"
+                  required
+                />
+              </div>
+              <div className="w-full md:w-40">
+                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                  Price
+                </label>
                 <input
                   {...register("price")}
-                  className=" text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B]  py-3 px-3  placeholder:text-sm"
+                  className=" text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 px-3 w-full outline-none"
                   type="number"
                   placeholder="price"
                   id="price"
                 />
               </div>
             </div>
-            <div className="">
-              <input
-                {...register("address")}
-                className="text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] mb-5 py-3 px-3 w-full placeholder:text-sm"
-                type="text"
-                placeholder="your address"
-                id="address"
-              />
-              <label className="text-sm font-medium text-gray-600">
-                Phone number
+
+            <div>
+              <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                Product description
               </label>
-              <input
-                {...register("number")}
-                className="mt-2 text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] mb-5 py-3 px-3 w-full placeholder:text-sm"
-                type="number"
-                placeholder="phone"
-                id="number"
-                name="number"
-              />
-              <label className="text-sm font-medium text-gray-600">
-                Category
-              </label>
-              <select
-                {...register("category")}
-                className="select text-sm rounded-lg bg-transparent border-[1px] border-gray-400 duration-300 focus:shadow-sm focus:border-[#49108B] py-3 px-3 mt-2 w-full placeholder:text-sm"
-              >
-                <option className="text-sm">Electronics</option>
-                <option className="text-sm">Photography</option>
-                <option className="text-sm">Fitness</option>
-                <option className="text-sm">Cafe Corner</option>
-                <option className="text-sm">Fashion</option>
-                <option className="text-sm">Art & Design</option>
-                <option className="text-sm">Outdoor</option>
-                <option className="text-sm">Appliances</option>
-                <option className="text-sm">Home & security</option>
-                <option className="text-sm">Home & Living </option>
-                <option className="text-sm">Home Automation</option>
-                <option className="text-sm">Home & Kitchen</option>
-              </select>
+              <textarea
+                {...register("description")}
+                placeholder="Product description"
+                className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 h-32 w-full outline-none"
+              ></textarea>
+
             </div>
-            <div className="text-end mt-4">
+         
+            <div className="text-center">
               <button
                 type="submit"
-                className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:text-white  text-sm"
+                className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:text-white  text-base"
               >
-                Sell
+                Upload
               </button>
             </div>
           </div>
