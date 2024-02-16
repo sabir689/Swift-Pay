@@ -1,18 +1,17 @@
-const Modal = ({ closeModal }) => {
+/* eslint-disable react/prop-types */
+const Modal = ({ modalData }) => {
   return (
-    <div>
-      <dialog id="my_modal_1" className="modal" open>
-        <div className="modal-box">
-          <h3 className="font-md text-lg">Leave a note</h3>
-          {/* <p className="py-4">{profile?.email}</p> */}
-          <div className="modal-action">
-            <button onClick={closeModal} className="btn">
-              Close
-            </button>
-          </div>
+    <dialog id="my_modal_1" className="modal">
+      <div className="modal-box">
+        <p className="py-4">{modalData?.email}</p>
+        <div className="modal-action">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn">Close</button>
+          </form>
         </div>
-      </dialog>
-    </div>
+      </div>
+    </dialog>
   );
 };
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import DashNavbar from "./DashNavbar.jsx/DashNavbar";
 
 const AdminDash = ({
@@ -15,8 +15,9 @@ const AdminDash = ({
   profileInfo,
   handleUpdate,
 }) => {
+  const location = useLocation();
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-4">
       <div
         className={`bg-[#7F27FF]  min-h-screen ${
           open ? "w-72" : "w-20"
@@ -75,7 +76,7 @@ const AdminDash = ({
           ))}
         </div>
       </div>
-      <div className="flex-1 mr-3 mt-3 max-w-screen-2xl mx-auto">
+      <div className="flex-1 mr-3 mt-3 w-full mx-auto">
         <DashNavbar
           user={user}
           mainUser={mainUser}

@@ -2,7 +2,7 @@
 // /* eslint-disable react/prop-types */
 import React, { Suspense } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import DashNavbar from "./DashNavbar.jsx/DashNavbar";
 import ProfileModal from "../pages/home/profile modal/profileModal";
 
@@ -16,6 +16,7 @@ const UserDash = ({
   profileInfo,
   handleUpdate,
 }) => {
+  const location = useLocation();
   return (
     <>
       <aside className="flex gap-6">
