@@ -92,10 +92,10 @@ export const router = createBrowserRouter([
         path: "/payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
       },
-      {
-        path: "/transactionDetails",
-        element: <TransactionDetails></TransactionDetails>,
-      },
+      // {
+      //   path: "/transactionDetails",
+      //   element: <TransactionDetails></TransactionDetails>,
+      // },
     ],
   },
 
@@ -169,6 +169,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "transactionHistory",
+        element: <TransactionDetails></TransactionDetails>,
+      },
+      {
+        path: "userTransaction",
         element: <TransactionDetails></TransactionDetails>,
       },
       // my products page
