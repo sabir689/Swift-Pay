@@ -6,12 +6,16 @@ import OnlineStatus from "../../Components/Shared/Online status/OnlineStatus";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
 import useUser from "../../hooks/useUser";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import EmailProducts from "../../Dashboard/EmailProducts";
 import { useEffect, useState } from "react";
 import { getMyPorducts } from "../../apis/GetMethod";
+import Modal from "../../Components/Modal/Modal";
 
 const AllUsers = () => {
+
+  const [modalData, setModalData] = useState({});
+  const [note, setNote] = useState("");
   const [myProduct, setMyProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   // const { email } = useParams();
@@ -26,7 +30,7 @@ const AllUsers = () => {
       return res.data;
     },
   });
-   console.log(profile);
+  console.log(profile);
   const { data: postedProducts = [] } = useQuery({
     queryKey: ["postedProducts"],
     queryFn: async () => {
@@ -52,7 +56,25 @@ const AllUsers = () => {
     });
   }, [postedProducts?.email]);
   console.log(postedProducts);
+  const [isOpen, setIsOpen] = useState(false);
 
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleLinkClick = (event) => {
+    event.preventDefault(); // Prevent the default action of the link
+    openModal(); // Open the modal
+  };
+  const handleNote = (sellerMail) => {
+
+   
+  };
+  
   return (
     <div>
       <section className="container px-4 mx-auto mt-10">
@@ -61,7 +83,7 @@ const AllUsers = () => {
             <h2 className="text-lg mr-3 font-medium text-gray-600">
               Total users
             </h2>
-            <span className="px-3 py-1 text-xl text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
+            <span className="px-3 py-1 text-2xl text-green-400 bg-blue-100 rounded-full dark:bg-gray-800">
               {profile?.length}
             </span>
           </div>
@@ -181,11 +203,13 @@ const AllUsers = () => {
                         scope="col"
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                       >
-                        Teams
+                        Role
                       </th>
-
-                      <th scope="col" className="relative py-3.5 px-4">
-                        <span className="sr-only">Edit</span>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-center text-gray-500 dark:text-gray-400"
+                      >
+                        Add note
                       </th>
                     </tr>
                   </thead>
@@ -224,7 +248,27 @@ const AllUsers = () => {
                             </div>
                           </td>
                           <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                            <OnlineStatus></OnlineStatus>
+                            <a
+                              href={`/dashboard/modal/${profileUser?.email}`}
+                              onClick={handleLinkClick}
+                            >
+                              <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  strokeWidth="1.5"
+                                  stroke="currentColor"
+                                  className="w-5 h-5"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                                  />
+                                </svg>
+                              </button>
+                            </a>
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             {/* view products button */}
@@ -244,37 +288,28 @@ const AllUsers = () => {
                           </td>
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-2">
-                              <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                                Design
-                              </p>
-                              <p className="px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60">
-                                Product
-                              </p>
-                              <p className="px-3 py-1 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60">
-                                Marketing
-                              </p>
+                              {profile?.role === "Admin" ? (
+                                <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
+                                  Admin
+                                </p>
+                              ) : (
+                                <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
+                                  User
+                                </p>
+                              )}
                             </div>
                           </td>
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-6">
-                              <button className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke-width="1.5"
-                                  stroke="currentColor"
-                                  className="w-5 h-5"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                  />
-                                </svg>
-                              </button>
-
-                              <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                              <button
+                                onClick={() => {
+                                  setModalData(profileUser);
+                                  window.document
+                                    .getElementById("my_modal_1")
+                                    .showModal();
+                                }}
+                                className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+                              >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   fill="none"
@@ -290,6 +325,40 @@ const AllUsers = () => {
                                   />
                                 </svg>
                               </button>
+                              <dialog id="my_modal_1" className="modal">
+                                <div className="space-y-5 modal-box">
+                                  <form method="dialog">
+                                    {/* if there is a button in form, it will close the modal */}
+                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                                      ✕
+                                    </button>
+                                  </form>
+                                  <p className="font-bold text-lg text-center">
+                                    Note Box
+                                  </p>
+                                  <h3 className="font-bold text-lg">
+                                    To: {modalData?.email}
+                                  </h3>
+                                  <textarea
+                                    onChange={(e) => setNote(e.target.value)}
+                                    className="w-full py-5 textarea textarea-bordered"
+                                    placeholder="Bio"
+                                  ></textarea>
+                                  <div className="modal-action">
+                                    <form method="dialog">
+                                      {/* if there is a button in form, it will close the modal */}
+                                      <button
+                                        onClick={() =>
+                                          handleNote(modalData?.email)
+                                        }
+                                        className="btn"
+                                      >
+                                        submit{" "}
+                                      </button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </dialog>
                             </div>
                           </td>
                         </tr>
@@ -302,7 +371,8 @@ const AllUsers = () => {
         </div>
       </section>
       {/* modal */}
-      {/* <EmailProducts postedProducts={postedProducts}></EmailProducts> */}
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      {/* {isOpen && <Modal closeModal={closeModal}></Modal>} */}
     </div>
   );
 };

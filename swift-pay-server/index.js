@@ -20,7 +20,9 @@ const client = new MongoClient(uri, {
 });
 const store_id = process.env.STORE_ID;
 const store_passwd = process.env.STORE_PASS;
-const is_live = false; //true for live, false for sandbox
+const is_live = false; 
+
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
@@ -32,6 +34,7 @@ async function run() {
     const productCollection = client.db("SwiftPayDb").collection("products");
     // bookmark collection
     const bookmarkCollection = client.db("SwiftPayDb").collection("bookmarks");
+    // offer collection
     const offerCollection = client.db("SwiftPayDb").collection("offers");
     // order collection
     const orderCollection = client.db("SwiftPayDb").collection("order");
