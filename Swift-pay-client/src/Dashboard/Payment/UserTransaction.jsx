@@ -1,9 +1,8 @@
-import UseTransaction from "../../hooks/UseTransaction";
 import jsPDF from "jspdf";
+import UseAllTransaction from "../../hooks/UseAllTransaction";
 import "jspdf-autotable";
-const TransactionDetails = () => {
-  const [orders] = UseTransaction();
-
+const UserTransaction = () => {
+  const [orders] = UseAllTransaction();
   const downloadAsPdf = (order) => {
     // Create a new jsPDF instance
     const doc = new jsPDF();
@@ -47,7 +46,6 @@ const TransactionDetails = () => {
     // Save the PDF with a filename including the order ID
     doc.save(`invoice_${order.transactionId}.pdf`);
   };
-
   return (
     <div className="mt-20 mb-12">
       <section className="container px-4 mx-auto">
@@ -189,28 +187,4 @@ const TransactionDetails = () => {
   );
 };
 
-export default TransactionDetails;
-
-{
-  /* <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-  <div className="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M9 3L3 9M3 3L9 9"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-
-    <h2 className="text-sm font-normal">Cancelled</h2>
-  </div>
-</td>; */
-}
+export default UserTransaction;

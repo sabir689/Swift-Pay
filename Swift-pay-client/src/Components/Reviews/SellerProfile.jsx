@@ -156,7 +156,7 @@ const SellerProfile = () => {
                 ✕
               </button>
               <section className="">
-                <div className="p-8 border rounded-lg border-amber-900">
+                <div className="p-8 border rounded-lg border-amber-9a00">
                   <p className="leading-loose text-gray-800  h-[90px]">
                     <span>&quot;{data?.review}&quot;</span>
                   </p>

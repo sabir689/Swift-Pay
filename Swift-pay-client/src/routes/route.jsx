@@ -31,6 +31,10 @@ import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
+// import Modal from "../Components/Modal/Modal";
+import EmailProducts from "../Dashboard/EmailProducts";
+import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
+import Address from "../Dashboard/Pages/address.jsx/Address";
 import Modal from "../Components/Modal/Modal";
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
@@ -88,10 +92,10 @@ export const router = createBrowserRouter([
         path: "/payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
       },
-      {
-        path: "/transactionDetails",
-        element: <TransactionDetails></TransactionDetails>,
-      },
+      // {
+      //   path: "/transactionDetails",
+      //   element: <TransactionDetails></TransactionDetails>,
+      // },
     ],
   },
 
@@ -123,7 +127,14 @@ export const router = createBrowserRouter([
         path: "transactions",
         element: <Transactions></Transactions>,
       },
-
+      {
+        path: "profile",
+        element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "billing-address",
+        element: <Address />,
+      },
       {
         path: "sellPost",
         element: <SellPost></SellPost>,
@@ -160,6 +171,10 @@ export const router = createBrowserRouter([
         path: "transactionHistory",
         element: <TransactionDetails></TransactionDetails>,
       },
+      {
+        path: "userTransaction",
+        element: <TransactionDetails></TransactionDetails>,
+      },
       // my products page
       {
         path: "my-products",
@@ -185,11 +200,21 @@ export const router = createBrowserRouter([
       },
       // admin
       {
+        path: "emailProducts/:email",
+        element: <EmailProducts></EmailProducts>,
+        loader: () => fetch(`https://swift-pay-server.vercel.app/api/products`),
+      },
+      {
+        path: "sellerprofile/:email",
+        element: <SellerProfile />,
+        loader: () => fetch("https://swift-pay-server.vercel.app/api/users"),
+      },
+      {
         path: "allUsers",
         element: <AllUsers></AllUsers>,
       },
       {
-        path: "modal",
+        path: "modal/:email",
         element: <Modal></Modal>,
       },
     ],

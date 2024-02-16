@@ -258,8 +258,11 @@ async function run() {
       const result = await productCollection.findOne(query);
       res.send(result);
     });
-
     app.get("/order", async (req, res) => {
+      const result = await orderCollection.find().toArray();
+      res.send(result);
+    });
+    app.get("/orderByEmail", async (req, res) => {
       var query = {};
       if (req.query?.email) {
         query = { email: req.query.email };

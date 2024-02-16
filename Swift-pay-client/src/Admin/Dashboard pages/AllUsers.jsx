@@ -13,9 +13,7 @@ import { getMyPorducts } from "../../apis/GetMethod";
 import Modal from "../../Components/Modal/Modal";
 
 const AllUsers = () => {
-
   const [modalData, setModalData] = useState({});
-  const [note, setNote] = useState("");
   const [myProduct, setMyProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   // const { email } = useParams();
@@ -30,7 +28,7 @@ const AllUsers = () => {
       return res.data;
     },
   });
-  console.log(profile);
+  // console.log(profile);
   const { data: postedProducts = [] } = useQuery({
     queryKey: ["postedProducts"],
     queryFn: async () => {
@@ -43,6 +41,9 @@ const AllUsers = () => {
   const handleSubmit = async (email) => {
     navigate(`/dashboard/emailProducts/${email}`);
   };
+  // const handleNote = async (email) => {
+  //   navigate(`/dashboard/emailProducts/${email}`);
+  // };
   // useEffect(() => {
   //   const filter = emailProducts?.find((item) => item?.productName === email);
   //   setData(filter);
@@ -55,26 +56,8 @@ const AllUsers = () => {
       setLoading(false);
     });
   }, [postedProducts?.email]);
-  console.log(postedProducts);
-  const [isOpen, setIsOpen] = useState(false);
+  // console.log(postedProducts);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const handleLinkClick = (event) => {
-    event.preventDefault(); // Prevent the default action of the link
-    openModal(); // Open the modal
-  };
-  const handleNote = (sellerMail) => {
-
-   
-  };
-  
   return (
     <div>
       <section className="container px-4 mx-auto mt-10">
@@ -248,27 +231,18 @@ const AllUsers = () => {
                             </div>
                           </td>
                           <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                            <a
-                              href={`/dashboard/modal/${profileUser?.email}`}
-                              onClick={handleLinkClick}
+                            <Link
+                              to={`/dashboard/sellerprofile/${profileUser?.email}`}
                             >
-                              <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth="1.5"
-                                  stroke="currentColor"
-                                  className="w-5 h-5"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                                  />
-                                </svg>
+                              <button className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                                <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+
+                                <h2 className="text-sm font-normal text-amber-500">
+                                  Profile
+                                </h2>
+                                <MdArrowOutward className="text-white" />
                               </button>
-                            </a>
+                            </Link>
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             {/* view products button */}
@@ -301,64 +275,34 @@ const AllUsers = () => {
                           </td>
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-6">
-                              <button
-                                onClick={() => {
-                                  setModalData(profileUser);
-                                  window.document
-                                    .getElementById("my_modal_1")
-                                    .showModal();
-                                }}
-                                className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke-width="1.5"
-                                  stroke="currentColor"
-                                  className="w-5 h-5"
+                              <Link to={`${profileUser?.email}`}>
+                                <button
+                                  onClick={(e) => {
+                                    setModalData(profileUser);
+                                    e.preventDefault(); // Prevent the default link behavior
+                                    document
+                                      .getElementById("my_modal_1")
+                                      .showModal();
+                                  }}
+                                  className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
                                 >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                                  />
-                                </svg>
-                              </button>
-                              <dialog id="my_modal_1" className="modal">
-                                <div className="space-y-5 modal-box">
-                                  <form method="dialog">
-                                    {/* if there is a button in form, it will close the modal */}
-                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                                      ✕
-                                    </button>
-                                  </form>
-                                  <p className="font-bold text-lg text-center">
-                                    Note Box
-                                  </p>
-                                  <h3 className="font-bold text-lg">
-                                    To: {modalData?.email}
-                                  </h3>
-                                  <textarea
-                                    onChange={(e) => setNote(e.target.value)}
-                                    className="w-full py-5 textarea textarea-bordered"
-                                    placeholder="Bio"
-                                  ></textarea>
-                                  <div className="modal-action">
-                                    <form method="dialog">
-                                      {/* if there is a button in form, it will close the modal */}
-                                      <button
-                                        onClick={() =>
-                                          handleNote(modalData?.email)
-                                        }
-                                        className="btn"
-                                      >
-                                        submit{" "}
-                                      </button>
-                                    </form>
-                                  </div>
-                                </div>
-                              </dialog>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    className="w-5 h-5"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                                    />
+                                  </svg>
+                                </button>
+                              </Link>
+                              <Modal modalData={modalData}></Modal>
                             </div>
                           </td>
                         </tr>
@@ -372,7 +316,6 @@ const AllUsers = () => {
       </section>
       {/* modal */}
       {/* Open the modal using document.getElementById('ID').showModal() method */}
-      {/* {isOpen && <Modal closeModal={closeModal}></Modal>} */}
     </div>
   );
 };
