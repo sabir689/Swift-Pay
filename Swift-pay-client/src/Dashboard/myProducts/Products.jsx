@@ -20,7 +20,7 @@ const Products = () => {
       setMyProducts(res);
       setLoading(false);
     });
-  }, []);
+  }, [user?.email]);
   console.log(myProduct);
   const handleDelete = (id) => {
     Swal.fire({

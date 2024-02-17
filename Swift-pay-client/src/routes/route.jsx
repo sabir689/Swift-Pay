@@ -13,7 +13,6 @@ import Blog from "../pages/Blog/Blog";
 import Offer from "../pages/home/Offer";
 import OffersDetails from "../pages/OffersDetails/OffersDetails";
 import NewContact from "../Dashboard/NewContact";
-import SendMoney from "../Dashboard/SendMoney";
 import ReceiveMoney from "../Dashboard/ReceiveMoney";
 import PrivateRoute from "./PrivateRoute";
 import MyDashboard from "../Dashboard/MyDashboard";
@@ -110,10 +109,6 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <NewContact></NewContact>,
-      },
-      {
-        path: "sendMoney",
-        element: <SendMoney></SendMoney>,
       },
       {
         path: "receiveMoney",

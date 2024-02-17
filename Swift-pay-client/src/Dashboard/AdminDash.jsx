@@ -54,8 +54,8 @@ const AdminDash = ({
                 className={`whitespace-pre duration-500 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"
                 } ${
-                  menu?.name === "SELL" && menu?.icon === GiSellCard
-                    ? "bg-gradient-to-r from-purple-900 text-3xl tracking-[8px] to-indigo-600 py-7 px-10 rounded-3xl"
+                  menu?.name === "SELL"
+                    ? "bg-gradient-to-r from-purple-900 text-3xl tracking-[5px] to-indigo-600 py-5 px-8 rounded-xl"
                     : ""
                 }${
                   menu?.name === "Market"

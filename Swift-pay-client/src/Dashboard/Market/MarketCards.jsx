@@ -36,11 +36,10 @@ const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
               ? `${product?.productName.slice(0, 24)}...`
               : product?.productName}
           </h1>
-          <button className="text-gray-500 hover:text-gray-900">
-            {" "}
+          <p className="text-gray-500 hover:text-gray-900 text-sm">
             ${product?.price}
-          </button>{" "}
-        </div>{" "}
+          </p>
+        </div>
         <Link to={`/dashboard/sellerprofile/${product?.email}`}>
           <p className="text-cyan-700 text-sm my-1 flex  gap-2 items-center">
             <CiUser className="text-gray-700" />
@@ -54,17 +53,19 @@ const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
           </p>
           {product?.location}
         </h1>
-        <Link to={`/dashboard/details/${product._id}`}>
-          <button className="bg-purple-500 text-sm text-white px-4 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
-            Details
+        <div className="mt-5">
+          <Link to={`/dashboard/details/${product._id}`}>
+            <button className="bg-purple-500 text-sm text-white px-5 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+              Details
+            </button>
+          </Link>
+          <button
+            onClick={() => handlePay(product)}
+            className="items-center ml-1 justify-center  px-5 py-1 text-center text-gray-800 duration-200 border-[1px] border-green-500 rounded-full inline-flex  hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+          >
+            Pay
           </button>
-        </Link>
-        <button
-          onClick={() => handlePay(product)}
-          className="items-center ml-1 justify-center  px-5 py-1 text-center text-white duration-200 bg-green-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
-        >
-          Pay
-        </button>
+        </div>
       </div>{" "}
     </div>
   );
