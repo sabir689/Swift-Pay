@@ -18,7 +18,7 @@ const EmailProducts = () => {
   const userName = showData?.length > 0 ? showData[0].name : " ";
   return (
     <>
-      <p className="my-10 text-2xl font-semibold text-[#1b1b1b]">
+      <p className="my-10 text-2xl  font-semibold text-[#1b1b1b]">
         Posted products of : {userName}
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-3">

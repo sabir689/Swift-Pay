@@ -21,20 +21,22 @@ const Navbar = () => {
     const form = e.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
-    // const name = firstName + " " + lastName;
+    const name = firstName + " " + lastName;
     const address = form.address.value;
     const gender = form.gender.value;
     const photoURL = form.photoURL.value;
     const age = form.age.value;
 
     const updateProfileInfo = {
+      name,
       firstName,
       lastName,
       address,
       age,
-      gender,
       photoURL,
+      gender,
     };
+    console.log(updateProfileInfo);
     axiosPublic
       .patch(`/api/users/${profileInfo._id}`, updateProfileInfo)
       .then((res) => {

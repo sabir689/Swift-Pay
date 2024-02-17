@@ -1,64 +1,53 @@
 /* eslint-disable react/prop-types */
-import { useForm } from "react-hook-form";
-import { IoMdCloseCircleOutline } from "react-icons/io";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
-const Modal = ({ modalData }) => {
+const Modal = ({ modalData, refetch }) => {
   const axiosPublic = useAxiosPublic();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = async (data) => {
-    const addNote = {
-      note: data.note,
+  const [note, setNote] = useState("");
+  console.log(modalData);
+
+  const handleAddNote = () => {
+    const noteInfo = {
+      note,
     };
-    axiosPublic.patch(`/api/users/${modalData?._id}`, addNote).then((res) => {
-      console.log(res.data);
-      toast.success("Updated Profile");
-    });
+    axiosPublic
+      .patch(`/api/users/note/${modalData?._id}`, noteInfo)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Note Added");
+        refetch();
+      });
   };
-  //   const { data: profile = [] } = useQuery({
-  //     queryKey: ["profile"],
-  //     queryFn: async () => {
-  //       const res = await axiosPublic.get(`/api/users/${modalData?.email}`);
-  //       return res.data;
-  //     },
-  //   });
+
   return (
-    <dialog
-      id="my_modal_1"
-      className="bg-gray-50 rounded-lg border-[1px] border-gray-400 py-8 px-5"
-    >
-      <div className="relative">
-        <p className="py-4 text-gray-600 text-sm">{modalData?.email}</p>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <textarea
-            {...register("note")}
-            className="textarea textarea-success"
-            placeholder="add note"
-          ></textarea>
-          <br />
-          <button
-            type="submit"
-            className="mt-1 border-[1px] border-blue-300 rounded-lg hover:bg-blue-400 hover:text-white  px-4 py-1"
-          >
-            Add
+    <dialog id="my_modal_1" className="modal">
+      <div className="space-y-5 modal-box">
+        <form method="dialog">
+          {/* if there is a button in form, it will close the modal */}
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
           </button>
         </form>
-        <div>
-          <p className="text-gray-700">{modalData?.note}</p>
-        </div>
+        <p className="font-bold text-lg text-center">NOTES</p>
+        <textarea
+          onChange={(e) => setNote(e.target.value)}
+          className="w-full py-5 textarea textarea-bordered"
+          placeholder="write your notes here..."
+        ></textarea>
         <div className="modal-action">
           <form method="dialog">
-            <button className="absolute text-2xl bottom-[190px]  left-[173px] text-gray-400">
-              <IoMdCloseCircleOutline />
+            <button onClick={handleAddNote} className=" button">
+              ADD
             </button>
           </form>
         </div>
+        <textarea
+          readOnly
+          placeholder={modalData?.note}
+          className="w-full textarea textarea-bordered"
+        ></textarea>
       </div>
     </dialog>
   );

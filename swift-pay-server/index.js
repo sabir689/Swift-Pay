@@ -130,18 +130,51 @@ async function run() {
       const item = req.body;
       const updatedDoc = {
         $set: {
+          name: item.name,
           firstName: item.firstName,
           lastName: item.lastName,
           address: item.address,
           age: item.age,
-          gender: item.image,
           photoURL: item.photoURL,
+          gender: item.gender,
           note: item.note,
         },
       };
       const result = await userCollection.updateOne(filter, updatedDoc);
       res.send(result);
     });
+    app.patch("/api/users/note/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const item = req.body;
+      const updatedDoc = {
+        $set: {
+          note: item.note,
+        },
+      };
+      const result = await userCollection.updateOne(filter, updatedDoc);
+      res.send(result);
+    });
+
+    // app.put("/api/users/:id", async (req, res) => {
+    //   const id = req.params.id;
+    //   const filter = { _id: new ObjectId(id) };
+    //   const options = { upsert: true };
+    //   const item = req.body;
+    //   const updatedDoc = {
+    //     $set: {
+    //       note: item.note,
+    //     },
+    //   };
+
+    //   const result = await userCollection.updateOne(
+    //     filter,
+    //     updatedDoc,
+    //     options
+    //   );
+    //   res.send(result);
+    // });
+
 
     // product api
     app.post("/api/products", async (req, res) => {
@@ -355,13 +388,12 @@ async function run() {
         console.log(result);
         if (result.modifiedCount > 0) {
           res.redirect(
-            `http://localhost:5173/payment/success/${req.params.tranId}`
-            // `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
+            // `http://localhost:5173/payment/success/${req.params.tranId}`
+            `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
           );
         }
       });
 
-      // comment
     });
 
     // Send a ping to confirm a successful connection

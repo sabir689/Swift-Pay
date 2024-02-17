@@ -66,8 +66,8 @@ const ProfileModal = ({ profileInfo, handleUpdate }) => {
                     <option disabled selected>
                       Select one
                     </option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
 
                   <label className="text-sm mb-2 text-gray-200 cursor-pointer">

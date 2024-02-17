@@ -13,14 +13,12 @@ const Details = () => {
   const products = useLoaderData();
 
   useEffect(() => {
-    // Verify that products is an array before calling find
-    if (Array.isArray(products)) {
-      // Find the product with the matching id
-      const details = products.find((detail) => detail._id === id);
-      setShowData(details);
-    }
+    const details = products.find((detail) => detail._id === id);
+    setShowData(details);
   }, [products, id]);
-  console.log(showData);
+ 
+
+
   return (
     <div className="max-w-4xl mx-auto">
       {showData && (
