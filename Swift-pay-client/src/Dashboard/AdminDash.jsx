@@ -11,7 +11,6 @@ const AdminDash = ({
   user,
   mainUser,
   handleLogOut,
-  GiSellCard,
   profileInfo,
   handleUpdate,
 }) => {
