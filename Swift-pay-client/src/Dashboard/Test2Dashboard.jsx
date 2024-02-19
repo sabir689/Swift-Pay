@@ -34,6 +34,7 @@ const Test2Dashboard = () => {
       {
         name: "SELL",
         link: "/dashboard/sellPost",
+        icon: GiSellCard,
       },
       {
         name: "Market",
@@ -87,6 +88,7 @@ const Test2Dashboard = () => {
       {
         name: "SELL",
         link: "/dashboard/sellPost",
+        icon: GiSellCard,
       },
       {
         name: "Market",

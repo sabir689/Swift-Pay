@@ -41,6 +41,8 @@ async function run() {
     const brandCollection = client.db("SwiftPayDb").collection("brands");
     // review collection
     const reviewCollection = client.db("SwiftPayDb").collection("reviews");
+    // notes collection
+    const notesCollection = client.db("SwiftPayDb").collection("user-notes");
 
     // order api
     // app.post("/api/orders", async (req, res) => {
@@ -140,6 +142,20 @@ async function run() {
         },
       };
       const result = await userCollection.updateOne(filter, updatedDoc);
+      res.send(result);
+    });
+    // users note post by email
+    app.post("/api/users/notes", async (req, res) => {
+      const notes = req.body;
+      const result = await notesCollection.insertOne(notes);
+      res.send(result);
+    });
+    app.get("/api/users/notes", async (req, res) => {
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await notesCollection.find(query).toArray();
       res.send(result);
     });
 
