@@ -65,11 +65,11 @@ const Test2Dashboard = () => {
         link: "/dashboard/transactionHistory",
         icon: TbReportAnalytics,
       },
-      // {
-      //   name: "messages",
-      //   link: "/",
-      //   icon: FiMessageSquare,
-      // },
+      {
+        name: "messages",
+        link: "/",
+        icon: FiMessageSquare,
+      },
       {
         name: "Address",
         link: "Billing-address",

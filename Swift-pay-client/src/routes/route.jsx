@@ -22,19 +22,19 @@ import SellPost from "../Dashboard/SellPost";
 // import Market from "../Dashboard/Market";
 
 import Details from "../Components/Shared/Details";
-import SellerProfile from "../Components/Reviews/SellerProfile";
 // import Branded from "../Dashboard/Branded/Branded";
 import Products from "../Dashboard/myProducts/Products";
 import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
-import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 // import Modal from "../Components/Modal/Modal";
 import EmailProducts from "../Dashboard/EmailProducts";
+import SellerProfile from "../Components/Reviews/SellerProfile";
 import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 import Address from "../Dashboard/Pages/address.jsx/Address";
 import Modal from "../Components/Modal/Modal";
+import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -91,10 +91,10 @@ export const router = createBrowserRouter([
         path: "/payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
       },
-      // {
-      //   path: "/transactionDetails",
-      //   element: <TransactionDetails></TransactionDetails>,
-      // },
+      {
+        path: "/transactionDetails",
+        element: <TransactionDetails></TransactionDetails>,
+      },
     ],
   },
 
@@ -166,10 +166,6 @@ export const router = createBrowserRouter([
         path: "transactionHistory",
         element: <TransactionDetails></TransactionDetails>,
       },
-      {
-        path: "userTransaction",
-        element: <TransactionDetails></TransactionDetails>,
-      },
       // my products page
       {
         path: "my-products",
@@ -183,11 +179,6 @@ export const router = createBrowserRouter([
         path: "details/:id",
         element: <Details></Details>,
         loader: () => fetch(`http://localhost:5000/api/products`),
-      },
-      {
-        path: "sellerprofile/:email",
-        element: <SellerProfile />,
-        loader: () => fetch("https://swift-pay-server.vercel.app/api/users"),
       },
       {
         path: "addBrand",
@@ -209,7 +200,7 @@ export const router = createBrowserRouter([
         element: <AllUsers></AllUsers>,
       },
       {
-        path: "modal/:email",
+        path: "modal",
         element: <Modal></Modal>,
       },
     ],

@@ -185,7 +185,13 @@ const Navbar = () => {
                 >
                   <li>
                     <a className="cursor-none font-bold">
-                      {profileInfo?.firstName + " " + profileInfo?.lastName}
+                      {profileInfo?.firstName ? (
+                        <>{profileInfo?.firstName}</>
+                      ) : (
+                        <>
+                          {profileInfo?.firstName + " " + profileInfo?.lastName}
+                        </>
+                      )}
                     </a>
                   </li>
                   <li className="">

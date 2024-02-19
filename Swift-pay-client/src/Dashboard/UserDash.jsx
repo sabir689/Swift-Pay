@@ -7,12 +7,12 @@ import DashNavbar from "./DashNavbar.jsx/DashNavbar";
 import ProfileModal from "../pages/home/profile modal/profileModal";
 
 const UserDash = ({
+  open,
   setOpen,
   menus,
   user,
   mainUser,
   handleLogOut,
-  GiSellCard,
   profileInfo,
   handleUpdate,
 }) => {
@@ -40,7 +40,7 @@ const UserDash = ({
               <NavLink
                 to={menu?.link}
                 key={i}
-                className={` ${
+                className={`${
                   menu?.margin && "mt-5"
                 } group flex items-center text-sm  gap-3.5 font-medium pr-9 p-4 hover:bg-gray-800 rounded-md ${
                   location?.pathname === menu?.link
@@ -48,11 +48,7 @@ const UserDash = ({
                     : ""
                 }`}
               >
-                <div>
-                  {React.createElement(menu?.icon, {
-                    className: `text-xl`,
-                  })}
-                </div>
+                <div>{menu?.icon && <menu.icon className="text-xl" />}</div>
                 <h2
                   style={{
                     transitionDelay: `${i + 3}00ms`,
@@ -65,7 +61,7 @@ const UserDash = ({
                       : ""
                   }${
                     menu?.name === "Market"
-                      ? "border-2 border-gray-500 py-2 px-3 rounded-3xl"
+                      ? "border-2 border-gray-100 py-2 px-3 rounded-3xl"
                       : ""
                   }`}
                 >
