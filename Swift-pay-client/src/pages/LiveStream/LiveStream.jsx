@@ -32,7 +32,7 @@ const LiveStream = () => {
                 Now
               </h2>
 
-              <p className="mt-4 text-sm  md">
+              <p className="mt-3 text-sm text-md">
                 Connect with your client or customers and have productive
                 discussions in real-time.
               </p>
