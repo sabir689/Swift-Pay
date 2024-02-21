@@ -35,6 +35,9 @@ import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 import Address from "../Dashboard/Pages/address.jsx/Address";
 import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
+import Messages from "../Dashboard/Message/Messages";
+import LiveMarket from "../liveMarket/LiveMarket";
+import Room from "../liveMarket/Room";
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -95,6 +98,10 @@ export const router = createBrowserRouter([
         path: "/transactionDetails",
         element: <TransactionDetails></TransactionDetails>,
       },
+      {
+        path: "/room/:roomId",
+        element: <Room></Room>
+      },
     ],
   },
 
@@ -127,9 +134,19 @@ export const router = createBrowserRouter([
         element: <MyProfile></MyProfile>,
       },
       {
+        path: "messages",
+        element: <Messages></Messages>
+      },
+      {
         path: "billing-address",
         element: <Address />,
       },
+      // testing video selling
+      {
+        path: "videoSell",
+        element: <LiveMarket></LiveMarket>,
+      },
+      
       {
         path: "sellPost",
         element: <SellPost></SellPost>,
