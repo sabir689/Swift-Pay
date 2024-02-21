@@ -12,9 +12,17 @@ const LiveStream = () => {
 
   return (
     <Container>
-      <div className="py-10">
-        <section className="flex flex-col max-w-7xl mx-auto overflow-hidden bg-white text-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row md:h-[500px]">
-          <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800 p-12">
+      <div className="pt-4">
+        <h1 className="lg:text-4xl text-2xl font-semibold text-center">
+          <span className="text-cyan-500">SwiftPay</span> video audio meeting
+          service
+        </h1>
+        <p className="text-center text-sm text-gray-500 pb-4 pt-2 lg:w-1/2 mx-auto">
+          Elevate your meetings with seamless video and audio for enhanced
+          collaboration and productive discussions
+        </p>
+        <section className="flex flex-col max-w-7xl mx-auto overflow-hidden bg-white text-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row md:h-[450px]">
+          <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800 lg:p-12 p-2">
             <div className="px-6 py-6 md:px-8 md:py-0">
               <h2 className="lg:text-5xl text-2xl font-bold ">
                 Join a{" "}
@@ -45,7 +53,7 @@ const LiveStream = () => {
 
                 <button
                   type="submit"
-                  className="px-5 py-3 my-2 text-sm font-medium tracking-wider uppercase transition-colors duration-300 transform bg-cyan-400 rounded-md hover:bg-cyan-400 focus:bg-cyan-400 focus:outline-none"
+                  className="px-5 py-3 my-2 text-sm font-medium tracking-wider uppercase transition-colors duration-300 transform bg-cyan-400 rounded-md hover:bg-cyan-400 focus:bg-cyan-400 focus:outline-none mr-2"
                 >
                   Join Meeting
                 </button>
