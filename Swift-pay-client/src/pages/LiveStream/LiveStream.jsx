@@ -12,7 +12,7 @@ const LiveStream = () => {
 
   return (
     <Container>
-      <div className="py-40">
+      <div className="py-10">
         <section className="flex flex-col max-w-7xl mx-auto overflow-hidden bg-white text-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row md:h-[500px]">
           <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800 p-12">
             <div className="px-6 py-6 md:px-8 md:py-0">
