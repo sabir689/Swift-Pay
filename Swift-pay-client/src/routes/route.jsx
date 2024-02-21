@@ -97,14 +97,11 @@ export const router = createBrowserRouter([
         path: "/transactionDetails",
         element: <TransactionDetails></TransactionDetails>,
       },
+
       {
-        path: "/stream",
-        element: <LiveStream></LiveStream>,
-      },
-      {
-        path: "/room/:roomId",
+        path: "room/:roomId",
         element: <RoomPage></RoomPage>,
-      }
+      },
     ],
   },
 
@@ -119,6 +116,11 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <NewContact></NewContact>,
+      },
+
+      {
+        path: "stream",
+        element: <LiveStream></LiveStream>,
       },
       {
         path: "receiveMoney",

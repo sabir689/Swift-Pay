@@ -14,17 +14,19 @@ const RoomPage = () => {
       Date.now().toString(),
       "User Name"
     );
-      const zp = ZegoUIKitPrebuilt.create(kitToken);
-      zp.joinRoom({
-          container: element,
-          scenario: {
-              mode: ZegoUIKitPrebuilt.VideoConference,
-          },
-      });
+    const zp = ZegoUIKitPrebuilt.create(kitToken);
+    zp.joinRoom({
+      container: element,
+      scenario: {
+        mode: ZegoUIKitPrebuilt.VideoConference,
+      },
+    });
   };
-    return <div className="py-40 bg-cyan-200">
-      <div ref={myMeeting}/>
-  </div>;
+  return (
+    <div className="py-40 bg-cyan-200">
+      <div ref={myMeeting} />
+    </div>
+  );
 };
 
 export default RoomPage;
