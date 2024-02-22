@@ -13,6 +13,7 @@ import useUser from "../../hooks/useUser";
 import toast from "react-hot-toast";
 import ProfileModal from "../../pages/home/profile modal/profileModal";
 import { LuUserCircle } from "react-icons/lu";
+import { CiCamera } from "react-icons/ci";
 
 const Navbar = () => {
   const [profileInfo] = useUser();
@@ -112,7 +113,22 @@ const Navbar = () => {
               isPending ? "pending" : isActive ? "text-gray-600" : ""
             }
           >
-            <AiOutlineShop />
+            <span className="flex items-center">
+              <AiOutlineShop />
+              <p className="ml-3 tracking-[1px] text-lg font-semibold text-[#49108B]">
+                Market
+              </p>
+            </span>
+          </NavLink>
+        </li>
+        <li className="text-2xl mr-10 font-semibold text-[#49108B]">
+          <NavLink
+            to="/dashboard/stream"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-gray-600" : ""
+            }
+          >
+            <CiCamera />
           </NavLink>
         </li>
       </nav>
@@ -208,6 +224,11 @@ const Navbar = () => {
                       <IoMdLogOut className="text-red-500 ml-20" />
                     </button>
                   </li>
+                  <Link to="/dashboard/market">
+                    <li>
+                      <p>Your dashboard</p>
+                    </li>
+                  </Link>
                 </ul>
               </div>
             </>

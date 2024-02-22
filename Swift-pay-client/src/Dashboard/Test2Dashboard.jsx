@@ -73,11 +73,6 @@ const Test2Dashboard = () => {
         icon: TbReportAnalytics,
       },
       {
-        name: "messages",
-        link: "/",
-        icon: FiMessageSquare,
-      },
-      {
         name: "Address",
         link: "Billing-address",
         icon: PiAddressBook,
