@@ -10,13 +10,18 @@ const RoomPage = () => {
       appID,
       serverSecret,
       roomId,
-
       Date.now().toString(),
       "User Name"
     );
     const zp = ZegoUIKitPrebuilt.create(kitToken);
     zp.joinRoom({
       container: element,
+      sharedLinks: [
+        {
+          name: "Copy Link",
+          url: `http://localhost:5000/room/${roomId}`,
+        },
+      ],
       scenario: {
         mode: ZegoUIKitPrebuilt.VideoConference,
       },
