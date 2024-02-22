@@ -41,6 +41,8 @@ async function run() {
     const brandCollection = client.db("SwiftPayDb").collection("brands");
     // review collection
     const reviewCollection = client.db("SwiftPayDb").collection("reviews");
+    // notes collection
+    const notesCollection = client.db("SwiftPayDb").collection("user-notes");
 
     // order api
     // app.post("/api/orders", async (req, res) => {
@@ -137,44 +139,26 @@ async function run() {
           age: item.age,
           photoURL: item.photoURL,
           gender: item.gender,
-          note: item.note,
+          
         },
       };
       const result = await userCollection.updateOne(filter, updatedDoc);
       res.send(result);
     });
-    app.patch("/api/users/note/:id", async (req, res) => {
-      const id = req.params.id;
-      const filter = { _id: new ObjectId(id) };
-      const item = req.body;
-      const updatedDoc = {
-        $set: {
-          note: item.note,
-        },
-      };
-      const result = await userCollection.updateOne(filter, updatedDoc);
+    // users note post by email
+    app.post("/api/users/notes", async (req, res) => {
+      const notes = req.body;
+      const result = await notesCollection.insertOne(notes);
       res.send(result);
     });
-
-    // app.put("/api/users/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const filter = { _id: new ObjectId(id) };
-    //   const options = { upsert: true };
-    //   const item = req.body;
-    //   const updatedDoc = {
-    //     $set: {
-    //       note: item.note,
-    //     },
-    //   };
-
-    //   const result = await userCollection.updateOne(
-    //     filter,
-    //     updatedDoc,
-    //     options
-    //   );
-    //   res.send(result);
-    // });
-
+    app.get("/api/users/notes", async (req, res) => {
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      const result = await notesCollection.find(query).toArray();
+      res.send(result);
+    });
 
     // product api
     app.post("/api/products", async (req, res) => {

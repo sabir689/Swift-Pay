@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { CiLocationOn, CiUser } from "react-icons/ci";
-import { FaBookmark, FaExternalLinkAlt } from "react-icons/fa";
+import { FaBookmark, FaExternalLinkAlt, FaRegUser } from "react-icons/fa";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { IoBookmarkOutline } from "react-icons/io5";
+import { TbFileSymlink } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
@@ -36,11 +39,10 @@ const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
               ? `${product?.productName.slice(0, 24)}...`
               : product?.productName}
           </h1>
-          <button className="text-gray-500 hover:text-gray-900">
-            {" "}
+          <p className="text-gray-500 hover:text-gray-900 text-sm">
             ${product?.price}
-          </button>{" "}
-        </div>{" "}
+          </p>
+        </div>
         <Link to={`/dashboard/sellerprofile/${product?.email}`}>
           <p className="text-cyan-700 text-sm my-1 flex  gap-2 items-center">
             <CiUser className="text-gray-700" />
@@ -54,19 +56,57 @@ const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
           </p>
           {product?.location}
         </h1>
-        <Link to={`/dashboard/details/${product._id}`}>
-          <button className="bg-purple-500 text-sm text-white px-4 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
-            Details
+        <div className="mt-5">
+          <Link to={`/dashboard/details/${product._id}`}>
+            <button className="bg-purple-500 text-sm text-white px-5 py-1 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+              Details
+            </button>
+          </Link>
+          <button
+            onClick={() => handlePay(product)}
+            className="items-center ml-1 justify-center  px-5 py-1 text-center text-gray-800 duration-200 border-[1px] border-green-500 rounded-full inline-flex  hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
+          >
+            Pay
           </button>
-        </Link>
-        <button
-          onClick={() => handlePay(product)}
-          className="items-center ml-1 justify-center  px-5 py-1 text-center text-white duration-200 bg-green-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:scale-95 hover:text-white  text-sm "
-        >
-          Pay
-        </button>
+        </div>
       </div>{" "}
     </div>
+    // <div className="flex flex-col items-center justify-center">
+    //   {/* card */}
+    //   <div className="w-96 flex flex-col justify-start items-center bg-white rounded-3xl">
+    //     <div className="px-[30px] py-[25px]">
+    //       <div className="flex items-center justify-between mb-3">
+    //         <p className="text-md text-[#141414]  mb-3">Apple vision</p>
+    //         <div className="w-9 h-9 rounded-full cursor-pointer bg-gray-200 flex items-center justify-center text-blue-400">
+    //           <IoBookmarkOutline className="" />
+    //         </div>
+    //       </div>
+    //       <div className="object-cover object-center">
+    //         <img
+    //           loading="lazy"
+    //           className="w-[330px] h-[175px] rounded-2xl"
+    //           src="https://i.ibb.co/6ZpBcqH/3519482-756-Converted.jpg"
+    //           alt=""
+    //         />
+    //       </div>
+    //       <div className="flex items-center justify-between">
+    //         <span className="flex items-center mt-3">
+    //           {" "}
+    //           <FaRegUser className="mr-1" />
+    //           <p className="text-md text-gray-900 mr-1">User name</p>
+    //           <TbFileSymlink />
+    //         </span>
+    //         <p className="text-md text-gray-900  mt-3">
+    //           $ <span>price</span>
+    //         </p>
+    //       </div>
+    //       <span className="flex items-center mt-3">
+    //         <CiLocationOn className="mr-1" />
+    //         <p className="text-md text-gray-900">Location</p>
+    //       </span>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

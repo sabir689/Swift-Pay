@@ -12,9 +12,11 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useUser from "../../hooks/useUser";
 import toast from "react-hot-toast";
 import ProfileModal from "../../pages/home/profile modal/profileModal";
+import { LuUserCircle } from "react-icons/lu";
+import { CiCamera } from "react-icons/ci";
 
 const Navbar = () => {
-  const [profileInfo, refetch] = useUser();
+  const [profileInfo] = useUser();
   const axiosPublic = useAxiosPublic();
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -112,18 +114,6 @@ const Navbar = () => {
             Contact
           </NavLink>
         </li>
-
-        <li className="text-lg mr-10 font-semibold text-[#49108B]">
-          <NavLink
-            to="/login"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-gray-600" : ""
-            }
-          >
-            Login
-          </NavLink>
-        </li>
-
         <li className="text-2xl mr-10 font-semibold text-[#49108B]">
           <NavLink
             to="/dashboard/market"
@@ -131,7 +121,22 @@ const Navbar = () => {
               isPending ? "pending" : isActive ? "text-gray-600" : ""
             }
           >
-            <AiOutlineShop />
+            <span className="flex items-center">
+              <AiOutlineShop />
+              <p className="ml-3 tracking-[1px] text-lg font-semibold text-[#49108B]">
+                Market
+              </p>
+            </span>
+          </NavLink>
+        </li>
+        <li className="text-2xl mr-10 font-semibold text-[#49108B]">
+          <NavLink
+            to="/dashboard/stream"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-gray-600" : ""
+            }
+          >
+            <CiCamera />
           </NavLink>
         </li>
       </nav>
@@ -204,7 +209,13 @@ const Navbar = () => {
                 >
                   <li>
                     <a className="cursor-none font-bold">
-                      {profileInfo?.firstName + " " + profileInfo?.lastName}
+                      {profileInfo?.firstName ? (
+                        <>{profileInfo?.firstName}</>
+                      ) : (
+                        <>
+                          {profileInfo?.firstName + " " + profileInfo?.lastName}
+                        </>
+                      )}
                     </a>
                   </li>
                   <li className="">
@@ -221,11 +232,22 @@ const Navbar = () => {
                       <IoMdLogOut className="text-red-500 ml-20" />
                     </button>
                   </li>
+                  <Link to="/dashboard/market">
+                    <li>
+                      <p>Your dashboard</p>
+                    </li>
+                  </Link>
                 </ul>
               </div>
             </>
           ) : (
-            <></>
+            <Link to="/login">
+              <div className="text-3xl">
+                <button className="border-[1px] border-blue-400 relative py-2 px-8 text-black text-sm font-medium ended-full overflow-hidden bg-white rounded-full transition-all duration-400 ease-in-out shadow-md hover:scale-105 hover:text-white hover:shadow-lg active:scale-90 before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-blue-500 before:to-blue-300 before:transition-all scroll-smooth before:duration-500 before:ease-in-out before:z-[-1] before:rounded-full hover:before:left-0">
+                  Sign in
+                </button>
+              </div>
+            </Link>
           )}
         </div>
       </div>

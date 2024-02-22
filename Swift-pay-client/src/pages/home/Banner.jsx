@@ -47,22 +47,6 @@ const Banner = () => {
             <div className="w-[370px] lg:w-[800px]">
               <Lottie animationData={banner1} loop={true}></Lottie>
             </div>
-            {/* <p
-              className="text-xl lg:text-7xl text-center font-bold 
-      bg-gradient-to-r from-[rgba(9,9,121,1)]  to-[rgba(179,0,255,1)] text-transparent bg-clip-text typed group"
-            >
-              <span className="text-7xl lg:text-9xl text-[#0A1D56] tracking-wide">
-                Explore
-              </span>{" "}
-              <span className="font-thin">Endless</span>
-              <div className="w-[80px] lg:w-[150px] mx-auto absolute right-[30px] lg:right-[250px] bottom-[380px] lg:bottom-[380px]">
-                <Lottie animationData={texty} loop={true}></Lottie>
-              </div>
-              Opportunities: Your{" "}
-              <span className="w-fit bg-[#2D9596] text-white">Market</span>
-              place Journey <span className="font-thin">Starts</span> Here
-              <span className="animate-blink text-[#49108B]">.</span>
-            </p> */}
           </div>
         </div>
       </div>

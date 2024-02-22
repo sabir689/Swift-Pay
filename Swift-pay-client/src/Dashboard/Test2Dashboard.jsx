@@ -6,6 +6,7 @@ import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiShoppingCart } from "react-icons/fi";
 import { LuShoppingBag } from "react-icons/lu";
 import { GoHome } from "react-icons/go";
+import { IoVideocamOutline } from "react-icons/io5";
 import { GiSellCard } from "react-icons/gi";
 import { AuthContext } from "../provider/AuthProvider";
 import { BsShop } from "react-icons/bs";
@@ -57,6 +58,11 @@ const Test2Dashboard = () => {
         icon: GoHome,
       },
       {
+        name: "Join Meeting",
+        link: "stream",
+        icon: IoVideocamOutline,
+      },
+      {
         name: "Saved",
         link: "/dashboard/saved",
         icon: AiOutlineHeart,
@@ -65,16 +71,6 @@ const Test2Dashboard = () => {
         name: "Transaction History",
         link: "/dashboard/transactionHistory",
         icon: TbReportAnalytics,
-      },
-      {
-        name: "user",
-        link: "/dashboard/sendMoney",
-        icon: AiOutlineUser,
-      },
-      {
-        name: "messages",
-        link: "/",
-        icon: FiMessageSquare,
       },
       {
         name: "Address",

@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import DashNavbar from "./DashNavbar.jsx/DashNavbar";
+import ProfileModal from "../pages/home/profile modal/profileModal";
 
 const AdminDash = ({
   setOpen,
@@ -11,7 +12,6 @@ const AdminDash = ({
   user,
   mainUser,
   handleLogOut,
-  GiSellCard,
   profileInfo,
   handleUpdate,
 }) => {
@@ -54,8 +54,8 @@ const AdminDash = ({
                 className={`whitespace-pre duration-500 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"
                 } ${
-                  menu?.name === "SELL" && menu?.icon === GiSellCard
-                    ? "bg-gradient-to-r from-purple-900 text-3xl tracking-[8px] to-indigo-600 py-7 px-10 rounded-3xl"
+                  menu?.name === "SELL"
+                    ? "bg-gradient-to-r from-purple-900 text-3xl tracking-[5px] to-indigo-600 py-5 px-8 rounded-xl"
                     : ""
                 }${
                   menu?.name === "Market"
@@ -86,95 +86,10 @@ const AdminDash = ({
           <Outlet></Outlet>
         </Suspense>
       </div>
-      <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
-          <div className="bg-white p-7 rounded-md">
-            <div className="flex items-center justify-center dark">
-              <div className="bg-gray-400 border-2 border-gray-800 rounded-lg shadow-md p-6">
-                <h2 className="text-2xl text-center font-semibold text-gray-200 mb-4">
-                  Update profile
-                </h2>
-                <form onSubmit={handleUpdate} className="flex flex-col">
-                  <div className="flex space-x-4 mb-4">
-                    <input
-                      name="firstName"
-                      placeholder="First Name"
-                      defaultValue={profileInfo?.firstName}
-                      className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                      type="text"
-                    />
-                    <input
-                      name="lastName"
-                      placeholder="Last Name"
-                      defaultValue={profileInfo?.lastName}
-                      className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 w-1/2 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                      type="text"
-                    />
-                  </div>
-                  <input
-                    placeholder="Email"
-                    defaultValue={profileInfo?.email}
-                    readOnly
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                    type="email"
-                  />
-                  <input
-                    name="address"
-                    placeholder="Current address"
-                    defaultValue={profileInfo?.address}
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                    type="text"
-                  />
-                  <input
-                    name="photoURL"
-                    placeholder="Your Photo Image link"
-                    defaultValue={profileInfo?.photoURL}
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                    type="text"
-                  />
-
-                  <label className="text-sm mb-2 text-gray-200 cursor-pointer">
-                    Gender
-                  </label>
-                  <select
-                    name="gender"
-                    defaultValue={profileInfo?.gender}
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-                  >
-                    <option disabled selected>
-                      Select one
-                    </option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
-
-                  <label className="text-sm mb-2 text-gray-200 cursor-pointer">
-                    Age
-                  </label>
-                  <input
-                    name="age"
-                    defaultValue={profileInfo?.age}
-                    className="bg-gray-700 text-gray-200 border-0 rounded-md p-2"
-                    type="date"
-                  />
-
-                  <button
-                    className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-medium py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
-                    type="submit"
-                  >
-                    Update
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </dialog>
+      <ProfileModal
+        handleUpdate={handleUpdate}
+        profileInfo={profileInfo}
+      ></ProfileModal>
     </div>
   );
 };

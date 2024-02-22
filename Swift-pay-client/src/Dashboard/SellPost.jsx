@@ -42,53 +42,49 @@ const SellPost = () => {
       };
       const postProduct = await axiosPublic.post("/api/products", productData);
       if (postProduct.data?.insertedId) {
-        toast.success("Product posted successfully!",
-        reset(),
-        {
-        });
+        toast.success("Product posted successfully!", reset(), {});
         queryClient.invalidateQueries([]);
       }
     }
   };
-  const [uploadImage, setUploadImage] = useState('')
+  const [uploadImage, setUploadImage] = useState("");
   const handlefileUpload = (e) => {
-    const file = URL.createObjectURL(e.target.files[0])
-    setUploadImage(file)
-  }
+    const file = URL.createObjectURL(e.target.files[0]);
+    setUploadImage(file);
+  };
   return (
-    <div className="mt-16 mb-10 border-[1px] border-gray-300 max-w-2xl px-3 rounded-md mx-auto">
+    <div className="border-[1px] border-gray-300 max-w-xl  rounded-md mx-auto px-10 pt-8 my-32">
       <div>
-        <p className="text-center text-2xl my-7 md:my-7 text-[#49108B] font-bold md:text-4xl">
+        <p className="text-left text-2xl text-[#49108B] font-bold md:text-4xl mb-7 pt-4">
           Sell product
         </p>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="px-2 md:px-6 lg:px-5  grid gap-y-4 justify-center items-center mb-10"
+          className="grid gap-y-4 justify-center items-center mb-10"
         >
-
           <div className="grid gap-6" id="form">
-            <div className="w-full flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                <label className="mb-1 text-sm inline-block text-gray-500">
                   Your Name
                 </label>
                 <input
                   {...register("name")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none"
+                  className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-xs px-3 w-full outline-none"
                   type="text"
                   placeholder="your name"
                   required
-                  defaultValue={user.displayName}
+                  value={user.displayName}
                 />
               </div>
               <div className="flex-1">
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                <label className="mb-1 text-sm inline-block text-gray-500">
                   Email Address
                 </label>
 
                 <input
                   {...register("email")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none  cursor-not-allowed"
+                  className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-sm px-3 w-full outline-none  cursor-not-allowed"
                   type="Email"
                   placeholder="your email"
                   id="Email"
@@ -99,26 +95,24 @@ const SellPost = () => {
 
             <div className="w-full flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                <label className="mb-1 text-sm inline-block text-gray-500">
                   Your Address
                 </label>
                 <input
                   {...register("address")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
+                  className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-sm px-3 w-full outline-none"
                   type="text"
                   placeholder="your address"
                   id="address"
                 />
-
               </div>
               <div className="flex-1">
-
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                <label className="mb-1 text-sm inline-block text-gray-500">
                   Phone number
                 </label>
                 <input
                   {...register("number")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
+                  className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-sm px-3 w-full outline-none"
                   type="number"
                   placeholder="phone number"
                   id="number"
@@ -127,70 +121,71 @@ const SellPost = () => {
               </div>
             </div>
 
-           <div>
-           <div className="w-full flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
-                  Product image
-                </label>
-                <input
-                  name="image"
-                  {...register("image")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none"
-                  type="file"
-                  onChange={handlefileUpload}
+            <div>
+              <div className="w-full flex flex-col md:flex-row gap-4">
+                <div className="flex-1">
+                  <label className="mb-1 text-sm inline-block text-gray-500">
+                    Product image
+                  </label>
+                  <input
+                    name="image"
+                    {...register("image")}
+                    className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-[6px] placeholder:text-sm px-3 w-full outline-none"
+                    type="file"
+                    onChange={handlefileUpload}
+                  />
+                </div>
+              </div>
+              {uploadImage && (
+                <img
+                  src={uploadImage}
+                  className="w-28 h-auto object-cover mt-2"
                 />
-              </div>
-              <div className="flex-1">
-
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
-                  Category
-                </label>
-                <select
-                  {...register("category")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 w-full outline-none"
-                >
-                  <option className="text-sm">Electronics</option>
-                  <option className="text-sm">Photography</option>
-                  <option className="text-sm">Fitness</option>
-                  <option className="text-sm">Cafe Corner</option>
-                  <option className="text-sm">Fashion</option>
-                  <option className="text-sm">Art & Design</option>
-                  <option className="text-sm">Outdoor</option>
-                  <option className="text-sm">Appliances</option>
-                  <option className="text-sm">Home & security</option>
-                  <option className="text-sm">Home & Living </option>
-                  <option className="text-sm">Home Automation</option>
-                  <option className="text-sm">Home & Kitchen</option>
-                </select>
-              </div>
-             
+              )}
             </div>
-            {
-                uploadImage && <img src={uploadImage} className="w-28 h-auto object-cover mt-2"/>
-              }
-           </div>
+            <div className="">
+              <label className="mb-1 text-sm inline-block text-gray-500">
+                Category
+              </label>
+              <select
+                {...register("category")}
+                className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-sm px-3 w-full outline-none"
+              >
+                <option className="text-sm">Electronics</option>
+                <option className="text-sm">Photography</option>
+                <option className="text-sm">Fitness</option>
+                <option className="text-sm">Cafe Corner</option>
+                <option className="text-sm">Fashion</option>
+                <option className="text-sm">Art & Design</option>
+                <option className="text-sm">Outdoor</option>
+                <option className="text-sm">Appliances</option>
+                <option className="text-sm">Home & security</option>
+                <option className="text-sm">Home & Living </option>
+                <option className="text-sm">Home Automation</option>
+                <option className="text-sm">Home & Kitchen</option>
+              </select>
+            </div>
 
             <div className="w-full flex flex-col md:flex-row gap-4">
               <div className="flex-1">
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                <label className="mb-1 text-sm inline-block text-gray-500">
                   Product Name
                 </label>
                 <input
                   {...register("productName")}
-                  className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-base px-3 w-full outline-none"
+                  className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-sm px-3 w-full outline-none"
                   type="text"
                   placeholder="Product Name"
                   required
                 />
               </div>
               <div className="w-full md:w-40">
-                <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+                <label className="mb-1 text-sm inline-block text-gray-500">
                   Price
                 </label>
                 <input
                   {...register("price")}
-                  className=" text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 px-3 w-full outline-none"
+                  className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2 placeholder:text-sm px-3 w-full outline-none"
                   type="number"
                   placeholder="price"
                   id="price"
@@ -199,21 +194,20 @@ const SellPost = () => {
             </div>
 
             <div>
-              <label className="mb-1 text-lg font-medium inline-block text-gray-500">
+              <label className="mb-1 text-sm inline-block text-gray-500">
                 Product description
               </label>
               <textarea
                 {...register("description")}
-                placeholder="Product description"
-                className="text-lg rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-3 px-3 h-32 w-full outline-none"
+                placeholder="product description...."
+                className="text-md rounded-md bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-5 placeholder:text-sm px-3 w-full outline-none"
               ></textarea>
-
             </div>
-         
-            <div className="text-center">
+
+            <div className="flex items-center justify-end">
               <button
                 type="submit"
-                className="items-center  justify-center  px-11 py-2.5 text-center text-white duration-200 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-gray-500 hover:text-white  text-base"
+                className="px-7 py-2  text-white duration-200 bg-purple-600  border-gray-900 rounded-full hover:bg-gray-500 hover:text-white  text-base"
               >
                 Upload
               </button>

@@ -261,8 +261,8 @@ const AllUsers = () => {
                                 </button>
                               </Link>
                               <Modal
-                                modalData={modalData}
                                 refetch={refetch}
+                                modalData={modalData}
                               ></Modal>
                             </div>
                           </td>
