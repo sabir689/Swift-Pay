@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -27,6 +26,7 @@ const AllUsers = () => {
             <h2 className="text-lg mr-3 font-medium text-gray-600">
               Total users
             </h2>
+
             <span className="px-3 py-1 text-2xl text-green-400 bg-blue-100 rounded-full dark:bg-gray-800">
               {profile?.length}
             </span>
