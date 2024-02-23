@@ -60,11 +60,7 @@ const Test2Dashboard = () => {
         link: "/dashboard/saved",
         icon: AiOutlineHeart,
       },
-      {
-        name: "Live Market",
-        link: "/dashboard/videoSell",
-        icon: AiOutlineHeart,
-      },
+      
       {
         name: "Transaction History",
         link: "/dashboard/transactionHistory",

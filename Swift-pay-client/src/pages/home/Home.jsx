@@ -49,15 +49,8 @@ const Home = () => {
   };
   return (
     // <div>Home</div>
-<<<<<<< HEAD
     <React.Fragment>
       <div className="mt-20 mb-10 rounded-lg mx-auto">
-=======
-    
-    <div className="">
-      <div className="mt-20 mb-10 rounded-lg mx-2">
-        
->>>>>>> 02e06b0a3beda3677afd3040b89b1b21d4012102
         <Banner></Banner>
       </div>
       <div className="mt-10 mb-10">
