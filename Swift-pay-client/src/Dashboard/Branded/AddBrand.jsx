@@ -68,7 +68,8 @@ const AddBrand = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 border rounded shadow">
+    <div >
+      <div className="max-w-md  mx-auto p-8 bg-blue-300 border-2  rounded-3xl shadow-2xl ">
       <h3 className="text-center text-2xl font-semibold mb-4">Add New Brand</h3>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
@@ -198,6 +199,7 @@ const AddBrand = () => {
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 };
