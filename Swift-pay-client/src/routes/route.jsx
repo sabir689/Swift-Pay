@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/authentication/Login";
@@ -37,6 +38,8 @@ import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 import Messages from "../Dashboard/Message/Messages";
 
+import LiveStream from "../pages/LiveStream/LiveStream";
+import RoomPage from "../pages/LiveStream/RoomPage";
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -99,6 +102,11 @@ export const router = createBrowserRouter([
       },
       
      
+
+      {
+        path: "room/:roomId",
+        element: <RoomPage></RoomPage>,
+      },
     ],
   },
 
@@ -113,6 +121,11 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <NewContact></NewContact>,
+      },
+
+      {
+        path: "stream",
+        element: <LiveStream></LiveStream>,
       },
       {
         path: "receiveMoney",

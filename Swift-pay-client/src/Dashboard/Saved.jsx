@@ -3,7 +3,7 @@ import { CiLocationOn } from "react-icons/ci";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdDeleteOutline } from "react-icons/md";
 import Swal from "sweetalert2";
 
 const Saved = () => {
@@ -63,9 +63,9 @@ const Saved = () => {
             >
               <div
                 onClick={() => handleDelete(product._id)}
-                className="absolute top-2 right-2 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-blue-400"
+                className="absolute top-2 right-2 w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-blue-400"
               >
-                <MdDelete className="text-2xl text-red-500" />
+                <MdDeleteOutline className="text-2xl text-red-500" />
               </div>
             </div>
             <div className="p-4">

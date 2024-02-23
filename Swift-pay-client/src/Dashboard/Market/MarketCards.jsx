@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { CiLocationOn, CiUser } from "react-icons/ci";
-import { FaBookmark, FaExternalLinkAlt } from "react-icons/fa";
+import { FaBookmark, FaExternalLinkAlt, FaRegUser } from "react-icons/fa";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { IoBookmarkOutline } from "react-icons/io5";
+import { TbFileSymlink } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
@@ -68,6 +71,42 @@ const MarketCards = ({ product, handleBookmark, handlePay, savedProducts }) => {
         </div>
       </div>{" "}
     </div>
+    // <div className="flex flex-col items-center justify-center">
+    //   {/* card */}
+    //   <div className="w-96 flex flex-col justify-start items-center bg-white rounded-3xl">
+    //     <div className="px-[30px] py-[25px]">
+    //       <div className="flex items-center justify-between mb-3">
+    //         <p className="text-md text-[#141414]  mb-3">Apple vision</p>
+    //         <div className="w-9 h-9 rounded-full cursor-pointer bg-gray-200 flex items-center justify-center text-blue-400">
+    //           <IoBookmarkOutline className="" />
+    //         </div>
+    //       </div>
+    //       <div className="object-cover object-center">
+    //         <img
+    //           loading="lazy"
+    //           className="w-[330px] h-[175px] rounded-2xl"
+    //           src="https://i.ibb.co/6ZpBcqH/3519482-756-Converted.jpg"
+    //           alt=""
+    //         />
+    //       </div>
+    //       <div className="flex items-center justify-between">
+    //         <span className="flex items-center mt-3">
+    //           {" "}
+    //           <FaRegUser className="mr-1" />
+    //           <p className="text-md text-gray-900 mr-1">User name</p>
+    //           <TbFileSymlink />
+    //         </span>
+    //         <p className="text-md text-gray-900  mt-3">
+    //           $ <span>price</span>
+    //         </p>
+    //       </div>
+    //       <span className="flex items-center mt-3">
+    //         <CiLocationOn className="mr-1" />
+    //         <p className="text-md text-gray-900">Location</p>
+    //       </span>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

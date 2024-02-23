@@ -2,11 +2,10 @@
 /* eslint-disable react/no-unknown-property */
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import OnlineStatus from "../../Components/Shared/Online status/OnlineStatus";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
-import useUser from "../../hooks/useUser";
-import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import EmailProducts from "../../Dashboard/EmailProducts";
 import { useEffect, useState } from "react";
 import { getMyPorducts } from "../../apis/GetMethod";
@@ -21,7 +20,7 @@ const AllUsers = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
-  const { data: profile = [] } = useQuery({
+  const { data: profile = [], refetch } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
       const res = await axiosPublic.get("/api/users");
@@ -302,7 +301,10 @@ const AllUsers = () => {
                                   </svg>
                                 </button>
                               </Link>
-                              <Modal modalData={modalData}></Modal>
+                              <Modal
+                                refetch={refetch}
+                                modalData={modalData}
+                              ></Modal>
                             </div>
                           </td>
                         </tr>
