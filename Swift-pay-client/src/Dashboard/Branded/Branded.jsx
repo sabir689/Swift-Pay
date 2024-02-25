@@ -32,7 +32,7 @@ const Branded = () => {
               {" "}
               <Link to={"/dashboard/addBrand"}>
                 {" "}
-                <button className="text-xs lg:text-md bg-purple-500 text-white px-8 py-6 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+                <button className="text-xs lg:text-md shadow-2xl border-2 bg-purple-500 text-white px-8 py-6 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
                   Add products
                 </button>
               </Link>
