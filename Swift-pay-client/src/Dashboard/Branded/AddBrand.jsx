@@ -69,6 +69,7 @@ const AddBrand = () => {
 
   return (
     <div >
+      <h3 className="text-center  whitespace-nowrap overflow-hidden text-2xl mb-20  font-serif font-extrabold">You have to add at least 5 products to open your personal brand </h3>
       <div className="max-w-md  mx-auto p-8 bg-blue-300 border-2  rounded-3xl shadow-2xl ">
       <h3 className="text-center text-2xl font-semibold mb-4">Add New Brand</h3>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
