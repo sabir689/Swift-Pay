@@ -20,7 +20,7 @@ const UpdateProfile = ({ user }) => {
     <div>
       <form onSubmit={handleProfile}>
         {/* First and Last Name */}
-        <div className="w-full flex flex-col md:flex-row gap-4">
+        <div className="w-full flex flex-col md:flex-row gap-4 mt-5">
           <div className="flex-1">
             <label className="mb-1 text-base font-normal inline-block text-gray-500">
               First Name <span className="text-[#FF0000]">*</span>
@@ -83,7 +83,7 @@ const UpdateProfile = ({ user }) => {
         <div className="mt-4">
           <button
             type="submit"
-            className=" px-11 py-3 text-center text-white duration-300 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-blue-400  hover:text-white  text-xl font-medium "
+            className="px-8 py-2 text-center text-white duration-300 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-blue-400  hover:text-white  text-sm font-medium "
           >
             save Changes
           </button>

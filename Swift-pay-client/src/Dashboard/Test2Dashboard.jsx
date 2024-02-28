@@ -133,7 +133,7 @@ const Test2Dashboard = () => {
       {
         name: "Profile",
         link: "profile",
-        icon: RiSettings4Line,
+        icon: mainUser?.photoURL,
       },
     ];
   }
