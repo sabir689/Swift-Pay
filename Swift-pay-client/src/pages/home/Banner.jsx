@@ -8,7 +8,7 @@ import banner1 from "../../assets/animations/new/efPxnMuWsf.json";
 const Banner = () => {
   return (
     <div
-      className="bg-center bg-cover rounded-lg shadow-sm shadow-gray-300 w-full mx-auto"
+      className="bg-center bg-cover rounded-lg shadow-sm shadow-gray-300 w-full mx-auto px-6"
       style={{ backgroundImage: `url(${bannerImage3})` }}
     >
       <div className="min-h-screen">
