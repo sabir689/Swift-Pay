@@ -40,7 +40,7 @@ const Offer = () => {
 
             <div className="flex flex-col items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2 gap-4">
               <img
-                className="w-full lg:h-[500px] lg:max-w-3xl rounded-xl object-cover"
+                className="w-full lg:h-[450px] lg:max-w-3xl rounded-xl object-cover"
                 src="https://i.ibb.co/hWSKH4s/top-view-black-friday-sales-elements-composition-1.jpg"
                 alt="Catalogue-pana.svg"
               />
