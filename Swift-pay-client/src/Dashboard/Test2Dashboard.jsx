@@ -162,23 +162,23 @@ const Test2Dashboard = () => {
 
   const axiosPublic = useAxiosPublic();
   const handleUpdate = (e) => {
-    e.preventDefault();
     const form = e.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
-    // const name = firstName + " " + lastName;
+    const name = firstName + " " + lastName;
     const address = form.address.value;
     const gender = form.gender.value;
     const photoURL = form.photoURL.value;
     const age = form.age.value;
 
     const updateProfileInfo = {
+      name,
       firstName,
       lastName,
       address,
       age,
-      gender,
       photoURL,
+      gender,
     };
     axiosPublic
       .patch(`/api/users/${profileInfo?._id}`, updateProfileInfo)

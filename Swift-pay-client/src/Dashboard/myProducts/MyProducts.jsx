@@ -1,28 +1,32 @@
-import  { useContext, useEffect, useState } from "react";
-import { getMyPorducts } from "../../apis/GetMethod";
+import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { MdDelete } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import Swal from "sweetalert2";
-import { deleteMyproduct } from "../../apis/deleteMothod";
-import toast from "react-hot-toast";
 import { LiaEditSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
-const Products = () => {
-  const [myProduct, setMyProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+
+
+
+const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  // const userEmail=user?.email
-  // console.log(userEmail);
-  useEffect(() => {
-    setLoading(true);
-    getMyPorducts(user.email).then((res) => {
-      setMyProducts(res);
-      setLoading(false);
-    });
-  }, [user?.email]);
-  console.log(myProduct);
-  const handleDelete = (id) => {
+  const axiosPublic = useAxiosPublic();
+  const {
+    data: myProducts = [],
+    refetch,
+    loading,
+  } = useQuery({
+    queryKey: ["myProduct", user.email],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/myproducts?email=${user.email}`);
+      return res.data;
+    },
+  });
+
+
+  const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -33,19 +37,17 @@ const Products = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteMyproduct(id)
-          .then(() => {
+        axiosPublic.delete(`/myPorduct/${_id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
               text: "Item has been deleted.",
               icon: "success",
             });
-          })
-          .catch(() => {
-            toast.error(
-              "Oops! Something went wrong. Your product could not be deleted."
-            );
-          });
+            refetch();
+          }
+        });
       }
     });
   };
@@ -55,8 +57,8 @@ const Products = () => {
       {loading ? (
         <></>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {myProduct.map((product) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {myProducts.map((product) => (
             <div
               key={product._id}
               className="mb-5 bg-transparent shadow rounded-lg border border-transparent hover:border-[#49108B]  cursor-pointer"
@@ -111,4 +113,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default MyProducts;

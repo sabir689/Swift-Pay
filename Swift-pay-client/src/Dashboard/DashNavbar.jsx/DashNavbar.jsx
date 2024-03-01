@@ -4,9 +4,11 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 
 const DashNavbar = ({ user, handleLogOut, mainUser }) => {
+  const [profileInfo] = useUser();
   return (
     <div>
       <div className="mt-2 w-[300px] mx-auto lg:w-full">
@@ -30,7 +32,7 @@ const DashNavbar = ({ user, handleLogOut, mainUser }) => {
             <BsCart2 className="mr-10 cursor-pointer text-gray-600 font-bold text-2xl" />
             {/* <BsBoundingBox className="mr-5 cursor-pointer text-gray-600 font-bold text-2xl" /> */}
             <p className="mr-3 text-md  font-semibold text-[#49108B] border-[1px] py-1 px-4 border-green-400 rounded-full">
-              {user?.displayName}
+              {profileInfo?.name}
             </p>
             {user ? (
               <>
@@ -38,10 +40,10 @@ const DashNavbar = ({ user, handleLogOut, mainUser }) => {
                   <summary tabIndex={0} className="btn btn-ghost btn-circle">
                     <div className="avatar">
                       <div className="rounded-full w-[40px] h-[40px] p-1">
-                        {mainUser?.photoURL ? (
+                        {profileInfo?.photoURL ? (
                           <img
                             className=" rounded-full border-2 border-black"
-                            src={mainUser?.photoURL}
+                            src={profileInfo?.photoURL}
                           />
                         ) : (
                           <div className="text-3xl ">
@@ -80,7 +82,6 @@ const DashNavbar = ({ user, handleLogOut, mainUser }) => {
           </div>
         </div>
       </div>
-      {/* <Outlet></Outlet> */}
     </div>
   );
 };

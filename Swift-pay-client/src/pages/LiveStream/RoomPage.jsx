@@ -19,7 +19,7 @@ const RoomPage = () => {
       sharedLinks: [
         {
           name: "Copy Link",
-          url: `http://localhost:5000/room/${roomId}`,
+          url: `https://swift-pay-server.vercel.app/room/${roomId}`,
         },
       ],
       scenario: {
