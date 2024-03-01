@@ -38,6 +38,7 @@ import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
+import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -45,6 +46,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

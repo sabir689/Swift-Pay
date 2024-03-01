@@ -29,14 +29,14 @@ const MyProfile = () => {
         <div className="w-80 shadow-lg  transform   duration-200 easy-in-out rounded-lg">
           <div className="h-[140px] overflow-hidden">
             <img
-              className="w-full rounded-lg"
+              className="w-full rounded-lg object-cover"
               src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
               alt=""
             />
           </div>
-          <div className="flex justify-center px-5  -mt-12">
+          <div className="flex justify-center px-5 -mt-12">
             <img
-              className="h-32 w-32 p-2 rounded-full   "
+              className="h-32 w-32 p-2 rounded-full"
               src={newUser?.photoURL}
               alt=""
             />
