@@ -1,5 +1,7 @@
-import { useEffect, useContext, useState } from "react";
+import  { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const BrandOwner = () => {
   const { user } = useContext(AuthContext);
@@ -40,30 +42,98 @@ const BrandOwner = () => {
     fetchData();
   }, [user]);
 
+  const handleDelete = async (productId) => {
+    try {
+      // Show a SweetAlert confirmation
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+
+      // If the user clicks the confirm button
+      if (result.isConfirmed) {
+        // Send a request to your server to delete the product
+        await fetch(`http://localhost:5000/api/products/${productId}`, {
+          method: "DELETE",
+          // Add any headers or authentication tokens if required
+        });
+
+        // Update the state to reflect the changes
+        setUserProducts((prevProducts) =>
+          prevProducts.map((brand) => ({
+            ...brand,
+            products: brand.products.filter((product) => product._id !== productId),
+          }))
+        );
+
+        // Show a success SweetAlert
+        Swal.fire("Deleted!", "Your product has been deleted.", "success");
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+
+      // Show an error SweetAlert
+      Swal.fire("Error", "An error occurred while deleting the product.", "error");
+    }
+  };
+
   return (
     <div>
-      <h2>Welcome, {user.name}!</h2>
+     <div className="flex  justify-between">
+     <div >
+      <h2 className="text-center">Welcome, {user.email}!</h2>
       <p>You can manage your products here:</p>
-      <ul>
+      </div>
+      <Link to={"/dashboard/addProd"}>
+      <div>
+       <button className="btn btn-outline"> Add Prod To ur brand</button>
+      </div>
+      </Link>
+     </div>
+      <div>
         {userProducts.map((brand) => (
           <div key={brand.brandName}>
-            <h3>{brand.brandName}</h3>
-            <ul>
+              <h3>{brand.brandName} - {brand.category}</h3>
+            <div className="grid grid-cols-3 gap-6">
               {brand.products.map((product) => (
-                <li key={product._id}>
-                  <strong>{product.name}
-                  </strong> - ${product.price}
-                  <h3>{product.type}</h3>
-                  <h3>{product.colors}</h3>
-                  
-                  
+                <div key={product._id}>
+                  <div className="border-2 text-center rounded-lg overflow-hidden shadow-md p-4">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-32 object-cover mb-4"
+                    />
 
-                </li>
+                    <div className="mb-2">
+                      <strong className="text-xl">{product.name}</strong>
+                    </div>
+
+                    <div className="mb-2">
+                      <p className="text-gray-700">${product.price}</p>
+                      <h3 className="text-gray-600">{product.type}</h3>
+                      <h3 className="text-gray-600">{product.colors}</h3>
+                      <div className="flex justify-center items-center gap-6 mt-5">
+                        <button
+                          className="btn btn-outline"
+                          onClick={() => handleDelete(product._id)}
+                        >
+                          Delete
+                        </button>
+                        <h3 className="btn btn-outline">Update</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

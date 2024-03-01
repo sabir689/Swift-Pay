@@ -18,6 +18,7 @@ const AddBrand = () => {
           brandName: data.brandName,
           userGmail: user.email, // Add the user's Gmail from the context
           products: data.products.map((product) => ({
+            _id: generateProductId(),
             type: product.type,
             name: product.name,
             price: parseFloat(product.price),
@@ -65,6 +66,12 @@ const AddBrand = () => {
         text: "An error occurred.",
       });
     }
+  };
+  const generateProductId = () => {
+    return (
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15)
+    );
   };
 
   return (

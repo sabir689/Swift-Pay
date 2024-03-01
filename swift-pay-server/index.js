@@ -82,6 +82,14 @@ async function run() {
       const result = await brandCollection.insertOne(brands);
       res.send(result);
     });
+    app.delete("/api/brands/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await brandCollection.deleteOne(query);
+      res.send(result);
+    });
+    
+    
 
     // review api
     app.post("/api/reviews", async (req, res) => {

@@ -42,6 +42,8 @@ import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
 import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
 import BrandOwner from "../Dashboard/Branded/BrandOwner";
+import AddProd from "../Dashboard/Branded/AddProd";
+
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
@@ -125,6 +127,10 @@ export const router = createBrowserRouter([
       {
         path: "contact",
         element: <NewContact></NewContact>,
+      },
+      {
+        path: "addProd",
+        element: <AddProd></AddProd>
       },
 
       {
@@ -218,6 +224,7 @@ export const router = createBrowserRouter([
         path: "addBrand",
         element: <AddBrand></AddBrand>,
       },
+      
       // admin
       {
         path: "emailProducts/:email",

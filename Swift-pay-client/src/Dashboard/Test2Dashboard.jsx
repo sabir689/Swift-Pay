@@ -64,6 +64,11 @@ const Test2Dashboard = () => {
         icon: IoVideocamOutline,
       },
       {
+        name: "BrandedOwner",
+        link: "/dashboard/brandOwner",
+        icon: MdOutlineDashboard,
+      },
+      {
         name: "Saved",
         link: "/dashboard/saved",
         icon: AiOutlineHeart,
@@ -109,6 +114,12 @@ const Test2Dashboard = () => {
         link: "/dashboard/myDashboard",
         icon: MdOutlineDashboard,
       },
+      {
+        name: "brandOwner",
+        link: "/dashboard/brandOwner",
+        icon: MdOutlineDashboard,
+      },
+      
       
 
       {
