@@ -104,7 +104,7 @@ const OffersDetails = () => {
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
-            <div className="mb-4 sm:mb-0 sm:w-1/2 bg-black rounded-3xl">
+            <div className="mb-4 sm:mb-0 sm:w-1/2 bg-black rounded-5xl">
               <img
                 src={offer.image_url}
                 alt={offer.product_name}

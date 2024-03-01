@@ -15,6 +15,7 @@ import {
 import banner from "../../assets/images/13684537_5334556.jpg";
 import { Link } from "react-router-dom";
 import { RiShoppingBagLine } from "react-icons/ri";
+import Parallax from "./Parallax/Parallax";
 // import ServicesSlider from "./ServicesSlider";
 // import WhatIsNew from "./WhatIsNew";
 
@@ -64,7 +65,8 @@ const Home = () => {
         <Featured></Featured>
       </div>
       <div className="max-w-screen-2xl mx-auto mt-20 mb-10">
-        <WhatIsNew></WhatIsNew>
+        {/* <WhatIsNew></WhatIsNew> */}
+        <Parallax></Parallax>
       </div>
       <div className="mt-10 mb-10">
         <Offer></Offer>

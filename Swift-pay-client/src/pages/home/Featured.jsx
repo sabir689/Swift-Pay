@@ -9,7 +9,7 @@ const Featured = () => {
   return (
     <Container>
       <div
-        className="relative text-white bg-cover bg-center h-[400px] my-20 flex flex-col justify-center items-center rounded-lg object-cover object-center"
+        className="relative text-white bg-cover bg-center h-[450px] my-20 flex flex-col justify-center items-center rounded-lg object-cover object-center"
         style={{ backgroundImage: `url(${backgroundImageUrl})` }}
       >
         <div className="absolute inset-0 bg-black opacity-30 rounded-2xl"></div>
@@ -19,7 +19,7 @@ const Featured = () => {
             <p className="lg:text-5xl text-3xl font-bold mb-4 font-serif">
               SwiftPay
             </p>
-            <p className=" max-w-prose mb-8 text-md text-gray-300 opacity-70">
+            <p className=" max-w-prose mb-8 text-md text-gray-200 opacity-70">
               propels online success with unmatched speed and efficiency. This
               powerful programming language ensures rapid development,
               scalability, and cutting-edge features for optimal business
