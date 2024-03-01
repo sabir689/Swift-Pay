@@ -12,11 +12,10 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useUser from "../../hooks/useUser";
 import toast from "react-hot-toast";
 import ProfileModal from "../../pages/home/profile modal/profileModal";
-import { LuUserCircle } from "react-icons/lu";
 import { CiCamera } from "react-icons/ci";
 
 const Navbar = () => {
-  const [profileInfo] = useUser();
+  const [profileInfo, refetch] = useUser();
   const axiosPublic = useAxiosPublic();
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -38,7 +37,6 @@ const Navbar = () => {
       photoURL,
       gender,
     };
-    console.log(updateProfileInfo);
     axiosPublic
       .patch(`/api/users/${profileInfo._id}`, updateProfileInfo)
       .then((res) => {

@@ -33,17 +33,6 @@ const SellerProfile = () => {
     },
   });
 
-  const dateObject = new Date(Date.now());
-  const year = dateObject.getFullYear();
-  const month = dateObject.getMonth() + 1;
-  const day = dateObject.getDate();
-  const hours = dateObject.getHours();
-  const minutes = dateObject.getMinutes();
-  const seconds = dateObject.getSeconds();
-  const formattedDateTime = `${year}-${month < 10 ? "0" : ""}${month}-${
-    day < 10 ? "0" : ""
-  }${day} ${hours}:${minutes}:${seconds}`;
-
   const handleReview = () => {
     const reviewInfo = {
       seller_email: showData?.email,
@@ -51,11 +40,12 @@ const SellerProfile = () => {
       user_name: profileInfo.name,
       user_photoURL: profileInfo.photoURL,
       review: review,
-      time: formattedDateTime,
+      time: new Date().toDateString(),
     };
     axiosPublic.post("/api/reviews", reviewInfo).then((res) => {
       if (res.data.insertedId) {
         toast.success("Thank you for your review");
+        setReview("");
         refetch();
       }
     });
@@ -118,6 +108,7 @@ const SellerProfile = () => {
                 </form>
                 <p className="font-bold text-lg text-center">Give Review</p>
                 <textarea
+                  value={review}
                   onChange={(e) => setReview(e.target.value)}
                   className="w-full py-5 textarea textarea-bordered"
                   placeholder="write your review here..."
@@ -125,7 +116,7 @@ const SellerProfile = () => {
                 <div className="modal-action">
                   <form method="dialog">
                     <button onClick={handleReview} className="button">
-                      submit{" "}
+                      submit
                     </button>
                   </form>
                 </div>

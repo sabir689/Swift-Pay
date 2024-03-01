@@ -4,22 +4,24 @@ import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 import { useContext, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import useUser from "../hooks/useUser";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
+
 const SellPost = () => {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
   } = useForm();
   const { user } = useContext(AuthContext);
+  const [profileInfo] = useUser();
   const axiosPublic = useAxiosPublic();
   const queryClient = useQueryClient();
 
   const onSubmit = async (data) => {
-    // console.log(date);
     const imageFile = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
@@ -27,9 +29,8 @@ const SellPost = () => {
       },
     });
     if (res?.data?.success) {
-      console.log(data);
       const productData = {
-        name: data.name,
+        name: profileInfo.name,
         date: new Date().toDateString(),
         productName: data.productName,
         email: user?.email,
@@ -74,7 +75,7 @@ const SellPost = () => {
                   type="text"
                   placeholder="your name"
                   required
-                  value={user.displayName}
+                  value={profileInfo?.name}
                 />
               </div>
               <div className="flex-1">
