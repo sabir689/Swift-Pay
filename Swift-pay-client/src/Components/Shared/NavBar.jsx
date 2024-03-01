@@ -123,6 +123,20 @@ const Navbar = () => {
         </li>
         <li className="text-2xl mr-10 font-semibold text-[#49108B]">
           <NavLink
+            to="/order-tracking"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-gray-600" : ""
+            }
+          >
+            <span className="flex items-center">
+              <p className="ml-3 tracking-[1px] text-lg font-semibold text-[#49108B]">
+              Order Tracking
+              </p>
+            </span>
+          </NavLink>
+        </li>
+        <li className="text-2xl mr-10 font-semibold text-[#49108B]">
+          <NavLink
             to="/dashboard/stream"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "text-gray-600" : ""

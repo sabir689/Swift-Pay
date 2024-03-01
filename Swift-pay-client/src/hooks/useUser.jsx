@@ -13,8 +13,6 @@ const useUser = () => {
       return res.data;
     },
   });
-
-  console.log(profile);
   const [profileInfo] = profile;
   return [profileInfo, refetch];
 };

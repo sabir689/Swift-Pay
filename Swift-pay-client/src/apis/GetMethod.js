@@ -24,6 +24,10 @@ export const uploadProduct = async (id, product) => {
     const { data } = await axiosSecure.put(`/updateproduct/${id}`, product)
     return data
 }
+export const getOrderProduct= async(id)=>{
+    const {data}= await axiosSecure.get(`/order-tracking/${id}`)
+    return data
+}
 // export const BillingInfo =  (email) => {
 //     const { refetch, isPending, error, data } = useQuery({
 //         queryKey: ['userBilling'],

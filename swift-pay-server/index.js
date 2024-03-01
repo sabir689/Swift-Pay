@@ -146,38 +146,43 @@ async function run() {
     });
 
     //Update user billing information
-    app.put('/addressUpdate/:email', async(req, res)=>{
-      const body= req.body;
-      const email= req.params.email
-      const filter= {email: email}
-      const options ={ upsert: true}
-      const upddateAddress ={
-        $set:{
+    app.put('/addressUpdate/:email', async (req, res) => {
+      const body = req.body;
+      const email = req.params.email
+      const filter = { email: email }
+      const options = { upsert: true }
+      const upddateAddress = {
+        $set: {
           billing: body
         }
       }
       const result = await userCollection.updateOne(filter, upddateAddress, options)
       res.send(result)
     })
+
     // getUserBilling information
-    app.get('/userBillingInfo', async(req, res)=>{
-      let query={}
-      if(req.query?.email){
-        query={email: req.query.email}
+    app.get('/userBillingInfo', async (req, res) => {
+      let query = {}
+      if (req.query?.email) {
+        query = { email: req.query.email }
       }
-      const result= await userCollection.findOne(query)
+      const result = await userCollection.findOne(query)
       res.send(result)
-   
     })
-
-
-    app.delete('/deleteUserInfo/:id', async(req, res)=>{
-      const id=req.params.id
-      const query={_id: new ObjectId(id)}
-      const result= await userCollection.deleteOne(query)
+    // get Order Tracking
+    app.get('/order-tracking/:id', async (req, res) => {
+      const getId = req.params.id;
+      const query = { _id: new ObjectId(getId) }
+      const result = await orderCollection.find(query).toArray()
       res.send(result)
     })
 
+    app.delete('/deleteUserInfo/:id', async (req, res) => {
+      const id = req.params.id
+      const query = { _id: new ObjectId(id) }
+      const result = await userCollection.deleteOne(query)
+      res.send(result)
+    })
 
     // users note post by email
     app.post("/api/users/notes", async (req, res) => {

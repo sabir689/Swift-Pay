@@ -39,6 +39,7 @@ import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
 import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
+import OrderTrack from "../pages/Order/OrderTrack";
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
       {
         path: "/payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "order-tracking",
+        element: <OrderTrack />,
       },
       {
         path: "/transactionDetails",

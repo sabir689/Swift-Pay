@@ -14,8 +14,6 @@ const Products = () => {
   const [myProduct, setMyProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
-  // const userEmail=user?.email
-  // console.log(userEmail);
   useEffect(() => {
     setLoading(true);
     getMyPorducts(user.email).then((res) => {
@@ -23,7 +21,8 @@ const Products = () => {
       setLoading(false);
     });
   }, [user?.email]);
-  console.log(myProduct);
+
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",

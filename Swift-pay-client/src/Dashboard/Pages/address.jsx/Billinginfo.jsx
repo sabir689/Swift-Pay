@@ -8,7 +8,7 @@ const Billinginfo = () => {
     return (
         <div>
             <div className=''>
-                <h1 className='text-base mt-3 font-normal text-gray-600'>Full Name : <span className='font-medium'>{data.billing?.firstName ? data.billing?.firstName:  user?.firstName} {data?.billing?.lastName ? data?.billing?.lastName : user?.lastName}</span></h1>
+                <h1 className='text-base mt-3 font-normal text-gray-600'>Full Name : <span className='font-medium'>{data?.billing?.firstName ? data?.billing?.firstName:  user?.firstName} {data?.billing?.lastName ? data?.billing?.lastName : user?.lastName}</span></h1>
                 <h1 className='text-base mt-3 font-normal text-gray-600'>Company Name : 
                 <span className='font-medium'>{data?.billing?.companyName}</span></h1>
                

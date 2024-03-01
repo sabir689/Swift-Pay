@@ -126,6 +126,11 @@ const Test2Dashboard = () => {
         icon: GoHome,
       },
       {
+        name: "Order tack",
+        link: "order-track",
+        icon: PiAddressBook,
+      },
+      {
         name: "Address",
         link: "billing-address",
         icon: PiAddressBook,
