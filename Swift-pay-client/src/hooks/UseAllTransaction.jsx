@@ -3,7 +3,7 @@ import axios from "axios";
 
 const UseAllTransaction = () => {
   const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://swift-pay-server.vercel.app",
   });
 
   const { refetch, data: orders = [] } = useQuery({

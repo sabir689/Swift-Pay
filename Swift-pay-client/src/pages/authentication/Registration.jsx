@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { PiEyeSlash, PiEye } from "react-icons/pi";
 import { Helmet } from "react-helmet-async";
 import UseAuth from "../../hooks/UseAuth";
 import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
-import PageBanner from "../../Components/Shared/PageBanner";
 import SocialLogin from "./SocialLogin";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 const Register = () => {
   const axiosPublic = useAxiosPublic();
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth();
@@ -40,7 +40,7 @@ const Register = () => {
       setRegistrationError("Password at least one number.");
       return;
     }
-    const userData = { firstName, lastName, email };
+
     createUser(email, password)
       .then(() => {
         updateUserProfile(name).then(() => {

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PiEyeSlash, PiEye } from "react-icons/pi";
 import { Helmet } from "react-helmet-async";
 import UseAuth from "../../hooks/UseAuth";
 import { ImSpinner9 } from "react-icons/im";
 import toast from "react-hot-toast";
-import PageBanner from "../../Components/Shared/PageBanner";
+
 import SocialLogin from "./SocialLogin";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
