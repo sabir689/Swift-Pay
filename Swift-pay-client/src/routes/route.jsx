@@ -38,9 +38,15 @@ import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 import Address from "../Dashboard/Pages/address.jsx/Address";
 import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
+import Messages from "../Dashboard/Message/Messages";
+
 import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
 import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
+import BrandOwner from "../Dashboard/Branded/BrandOwner";
+import AddProd from "../Dashboard/Branded/AddProd";
+
+
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -102,6 +108,8 @@ export const router = createBrowserRouter([
         path: "/transactionDetails",
         element: <TransactionDetails></TransactionDetails>,
       },
+      
+     
 
       {
         path: "room/:roomId",
@@ -122,6 +130,10 @@ export const router = createBrowserRouter([
         path: "contact",
         element: <NewContact></NewContact>,
       },
+      {
+        path: "addProd",
+        element: <AddProd></AddProd>
+      },
 
       {
         path: "stream",
@@ -135,6 +147,8 @@ export const router = createBrowserRouter([
         path: "myDashboard",
         element: <MyDashboard></MyDashboard>,
       },
+      
+      
       {
         path: "transactions",
         element: <Transactions></Transactions>,
@@ -144,9 +158,16 @@ export const router = createBrowserRouter([
         element: <MyProfile></MyProfile>,
       },
       {
+        path: "messages",
+        element: <Messages></Messages>
+      },
+      {
         path: "billing-address",
         element: <Address />,
       },
+      
+      
+      
       {
         path: "sellPost",
         element: <SellPost></SellPost>,
@@ -170,6 +191,10 @@ export const router = createBrowserRouter([
       {
         path: "addBrand",
         element: <AddBrand></AddBrand>,
+      },
+      {
+        path: "brandOwner",
+        element: <BrandOwner></BrandOwner>
       },
       {
         path: "saved",
@@ -206,6 +231,7 @@ export const router = createBrowserRouter([
         path: "addBrand",
         element: <AddBrand></AddBrand>,
       },
+      
       // admin
 
       {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Suspense, useContext, useState } from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
@@ -63,20 +64,32 @@ const Test2Dashboard = () => {
         icon: IoVideocamOutline,
       },
       {
+        name: "BrandedOwner",
+        link: "/dashboard/brandOwner",
+        icon: MdOutlineDashboard,
+      },
+      {
         name: "Saved",
         link: "/dashboard/saved",
         icon: AiOutlineHeart,
       },
+      
       {
         name: "Transaction History",
         link: "/dashboard/transactionHistory",
         icon: TbReportAnalytics,
       },
       {
+        name: "messages",
+        link: "/dashboard/messages",
+        icon: FiMessageSquare,
+      },
+      {
         name: "Address",
         link: "Billing-address",
         icon: PiAddressBook,
       },
+      
       {
         name: "Profile",
         link: "profile",
@@ -101,6 +114,13 @@ const Test2Dashboard = () => {
         link: "/dashboard/myDashboard",
         icon: MdOutlineDashboard,
       },
+      {
+        name: "brandOwner",
+        link: "/dashboard/brandOwner",
+        icon: MdOutlineDashboard,
+      },
+      
+      
 
       {
         name: "My Products",
