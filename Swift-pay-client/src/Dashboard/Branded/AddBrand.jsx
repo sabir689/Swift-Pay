@@ -68,7 +68,7 @@ const AddBrand = () => {
   };
 
   return (
-    <div >
+    
       <div className="max-w-md mx-auto p-4 border rounded shadow">
         <h3 className="text-center text-2xl font-semibold mb-4">Add New Brand</h3>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
