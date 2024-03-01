@@ -36,6 +36,8 @@ import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 import Address from "../Dashboard/Pages/address.jsx/Address";
 import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
+import Messages from "../Dashboard/Message/Messages";
+
 import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
 import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
@@ -102,6 +104,8 @@ export const router = createBrowserRouter([
         path: "/transactionDetails",
         element: <TransactionDetails></TransactionDetails>,
       },
+      
+     
 
       {
         path: "room/:roomId",
@@ -146,9 +150,16 @@ export const router = createBrowserRouter([
         element: <MyProfile></MyProfile>,
       },
       {
+        path: "messages",
+        element: <Messages></Messages>
+      },
+      {
         path: "billing-address",
         element: <Address />,
       },
+      
+      
+      
       {
         path: "sellPost",
         element: <SellPost></SellPost>,

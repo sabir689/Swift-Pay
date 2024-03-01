@@ -193,13 +193,11 @@ const AddBrand = () => {
             className={`mt-4 p-2 rounded ${fields.length < 5
               ? "bg-gray-400 text-gray-800 cursor-not-allowed"
               : "bg-blue-500 text-white"
-              }`}
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-      <h1 className="text-center text-3xl font-bold mt-10">Manage Your Products</h1>
+          }`}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

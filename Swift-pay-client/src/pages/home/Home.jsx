@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-unused-vars */
 import Banner from "./Banner";
 import Customers from "./Customers";
 import Featured from "./Featured";
