@@ -225,8 +225,7 @@ const EditProduct = () => {
             <div className="flex items-center justify-center mt-4">
               <button
                 type="submit"
-                className="px-10 py-2 text-center text-white duration-300 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-blue-400  hover:text-white  text-md font-medium"
-              >
+                className="px-10 py-2 text-center text-white duration-300 bg-purple-600  border-gray-900 rounded-full inline-flex  hover:bg-blue-400  hover:text-white  text-md font-medium">
                 save Changes
               </button>
             </div>

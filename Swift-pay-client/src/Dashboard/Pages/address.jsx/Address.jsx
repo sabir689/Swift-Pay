@@ -1,18 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../../provider/AuthProvider'
-import { FiEdit } from "react-icons/fi";
-import { getUpdateAddress } from '../../../apis/GetUpdate';
-import toast from 'react-hot-toast';
-import UseUserBilling from '../../../apis/UseUserBilling';
 import EditAddress from './EditAddress';
 import Billinginfo from './Billinginfo';
+import { FiEdit } from 'react-icons/fi';
 const Address = () => {
     const [eidt, setEdit] = useState(false)
 
-    const [refetch, isPending, error, data] = UseUserBilling()
-    console.log(data?.brilling?.firstName);
 
-    console.log(eidt);
 
     return (
         <div className='mt-10 px-5 max-w-3xl mx-auto'>
@@ -33,7 +26,7 @@ const Address = () => {
 
             {
                 eidt ?
-                    <EditAddress /> :
+                    <EditAddress setEdit={setEdit}/> :
                     <Billinginfo/>
             }
 

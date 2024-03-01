@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { AuthContext } from '../../../provider/AuthProvider'
 import UseUserBilling from '../../../apis/UseUserBilling'
 
-const EditAddress = () => {
+const EditAddress = ({setEdit}) => {
     const { user } = useContext(AuthContext)
     const fullName = user.displayName
     const findSpace = fullName.indexOf(' ')
@@ -30,6 +30,7 @@ const EditAddress = () => {
             .then(() => {
                 toast.success('Your billing information has been successfully updated')
                 refetch()
+                setEdit(false)
                 return
             })
             .catch(() => {
@@ -51,7 +52,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                             type="text"
                             placeholder="First Name"
-                            defaultValue={firstName}
+                            defaultValue={data?.billing?.firstName? data?.billing?.firstName : firstName}
                             required
                         />
                     </div>
@@ -65,7 +66,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none "
                             type="text"
                             placeholder="Last Name"
-                            defaultValue={lastName}
+                            defaultValue={data?.billing?.lastName ? data?.billing?.lastName:  lastName}
                             required
                         />
                     </div>
@@ -83,6 +84,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                             type="text"
                             placeholder="Company name"
+                            defaultValue={data?.billing?.companyName}
                         />
                     </div>
                     <div className='flex-1'>
@@ -95,6 +97,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none "
                             type="text"
                             placeholder="Country"
+                            defaultValue={data?.billing?.country}
                             required
                         />
                     </div>
@@ -112,6 +115,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                             type="text"
                             placeholder="Street address"
+                            defaultValue={data?.billing?.streetAddress}
 
                         />
                     </div>
@@ -126,6 +130,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none "
                             type="townCity"
                             placeholder="Town / City"
+                            defaultValue={data?.billing?.town}
                             required
                         />
                     </div>
@@ -143,6 +148,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                             type="text"
                             placeholder="District"
+                            defaultValue={data?.billing?.district}
                         />
                     </div>
 
@@ -156,6 +162,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none "
                             type="townCity"
                             placeholder="Postcode / ZIP"
+                            defaultValue={data?.billing?.postCode}
                         />
                     </div>
                 </div>
@@ -172,6 +179,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none"
                             type="text"
                             placeholder="Phone Number"
+                            defaultValue={data?.billing?.number}
                             required
                         />
                     </div>
@@ -186,7 +194,7 @@ const EditAddress = () => {
                             className="text-base rounded bg-transparent border-[1px] border-gray-400 duration-300  focus:shadow-sm  focus:border-[#49108B] focus:outline-none py-2.5 px-3 w-full outline-none "
                             type="text"
                             placeholder="Email addres"
-                            defaultValue={user?.email}
+                            defaultValue={data?.billing?.email}
                         />
                     </div>
                 </div>
