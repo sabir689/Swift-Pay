@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { getMyPorducts } from "../../apis/GetMethod";
 import { AuthContext } from "../../provider/AuthProvider";
 import { MdDelete } from "react-icons/md";

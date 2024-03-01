@@ -38,6 +38,8 @@ import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
 import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
+import BrandOwner from "../Dashboard/Branded/BrandOwner";
+
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
 const LazyBranded = lazy(() => import("../Dashboard/Branded/Branded"));
 const LazySaved = lazy(() => import("../Dashboard/Saved"));
@@ -131,6 +133,8 @@ export const router = createBrowserRouter([
         path: "myDashboard",
         element: <MyDashboard></MyDashboard>,
       },
+      
+      
       {
         path: "transactions",
         element: <Transactions></Transactions>,
@@ -166,6 +170,10 @@ export const router = createBrowserRouter([
       {
         path: "addBrand",
         element: <AddBrand></AddBrand>,
+      },
+      {
+        path: "brandOwner",
+        element: <BrandOwner></BrandOwner>
       },
       {
         path: "saved",
