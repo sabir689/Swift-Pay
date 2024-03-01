@@ -44,13 +44,13 @@ const MyProfile = () => {
           <div className=" ">
             <div className="text-center px-14">
               <h2 className="text-[#49108B] text-xl font-bold">
-                {newUser?.firstName + " " + newUser?.name}
+                {newUser?.name}
               </h2>
               <a className="text-gray-400 mt-2 hover:text-blue-500">
                 {newUser?.email}
               </a>
             </div>
-            <hr className="mt-6" />
+            <hr className="mt-6"/>
           </div>
         </div>
       </div>
