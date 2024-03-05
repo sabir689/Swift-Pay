@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PiEyeSlash, PiEye } from "react-icons/pi";
@@ -5,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import UseAuth from "../../hooks/UseAuth";
 import { ImSpinner9 } from "react-icons/im";
 import toast from "react-hot-toast";
-import PageBanner from "../../Components/Shared/PageBanner";
+
 import SocialLogin from "./SocialLogin";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,9 +36,9 @@ const Login = () => {
         <Helmet>
           <title> Login </title>
         </Helmet>
-        <div className="container md:w-10/12/ lg:w-96 mx-auto px-4 border-[1px] border-gray-200 rounded-md">
+        <div className="container  md:w-10/12/ lg:w-96 mx-auto px-4 border-[1px] border-gray-200 rounded-md">
           <div className="bg-white px-9 pt-8 pb-9 rounded-lg">
-            <h1 className="text-3xl font-semibold text-[#212427] mb-1  mt-5 block">
+            <h1 className="text-3xl text-center font-semibold text-[#212427] mb-1  mt-5 block">
               Log in
             </h1>
             <h1 className="text-md font-normal mr-1 text-neutral-600 ">

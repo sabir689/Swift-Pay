@@ -12,32 +12,38 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useUser from "../../hooks/useUser";
 import toast from "react-hot-toast";
 import ProfileModal from "../../pages/home/profile modal/profileModal";
-import { LuUserCircle } from "react-icons/lu";
 import { CiCamera } from "react-icons/ci";
 
 const Navbar = () => {
-  const [profileInfo] = useUser();
+  const [profileInfo, refetch] = useUser();
   const axiosPublic = useAxiosPublic();
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
-    // const name = firstName + " " + lastName;
+    const name = firstName + " " + lastName;
     const address = form.address.value;
     const gender = form.gender.value;
     const photoURL = form.photoURL.value;
     const age = form.age.value;
 
     const updateProfileInfo = {
+      name,
       firstName,
       lastName,
       address,
       age,
-      gender,
       photoURL,
+      gender,
     };
-    axiosPublic.patch(`/api/users/${profileInfo._id}`, updateProfileInfo);
+    axiosPublic
+      .patch(`/api/users/${profileInfo._id}`, updateProfileInfo)
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Updated Profile");
+        refetch();
+      });
   };
 
   const { user, logOut } = useContext(AuthContext);

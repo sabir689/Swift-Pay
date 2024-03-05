@@ -14,28 +14,32 @@ import Blog from "../pages/Blog/Blog";
 import Offer from "../pages/home/Offer";
 import OffersDetails from "../pages/OffersDetails/OffersDetails";
 import NewContact from "../Dashboard/NewContact";
+
 import ReceiveMoney from "../Dashboard/ReceiveMoney";
 import PrivateRoute from "./PrivateRoute";
 import MyDashboard from "../Dashboard/MyDashboard";
 import Transactions from "../Dashboard/Transactions";
 import Test2Dashboard from "../Dashboard/Test2Dashboard";
 import SellPost from "../Dashboard/SellPost";
-// import Market from "../Dashboard/Market";
-
 import Details from "../Components/Shared/Details";
+// import Market from "../Dashboard/Market";
+import SellerProfile from "../Components/Reviews/SellerProfile";
 // import Branded from "../Dashboard/Branded/Branded";
-import Products from "../Dashboard/myProducts/Products";
 import EditProduct from "../Dashboard/myProducts/EditProduct";
 import AddBrand from "../Dashboard/Branded/AddBrand";
 import AllUsers from "../Admin/Dashboard pages/AllUsers";
 import PaymentSuccess from "../Dashboard/Payment/PaymentSuccess";
+
 // import Modal from "../Components/Modal/Modal";
 import EmailProducts from "../Dashboard/EmailProducts";
-import SellerProfile from "../Components/Reviews/SellerProfile";
+import MyProducts from '../Dashboard/myProducts/MyProducts';
+
 import MyProfile from "../Dashboard/Pages/myProfile/MyProfile";
 import Address from "../Dashboard/Pages/address.jsx/Address";
 import Modal from "../Components/Modal/Modal";
 import TransactionDetails from "../Dashboard/Payment/TransactionDetails";
+import Messages from "../Dashboard/Message/Messages";
+
 import LiveStream from "../pages/LiveStream/LiveStream";
 import RoomPage from "../pages/LiveStream/RoomPage";
 import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
@@ -105,6 +109,8 @@ export const router = createBrowserRouter([
         path: "/transactionDetails",
         element: <TransactionDetails></TransactionDetails>,
       },
+      
+     
 
       {
         path: "room/:roomId",
@@ -125,6 +131,10 @@ export const router = createBrowserRouter([
         path: "contact",
         element: <NewContact></NewContact>,
       },
+      {
+        path: "addProd",
+        element: <AddProd></AddProd>
+      },
 
       {
         path: "stream",
@@ -138,6 +148,8 @@ export const router = createBrowserRouter([
         path: "myDashboard",
         element: <MyDashboard></MyDashboard>,
       },
+      
+      
       {
         path: "transactions",
         element: <Transactions></Transactions>,
@@ -147,9 +159,16 @@ export const router = createBrowserRouter([
         element: <MyProfile></MyProfile>,
       },
       {
+        path: "messages",
+        element: <Messages></Messages>
+      },
+      {
         path: "billing-address",
         element: <Address />,
       },
+      
+      
+      
       {
         path: "sellPost",
         element: <SellPost></SellPost>,
@@ -175,6 +194,10 @@ export const router = createBrowserRouter([
         element: <AddBrand></AddBrand>,
       },
       {
+        path: "brandOwner",
+        element: <BrandOwner></BrandOwner>
+      },
+      {
         path: "saved",
         element: (
           <React.Suspense fallback="loading">
@@ -189,7 +212,7 @@ export const router = createBrowserRouter([
       // my products page
       {
         path: "my-products",
-        element: <Products />,
+        element: <MyProducts />,
       },
       {
         path: "productedit/:id",
@@ -198,22 +221,28 @@ export const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <Details></Details>,
-        loader: () => fetch(`http://localhost:5000/api/products`),
-      },
-      {
-        path: "addBrand",
-        element: <AddBrand></AddBrand>,
-      },
-      // admin
-      {
-        path: "emailProducts/:email",
-        element: <EmailProducts></EmailProducts>,
-        loader: () => fetch(`https://swift-pay-server.vercel.app/api/products`),
+        loader: () => fetch("https://swift-pay-server.vercel.app/api/products"),
       },
       {
         path: "sellerprofile/:email",
         element: <SellerProfile />,
         loader: () => fetch("https://swift-pay-server.vercel.app/api/users"),
+      },
+      {
+        path: "addBrand",
+        element: <AddBrand></AddBrand>,
+      },
+      
+      // admin
+
+      {
+        path: "emailProducts/:email",
+        element: <EmailProducts></EmailProducts>,
+        loader: () => fetch("https://swift-pay-server.vercel.app/api/products"),
+      },
+      {
+        path: "addBrand",
+        element: <AddBrand></AddBrand>,
       },
       {
         path: "allUsers",

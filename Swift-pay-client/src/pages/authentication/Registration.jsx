@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { PiEyeSlash, PiEye } from "react-icons/pi";
@@ -5,9 +6,9 @@ import { Helmet } from "react-helmet-async";
 import UseAuth from "../../hooks/UseAuth";
 import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
-import PageBanner from "../../Components/Shared/PageBanner";
 import SocialLogin from "./SocialLogin";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 const Register = () => {
   const axiosPublic = useAxiosPublic();
   const { loading, createUser, updateUserProfile, setLoading } = UseAuth();
@@ -40,7 +41,7 @@ const Register = () => {
       setRegistrationError("Password at least one number.");
       return;
     }
-    const userData = { firstName, lastName, email };
+
     createUser(email, password)
       .then(() => {
         updateUserProfile(name).then(() => {
@@ -77,10 +78,10 @@ const Register = () => {
         </Helmet>
         <div className="container md:w-10/12/ w-[450px] mx-auto px-4 border-[1px] border-gray-200 rounded-md">
           <div className="bg-white px-10 py-10 rounded-lg">
-            <h1 className="text-3xl font-semibold text-[#212427] mb-1 block">
+            <h1 className="text-3xl text-center font-semibold text-[#212427] mb-1 block">
               Create an account
             </h1>
-            <h1 className="text-md font-normal text-neutral-600 ">
+            <h1 className="text-md text-center font-normal text-neutral-600 ">
               Already have an account?
               <Link
                 to="/login"

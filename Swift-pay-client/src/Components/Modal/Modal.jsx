@@ -102,6 +102,11 @@ const Modal = ({ modalData }) => {
             </button>
           </form>
         </div>
+        <textarea
+          readOnly
+          placeholder={modalData?.note}
+          className="w-full textarea textarea-bordered"
+        ></textarea>
       </div>
     </dialog>
   );

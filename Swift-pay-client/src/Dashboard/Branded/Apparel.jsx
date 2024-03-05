@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Apparel = () => {
   const { user } = useContext(AuthContext);
@@ -37,7 +37,7 @@ const Apparel = () => {
   const addToCart = async () => {
     try {
       if (!user) {
-        console.error("User not authenticated.");
+        console.error('User not authenticated.');
         return;
       }
 
@@ -53,13 +53,13 @@ const Apparel = () => {
       );
 
       if (response.ok) {
-        console.log("Product added to cart successfully!");
+        console.log('Product added to cart successfully!');
         closeModal();
       } else {
-        console.error("Failed to add product to cart.");
+        console.error('Failed to add product to cart.');
       }
     } catch (error) {
-      console.error("Error adding product to cart:", error);
+      console.error('Error adding product to cart:', error);
     }
   };
 
@@ -131,45 +131,38 @@ const Apparel = () => {
       {/* Details Modal */}
       {isModalOpen && selectedProduct && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-60  flex justify-center items-center align-middle">
-          <div className="bg-white pl-5 pr-3 py-6 max-w-md rounded-lg">
-            <h3 className="text-xl text-gray-800 font-semibold mb-2">
-              {selectedProduct.name} Details
-            </h3>
-            <img
-              className="w-64 h-64 rounded-md object-cover object-center"
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-            />
-            <div className="mt-4 text-gray-500">
-              <p className="mb-1">Type: {selectedProduct.type}</p>
-              <p className="mb-1">Price: ${selectedProduct.price}</p>
-              <p className="mb-1">
-                Sizes:{" "}
-                {selectedProduct.sizes && selectedProduct.sizes.join(", ")}
-              </p>
-              <p className="mb-1">
-                Colors:{" "}
-                {selectedProduct.colors && selectedProduct.colors.join(", ")}
-              </p>
-            </div>
-            <div className="flex justify-between gap-2">
-              <button
-                className="rounded-md border-[1px] border-gray-500 btn-outline px-4 py-2 font-medium"
-                onClick={closeModal}
-              >
+          <div className="bg-white p-4 max-w-md ">
+            <h3 className="text-xl font-semibold mb-2">{selectedProduct.name} Details</h3>
+            <img className='w-96 h-96 border-2 object-cover object-center' src={selectedProduct.image} alt={selectedProduct.name} />
+            <p className='mb-2 '>Type: {selectedProduct.type}</p>
+            <p className='mb-2'>Price: ${selectedProduct.price}</p>
+            <p className='mb-2'>Sizes: {selectedProduct.sizes && selectedProduct.sizes.join(', ')}</p>
+            <p className='mb-2'>Colors: {selectedProduct.colors && selectedProduct.colors.join(', ')}</p>
+            <div className='flex justify-between'>
+              <button className="btn btn-outline" onClick={closeModal}>
                 Close
               </button>
               <button className="btn btn-outline" onClick={addToCart}>
                 Add to cart
               </button>
 
-              <button className="btn btn-outline">Pay</button>
+              <button className="btn btn-outline" >
+                Pay
+              </button>
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 
 export default Apparel;
+
+
+
+
+
+
+
