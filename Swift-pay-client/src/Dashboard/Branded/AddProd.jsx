@@ -1,97 +1,86 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+
+import { useForm, Controller } from 'react-hook-form';
 
 const AddProd = () => {
-  const { register, handleSubmit, setValue } = useForm();
-  const [formData, setFormData] = useState({
-    type: '',
-    name: '',
-    price: '',
-    colors: '',
-    image: '',
-    brand: '',
-  });
-  const [brandsData, setBrandsData] = useState([]);
-
-  useEffect(() => {
-    fetchBrandsData();
-  }, []);
-
-  const fetchBrandsData = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/brands');
-      const data = await response.json();
-      setBrandsData(data);
-    } catch (error) {
-      console.error('Error fetching brands data:', error);
-    }
-  };
+  const { handleSubmit, control } = useForm();
 
   const onSubmit = (data) => {
-    console.log('Form Data Submitted:', data);
-    // Your submission logic here
-    // Reset the form after submission
-    setFormData({
-      type: '',
-      name: '',
-      price: '',
-      colors: '',
-      image: '',
-      brand: '',
-    });
+    // Handle form submission logic here
+    console.log(data);
   };
 
   return (
-    <div>
-      <h3>Add a Product</h3>
+    <div className="max-w-md mx-auto mt-10 p-4 bg-white rounded shadow">
+      <h1 className="text-2xl font-bold mb-4">Add Product</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="type">Type:</label>
-        <input
-          type="text"
-          id="type"
-          {...register('type', { required: 'Type is required' })}
-        />
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+            Name:
+          </label>
+          <Controller
+            name="name"
+            control={control}
+            defaultValue=""
+            render={({ field }) => <input {...field} className="mt-1 p-2 border w-full rounded-md" />}
+          />
+        </div>
 
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          {...register('name', { required: 'Name is required' })}
-        />
+        <div className="mb-4">
+          <label htmlFor="type" className="block text-sm font-medium text-gray-600">
+            Type:
+          </label>
+          <Controller
+            name="type"
+            control={control}
+            defaultValue=""
+            render={({ field }) => <input {...field} className="mt-1 p-2 border w-full rounded-md" />}
+          />
+        </div>
 
-        <label htmlFor="price">Price:</label>
-        <input
-          type="number"
-          id="price"
-          {...register('price', { required: 'Price is required' })}
-        />
+        <div className="mb-4">
+          <label htmlFor="price" className="block text-sm font-medium text-gray-600">
+            Price:
+          </label>
+          <Controller
+            name="price"
+            control={control}
+            defaultValue={0}
+            render={({ field }) => <input type="number" {...field} className="mt-1 p-2 border w-full rounded-md" />}
+          />
+        </div>
 
-        <label htmlFor="colors">Colors:</label>
-        <input
-          type="text"
-          id="colors"
-          {...register('colors')}
-        />
+        {/* Add similar styling for other fields */}
 
-        <label htmlFor="image">Image URL:</label>
-        <input
-          type="text"
-          id="image"
-          {...register('image')}
-        />
+        <div className="mb-4">
+          <label htmlFor="image" className="block text-sm font-medium text-gray-600">
+            Image URL:
+          </label>
+          <Controller
+            name="image"
+            control={control}
+            defaultValue=""
+            render={({ field }) => <input type="url" {...field} className="mt-1 p-2 border w-full rounded-md" />}
+          />
+        </div>
 
-        <label htmlFor="brand">Brand:</label>
-        <select id="brand" {...register('brand')}>
-          <option value="">Select a brand</option>
-          {brandsData.map((brand) => (
-            <option className='text-blue' key={brand._id} value={brand.brandName}>
-              {brand.brandName}
-            </option>
-          ))}
-        </select>
+        <div className="mb-4">
+          <label htmlFor="sizes" className="block text-sm font-medium text-gray-600">
+            Sizes:
+          </label>
+          <Controller
+            name="sizes"
+            control={control}
+            defaultValue={[]}
+            render={({ field }) => <input type="text" {...field} className="mt-1 p-2 border w-full rounded-md" />}
+          />
+        </div>
 
-        <button type="submit">Add Product</button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

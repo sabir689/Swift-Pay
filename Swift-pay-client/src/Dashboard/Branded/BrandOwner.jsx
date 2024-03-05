@@ -86,7 +86,7 @@ const BrandOwner = () => {
     <div>
      <div className="flex  justify-between">
      <div >
-      <h2 className="text-center">Welcome, {user.email}!</h2>
+      <h2 className="text-center text-bold">Welcome, {user.email}!</h2>
       <p>You can manage your products here:</p>
       </div>
       <Link to={"/dashboard/addProd"}>
@@ -97,16 +97,16 @@ const BrandOwner = () => {
      </div>
       <div>
         {userProducts.map((brand) => (
-          <div key={brand.brandName}>
+          <div  key={brand.brandName}>
               <h3>{brand.brandName} - {brand.category}</h3>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid gap-6">
               {brand.products.map((product) => (
                 <div key={product._id}>
                   <div className="border-2 text-center rounded-lg overflow-hidden shadow-md p-4">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-32 object-cover mb-4"
+                      className="w-full h-96 object-cover object-center mb-4"
                     />
 
                     <div className="mb-2">

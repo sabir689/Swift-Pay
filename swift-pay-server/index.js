@@ -20,7 +20,7 @@ const client = new MongoClient(uri, {
 });
 const store_id = process.env.STORE_ID;
 const store_passwd = process.env.STORE_PASS;
-const is_live = true;
+const is_live = false;
 
 async function run() {
   try {
@@ -41,8 +41,6 @@ async function run() {
     const brandCollection = client.db("SwiftPayDb").collection("brands");
     // review collection
     const reviewCollection = client.db("SwiftPayDb").collection("reviews");
-    // review collection
-    const productReviewCollection = client.db("SwiftPayDb").collection("productReviews");
     // notes collection
     const notesCollection = client.db("SwiftPayDb").collection("user-notes");
 
@@ -84,36 +82,10 @@ async function run() {
       const result = await brandCollection.insertOne(brands);
       res.send(result);
     });
-    app.delete("/api/brands/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
-      const result = await brandCollection.deleteOne(query);
-      res.send(result);
-    });
-    
+   
     
 
-    // products review api
-    app.post("/api/porductreviews", async (req, res) => {
-      const reviews = req.body;
-      const result = await productReviewCollection.insertOne(reviews);
-      res.send(result);
-    });
-    
-    app.get("/api/porductreviews", async (req, res) => {
-      const result = await productReviewCollection.find().toArray();
-      res.send(result);
-    });
-    app.delete("/api/porductreviews/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
-      const result = await productReviewCollection.deleteOne(query);
-      res.send(result);
-    });
-
-
-
-    // profile review api
+    // review api
     app.post("/api/reviews", async (req, res) => {
       const reviews = req.body;
       const result = await reviewCollection.insertOne(reviews);
@@ -162,13 +134,13 @@ async function run() {
       const item = req.body;
       const updatedDoc = {
         $set: {
-          name: item.name,
           firstName: item.firstName,
           lastName: item.lastName,
           address: item.address,
           age: item.age,
+          gender: item.image,
           photoURL: item.photoURL,
-          gender: item.gender,
+          note: item.note,
         },
       };
       const result = await userCollection.updateOne(filter, updatedDoc);
@@ -320,12 +292,15 @@ async function run() {
     // payment post
 
     // payment api
+   
+    // payment api
     const tran_id = new ObjectId().toString();
-    app.post("/order", async (req, res) => {
+    app.post("/api/order", async (req, res) => {
       const product = await productCollection.findOne({
         _id: new ObjectId(req.body.productId),
       });
 
+      // console.log(product);
       const order = req.body;
       const customerInfo = req.body.userInfo;
       const email = req.body.userInfo.email;
@@ -335,10 +310,12 @@ async function run() {
         currency: order.userInfo.category,
         tran_id: tran_id,
 
-        success_url: `https://swift-pay-server.vercel.app/payment/success/${tran_id}`,
-        fail_url: "https://swift-pay-server.vercel.app/fail",
-        cancel_url: "https://swift-pay-server.vercel.app/cancel",
-        ipn_url: "https://swift-pay-server.vercel.app/ipn",
+        success_url: `http://localhost:5000/payment/success/${tran_id}`,
+        // success_url: `https://swift-pay-server.vercel.app/payment/success/${tran_id}`,
+
+        fail_url: "http://localhost:3030/fail",
+        cancel_url: "http://localhost:3030/cancel",
+        ipn_url: "http://localhost:3030/ipn",
 
         shipping_method: "Courier",
         product_name: "Computer.",
@@ -398,10 +375,13 @@ async function run() {
         console.log(result);
         if (result.modifiedCount > 0) {
           res.redirect(
+            // `http://localhost:5173/payment/success/${req.params.tranId}`
             `https://swift-b10ad.web.app/payment/success/${req.params.tranId}`
           );
         }
       });
+
+      // comment
     });
 
     // Send a ping to confirm a successful connection
