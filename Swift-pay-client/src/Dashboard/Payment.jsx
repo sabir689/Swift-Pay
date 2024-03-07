@@ -1,13 +1,43 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 import UseAuth from "../hooks/UseAuth";
 
 const Payment = ({ isOpen, setIsOpen, productt }) => {
-  const { register, handleSubmit } = useForm();
+  // const axiosPublic = useAxiosPublic();
+  const { id } = useParams();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const { user } = UseAuth();
+  //   const { data: products = [] } = useQuery({
+  //     queryKey: ["products"],
+  //     queryFn: async () => {
+  //       const res = await axiosPublic.get("/api/products");
+  //       return res.data;
+  //     },
+  //   });
+  //   console.log(products);
+
+  // useEffect(() => {
+  //   fetch(`https://swift-pay-server.vercel.app/api/products/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, [id]);
 
   const onSubmit = async (data) => {
     console.log(data);
+    // change
     const orderInfo = {
       email: user.email,
       displayName: user.displayName,
@@ -20,8 +50,9 @@ const Payment = ({ isOpen, setIsOpen, productt }) => {
       userInfo: data,
     };
 
+    console.log(orderInfo, data);
 
-    fetch("https://swift-pay-server.vercel.app/order", {
+    fetch("http://localhost:5000/api/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderInfo),
