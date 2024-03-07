@@ -77,11 +77,46 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+    app.get("/api/brands/products/:productId", async (req, res) => {
+      const productId = req.params.productId;
+    
+      try {
+        // Find the product with the matching productId in MongoDB
+        const product = await productCollection.findOne({ 'products.productId': productId });
+    
+        if (product) {
+          res.json(product);
+        } else {
+          res.status(404).json({ error: 'Product not found' });
+        }
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+    
+   
     app.post("/api/brands", async (req, res) => {
       const brands = req.body;
       const result = await brandCollection.insertOne(brands);
       res.send(result);
     });
+    // app.delete("/api/brands/products/:productId", async (req, res) => {
+    //   const productId = req.params.productId;
+    //   const query = { _id: new ObjectId(productId) }; // Fix: Use productId here
+    //   try {
+    //     const result = await brandCollection.deleteOne(query);
+    //     if (result.deletedCount === 1) {
+    //       res.send({ success: true });
+    //     } else {
+    //       res.status(404).send({ success: false, message: "Product not found" });
+    //     }
+    //   } catch (error) {
+    //     console.error("Error deleting product:", error);
+    //     res.status(500).send({ success: false, message: "Internal server error" });
+    //   }
+    // });
+    
    
     
 

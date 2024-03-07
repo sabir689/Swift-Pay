@@ -1,4 +1,4 @@
-import  { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -58,9 +58,9 @@ const BrandOwner = () => {
       // If the user clicks the confirm button
       if (result.isConfirmed) {
         // Send a request to your server to delete the product
-        await fetch(`http://localhost:5000/api/products/${productId}`, {
+        await fetch(`http://localhost:5000/api/brands/products/${productId}`, {
           method: "DELETE",
-          // Add any headers or authentication tokens if required
+
         });
 
         // Update the state to reflect the changes
@@ -84,33 +84,33 @@ const BrandOwner = () => {
 
   return (
     <div>
-     <div className="flex  justify-between">
-     <div >
-      <h2 className="text-center text-bold">Welcome, {user.email}!</h2>
-      <p>You can manage your products here:</p>
+      <div className="flex  justify-between">
+        <div >
+          <h2 className="text-center text-bold">Welcome, {user.email}!</h2>
+          <p>You can manage your products here:</p>
+        </div>
+        <Link to={"/dashboard/addProd"}>
+          <div>
+            <button className="btn btn-outline"> Add Prod To ur brand</button>
+          </div>
+        </Link>
       </div>
-      <Link to={"/dashboard/addProd"}>
-      <div>
-       <button className="btn btn-outline"> Add Prod To ur brand</button>
-      </div>
-      </Link>
-     </div>
       <div>
         {userProducts.map((brand) => (
-          <div  key={brand.brandName}>
-              <h3>{brand.brandName} - {brand.category}</h3>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid gap-6">
+          <div key={brand.brandName}>
+            <h3>{brand.brandName} - {brand.category}</h3>
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid gap-6 mb-10">
               {brand.products.map((product) => (
                 <div key={product._id}>
-                  <div className="border-2 text-center rounded-lg overflow-hidden shadow-md p-4">
+                  <div className="border-2 text-center  rounded-lg overflow-hidden shadow-md p-4">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-96 object-cover object-center mb-4"
+                      className="w-full h-64 object-cover object-center mb-4"
                     />
 
                     <div className="mb-2">
-                      <strong className="text-xl">{product.name}</strong>
+                      <strong >{product.name}</strong>
                     </div>
 
                     <div className="mb-2">
@@ -124,7 +124,7 @@ const BrandOwner = () => {
                         >
                           Delete
                         </button>
-                        <h3 className="btn btn-outline">Update</h3>
+                        <Link to={`/dashboard/brandUpdate/${product._id}`}> <h3 className="btn btn-outline">Update</h3></Link>
                       </div>
                     </div>
                   </div>

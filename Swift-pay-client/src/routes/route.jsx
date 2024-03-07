@@ -45,6 +45,7 @@ import RoomPage from "../pages/LiveStream/RoomPage";
 import ErrorPage from "../Dashboard/Pages/ErrorPage/ErrorPage";
 import BrandOwner from "../Dashboard/Branded/BrandOwner";
 import AddProd from "../Dashboard/Branded/AddProd";
+import BrandUpdate from "../Dashboard/Branded/BrandUpdate";
 
 
 const LazyMarket = lazy(() => import("../Dashboard/Market"));
@@ -191,6 +192,10 @@ export const router = createBrowserRouter([
       {
         path: "addBrand",
         element: <AddBrand></AddBrand>,
+      },
+      {
+        path: "brandUpdate/:productId",
+        element: <BrandUpdate></BrandUpdate>
       },
       {
         path: "brandOwner",
